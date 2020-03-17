@@ -13,6 +13,13 @@
 
         }
 
+        public MiembroComite(string nombre, string apellidoPaterno, string apellidoMaterno)
+        {
+            this.nombre = nombre;
+            this.apellidoPaterno = apellidoPaterno;
+            this.apellidoMaterno = apellidoMaterno;
+        }
+
         public MiembroComite(string nombre, string apellidoPaterno, string apellidoMaterno, string correoElectronico, int nivelExperiencia)
         {
             this.nombre = nombre;

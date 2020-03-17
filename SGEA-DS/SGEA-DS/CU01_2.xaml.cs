@@ -18,7 +18,8 @@ namespace SGEA_DS
         private string comite;
         private List<MiembroComite> listaMCNoLider;
         private bool handle = true;
-
+        private List<TextBox> listaTBSinNum;
+        private List<TextBox> listaTBSinEspacio;
 
         private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
         {
@@ -27,7 +28,13 @@ namespace SGEA_DS
             }
             else
             {
-                e.Handled = true;
+                if (e.Key == Key.Oem3 | e.Key == Key.Oem1 | e.Key == Key.DeadCharProcessed)
+                {
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
         }
 
@@ -41,13 +48,11 @@ namespace SGEA_DS
 
         private void click_Aceptar(object sender, RoutedEventArgs e)
         {
-            //MessageBox.Show(combobox_MiembroC.SelectedItem.ToString());   
-            //MessageBox.Show(((ComboBoxItem)combobox_NivelE.SelectedItem).Content.ToString());
-            //MessageBox.Show("Comite: " + this.comite);//esto sucede primero y luego el del .xaml | textbox_Usuario_PreviewKeyDown
-            if (validarDatos())
+            if (validarDatos() && guardarMComite())
             {
                 textBlock_Mensaje.Text = String.Empty;
-                var bold = new Bold(new Run("Lider registrado con éxito" + Environment.NewLine + "Usuario: "));
+                var bold = new Bold(new Run("Lider registrado con éxito" + 
+                    Environment.NewLine + "Usuario: "));
                 textBlock_Mensaje.Inlines.Add(bold);
                 var normal = new Run(textbox_Usuario.Text + Environment.NewLine);
                 textBlock_Mensaje.Inlines.Add(normal);
@@ -55,38 +60,71 @@ namespace SGEA_DS
                 textBlock_Mensaje.Inlines.Add(bold);
                 normal = new Run(textbox_Contrasena.Text);
                 textBlock_Mensaje.Inlines.Add(normal);
+                button_Cancelar.Content = "Regresar";
+                button_Aceptar.Visibility = Visibility.Hidden;
+                combobox_MiembroC.IsEnabled = false;
+                combobox_NivelE.IsEnabled = false;
+                foreach (TextBox textBox in listaTBSinNum)
+                {
+                    textBox.IsEnabled = false;
+                }
+                foreach (TextBox textBox in listaTBSinEspacio)
+                {
+                    textBox.IsEnabled = false;
+                }
             } else
             {
                 textBlock_Mensaje.Text = String.Empty;
-                var bold = new Bold(new Run("Hay datos inválidos, favor de revisar") { Foreground = Brushes.Red });
+                var bold = new Bold(new Run("Hay datos inválidos, favor de revisar") {
+                    Foreground = Brushes.Red });
                 textBlock_Mensaje.Inlines.Add(bold);
             }
+        }
+
+        private bool guardarMComite()
+        {
+            MiembroComite nuevoMComite;
+            if (combobox_MiembroC.SelectedIndex <= -1)
+            {//insert into como lider
+                nuevoMComite = new MiembroComite();
+            } else
+            {//update into como lider
+                foreach (MiembroComite miembro in listaMCNoLider)
+                {
+                    if (combobox_MiembroC.SelectedItem.ToString().Equals(
+                        miembro.Nombre + " " + miembro.ApellidoPaterno))
+                    {
+                        nuevoMComite = new MiembroComite(
+                            miembro.Nombre, miembro.ApellidoPaterno, miembro.ApellidoMaterno);
+                    }
+                }
+            }
+            return true;
         }
 
         private bool validarDatos()
         {
             if (combobox_MiembroC.SelectedIndex <= -1)
             {
-                if (string.IsNullOrWhiteSpace(textbox_Nombre.Text) | string.IsNullOrWhiteSpace(textbox_ApellidoP.Text) | 
-                    string.IsNullOrWhiteSpace(textbox_ApellidoM.Text) | string.IsNullOrWhiteSpace(textbox_CorreoE.Text) |
-                    combobox_NivelE.SelectedIndex <= -1)
+                foreach (TextBox textBox in listaTBSinNum)
                 {
-                    return false;
+                    if (string.IsNullOrWhiteSpace(textBox.Text) | textBox.Text.Any(char.IsDigit) |
+                        textBox.Text.Any(char.IsPunctuation))
+                    {
+                        return false;
+                    }
                 }
-                if (textbox_Nombre.Text.Any(char.IsDigit) | textbox_ApellidoP.Text.Any(char.IsDigit) | 
-                    textbox_ApellidoM.Text.Any(char.IsDigit))
-                {
-                    return false;
-                }
-                if (textbox_CorreoE.Text.Any(char.IsWhiteSpace))
+                if (combobox_NivelE.SelectedIndex <= -1)
                 {
                     return false;
                 }
             }
-            if (textbox_Usuario.Text.Any(char.IsWhiteSpace) | textbox_Contrasena.Text.Any(char.IsWhiteSpace) |
-                string.IsNullOrWhiteSpace(textbox_Usuario.Text) | string.IsNullOrWhiteSpace(textbox_Contrasena.Text))
+            foreach (TextBox textBox in listaTBSinEspacio)
             {
-                return false;
+                if (string.IsNullOrWhiteSpace(textBox.Text) | textBox.Text.Any(char.IsWhiteSpace))
+                {
+                    return false;
+                }
             }
             return true;
         }
@@ -106,14 +144,29 @@ namespace SGEA_DS
             this.comite = comiteLider;
             InitializeComponent();
             llenarComboBox();
+            agregarTextBox();
+        }
+
+        private void agregarTextBox()
+        {
+            listaTBSinNum = new List<TextBox>();
+            listaTBSinEspacio = new List<TextBox>();
+            listaTBSinNum.Add(textbox_Nombre);
+            listaTBSinNum.Add(textbox_ApellidoP);
+            listaTBSinNum.Add(textbox_ApellidoM);
+            listaTBSinEspacio.Add(textbox_CorreoE);
+            listaTBSinEspacio.Add(textbox_Usuario);
+            listaTBSinEspacio.Add(textbox_Contrasena);
         }
 
         private void llenarComboBox()
         {
             listaMCNoLider = new List<MiembroComite>();
             /**/
-            MiembroComite miembroPrueba = new MiembroComite("Jose Miguel", "Martinez", "Rojano", "jmmroj@uv.mx", 2);
-            MiembroComite miembroPrueba2= new MiembroComite("Andrea", "Durian", "Hernandez", "aduhe@uv.mx", 3);
+            MiembroComite miembroPrueba = new MiembroComite(
+                "Jose Miguel", "Martinez", "Rojano", "jmmroj@uv.mx", 2);
+            MiembroComite miembroPrueba2= new MiembroComite(
+                "Andrea", "Durian", "Hernandez", "aduhe@uv.mx", 3);
             listaMCNoLider.Add(miembroPrueba);
             listaMCNoLider.Add(miembroPrueba2);
 
