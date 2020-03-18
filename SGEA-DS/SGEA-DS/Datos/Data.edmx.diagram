@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="13477a1a54164ac4af1f27266eab1083" Name="Diagram1" ZoomLevel="81" >
+        <EntityTypeShape EntityType="Data.RegistroArticulo" Width="1.5" PointX="0.5" PointY="0.75" />
+        <EntityTypeShape EntityType="Data.Autor" Width="1.5" PointX="3.125" PointY="0.75" />
+        <AssociationConnector Association="Data.RegistroArticuloAutor" />
+        <EntityTypeShape EntityType="Data.Adscripcion" Width="1.5" PointX="5.5" PointY="0.75" />
+        <AssociationConnector Association="Data.AdscripcionAutor" />
+        <EntityTypeShape EntityType="Data.Magistral" Width="1.5" PointX="7.875" PointY="0.75" />
+        <AssociationConnector Association="Data.AdscripcionMagistral" />
+        <EntityTypeShape EntityType="Data.Egreso" Width="1.5" PointX="10.25" PointY="0.75" />
+        <AssociationConnector Association="Data.MagistralEgreso" />
+        <EntityTypeShape EntityType="Data.Evaluacion" Width="1.5" PointX="0.5" PointY="4.375" />
+        <EntityTypeShape EntityType="Data.Articulo" Width="1.5" PointX="3.125" PointY="4.375" />
+        <AssociationConnector Association="Data.ArticuloEvaluacion" />
+        <AssociationConnector Association="Data.ArticuloRegistroArticulo" />
+        <EntityTypeShape EntityType="Data.Participante" Width="1.5" PointX="5.5" PointY="4.375" />
+        <AssociationConnector Association="Data.ParticipanteAdscripcion" />
+        <EntityTypeShape EntityType="Data.Calendario" Width="1.5" PointX="7.875" PointY="4.375" />
+        <AssociationConnector Association="Data.ParticipanteCalendario" />
+        <EntityTypeShape EntityType="Data.Material" Width="1.5" PointX="10.25" PointY="4.375" />
+        <AssociationConnector Association="Data.MaterialEgreso" />
+        <EntityTypeShape EntityType="Data.MiembroComite" Width="1.5" PointX="0.5" PointY="7.625" />
+        <AssociationConnector Association="Data.MiembroComiteEvaluacion" />
+        <EntityTypeShape EntityType="Data.Comite" Width="1.5" PointX="3.125" PointY="7.625" />
+        <AssociationConnector Association="Data.ComiteMiembroComite" />
+        <EntityTypeShape EntityType="Data.Evento" Width="1.5" PointX="5.5" PointY="7.625" />
+        <AssociationConnector Association="Data.EventoComite" />
+        <EntityTypeShape EntityType="Data.Actrividad" Width="1.5" PointX="7.875" PointY="7.625" />
+        <AssociationConnector Association="Data.ActrividadParticipante" />
+        <AssociationConnector Association="Data.ActrividadArticulo" />
+        <AssociationConnector Association="Data.ComiteActrividad" />
+        <AssociationConnector Association="Data.EventoActrividad" />
+        <AssociationConnector Association="Data.ActrividadMaterial" />
+        <AssociationConnector Association="Data.ActrividadMagistral" />
+        <EntityTypeShape EntityType="Data.Asistente" Width="1.5" PointX="10.25" PointY="7.625" />
+        <EntityTypeShape EntityType="Data.Presupuesto" Width="1.5" PointX="3.125" PointY="12.25" />
+        <AssociationConnector Association="Data.PresupuestoEvento" />
+        <EntityTypeShape EntityType="Data.Tarea" Width="1.5" PointX="5.5" PointY="12.25" />
+        <AssociationConnector Association="Data.ActrividadTarea" />
+        <EntityTypeShape EntityType="Data.Ingreso" Width="1.5" PointX="7.875" PointY="12.25" />
+        <AssociationConnector Association="Data.ActrividadIngreso" />
+        <AssociationConnector Association="Data.AsistenteIngreso" />
+        <AssociationConnector Association="Data.IngresoRegistroArticulo" />
+        <EntityTypeShape EntityType="Data.Patrocinador" Width="1.5" PointX="10.25" PointY="12.25" />
+        <AssociationConnector Association="Data.PatrocinadorIngreso" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

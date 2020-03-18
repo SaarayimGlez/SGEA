@@ -7,8 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="330,207,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="269,153,0,0" VerticalAlignment="Top"/>
-
+        <Button Content="Registrar evento" HorizontalAlignment="Left" Margin="46,32,0,0" VerticalAlignment="Top" Width="143" Height="28" Click="Button_Click"/>
     </Grid>
 </Window>
