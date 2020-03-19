@@ -28,16 +28,16 @@ namespace SGEA_DS.Eventos
         private void GuardarEvento(object sender, RoutedEventArgs e)
         {
             Evento nuevo = new Evento();
-            try
-            {
+            if (ValidarDatos()) { 
                 nuevo.nombre = TBnombre.Text;
                 nuevo.fechaInicio = (DateTime)DPinicio.SelectedDate;
                 nuevo.fechaFin = (DateTime)DPfin.SelectedDate;
                 nuevo.institucionOrganizadora = CBinstitucion.Text;
                 nuevo.lugar = TBlugar.Text;
-            }catch(Exception)
+            } else
             {
                 LBMensage.Content = "Los datos son incorrectos, por favor verifique su información*";
+                return;
             }
             try
             {
@@ -46,10 +46,9 @@ namespace SGEA_DS.Eventos
                 container1.SaveChanges();
                 LBMensage.Content = "Evento creado con éxito*";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LBMensage.Content = "No hay conexión a la base de datos, inténtelo más tarde";
-                MessageBox.Show(ex.Message, ex.GetType().Name);
             }
         }
 
@@ -58,6 +57,53 @@ namespace SGEA_DS.Eventos
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
+        }
+
+        private bool ValidarDatos()
+        {
+            bool centinel = true;
+            if (!string.IsNullOrEmpty(TBnombre.Text))
+            {
+                foreach(char caracter in TBnombre.Text)
+                {
+                    if (!char.IsLetter(caracter))
+                    {
+                        centinel = false;
+                    }
+                }
+            }
+            else
+            {
+                centinel = false;
+            }
+            if (string.IsNullOrEmpty(DPinicio.SelectedDate.ToString()))
+            {
+                centinel = false;
+            }
+            if (string.IsNullOrEmpty(DPfin.SelectedDate.ToString()))
+            {
+                centinel = false;
+            }
+            if (CBinstitucion.SelectedIndex < 0)
+            {
+                centinel = false;
+            }
+            if (!string.IsNullOrEmpty(TBlugar.Text))
+            {
+                foreach (char caracter in TBlugar.Text)
+                {
+                    if (!char.IsLetter(caracter))
+                    {
+                        centinel = false;
+
+                    }
+                }
+            }
+            else
+            {
+                centinel = false;
+            }
+            return centinel;
         }
     }
 }
