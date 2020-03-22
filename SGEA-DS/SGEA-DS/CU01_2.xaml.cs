@@ -21,7 +21,7 @@ namespace SGEA_DS
         private bool handle = true;
         private List<TextBox> listaTBSinNum;
         private List<TextBox> listaTBSinEspacio;
-        private DAOMiembroComite daoMiembroComite;
+        //private DAOMiembroComite daoMiembroComite;
 
         private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
         {
@@ -163,16 +163,18 @@ namespace SGEA_DS
 
         private void llenarComboBox()
         {
-            daoMiembroComite = new DAOMiembroComite();
-            listaMCNoLider = daoMiembroComite.GetMCNoLider();
-            /*
-            MiembroComite miembroPrueba = new MiembroComite(
-                "Jose Miguel", "Martinez", "Rojano", "jmmroj@uv.mx", 2);
-            MiembroComite miembroPrueba2= new MiembroComite(
-                "Andrea", "Durian", "Hernandez", "aduhe@uv.mx", 3);
+            //daoMiembroComite = new DAOMiembroComite();
+            //listaMCNoLider = daoMiembroComite.GetMCNoLider();
+            
+            MiembroComite miembroPrueba = new MiembroComite();//"Jose Miguel", "Martinez", "Rojano", "jmmroj@uv.mx", 2
+            miembroPrueba.nombre = "Jose Miguel";
+            miembroPrueba.apellidoPaterno = "Martinez";
+            MiembroComite miembroPrueba2= new MiembroComite();//"Andrea", "Durian", "Hernandez", "aduhe@uv.mx", 3
+            miembroPrueba2.nombre = "Andrea";
+            miembroPrueba2.apellidoPaterno = "Durian";
             listaMCNoLider.Add(miembroPrueba);
             listaMCNoLider.Add(miembroPrueba2);
-            */
+            /**/
 
             foreach (MiembroComite miembro in listaMCNoLider)
             {

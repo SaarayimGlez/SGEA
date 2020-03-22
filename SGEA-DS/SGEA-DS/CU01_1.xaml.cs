@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,7 +24,7 @@ namespace SGEA_DS {
 
         private List<Comite> listaComite;
         private List<RadioButton> listaRbComite;
-        private DAOComite daoComite;
+        //private DAOComite daoComite;
 
         public CU01_1()
         {
@@ -32,18 +34,18 @@ namespace SGEA_DS {
 
         private void llenarListaComite()
         {
-            daoComite = new DAOComite();
-            listaComite = daoComite.GetComites();
+            /*daoComite = new DAOComite();
+            listaComite = daoComite.GetComites();*/
             listaRbComite = new List<RadioButton>();
 
-            //MessageBox.Show(listaComite[0].nombre);
-
-            /*
-            Comite comitePrueba1 = new Comite("Comité de promoción");
-            Comite comitePrueba2 = new Comite("Comité de evaluación");
+            listaComite = new List<Comite>();
+            Comite comitePrueba1 = new Comite();
+            comitePrueba1.nombre = "Comité de promoción";
+            Comite comitePrueba2 = new Comite();
+            comitePrueba2.nombre = "Comité de evaluación";
             listaComite.Add(comitePrueba1);
             listaComite.Add(comitePrueba2);
-            */
+            /**/
 
             foreach (Comite comite in listaComite)
             {
