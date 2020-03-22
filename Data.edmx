@@ -1,0 +1,1600 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Data.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataStoreContainer">
+    <EntitySet Name="RegistroArticuloSet" EntityType="Data.Store.RegistroArticuloSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AutorSet" EntityType="Data.Store.AutorSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AdscripcionSet" EntityType="Data.Store.AdscripcionSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MagistralSet" EntityType="Data.Store.MagistralSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EgresoSet" EntityType="Data.Store.EgresoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EvaluacionSet" EntityType="Data.Store.EvaluacionSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticuloSet" EntityType="Data.Store.ArticuloSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ParticipanteSet" EntityType="Data.Store.ParticipanteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CalendarioSet" EntityType="Data.Store.CalendarioSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MaterialSet" EntityType="Data.Store.MaterialSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="MiembroComiteSet" EntityType="Data.Store.MiembroComiteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ComiteSet" EntityType="Data.Store.ComiteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EventoSet" EntityType="Data.Store.EventoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ActrividadSet" EntityType="Data.Store.ActrividadSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="AsistenteSet" EntityType="Data.Store.AsistenteSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PresupuestoSet" EntityType="Data.Store.PresupuestoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TareaSet" EntityType="Data.Store.TareaSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="IngresoSet" EntityType="Data.Store.IngresoSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PatrocinadorSet" EntityType="Data.Store.PatrocinadorSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ActrividadParticipante" EntityType="Data.Store.ActrividadParticipante" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="RegistroArticuloAutor" Association="Data.Store.RegistroArticuloAutor">
+      <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
+      <End Role="Autor" EntitySet="AutorSet" />
+    </AssociationSet>
+    <AssociationSet Name="AdscripcionAutor" Association="Data.Store.AdscripcionAutor">
+      <End Role="Adscripcion" EntitySet="AdscripcionSet" />
+      <End Role="Autor" EntitySet="AutorSet" />
+    </AssociationSet>
+    <AssociationSet Name="AdscripcionMagistral" Association="Data.Store.AdscripcionMagistral">
+      <End Role="Adscripcion" EntitySet="AdscripcionSet" />
+      <End Role="Magistral" EntitySet="MagistralSet" />
+    </AssociationSet>
+    <AssociationSet Name="MagistralEgreso" Association="Data.Store.MagistralEgreso">
+      <End Role="Magistral" EntitySet="MagistralSet" />
+      <End Role="Egreso" EntitySet="EgresoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ArticuloEvaluacion" Association="Data.Store.ArticuloEvaluacion">
+      <End Role="Articulo" EntitySet="ArticuloSet" />
+      <End Role="Evaluacion" EntitySet="EvaluacionSet" />
+    </AssociationSet>
+    <AssociationSet Name="ArticuloRegistroArticulo" Association="Data.Store.ArticuloRegistroArticulo">
+      <End Role="Articulo" EntitySet="ArticuloSet" />
+      <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
+    </AssociationSet>
+    <AssociationSet Name="ParticipanteAdscripcion" Association="Data.Store.ParticipanteAdscripcion">
+      <End Role="Participante" EntitySet="ParticipanteSet" />
+      <End Role="Adscripcion" EntitySet="AdscripcionSet" />
+    </AssociationSet>
+    <AssociationSet Name="ParticipanteCalendario" Association="Data.Store.ParticipanteCalendario">
+      <End Role="Participante" EntitySet="ParticipanteSet" />
+      <End Role="Calendario" EntitySet="CalendarioSet" />
+    </AssociationSet>
+    <AssociationSet Name="MaterialEgreso" Association="Data.Store.MaterialEgreso">
+      <End Role="Material" EntitySet="MaterialSet" />
+      <End Role="Egreso" EntitySet="EgresoSet" />
+    </AssociationSet>
+    <AssociationSet Name="MiembroComiteEvaluacion" Association="Data.Store.MiembroComiteEvaluacion">
+      <End Role="MiembroComite" EntitySet="MiembroComiteSet" />
+      <End Role="Evaluacion" EntitySet="EvaluacionSet" />
+    </AssociationSet>
+    <AssociationSet Name="ComiteMiembroComite" Association="Data.Store.ComiteMiembroComite">
+      <End Role="Comite" EntitySet="ComiteSet" />
+      <End Role="MiembroComite" EntitySet="MiembroComiteSet" />
+    </AssociationSet>
+    <AssociationSet Name="EventoComite" Association="Data.Store.EventoComite">
+      <End Role="Evento" EntitySet="EventoSet" />
+      <End Role="Comite" EntitySet="ComiteSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActrividadParticipante_Actrividad" Association="Data.Store.FK_ActrividadParticipante_Actrividad">
+      <End Role="Actrividad" EntitySet="ActrividadSet" />
+      <End Role="ActrividadParticipante" EntitySet="ActrividadParticipante" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ActrividadParticipante_Participante" Association="Data.Store.FK_ActrividadParticipante_Participante">
+      <End Role="Participante" EntitySet="ParticipanteSet" />
+      <End Role="ActrividadParticipante" EntitySet="ActrividadParticipante" />
+    </AssociationSet>
+    <AssociationSet Name="ActrividadArticulo" Association="Data.Store.ActrividadArticulo">
+      <End Role="Actrividad" EntitySet="ActrividadSet" />
+      <End Role="Articulo" EntitySet="ArticuloSet" />
+    </AssociationSet>
+    <AssociationSet Name="ComiteActrividad" Association="Data.Store.ComiteActrividad">
+      <End Role="Comite" EntitySet="ComiteSet" />
+      <End Role="Actrividad" EntitySet="ActrividadSet" />
+    </AssociationSet>
+    <AssociationSet Name="EventoActrividad" Association="Data.Store.EventoActrividad">
+      <End Role="Evento" EntitySet="EventoSet" />
+      <End Role="Actrividad" EntitySet="ActrividadSet" />
+    </AssociationSet>
+    <AssociationSet Name="ActrividadMaterial" Association="Data.Store.ActrividadMaterial">
+      <End Role="Actrividad" EntitySet="ActrividadSet" />
+      <End Role="Material" EntitySet="MaterialSet" />
+    </AssociationSet>
+    <AssociationSet Name="ActrividadMagistral" Association="Data.Store.ActrividadMagistral">
+      <End Role="Actrividad" EntitySet="ActrividadSet" />
+      <End Role="Magistral" EntitySet="MagistralSet" />
+    </AssociationSet>
+    <AssociationSet Name="PresupuestoEvento" Association="Data.Store.PresupuestoEvento">
+      <End Role="Presupuesto" EntitySet="PresupuestoSet" />
+      <End Role="Evento" EntitySet="EventoSet" />
+    </AssociationSet>
+    <AssociationSet Name="ActrividadTarea" Association="Data.Store.ActrividadTarea">
+      <End Role="Actrividad" EntitySet="ActrividadSet" />
+      <End Role="Tarea" EntitySet="TareaSet" />
+    </AssociationSet>
+    <AssociationSet Name="ActrividadIngreso" Association="Data.Store.ActrividadIngreso">
+      <End Role="Actrividad" EntitySet="ActrividadSet" />
+      <End Role="Ingreso" EntitySet="IngresoSet" />
+    </AssociationSet>
+    <AssociationSet Name="AsistenteIngreso" Association="Data.Store.AsistenteIngreso">
+      <End Role="Asistente" EntitySet="AsistenteSet" />
+      <End Role="Ingreso" EntitySet="IngresoSet" />
+    </AssociationSet>
+    <AssociationSet Name="IngresoRegistroArticulo" Association="Data.Store.IngresoRegistroArticulo">
+      <End Role="Ingreso" EntitySet="IngresoSet" />
+      <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
+    </AssociationSet>
+    <AssociationSet Name="PatrocinadorIngreso" Association="Data.Store.PatrocinadorIngreso">
+      <End Role="Patrocinador" EntitySet="PatrocinadorSet" />
+      <End Role="Ingreso" EntitySet="IngresoSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="RegistroArticuloSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="comprobantePago" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="hora" Type="time" Nullable="false" />
+    <Property Name="Pago" Type="float" Nullable="false" />
+    <Property Name="ArticuloId" Type="int" Nullable="false" />
+    <Property Name="IngresoId" Type="int" Nullable="false" />
+    <Property Name="Autor_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AutorSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdscripcionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdscripcionSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ciudad" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="estado" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ParticipanteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MagistralSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AdscripcionId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EgresoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="concepto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="monto" Type="float" Nullable="false" />
+    <Property Name="MagistralId" Type="int" Nullable="false" />
+    <Property Name="Material_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EvaluacionSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="calificacion" Type="float" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="ArticuloId" Type="int" Nullable="false" />
+    <Property Name="MiembroComiteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticuloSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="abstract" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="documento" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="keyword" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="estatus" Type="bit" Nullable="false" />
+    <Property Name="titulo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Actrividad_Id" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="ParticipanteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="titulo" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CalendarioSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="horaInicio" Type="time" Nullable="false" />
+    <Property Name="horaFin" Type="time" Nullable="false" />
+    <Property Name="ParticipanteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MaterialSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cantidad" Type="int" Nullable="false" />
+    <Property Name="costo" Type="float" Nullable="false" />
+    <Property Name="tipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ActrividadId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MiembroComiteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="liderComite" Type="bit" Nullable="false" />
+    <Property Name="nivelExperiencia" Type="int" Nullable="false" />
+    <Property Name="ComiteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ComiteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="EventoId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EventoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fechaInicio" Type="datetime" Nullable="false" />
+    <Property Name="fechaFin" Type="datetime" Nullable="false" />
+    <Property Name="institucionOrganizadora" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="lugar" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActrividadSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="aula" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="costo" Type="float" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="tipo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ComiteId" Type="int" Nullable="false" />
+    <Property Name="EventoId" Type="int" Nullable="false" />
+    <Property Name="Magistral_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AsistenteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PresupuestoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="concepto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="supuestoPresupuesto" Type="float" Nullable="false" />
+    <Property Name="Evento_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TareaSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ActrividadId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IngresoSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="concepto" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="fecha" Type="datetime" Nullable="false" />
+    <Property Name="monto" Type="float" Nullable="false" />
+    <Property Name="ActrividadId" Type="int" Nullable="false" />
+    <Property Name="AsistenteId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PatrocinadorSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="empresa" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="numeroTelefono" Type="int" Nullable="false" />
+    <Property Name="Ingreso_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ActrividadParticipante">
+    <Key>
+      <PropertyRef Name="Actrividad_Id" />
+      <PropertyRef Name="Participante_Id" />
+    </Key>
+    <Property Name="Actrividad_Id" Type="int" Nullable="false" />
+    <Property Name="Participante_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="RegistroArticuloAutor">
+    <End Role="RegistroArticulo" Type="Data.Store.RegistroArticuloSet" Multiplicity="*" />
+    <End Role="Autor" Type="Data.Store.AutorSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Autor">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RegistroArticulo">
+        <PropertyRef Name="Autor_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AdscripcionAutor">
+    <End Role="Adscripcion" Type="Data.Store.AdscripcionSet" Multiplicity="1" />
+    <End Role="Autor" Type="Data.Store.AutorSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adscripcion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Autor">
+        <PropertyRef Name="AdscripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AdscripcionMagistral">
+    <End Role="Adscripcion" Type="Data.Store.AdscripcionSet" Multiplicity="1" />
+    <End Role="Magistral" Type="Data.Store.MagistralSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adscripcion">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Magistral">
+        <PropertyRef Name="AdscripcionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MagistralEgreso">
+    <End Role="Magistral" Type="Data.Store.MagistralSet" Multiplicity="1" />
+    <End Role="Egreso" Type="Data.Store.EgresoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Magistral">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Egreso">
+        <PropertyRef Name="MagistralId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArticuloEvaluacion">
+    <End Role="Articulo" Type="Data.Store.ArticuloSet" Multiplicity="1" />
+    <End Role="Evaluacion" Type="Data.Store.EvaluacionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articulo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evaluacion">
+        <PropertyRef Name="ArticuloId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArticuloRegistroArticulo">
+    <End Role="Articulo" Type="Data.Store.ArticuloSet" Multiplicity="1" />
+    <End Role="RegistroArticulo" Type="Data.Store.RegistroArticuloSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Articulo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RegistroArticulo">
+        <PropertyRef Name="ArticuloId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ParticipanteAdscripcion">
+    <End Role="Participante" Type="Data.Store.ParticipanteSet" Multiplicity="1" />
+    <End Role="Adscripcion" Type="Data.Store.AdscripcionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participante">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Adscripcion">
+        <PropertyRef Name="ParticipanteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ParticipanteCalendario">
+    <End Role="Participante" Type="Data.Store.ParticipanteSet" Multiplicity="1" />
+    <End Role="Calendario" Type="Data.Store.CalendarioSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Participante">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Calendario">
+        <PropertyRef Name="ParticipanteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MaterialEgreso">
+    <End Role="Material" Type="Data.Store.MaterialSet" Multiplicity="1" />
+    <End Role="Egreso" Type="Data.Store.EgresoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Material">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Egreso">
+        <PropertyRef Name="Material_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MiembroComiteEvaluacion">
+    <End Role="MiembroComite" Type="Data.Store.MiembroComiteSet" Multiplicity="1" />
+    <End Role="Evaluacion" Type="Data.Store.EvaluacionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MiembroComite">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Evaluacion">
+        <PropertyRef Name="MiembroComiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ComiteMiembroComite">
+    <End Role="Comite" Type="Data.Store.ComiteSet" Multiplicity="1" />
+    <End Role="MiembroComite" Type="Data.Store.MiembroComiteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comite">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="MiembroComite">
+        <PropertyRef Name="ComiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventoComite">
+    <End Role="Evento" Type="Data.Store.EventoSet" Multiplicity="1" />
+    <End Role="Comite" Type="Data.Store.ComiteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Evento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comite">
+        <PropertyRef Name="EventoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActrividadArticulo">
+    <End Role="Actrividad" Type="Data.Store.ActrividadSet" Multiplicity="0..1" />
+    <End Role="Articulo" Type="Data.Store.ArticuloSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actrividad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Articulo">
+        <PropertyRef Name="Actrividad_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ComiteActrividad">
+    <End Role="Comite" Type="Data.Store.ComiteSet" Multiplicity="1" />
+    <End Role="Actrividad" Type="Data.Store.ActrividadSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comite">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Actrividad">
+        <PropertyRef Name="ComiteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EventoActrividad">
+    <End Role="Evento" Type="Data.Store.EventoSet" Multiplicity="1" />
+    <End Role="Actrividad" Type="Data.Store.ActrividadSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Evento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Actrividad">
+        <PropertyRef Name="EventoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActrividadMaterial">
+    <End Role="Actrividad" Type="Data.Store.ActrividadSet" Multiplicity="1" />
+    <End Role="Material" Type="Data.Store.MaterialSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actrividad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Material">
+        <PropertyRef Name="ActrividadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActrividadMagistral">
+    <End Role="Actrividad" Type="Data.Store.ActrividadSet" Multiplicity="*" />
+    <End Role="Magistral" Type="Data.Store.MagistralSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Magistral">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Actrividad">
+        <PropertyRef Name="Magistral_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PresupuestoEvento">
+    <End Role="Presupuesto" Type="Data.Store.PresupuestoSet" Multiplicity="*" />
+    <End Role="Evento" Type="Data.Store.EventoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Evento">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Presupuesto">
+        <PropertyRef Name="Evento_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActrividadTarea">
+    <End Role="Actrividad" Type="Data.Store.ActrividadSet" Multiplicity="1" />
+    <End Role="Tarea" Type="Data.Store.TareaSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actrividad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Tarea">
+        <PropertyRef Name="ActrividadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ActrividadIngreso">
+    <End Role="Actrividad" Type="Data.Store.ActrividadSet" Multiplicity="1" />
+    <End Role="Ingreso" Type="Data.Store.IngresoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actrividad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ingreso">
+        <PropertyRef Name="ActrividadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="AsistenteIngreso">
+    <End Role="Asistente" Type="Data.Store.AsistenteSet" Multiplicity="1" />
+    <End Role="Ingreso" Type="Data.Store.IngresoSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Asistente">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ingreso">
+        <PropertyRef Name="AsistenteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IngresoRegistroArticulo">
+    <End Role="Ingreso" Type="Data.Store.IngresoSet" Multiplicity="1" />
+    <End Role="RegistroArticulo" Type="Data.Store.RegistroArticuloSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ingreso">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RegistroArticulo">
+        <PropertyRef Name="IngresoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PatrocinadorIngreso">
+    <End Role="Patrocinador" Type="Data.Store.PatrocinadorSet" Multiplicity="*" />
+    <End Role="Ingreso" Type="Data.Store.IngresoSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Ingreso">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Patrocinador">
+        <PropertyRef Name="Ingreso_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActrividadParticipante_Actrividad">
+    <End Role="Actrividad" Type="Data.Store.ActrividadSet" Multiplicity="1" />
+    <End Role="ActrividadParticipante" Type="Data.Store.ActrividadParticipante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actrividad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActrividadParticipante">
+        <PropertyRef Name="Actrividad_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ActrividadParticipante_Participante">
+    <End Role="ActrividadParticipante" Type="Data.Store.ActrividadParticipante" Multiplicity="*" />
+    <End Role="Participante" Type="Data.Store.ParticipanteSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Participante">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ActrividadParticipante">
+        <PropertyRef Name="Participante_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Data" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DataContainer1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RegistroArticuloSet" EntityType="Data.RegistroArticulo" />
+          <EntitySet Name="AutorSet" EntityType="Data.Autor" />
+          <AssociationSet Name="RegistroArticuloAutor" Association="Data.RegistroArticuloAutor">
+            <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
+            <End Role="Autor" EntitySet="AutorSet" />
+          </AssociationSet>
+          <EntitySet Name="AdscripcionSet" EntityType="Data.Adscripcion" />
+          <AssociationSet Name="AdscripcionAutor" Association="Data.AdscripcionAutor">
+            <End Role="Adscripcion" EntitySet="AdscripcionSet" />
+            <End Role="Autor" EntitySet="AutorSet" />
+          </AssociationSet>
+          <EntitySet Name="MagistralSet" EntityType="Data.Magistral" />
+          <AssociationSet Name="AdscripcionMagistral" Association="Data.AdscripcionMagistral">
+            <End Role="Adscripcion" EntitySet="AdscripcionSet" />
+            <End Role="Magistral" EntitySet="MagistralSet" />
+          </AssociationSet>
+          <EntitySet Name="EgresoSet" EntityType="Data.Egreso" />
+          <AssociationSet Name="MagistralEgreso" Association="Data.MagistralEgreso">
+            <End Role="Magistral" EntitySet="MagistralSet" />
+            <End Role="Egreso" EntitySet="EgresoSet" />
+          </AssociationSet>
+          <EntitySet Name="EvaluacionSet" EntityType="Data.Evaluacion" />
+          <EntitySet Name="ArticuloSet" EntityType="Data.Articulo" />
+          <AssociationSet Name="ArticuloEvaluacion" Association="Data.ArticuloEvaluacion">
+            <End Role="Articulo" EntitySet="ArticuloSet" />
+            <End Role="Evaluacion" EntitySet="EvaluacionSet" />
+          </AssociationSet>
+          <AssociationSet Name="ArticuloRegistroArticulo" Association="Data.ArticuloRegistroArticulo">
+            <End Role="Articulo" EntitySet="ArticuloSet" />
+            <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
+          </AssociationSet>
+          <EntitySet Name="ParticipanteSet" EntityType="Data.Participante" />
+          <AssociationSet Name="ParticipanteAdscripcion" Association="Data.ParticipanteAdscripcion">
+            <End Role="Participante" EntitySet="ParticipanteSet" />
+            <End Role="Adscripcion" EntitySet="AdscripcionSet" />
+          </AssociationSet>
+          <EntitySet Name="CalendarioSet" EntityType="Data.Calendario" />
+          <AssociationSet Name="ParticipanteCalendario" Association="Data.ParticipanteCalendario">
+            <End Role="Participante" EntitySet="ParticipanteSet" />
+            <End Role="Calendario" EntitySet="CalendarioSet" />
+          </AssociationSet>
+          <EntitySet Name="MaterialSet" EntityType="Data.Material" />
+          <AssociationSet Name="MaterialEgreso" Association="Data.MaterialEgreso">
+            <End Role="Material" EntitySet="MaterialSet" />
+            <End Role="Egreso" EntitySet="EgresoSet" />
+          </AssociationSet>
+          <EntitySet Name="MiembroComiteSet" EntityType="Data.MiembroComite" />
+          <AssociationSet Name="MiembroComiteEvaluacion" Association="Data.MiembroComiteEvaluacion">
+            <End Role="MiembroComite" EntitySet="MiembroComiteSet" />
+            <End Role="Evaluacion" EntitySet="EvaluacionSet" />
+          </AssociationSet>
+          <EntitySet Name="ComiteSet" EntityType="Data.Comite" />
+          <AssociationSet Name="ComiteMiembroComite" Association="Data.ComiteMiembroComite">
+            <End Role="Comite" EntitySet="ComiteSet" />
+            <End Role="MiembroComite" EntitySet="MiembroComiteSet" />
+          </AssociationSet>
+          <EntitySet Name="EventoSet" EntityType="Data.Evento" />
+          <AssociationSet Name="EventoComite" Association="Data.EventoComite">
+            <End Role="Evento" EntitySet="EventoSet" />
+            <End Role="Comite" EntitySet="ComiteSet" />
+          </AssociationSet>
+          <EntitySet Name="ActrividadSet" EntityType="Data.Actrividad" />
+          <AssociationSet Name="ActrividadParticipante" Association="Data.ActrividadParticipante">
+            <End Role="Actrividad" EntitySet="ActrividadSet" />
+            <End Role="Participante" EntitySet="ParticipanteSet" />
+          </AssociationSet>
+          <AssociationSet Name="ActrividadArticulo" Association="Data.ActrividadArticulo">
+            <End Role="Actrividad" EntitySet="ActrividadSet" />
+            <End Role="Articulo" EntitySet="ArticuloSet" />
+          </AssociationSet>
+          <AssociationSet Name="ComiteActrividad" Association="Data.ComiteActrividad">
+            <End Role="Comite" EntitySet="ComiteSet" />
+            <End Role="Actrividad" EntitySet="ActrividadSet" />
+          </AssociationSet>
+          <AssociationSet Name="EventoActrividad" Association="Data.EventoActrividad">
+            <End Role="Evento" EntitySet="EventoSet" />
+            <End Role="Actrividad" EntitySet="ActrividadSet" />
+          </AssociationSet>
+          <AssociationSet Name="ActrividadMaterial" Association="Data.ActrividadMaterial">
+            <End Role="Actrividad" EntitySet="ActrividadSet" />
+            <End Role="Material" EntitySet="MaterialSet" />
+          </AssociationSet>
+          <AssociationSet Name="ActrividadMagistral" Association="Data.ActrividadMagistral">
+            <End Role="Actrividad" EntitySet="ActrividadSet" />
+            <End Role="Magistral" EntitySet="MagistralSet" />
+          </AssociationSet>
+          <EntitySet Name="AsistenteSet" EntityType="Data.Asistente" />
+          <EntitySet Name="PresupuestoSet" EntityType="Data.Presupuesto" />
+          <AssociationSet Name="PresupuestoEvento" Association="Data.PresupuestoEvento">
+            <End Role="Presupuesto" EntitySet="PresupuestoSet" />
+            <End Role="Evento" EntitySet="EventoSet" />
+          </AssociationSet>
+          <EntitySet Name="TareaSet" EntityType="Data.Tarea" />
+          <AssociationSet Name="ActrividadTarea" Association="Data.ActrividadTarea">
+            <End Role="Actrividad" EntitySet="ActrividadSet" />
+            <End Role="Tarea" EntitySet="TareaSet" />
+          </AssociationSet>
+          <EntitySet Name="IngresoSet" EntityType="Data.Ingreso" />
+          <AssociationSet Name="ActrividadIngreso" Association="Data.ActrividadIngreso">
+            <End Role="Actrividad" EntitySet="ActrividadSet" />
+            <End Role="Ingreso" EntitySet="IngresoSet" />
+          </AssociationSet>
+          <AssociationSet Name="AsistenteIngreso" Association="Data.AsistenteIngreso">
+            <End Role="Asistente" EntitySet="AsistenteSet" />
+            <End Role="Ingreso" EntitySet="IngresoSet" />
+          </AssociationSet>
+          <AssociationSet Name="IngresoRegistroArticulo" Association="Data.IngresoRegistroArticulo">
+            <End Role="Ingreso" EntitySet="IngresoSet" />
+            <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
+          </AssociationSet>
+          <EntitySet Name="PatrocinadorSet" EntityType="Data.Patrocinador" />
+          <AssociationSet Name="PatrocinadorIngreso" Association="Data.PatrocinadorIngreso">
+            <End Role="Patrocinador" EntitySet="PatrocinadorSet" />
+            <End Role="Ingreso" EntitySet="IngresoSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RegistroArticulo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comprobantePago" Type="String" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="hora" Type="Time" Nullable="false" />
+          <Property Name="Pago" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Autor" Relationship="Data.RegistroArticuloAutor" FromRole="RegistroArticulo" ToRole="Autor" />
+          <NavigationProperty Name="Articulo" Relationship="Data.ArticuloRegistroArticulo" FromRole="RegistroArticulo" ToRole="Articulo" />
+          <Property Name="ArticuloId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ingreso" Relationship="Data.IngresoRegistroArticulo" FromRole="RegistroArticulo" ToRole="Ingreso" />
+          <Property Name="IngresoId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Autor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="apellidoPaterno" Type="String" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="String" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="correoElectronico" Type="String" Nullable="false" />
+          <NavigationProperty Name="RegistroArticulo" Relationship="Data.RegistroArticuloAutor" FromRole="Autor" ToRole="RegistroArticulo" />
+          <NavigationProperty Name="Adscripcion" Relationship="Data.AdscripcionAutor" FromRole="Autor" ToRole="Adscripcion" />
+          <Property Name="AdscripcionId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="RegistroArticuloAutor">
+          <End Type="Data.RegistroArticulo" Role="RegistroArticulo" Multiplicity="*" />
+          <End Type="Data.Autor" Role="Autor" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Adscripcion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ciudad" Type="String" Nullable="false" />
+          <Property Name="direccion" Type="String" Nullable="false" />
+          <Property Name="email" Type="String" Nullable="false" />
+          <Property Name="estado" Type="String" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <NavigationProperty Name="Autor" Relationship="Data.AdscripcionAutor" FromRole="Adscripcion" ToRole="Autor" />
+          <NavigationProperty Name="Magistral" Relationship="Data.AdscripcionMagistral" FromRole="Adscripcion" ToRole="Magistral" />
+          <NavigationProperty Name="Participante" Relationship="Data.ParticipanteAdscripcion" FromRole="Adscripcion" ToRole="Participante" />
+          <Property Name="ParticipanteId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="AdscripcionAutor">
+          <End Type="Data.Adscripcion" Role="Adscripcion" Multiplicity="1" />
+          <End Type="Data.Autor" Role="Autor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adscripcion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Autor">
+              <PropertyRef Name="AdscripcionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Magistral">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="apellidoMaterno" Type="String" Nullable="false" />
+          <Property Name="apellidoPaterno" Type="String" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <NavigationProperty Name="Adscripcion" Relationship="Data.AdscripcionMagistral" FromRole="Magistral" ToRole="Adscripcion" />
+          <Property Name="AdscripcionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Egreso" Relationship="Data.MagistralEgreso" FromRole="Magistral" ToRole="Egreso" />
+          <NavigationProperty Name="Actrividad" Relationship="Data.ActrividadMagistral" FromRole="Magistral" ToRole="Actrividad" />
+        </EntityType>
+        <Association Name="AdscripcionMagistral">
+          <End Type="Data.Adscripcion" Role="Adscripcion" Multiplicity="1" />
+          <End Type="Data.Magistral" Role="Magistral" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adscripcion">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Magistral">
+              <PropertyRef Name="AdscripcionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Egreso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="concepto" Type="String" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="monto" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Magistral" Relationship="Data.MagistralEgreso" FromRole="Egreso" ToRole="Magistral" />
+          <Property Name="MagistralId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Material" Relationship="Data.MaterialEgreso" FromRole="Egreso" ToRole="Material" />
+        </EntityType>
+        <Association Name="MagistralEgreso">
+          <End Type="Data.Magistral" Role="Magistral" Multiplicity="1" />
+          <End Type="Data.Egreso" Role="Egreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magistral">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Egreso">
+              <PropertyRef Name="MagistralId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Evaluacion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="calificacion" Type="Double" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Articulo" Relationship="Data.ArticuloEvaluacion" FromRole="Evaluacion" ToRole="Articulo" />
+          <Property Name="ArticuloId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MiembroComite" Relationship="Data.MiembroComiteEvaluacion" FromRole="Evaluacion" ToRole="MiembroComite" />
+          <Property Name="MiembroComiteId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Articulo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="abstract" Type="String" Nullable="false" />
+          <Property Name="documento" Type="String" Nullable="false" />
+          <Property Name="keyword" Type="String" Nullable="false" />
+          <Property Name="estatus" Type="Boolean" Nullable="false" />
+          <Property Name="titulo" Type="String" Nullable="false" />
+          <NavigationProperty Name="Evaluacion" Relationship="Data.ArticuloEvaluacion" FromRole="Articulo" ToRole="Evaluacion" />
+          <NavigationProperty Name="RegistroArticulo" Relationship="Data.ArticuloRegistroArticulo" FromRole="Articulo" ToRole="RegistroArticulo" />
+          <NavigationProperty Name="Actrividad" Relationship="Data.ActrividadArticulo" FromRole="Articulo" ToRole="Actrividad" />
+        </EntityType>
+        <Association Name="ArticuloEvaluacion">
+          <End Type="Data.Articulo" Role="Articulo" Multiplicity="1" />
+          <End Type="Data.Evaluacion" Role="Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluacion">
+              <PropertyRef Name="ArticuloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ArticuloRegistroArticulo">
+          <End Type="Data.Articulo" Role="Articulo" Multiplicity="1" />
+          <End Type="Data.RegistroArticulo" Role="RegistroArticulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroArticulo">
+              <PropertyRef Name="ArticuloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Participante">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="apellidoPaterno" Type="String" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="String" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="titulo" Type="String" Nullable="false" />
+          <NavigationProperty Name="Adscripcion" Relationship="Data.ParticipanteAdscripcion" FromRole="Participante" ToRole="Adscripcion" />
+          <NavigationProperty Name="Calendario" Relationship="Data.ParticipanteCalendario" FromRole="Participante" ToRole="Calendario" />
+          <NavigationProperty Name="Actrividad" Relationship="Data.ActrividadParticipante" FromRole="Participante" ToRole="Actrividad" />
+        </EntityType>
+        <Association Name="ParticipanteAdscripcion">
+          <End Type="Data.Participante" Role="Participante" Multiplicity="1" />
+          <End Type="Data.Adscripcion" Role="Adscripcion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participante">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Adscripcion">
+              <PropertyRef Name="ParticipanteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Calendario">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="horaInicio" Type="Time" Nullable="false" />
+          <Property Name="horaFin" Type="Time" Nullable="false" />
+          <NavigationProperty Name="Participante" Relationship="Data.ParticipanteCalendario" FromRole="Calendario" ToRole="Participante" />
+          <Property Name="ParticipanteId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ParticipanteCalendario">
+          <End Type="Data.Participante" Role="Participante" Multiplicity="1" />
+          <End Type="Data.Calendario" Role="Calendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Participante">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Calendario">
+              <PropertyRef Name="ParticipanteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="costo" Type="Double" Nullable="false" />
+          <Property Name="tipo" Type="String" Nullable="false" />
+          <NavigationProperty Name="Egreso" Relationship="Data.MaterialEgreso" FromRole="Material" ToRole="Egreso" />
+          <NavigationProperty Name="Actrividad" Relationship="Data.ActrividadMaterial" FromRole="Material" ToRole="Actrividad" />
+          <Property Name="ActrividadId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="MaterialEgreso">
+          <End Type="Data.Material" Role="Material" Multiplicity="1" />
+          <End Type="Data.Egreso" Role="Egreso" Multiplicity="0..1" />
+        </Association>
+        <EntityType Name="MiembroComite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="apellidoPaterno" Type="String" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="String" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="correoElectronico" Type="String" Nullable="false" />
+          <Property Name="liderComite" Type="Boolean" Nullable="false" />
+          <Property Name="nivelExperiencia" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Evaluacion" Relationship="Data.MiembroComiteEvaluacion" FromRole="MiembroComite" ToRole="Evaluacion" />
+          <NavigationProperty Name="Comite" Relationship="Data.ComiteMiembroComite" FromRole="MiembroComite" ToRole="Comite" />
+          <Property Name="ComiteId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="MiembroComiteEvaluacion">
+          <End Type="Data.MiembroComite" Role="MiembroComite" Multiplicity="1" />
+          <End Type="Data.Evaluacion" Role="Evaluacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MiembroComite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Evaluacion">
+              <PropertyRef Name="MiembroComiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Comite">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <NavigationProperty Name="MiembroComite" Relationship="Data.ComiteMiembroComite" FromRole="Comite" ToRole="MiembroComite" />
+          <NavigationProperty Name="Evento" Relationship="Data.EventoComite" FromRole="Comite" ToRole="Evento" />
+          <Property Name="EventoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actrividad" Relationship="Data.ComiteActrividad" FromRole="Comite" ToRole="Actrividad" />
+        </EntityType>
+        <Association Name="ComiteMiembroComite">
+          <End Type="Data.Comite" Role="Comite" Multiplicity="1" />
+          <End Type="Data.MiembroComite" Role="MiembroComite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MiembroComite">
+              <PropertyRef Name="ComiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaInicio" Type="DateTime" Nullable="false" />
+          <Property Name="fechaFin" Type="DateTime" Nullable="false" />
+          <Property Name="institucionOrganizadora" Type="String" Nullable="false" />
+          <Property Name="lugar" Type="String" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <NavigationProperty Name="Comite" Relationship="Data.EventoComite" FromRole="Evento" ToRole="Comite" />
+          <NavigationProperty Name="Actrividad" Relationship="Data.EventoActrividad" FromRole="Evento" ToRole="Actrividad" />
+          <NavigationProperty Name="Presupuesto" Relationship="Data.PresupuestoEvento" FromRole="Evento" ToRole="Presupuesto" />
+        </EntityType>
+        <Association Name="EventoComite">
+          <End Type="Data.Evento" Role="Evento" Multiplicity="1" />
+          <End Type="Data.Comite" Role="Comite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comite">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Actrividad">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="aula" Type="String" Nullable="false" />
+          <Property Name="costo" Type="Double" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="tipo" Type="String" Nullable="false" />
+          <NavigationProperty Name="Participante" Relationship="Data.ActrividadParticipante" FromRole="Actrividad" ToRole="Participante" />
+          <NavigationProperty Name="Articulo" Relationship="Data.ActrividadArticulo" FromRole="Actrividad" ToRole="Articulo" />
+          <NavigationProperty Name="Comite" Relationship="Data.ComiteActrividad" FromRole="Actrividad" ToRole="Comite" />
+          <Property Name="ComiteId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="Data.EventoActrividad" FromRole="Actrividad" ToRole="Evento" />
+          <Property Name="EventoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Material" Relationship="Data.ActrividadMaterial" FromRole="Actrividad" ToRole="Material" />
+          <NavigationProperty Name="Magistral" Relationship="Data.ActrividadMagistral" FromRole="Actrividad" ToRole="Magistral" />
+          <NavigationProperty Name="Tarea" Relationship="Data.ActrividadTarea" FromRole="Actrividad" ToRole="Tarea" />
+          <NavigationProperty Name="Ingreso" Relationship="Data.ActrividadIngreso" FromRole="Actrividad" ToRole="Ingreso" />
+        </EntityType>
+        <Association Name="ActrividadParticipante">
+          <End Type="Data.Actrividad" Role="Actrividad" Multiplicity="*" />
+          <End Type="Data.Participante" Role="Participante" Multiplicity="*" />
+        </Association>
+        <Association Name="ActrividadArticulo">
+          <End Type="Data.Actrividad" Role="Actrividad" Multiplicity="0..1" />
+          <End Type="Data.Articulo" Role="Articulo" Multiplicity="0..1" />
+        </Association>
+        <Association Name="ComiteActrividad">
+          <End Type="Data.Comite" Role="Comite" Multiplicity="1" />
+          <End Type="Data.Actrividad" Role="Actrividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comite">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Actrividad">
+              <PropertyRef Name="ComiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="EventoActrividad">
+          <End Type="Data.Evento" Role="Evento" Multiplicity="1" />
+          <End Type="Data.Actrividad" Role="Actrividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Actrividad">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActrividadMaterial">
+          <End Type="Data.Actrividad" Role="Actrividad" Multiplicity="1" />
+          <End Type="Data.Material" Role="Material" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actrividad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Material">
+              <PropertyRef Name="ActrividadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ActrividadMagistral">
+          <End Type="Data.Actrividad" Role="Actrividad" Multiplicity="1" />
+          <End Type="Data.Magistral" Role="Magistral" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Asistente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="apellidoMaterno" Type="String" Nullable="false" />
+          <Property Name="apellidoPaterno" Type="String" Nullable="false" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="correoElectronico" Type="String" Nullable="false" />
+          <NavigationProperty Name="Ingreso" Relationship="Data.AsistenteIngreso" FromRole="Asistente" ToRole="Ingreso" />
+        </EntityType>
+        <EntityType Name="Presupuesto">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="concepto" Type="String" Nullable="false" />
+          <Property Name="supuestoPresupuesto" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="Data.PresupuestoEvento" FromRole="Presupuesto" ToRole="Evento" />
+        </EntityType>
+        <Association Name="PresupuestoEvento">
+          <End Type="Data.Presupuesto" Role="Presupuesto" Multiplicity="1" />
+          <End Type="Data.Evento" Role="Evento" Multiplicity="1" />
+        </Association>
+        <EntityType Name="Tarea">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" />
+          <NavigationProperty Name="Actrividad" Relationship="Data.ActrividadTarea" FromRole="Tarea" ToRole="Actrividad" />
+          <Property Name="ActrividadId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ActrividadTarea">
+          <End Type="Data.Actrividad" Role="Actrividad" Multiplicity="1" />
+          <End Type="Data.Tarea" Role="Tarea" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actrividad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Tarea">
+              <PropertyRef Name="ActrividadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Ingreso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="concepto" Type="String" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="monto" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Actrividad" Relationship="Data.ActrividadIngreso" FromRole="Ingreso" ToRole="Actrividad" />
+          <Property Name="ActrividadId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Asistente" Relationship="Data.AsistenteIngreso" FromRole="Ingreso" ToRole="Asistente" />
+          <Property Name="AsistenteId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RegistroArticulo" Relationship="Data.IngresoRegistroArticulo" FromRole="Ingreso" ToRole="RegistroArticulo" />
+          <NavigationProperty Name="Patrocinador" Relationship="Data.PatrocinadorIngreso" FromRole="Ingreso" ToRole="Patrocinador" />
+        </EntityType>
+        <Association Name="ActrividadIngreso">
+          <End Type="Data.Actrividad" Role="Actrividad" Multiplicity="1" />
+          <End Type="Data.Ingreso" Role="Ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actrividad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingreso">
+              <PropertyRef Name="ActrividadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AsistenteIngreso">
+          <End Type="Data.Asistente" Role="Asistente" Multiplicity="1" />
+          <End Type="Data.Ingreso" Role="Ingreso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Asistente">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingreso">
+              <PropertyRef Name="AsistenteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IngresoRegistroArticulo">
+          <End Type="Data.Ingreso" Role="Ingreso" Multiplicity="1" />
+          <End Type="Data.RegistroArticulo" Role="RegistroArticulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingreso">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroArticulo">
+              <PropertyRef Name="IngresoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Patrocinador">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="apellidoPaterno" Type="String" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="String" Nullable="false" />
+          <Property Name="correoElectronico" Type="String" Nullable="false" />
+          <Property Name="direccion" Type="String" Nullable="false" />
+          <Property Name="empresa" Type="String" Nullable="false" />
+          <Property Name="numeroTelefono" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ingreso" Relationship="Data.PatrocinadorIngreso" FromRole="Patrocinador" ToRole="Ingreso" />
+        </EntityType>
+        <Association Name="PatrocinadorIngreso">
+          <End Type="Data.Patrocinador" Role="Patrocinador" Multiplicity="1" />
+          <End Type="Data.Ingreso" Role="Ingreso" Multiplicity="1" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataStoreContainer" CdmEntityContainer="DataContainer1">
+    <EntitySetMapping Name="RegistroArticuloSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.RegistroArticulo)">
+        <MappingFragment StoreEntitySet="RegistroArticuloSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="comprobantePago" ColumnName="comprobantePago" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+          <ScalarProperty Name="Pago" ColumnName="Pago" />
+          <ScalarProperty Name="ArticuloId" ColumnName="ArticuloId" />
+          <ScalarProperty Name="IngresoId" ColumnName="IngresoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AutorSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Autor)">
+        <MappingFragment StoreEntitySet="AutorSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+          <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+          <ScalarProperty Name="AdscripcionId" ColumnName="AdscripcionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AdscripcionSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Adscripcion)">
+        <MappingFragment StoreEntitySet="AdscripcionSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MagistralSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Magistral)">
+        <MappingFragment StoreEntitySet="MagistralSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+          <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="AdscripcionId" ColumnName="AdscripcionId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EgresoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Egreso)">
+        <MappingFragment StoreEntitySet="EgresoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="MagistralId" ColumnName="MagistralId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EvaluacionSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Evaluacion)">
+        <MappingFragment StoreEntitySet="EvaluacionSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="calificacion" ColumnName="calificacion" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="ArticuloId" ColumnName="ArticuloId" />
+          <ScalarProperty Name="MiembroComiteId" ColumnName="MiembroComiteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArticuloSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Articulo)">
+        <MappingFragment StoreEntitySet="ArticuloSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="abstract" ColumnName="abstract" />
+          <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="keyword" ColumnName="keyword" />
+          <ScalarProperty Name="estatus" ColumnName="estatus" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParticipanteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Participante)">
+        <MappingFragment StoreEntitySet="ParticipanteSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+          <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CalendarioSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Calendario)">
+        <MappingFragment StoreEntitySet="CalendarioSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="horaInicio" ColumnName="horaInicio" />
+          <ScalarProperty Name="horaFin" ColumnName="horaFin" />
+          <ScalarProperty Name="ParticipanteId" ColumnName="ParticipanteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Material)">
+        <MappingFragment StoreEntitySet="MaterialSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="ActrividadId" ColumnName="ActrividadId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MiembroComiteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.MiembroComite)">
+        <MappingFragment StoreEntitySet="MiembroComiteSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+          <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+          <ScalarProperty Name="liderComite" ColumnName="liderComite" />
+          <ScalarProperty Name="nivelExperiencia" ColumnName="nivelExperiencia" />
+          <ScalarProperty Name="ComiteId" ColumnName="ComiteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ComiteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Comite)">
+        <MappingFragment StoreEntitySet="ComiteSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Evento)">
+        <MappingFragment StoreEntitySet="EventoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+          <ScalarProperty Name="institucionOrganizadora" ColumnName="institucionOrganizadora" />
+          <ScalarProperty Name="lugar" ColumnName="lugar" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ActrividadSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Actrividad)">
+        <MappingFragment StoreEntitySet="ActrividadSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="aula" ColumnName="aula" />
+          <ScalarProperty Name="costo" ColumnName="costo" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="ComiteId" ColumnName="ComiteId" />
+          <ScalarProperty Name="EventoId" ColumnName="EventoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AsistenteSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Asistente)">
+        <MappingFragment StoreEntitySet="AsistenteSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+          <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PresupuestoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Presupuesto)">
+        <MappingFragment StoreEntitySet="PresupuestoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
+          <ScalarProperty Name="supuestoPresupuesto" ColumnName="supuestoPresupuesto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TareaSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Tarea)">
+        <MappingFragment StoreEntitySet="TareaSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="ActrividadId" ColumnName="ActrividadId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IngresoSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Ingreso)">
+        <MappingFragment StoreEntitySet="IngresoSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="concepto" ColumnName="concepto" />
+          <ScalarProperty Name="fecha" ColumnName="fecha" />
+          <ScalarProperty Name="monto" ColumnName="monto" />
+          <ScalarProperty Name="ActrividadId" ColumnName="ActrividadId" />
+          <ScalarProperty Name="AsistenteId" ColumnName="AsistenteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatrocinadorSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Data.Patrocinador)">
+        <MappingFragment StoreEntitySet="PatrocinadorSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+          <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+          <ScalarProperty Name="correoElectronico" ColumnName="correoElectronico" />
+          <ScalarProperty Name="direccion" ColumnName="direccion" />
+          <ScalarProperty Name="empresa" ColumnName="empresa" />
+          <ScalarProperty Name="numeroTelefono" ColumnName="numeroTelefono" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="RegistroArticuloAutor" TypeName="Data.RegistroArticuloAutor" StoreEntitySet="RegistroArticuloSet">
+      <EndProperty Name="Autor">
+        <ScalarProperty Name="Id" ColumnName="Autor_Id" />
+      </EndProperty>
+      <EndProperty Name="RegistroArticulo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="MaterialEgreso" TypeName="Data.MaterialEgreso" StoreEntitySet="EgresoSet">
+      <EndProperty Name="Material">
+        <ScalarProperty Name="Id" ColumnName="Material_Id" />
+      </EndProperty>
+      <EndProperty Name="Egreso">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ActrividadParticipante" TypeName="Data.ActrividadParticipante" StoreEntitySet="ActrividadParticipante">
+      <EndProperty Name="Actrividad">
+        <ScalarProperty Name="Id" ColumnName="Actrividad_Id" />
+      </EndProperty>
+      <EndProperty Name="Participante">
+        <ScalarProperty Name="Id" ColumnName="Participante_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ActrividadArticulo" TypeName="Data.ActrividadArticulo" StoreEntitySet="ArticuloSet">
+      <EndProperty Name="Actrividad">
+        <ScalarProperty Name="Id" ColumnName="Actrividad_Id" />
+      </EndProperty>
+      <EndProperty Name="Articulo">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+      <Condition ColumnName="Actrividad_Id" IsNull="false" />
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ActrividadMagistral" TypeName="Data.ActrividadMagistral" StoreEntitySet="ActrividadSet">
+      <EndProperty Name="Magistral">
+        <ScalarProperty Name="Id" ColumnName="Magistral_Id" />
+      </EndProperty>
+      <EndProperty Name="Actrividad">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PresupuestoEvento" TypeName="Data.PresupuestoEvento" StoreEntitySet="PresupuestoSet">
+      <EndProperty Name="Evento">
+        <ScalarProperty Name="Id" ColumnName="Evento_Id" />
+      </EndProperty>
+      <EndProperty Name="Presupuesto">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="PatrocinadorIngreso" TypeName="Data.PatrocinadorIngreso" StoreEntitySet="PatrocinadorSet">
+      <EndProperty Name="Ingreso">
+        <ScalarProperty Name="Id" ColumnName="Ingreso_Id" />
+      </EndProperty>
+      <EndProperty Name="Patrocinador">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="923a95ad538e4b25b8282eef73e4ea16" Name="Diagram1">
+        <EntityTypeShape EntityType="Data.RegistroArticulo" Width="1.5" PointX="15" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Autor" Width="1.5" PointX="17.25" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Adscripcion" Width="1.5" PointX="15" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Magistral" Width="1.5" PointX="17.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Egreso" Width="1.5" PointX="19.5" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Evaluacion" Width="1.5" PointX="9.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Articulo" Width="1.5" PointX="12.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Participante" Width="1.5" PointX="12.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Calendario" Width="1.5" PointX="15" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Material" Width="1.5" PointX="12.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.MiembroComite" Width="1.5" PointX="7.5" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Comite" Width="1.5" PointX="5.25" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Evento" Width="1.5" PointX="3" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Actrividad" Width="1.5" PointX="10.5" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Asistente" Width="1.5" PointX="13.5" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Presupuesto" Width="1.5" PointX="0.75" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Tarea" Width="1.5" PointX="12.75" PointY="16.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Ingreso" Width="1.5" PointX="15.75" PointY="13.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Data.Patrocinador" Width="1.5" PointX="13.5" PointY="23.125" IsExpanded="true" />
+        <AssociationConnector Association="Data.RegistroArticuloAutor" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.AdscripcionAutor" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.AdscripcionMagistral" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.MagistralEgreso" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ArticuloEvaluacion" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ArticuloRegistroArticulo" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ParticipanteAdscripcion" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ParticipanteCalendario" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.MaterialEgreso" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.MiembroComiteEvaluacion" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ComiteMiembroComite" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.EventoComite" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ActrividadParticipante" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ActrividadArticulo" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ComiteActrividad" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.EventoActrividad" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ActrividadMaterial" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ActrividadMagistral" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.PresupuestoEvento" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ActrividadTarea" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.ActrividadIngreso" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.AsistenteIngreso" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.IngresoRegistroArticulo" ManuallyRouted="false" />
+        <AssociationConnector Association="Data.PatrocinadorIngreso" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

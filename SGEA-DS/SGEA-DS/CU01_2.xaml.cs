@@ -7,6 +7,7 @@ using System.Windows.Media;
 using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Linq;
+using DataAccess;
 
 namespace SGEA_DS
 {
@@ -20,6 +21,7 @@ namespace SGEA_DS
         private bool handle = true;
         private List<TextBox> listaTBSinNum;
         private List<TextBox> listaTBSinEspacio;
+        private DAOMiembroComite daoMiembroComite;
 
         private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
         {
@@ -91,12 +93,12 @@ namespace SGEA_DS
             {//update into como lider
                 foreach (MiembroComite miembro in listaMCNoLider)
                 {
-                    if (combobox_MiembroC.SelectedItem.ToString().Equals(
-                        miembro.Nombre + " " + miembro.ApellidoPaterno))
-                    {
-                        nuevoMComite = new MiembroComite(
-                            miembro.Nombre, miembro.ApellidoPaterno, miembro.ApellidoMaterno);
-                    }
+                    //if (combobox_MiembroC.SelectedItem.ToString().Equals(
+                        //miembro.Nombre + " " + miembro.ApellidoPaterno))
+                    //{
+                        //nuevoMComite = new MiembroComite(
+                        //    miembro.Nombre, miembro.ApellidoPaterno, miembro.ApellidoMaterno);
+                    //}
                 }
             }
             return true;
@@ -161,18 +163,20 @@ namespace SGEA_DS
 
         private void llenarComboBox()
         {
-            listaMCNoLider = new List<MiembroComite>();
-            /**/
+            daoMiembroComite = new DAOMiembroComite();
+            listaMCNoLider = daoMiembroComite.GetMCNoLider();
+            /*
             MiembroComite miembroPrueba = new MiembroComite(
                 "Jose Miguel", "Martinez", "Rojano", "jmmroj@uv.mx", 2);
             MiembroComite miembroPrueba2= new MiembroComite(
                 "Andrea", "Durian", "Hernandez", "aduhe@uv.mx", 3);
             listaMCNoLider.Add(miembroPrueba);
             listaMCNoLider.Add(miembroPrueba2);
+            */
 
             foreach (MiembroComite miembro in listaMCNoLider)
             {
-                combobox_MiembroC.Items.Add(miembro.Nombre + " " + miembro.ApellidoPaterno);
+                combobox_MiembroC.Items.Add(miembro.nombre + " " + miembro.apellidoPaterno);
             }
             /**/
             
@@ -184,7 +188,7 @@ namespace SGEA_DS
             {
                 foreach (MiembroComite miembro in listaMCNoLider)
                 {
-                    if (combobox_MiembroC.SelectedItem.ToString().Equals(
+                    /*if (combobox_MiembroC.SelectedItem.ToString().Equals(
                         miembro.Nombre + " " + miembro.ApellidoPaterno))
                     {
                         textbox_Nombre.Text = miembro.Nombre;
@@ -197,7 +201,7 @@ namespace SGEA_DS
                         textbox_CorreoE.IsReadOnly = true;
                         combobox_NivelE.SelectedIndex = (miembro.NivelExperiencia - 1);
                         combobox_NivelE.IsEnabled = false;
-                    }
+                    }*/
                 }
             }
         }

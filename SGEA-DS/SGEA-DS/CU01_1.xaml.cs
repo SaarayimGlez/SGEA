@@ -12,17 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataAccess;
 
 namespace SGEA_DS {
     /// <summary>
     /// Lógica de interacción para MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window {
+    public partial class CU01_1 : Window {
 
         private List<Comite> listaComite;
         private List<RadioButton> listaRbComite;
+        private DAOComite daoComite;
 
-        public MainWindow()
+        public CU01_1()
         {
             InitializeComponent();
             llenarListaComite();
@@ -30,19 +32,24 @@ namespace SGEA_DS {
 
         private void llenarListaComite()
         {
-            listaComite = new List<Comite>();
+            daoComite = new DAOComite();
+            listaComite = daoComite.GetComites();
             listaRbComite = new List<RadioButton>();
-            /**/
+
+            //MessageBox.Show(listaComite[0].nombre);
+
+            /*
             Comite comitePrueba1 = new Comite("Comité de promoción");
             Comite comitePrueba2 = new Comite("Comité de evaluación");
             listaComite.Add(comitePrueba1);
             listaComite.Add(comitePrueba2);
-            
+            */
+
             foreach (Comite comite in listaComite)
             {
-                insertarFila(comite.Nombre);
+                insertarFila(comite.nombre);
             }
-            /**/
+            
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
