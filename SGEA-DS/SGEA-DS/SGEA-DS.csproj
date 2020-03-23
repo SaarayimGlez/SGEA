@@ -63,7 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="CU04.xaml">
+    <Page Include="CU06.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -71,9 +71,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Comite.cs" />
-    <Compile Include="CU04.xaml.cs">
-      <DependentUpon>CU04.xaml</DependentUpon>
+    <Compile Include="CU06.xaml.cs">
+      <DependentUpon>CU06.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
