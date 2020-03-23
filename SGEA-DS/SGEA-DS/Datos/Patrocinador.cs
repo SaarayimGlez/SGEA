@@ -20,7 +20,8 @@ namespace SGEA_DS.Datos
         public string correoElectronico { get; set; }
         public string direccion { get; set; }
         public string empresa { get; set; }
-        public int numeroTelefono { get; set; }
+        public long numeroTelefono { get; set; }
+        public string nombre { get; set; }
     
         public virtual Ingreso Ingreso { get; set; }
     }

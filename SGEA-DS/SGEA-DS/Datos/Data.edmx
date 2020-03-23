@@ -332,7 +332,8 @@
     <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
     <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
     <Property Name="empresa" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="numeroTelefono" Type="int" Nullable="false" />
+    <Property Name="numeroTelefono" Type="bigint" Nullable="false" />
+    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Ingreso_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ActrividadParticipante">
@@ -1239,12 +1240,13 @@
           <Property Name="correoElectronico" Type="String" Nullable="false" />
           <Property Name="direccion" Type="String" Nullable="false" />
           <Property Name="empresa" Type="String" Nullable="false" />
-          <Property Name="numeroTelefono" Type="Int32" Nullable="false" />
+          <Property Name="numeroTelefono" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Ingreso" Relationship="Data.PatrocinadorIngreso" FromRole="Patrocinador" ToRole="Ingreso" />
+          <Property Name="nombre" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="PatrocinadorIngreso">
-          <End Type="Data.Patrocinador" Role="Patrocinador" Multiplicity="1" />
-          <End Type="Data.Ingreso" Role="Ingreso" Multiplicity="1" />
+          <End Type="Data.Patrocinador" Role="Patrocinador" Multiplicity="0..1" />
+          <End Type="Data.Ingreso" Role="Ingreso" Multiplicity="0..1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>
@@ -1470,6 +1472,7 @@
           <ScalarProperty Name="direccion" ColumnName="direccion" />
           <ScalarProperty Name="empresa" ColumnName="empresa" />
           <ScalarProperty Name="numeroTelefono" ColumnName="numeroTelefono" />
+          <ScalarProperty Name="nombre" ColumnName="nombre" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1529,6 +1532,7 @@
       <EndProperty Name="Patrocinador">
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
+            <Condition ColumnName="Ingreso_Id" IsNull="false" />
     </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>

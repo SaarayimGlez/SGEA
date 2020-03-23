@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 03/18/2020 10:54:11
+-- Date Created: 03/18/2020 20:04:56
 -- Generated from EDMX file: C:\Users\robe_\source\repos\DS\SGEA-DS\SGEA-DS\Datos\Data.edmx
 -- --------------------------------------------------
 
@@ -353,7 +353,8 @@ CREATE TABLE [dbo].[IngresoSet] (
     [fecha] datetime  NOT NULL,
     [monto] float  NOT NULL,
     [ActrividadId] int  NOT NULL,
-    [AsistenteId] int  NOT NULL
+    [AsistenteId] int  NOT NULL,
+    [Patrocinador_Id] int  NULL
 );
 GO
 
@@ -365,8 +366,8 @@ CREATE TABLE [dbo].[PatrocinadorSet] (
     [correoElectronico] nvarchar(max)  NOT NULL,
     [direccion] nvarchar(max)  NOT NULL,
     [empresa] nvarchar(max)  NOT NULL,
-    [numeroTelefono] int  NOT NULL,
-    [Ingreso_Id] int  NOT NULL
+    [numeroTelefono] bigint  NOT NULL,
+    [nombre] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -859,19 +860,19 @@ ON [dbo].[RegistroArticuloSet]
     ([IngresoId]);
 GO
 
--- Creating foreign key on [Ingreso_Id] in table 'PatrocinadorSet'
-ALTER TABLE [dbo].[PatrocinadorSet]
+-- Creating foreign key on [Patrocinador_Id] in table 'IngresoSet'
+ALTER TABLE [dbo].[IngresoSet]
 ADD CONSTRAINT [FK_PatrocinadorIngreso]
-    FOREIGN KEY ([Ingreso_Id])
-    REFERENCES [dbo].[IngresoSet]
+    FOREIGN KEY ([Patrocinador_Id])
+    REFERENCES [dbo].[PatrocinadorSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_PatrocinadorIngreso'
 CREATE INDEX [IX_FK_PatrocinadorIngreso]
-ON [dbo].[PatrocinadorSet]
-    ([Ingreso_Id]);
+ON [dbo].[IngresoSet]
+    ([Patrocinador_Id]);
 GO
 
 -- --------------------------------------------------
