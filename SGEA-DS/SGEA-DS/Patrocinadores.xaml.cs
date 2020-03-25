@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using SGEA_DS.Datos;
+using DataAccess;
 
 namespace SGEA_DS.Patrocinadores
 {
@@ -23,11 +23,25 @@ namespace SGEA_DS.Patrocinadores
         public Patrocinadores()
         {
             InitializeComponent();
+            CargarDatos();
         }
 
         private void CargarDatos() {
-            DataContainer1 data = new DataContainer1();
-            List<Patrocinador> patrocinadores = new List<Patrocinador>();
+                using (var container = new DataModelContainer()) {
+                    var patrocinadores = (from patrocinador in container.PatrocinadorSet
+                                        orderby patrocinador.Id
+                                        select patrocinador).ToList();
+                LBpatrocinadores.ItemsSource = patrocinadores;
+                }
+        }
+
+        private void MandarAModificar(object sender,MouseButtonEventArgs e) {
+            if (LBpatrocinadores.SelectedItem != null) {
+                ModificarPatrocinador modificar = new ModificarPatrocinador();
+                modificar.Editable = (Patrocinador)LBpatrocinadores.SelectedItem;
+                modificar.Show();
+                this.Close();
+            }
         }
     }
 }
