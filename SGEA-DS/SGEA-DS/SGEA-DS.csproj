@@ -135,6 +135,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Actividades.xaml.cs">
+      <DependentUpon>Actividades.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Asistentes.xaml.cs">
+      <DependentUpon>Asistentes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DetallesAsistente.xaml.cs">
+      <DependentUpon>DetallesAsistente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Eventos.xaml.cs">
+      <DependentUpon>Eventos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModificarPatrocinador.xaml.cs">
       <DependentUpon>ModificarPatrocinador.xaml</DependentUpon>
     </Compile>
@@ -144,6 +156,22 @@
     <Compile Include="RegistrarEvento.xaml.cs">
       <DependentUpon>RegistrarEvento.xaml</DependentUpon>
     </Compile>
+    <Page Include="Actividades.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Asistentes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetallesAsistente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Eventos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
