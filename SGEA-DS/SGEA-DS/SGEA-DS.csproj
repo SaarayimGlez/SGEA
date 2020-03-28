@@ -144,8 +144,14 @@
     <Compile Include="DetallesAsistente.xaml.cs">
       <DependentUpon>DetallesAsistente.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DetallesMagistral.xaml.cs">
+      <DependentUpon>DetallesMagistral.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Eventos.xaml.cs">
       <DependentUpon>Eventos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Magistrales.xaml.cs">
+      <DependentUpon>Magistrales.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModificarPatrocinador.xaml.cs">
       <DependentUpon>ModificarPatrocinador.xaml</DependentUpon>
@@ -168,7 +174,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="DetallesMagistral.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Eventos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Magistrales.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

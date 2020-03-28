@@ -18,18 +18,32 @@ namespace SGEA_DS {
     /// Lógica de interacción para Eventos.xaml
     /// </summary>
     public partial class Eventos: Window {
-        public Eventos() {
+        private int centinel;
+
+        public int Centinel { get => centinel; set => centinel = value; }
+
+        public Eventos(int centinel) {
+            Centinel = centinel;
             InitializeComponent();
             CargarDatos();
         }
 
         private void MostrarActividaes(object sender,MouseButtonEventArgs e) {
             if (LBEventos.SelectedItem != null) {
-                Actividades actividades = new Actividades();
-                actividades.Evento = (Evento)LBEventos.SelectedItem;
-                actividades.Centinel = 13;
-                actividades.Show();
-                this.Close();
+                switch (Centinel) {
+                    case 13:
+                        Actividades actividades = new Actividades();
+                        actividades.Evento = (Evento)LBEventos.SelectedItem;
+                        actividades.Centinel = Centinel;
+                        actividades.Show();
+                        this.Close();
+                        break;
+                    case 37:
+                        Magistrales magistrales = new Magistrales((Evento)LBEventos.SelectedItem);
+                        magistrales.Show();
+                        this.Close();
+                        break;
+                }
             }
         }
 
