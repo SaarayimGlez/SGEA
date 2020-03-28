@@ -22,5 +22,23 @@ namespace SGEA_DS {
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender,RoutedEventArgs e) {
+            RegistrarEvento evento = new RegistrarEvento();
+            evento.Show();
+            this.Close();
+        }
+
+        private void Button_Click_1(object sender,RoutedEventArgs e) {
+            Patrocinadores patrocinadores = new Patrocinadores();
+            patrocinadores.Show();
+            this.Close();
+        }
+
+        private void Button_Click_2(object sender,RoutedEventArgs e) {
+            Eventos eventos = new Eventos();
+            eventos.Show();
+            this.Close();
+        }
     }
 }

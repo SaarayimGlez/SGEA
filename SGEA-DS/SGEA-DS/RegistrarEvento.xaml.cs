@@ -45,9 +45,10 @@ namespace SGEA_DS
                 container.SaveChanges();
                 LBMensage.Content = "Evento creado con éxito*";
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 LBMensage.Content = "No hay conexión a la base de datos, inténtelo más tarde";
+                MessageBox.Show(ex.Message,e.GetType().ToString());
             }
         }
 

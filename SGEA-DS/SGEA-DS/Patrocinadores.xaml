@@ -1,4 +1,4 @@
-﻿<Window x:Class="SGEA_DS.Patrocinadores.Patrocinadores"
+﻿<Window x:Class="SGEA_DS.Patrocinadores"
         
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -11,7 +11,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SGEA_DS.Patrocinadores"
+        xmlns:local="clr-namespace:SGEA_DS"
         mc:Ignorable="d"
         Title="Patrocinadores" Height="450" Width="800">
     <Grid>

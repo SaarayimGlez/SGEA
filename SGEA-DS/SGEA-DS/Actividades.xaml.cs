@@ -45,10 +45,14 @@ namespace SGEA_DS {
 
         private void MostrarAsistentes(object sender,MouseButtonEventArgs e) {
             if(LBActividades.SelectedItem != null) {
-                Asistentes asistentes = new Asistentes();
-                asistentes.Asistente = (Asistente)LBActividades.SelectedItem;
-                asistentes.Show();
-                this.Close();
+                switch (centinel) {
+                    case 13:
+                        Asistentes asistentes = new Asistentes();
+                        asistentes.Actividad = (Actividad)LBActividades.SelectedItem;
+                        asistentes.Show();
+                        this.Close();
+                        break;
+                }
             }
         }
     }

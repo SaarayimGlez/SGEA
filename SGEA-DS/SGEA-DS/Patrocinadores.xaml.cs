@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DataAccess;
 
-namespace SGEA_DS.Patrocinadores
+namespace SGEA_DS
 {
     /// <summary>
     /// Lógica de interacción para Patrocinadores.xaml

@@ -18,13 +18,26 @@ namespace SGEA_DS {
     /// Lógica de interacción para Asistentes.xaml
     /// </summary>
     public partial class Asistentes: Window {
-        private Asistente asistente;
+        private Actividad actividad;
+
+        public Actividad Actividad { get => actividad;
+            set { actividad = value;
+                CargarDatos();
+            }
+        }
+
+        private void CargarDatos() {
+            using (var container = new DataModelContainer()) {
+                var asistentes = (from asistente in container.AsistenteSet
+                                   orderby asistente.Id
+                                   select actividad).ToList();
+                LBAsistentes.ItemsSource = asistentes;
+            }
+        }
 
         public Asistentes() {
             InitializeComponent();
         }
-
-        public Asistente Asistente { get => asistente; set => asistente = value; }
 
         private void TerminarConsulta(object sender,RoutedEventArgs e) {
             MainWindow main = new MainWindow();
