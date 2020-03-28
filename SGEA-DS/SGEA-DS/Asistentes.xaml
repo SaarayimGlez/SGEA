@@ -15,7 +15,7 @@
         mc:Ignorable="d"
         Title="Asistentes" Height="450" Width="800">
     <Grid>
-        <ListBox x:Name="LBAsistentes" HorizontalAlignment="Left" Height="309" Margin="34,34,0,0" VerticalAlignment="Top" Width="716" MouseDoubleClick="MostrarDetalles"/>
+        <ListBox x:Name="LBAsistentes" HorizontalAlignment="Left" Height="309" Margin="34,34,0,0" VerticalAlignment="Top" Width="716"/>
         <Button Content="Aceptar" HorizontalAlignment="Left" Margin="135,361,0,0" VerticalAlignment="Top" Width="119" Click="TerminarConsulta"/>
         <Button Content="Ver detalles" HorizontalAlignment="Left" Margin="322,361,0,0" VerticalAlignment="Top" Width="119" Click="MostrarDetalles"/>
         <Button Content="Regresar" HorizontalAlignment="Left" Margin="515,361,0,0" VerticalAlignment="Top" Width="119" Click="RegresarVentana"/>

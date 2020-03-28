@@ -19,6 +19,7 @@ namespace SGEA_DS {
     /// </summary>
     public partial class Asistentes: Window {
         private Actividad actividad;
+        private int ACCION_ASISTENTES = 13;
 
         public Actividad Actividad { get => actividad;
             set { actividad = value;
@@ -56,7 +57,7 @@ namespace SGEA_DS {
         }
 
         private void RegresarVentana(object sender,RoutedEventArgs e) {
-            Eventos eventos = new Eventos();
+            Eventos eventos = new Eventos(ACCION_ASISTENTES);
             eventos.Show();
             this.Close();
         }

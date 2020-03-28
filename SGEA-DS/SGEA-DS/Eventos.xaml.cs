@@ -19,7 +19,6 @@ namespace SGEA_DS {
     /// </summary>
     public partial class Eventos: Window {
         private int centinel;
-
         public int Centinel { get => centinel; set => centinel = value; }
 
         public Eventos(int centinel) {
@@ -32,9 +31,7 @@ namespace SGEA_DS {
             if (LBEventos.SelectedItem != null) {
                 switch (Centinel) {
                     case 13:
-                        Actividades actividades = new Actividades();
-                        actividades.Evento = (Evento)LBEventos.SelectedItem;
-                        actividades.Centinel = Centinel;
+                        Actividades actividades = new Actividades((Evento)LBEventos.SelectedItem, Centinel);
                         actividades.Show();
                         this.Close();
                         break;
@@ -43,6 +40,14 @@ namespace SGEA_DS {
                         magistrales.Show();
                         this.Close();
                         break;
+                    case 39:
+                        Actividades actividadesC = new Actividades((Evento)LBEventos.SelectedItem, Centinel);
+                        actividadesC.Show();
+                        this.Close();
+                        break;
+                    default:
+                        LBMensaje.Content = "Error de índice. Por favor, reinicie la aplicación.";
+                        break;
                 }
             }
         }
@@ -50,8 +55,9 @@ namespace SGEA_DS {
         private void CargarDatos() {
             using (var container = new DataModelContainer()) {
                 var eventos = (from evento in container.EventoSet
-                                      orderby evento.Id
-                                      select evento).ToList();
+                               orderby evento.Id
+                               select evento).ToList();
+                
                 LBEventos.ItemsSource = eventos;
             }
         }

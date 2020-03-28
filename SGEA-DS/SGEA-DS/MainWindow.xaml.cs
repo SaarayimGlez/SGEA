@@ -36,7 +36,19 @@ namespace SGEA_DS {
         }
 
         private void Button_Click_2(object sender,RoutedEventArgs e) {
-            Eventos eventos = new Eventos();
+            Eventos eventos = new Eventos(13);
+            eventos.Show();
+            this.Close();
+        }
+
+        private void Button_Click_3(object sender,RoutedEventArgs e) {
+            Eventos eventos = new Eventos(37);
+            eventos.Show();
+            this.Close();
+        }
+
+        private void Button_Click_4(object sender,RoutedEventArgs e) {
+            Eventos eventos = new Eventos(39);
             eventos.Show();
             this.Close();
         }

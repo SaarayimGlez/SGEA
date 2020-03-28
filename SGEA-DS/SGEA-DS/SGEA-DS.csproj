@@ -141,6 +141,9 @@
     <Compile Include="Asistentes.xaml.cs">
       <DependentUpon>Asistentes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DetallesActividad.cs">
+      <DependentUpon>DetallesActividad.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DetallesAsistente.xaml.cs">
       <DependentUpon>DetallesAsistente.xaml</DependentUpon>
     </Compile>
@@ -167,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Asistentes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetallesActividad.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

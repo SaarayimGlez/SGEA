@@ -21,8 +21,14 @@ namespace SGEA_DS {
         private Evento evento;
         private int centinel;
 
-        public Actividades() {
+        public Actividades(Evento evento, int centinela) {
+            Evento = evento;
+            Centinel = centinela;
             InitializeComponent();
+            Console.WriteLine(evento);
+            Console.ReadLine();
+            Console.WriteLine(Centinel);
+            CargarDatos();
         }
 
         public Evento Evento { 
@@ -37,9 +43,15 @@ namespace SGEA_DS {
             using (var container = new DataModelContainer()) {
                 var actividades = (from actividad in container.ActividadSet
                                       orderby actividad.Id
-                                   where actividad.EventoId == evento.Id
+                                   where actividad.EventoId == Evento.Id
                                       select actividad).ToList();
+
                 LBActividades.ItemsSource = actividades;
+            }
+            if(Centinel == 39) {
+                BTAceptar.Visibility = Visibility.Visible;
+                BTDetalles.Visibility = Visibility.Visible;
+                BTRegresar.Visibility = Visibility.Visible;
             }
         }
 
@@ -52,8 +64,29 @@ namespace SGEA_DS {
                         asistentes.Show();
                         this.Close();
                         break;
+
                 }
             }
+        }
+
+        private void TerminarConsulta(object sender,RoutedEventArgs e) {
+            MainWindow main = new MainWindow();
+            main.Show();
+            this.Close();
+        }
+
+        private void MostrarDetalles(object sender,RoutedEventArgs e) {
+            if(LBActividades.SelectedItem != null) {
+                DetallesActividad detalles = new DetallesActividad((Actividad)LBActividades.SelectedItem,this);
+                detalles.Show();
+                this.Close();
+            }
+        }
+
+        private void RegresarVentana(object sender,RoutedEventArgs e) {
+            Eventos eventos = new Eventos(Centinel);
+            eventos.Show();
+            this.Close();
         }
     }
 }
