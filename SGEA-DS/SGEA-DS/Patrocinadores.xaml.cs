@@ -27,12 +27,16 @@ namespace SGEA_DS
         }
 
         private void CargarDatos() {
+            try {
                 using (var container = new DataModelContainer()) {
                     var patrocinadores = (from patrocinador in container.PatrocinadorSet
-                                        orderby patrocinador.Id
-                                        select patrocinador).ToList();
-                LBpatrocinadores.ItemsSource = patrocinadores;
+                                          orderby patrocinador.Id
+                                          select patrocinador).ToList();
+                    LBpatrocinadores.ItemsSource = patrocinadores;
                 }
+            } catch (Exception) {
+                LBMensaje.Content = "No hay conexión a la base de datos, inténtelo más tarde";
+            }
         }
 
         private void MandarAModificar(object sender,MouseButtonEventArgs e) {

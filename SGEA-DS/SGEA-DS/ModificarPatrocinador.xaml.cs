@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DataAccess;
+using System.Text.RegularExpressions;
 
 namespace SGEA_DS {
     /// <summary>
@@ -39,12 +40,20 @@ namespace SGEA_DS {
         }
 
         private void GuardarPatrocinador(object sender,RoutedEventArgs e) {
-            using (var container = new DataModelContainer()) {
-                var result = container.PatrocinadorSet.SingleOrDefault(patrocinador => patrocinador.Id == editable.Id);
-                if (result != null) {
-                    result = editable;
-                    container.SaveChanges();
-                }
+            try {
+                //if (ValidarDatos()) {
+                    using (var container = new DataModelContainer()) {
+                        var result = container.PatrocinadorSet.SingleOrDefault(patrocinador => patrocinador.Id == editable.Id);
+                        if (result != null) {
+                            result = editable;
+                            container.SaveChanges();
+                        }
+                    }
+               /* } else {
+                    LBMensaje.Content = "Los datos son incorrectos, por favor verifique su información";
+                }*/
+            } catch (Exception) {
+                LBMensaje.Content = "No hay conexión a la base de datos, inténtelo más tarde";
             }
         }
 
@@ -52,6 +61,81 @@ namespace SGEA_DS {
             MainWindow main = new MainWindow();
             main.Show();
             this.Close();
+        }
+
+        private bool ValidarDatos() {
+            bool validacion = true;
+            if (!string.IsNullOrEmpty(TBNombre.Text)) {
+                foreach (char caracter in TBNombre.Text) {
+                    if (!char.IsLetter(caracter)) {
+                        validacion = false;
+                    }
+                }
+            } else {
+                validacion = false;
+            }
+            if (!string.IsNullOrEmpty(TBPaterno.Text)) {
+                foreach (char caracter in TBPaterno.Text) {
+                    if (!char.IsLetter(caracter)) {
+                        validacion = false;
+                    }
+                }
+            } else {
+                validacion = false;
+            }
+            if (!string.IsNullOrEmpty(TBMaterno.Text)) {
+                foreach (char caracter in TBMaterno.Text) {
+                    if (!char.IsLetter(caracter)) {
+                        validacion = false;
+                    }
+                }
+            } else {
+                validacion = false;
+            }
+            if (!string.IsNullOrEmpty(TBTelefono.Text)) {
+                foreach (char caracter in TBTelefono.Text) {
+                    if (!char.IsDigit(caracter)) {
+                        validacion = false;
+                    }
+                }
+            } else {
+                validacion = false;
+            }
+            validacion = ComprobarFormatoEmail();
+            if (!string.IsNullOrEmpty(TBDireccion.Text)) {
+                foreach (char caracter in TBDireccion.Text) {
+                    if (!char.IsLetter(caracter) && !char.IsDigit(caracter) && caracter == '#' && caracter == ' ' && caracter == '.') {
+                        validacion = false;
+                    }
+                }
+            } else {
+                validacion = false;
+            }
+            if (!string.IsNullOrEmpty(TBEmpresa.Text)) {
+                foreach (char caracter in TBEmpresa.Text) {
+                    if (!char.IsLetter(caracter)) {
+                        validacion = false;
+                        Console.WriteLine(validacion);
+                    }
+                }
+            } else {
+                validacion = false;
+            }
+            return validacion;
+        }
+
+        public bool ComprobarFormatoEmail() {
+            String sFormato;
+            sFormato = "\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*";
+            if (Regex.IsMatch(TBCorreo.Text,sFormato)) {
+                if (Regex.Replace(TBCorreo.Text,sFormato,String.Empty).Length == 0) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
         }
     }
 }

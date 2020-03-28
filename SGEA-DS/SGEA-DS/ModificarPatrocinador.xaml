@@ -31,6 +31,7 @@
         <TextBox x:Name="TBTelefono" HorizontalAlignment="Left" Height="23" Margin="168,238,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="214"/>
         <Button Content="Guardar" HorizontalAlignment="Left" Margin="440,317,0,0" VerticalAlignment="Top" Width="93" Height="28" Click="GuardarPatrocinador"/>
         <Button Content="Cancelar" HorizontalAlignment="Left" Margin="616,317,0,0" VerticalAlignment="Top" Width="93" Height="28" Background="#FF7C52C7" Click="CancelarModificacion"/>
+        <Label x:Name="LBMensaje" Content="" HorizontalAlignment="Left" Height="91" Margin="42,286,0,0" VerticalAlignment="Top" Width="372" Foreground="#DDD30000" FontWeight="Bold"/>
 
     </Grid>
 </Window>

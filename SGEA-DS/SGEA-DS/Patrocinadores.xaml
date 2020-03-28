@@ -16,6 +16,7 @@
         Title="Patrocinadores" Height="450" Width="800">
     <Grid>
         <ListBox x:Name="LBpatrocinadores" HorizontalAlignment="Left" Height="309" Margin="34,34,0,0" VerticalAlignment="Top" Width="716" MouseDoubleClick="MandarAModificar"/>
+        <Label x:Name="LBMensaje" Content="" HorizontalAlignment="Left" Height="49" Margin="45,348,0,0" VerticalAlignment="Top" Width="676" Foreground="#DDD30000" FontWeight="Bold"/>
 
     </Grid>
 </Window>
