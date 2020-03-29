@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccess
+namespace Logica
 {
-    public class Class1
+    class ActividadDAO
     {
-
     }
 }

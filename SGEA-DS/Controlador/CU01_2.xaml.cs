@@ -8,20 +8,21 @@ using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Linq;
 using DataAccess;
+using SGEA_DS;
+using Controlador;
+using Logica;
 
-namespace SGEA_DS
+namespace Controlador
 {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
+
     public partial class CU01_2 : Window
     {
-        private string comite;
+        private int comiteId;
         private List<MiembroComite> listaMCNoLider;
         private bool handle = true;
         private List<TextBox> listaTBSinNum;
         private List<TextBox> listaTBSinEspacio;
-        //private DAOMiembroComite daoMiembroComite;
+        private MiembroComiteDAO miembroComiteDAO;
 
         private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
         {
@@ -53,7 +54,7 @@ namespace SGEA_DS
             if (validarDatos() && guardarMComite())
             {
                 textBlock_Mensaje.Text = String.Empty;
-                var bold = new Bold(new Run("Lider registrado con éxito" + 
+                var bold = new Bold(new Run("Lider registrado con éxito" +
                     Environment.NewLine + "Usuario: "));
                 textBlock_Mensaje.Inlines.Add(bold);
                 var normal = new Run(textbox_Usuario.Text + Environment.NewLine);
@@ -74,31 +75,64 @@ namespace SGEA_DS
                 {
                     textBox.IsEnabled = false;
                 }
-            } else
+            }
+            else
             {
                 textBlock_Mensaje.Text = String.Empty;
-                var bold = new Bold(new Run("Hay datos inválidos, favor de revisar") {
-                    Foreground = Brushes.Red });
+                var bold = new Bold(new Run("Hay datos inválidos, favor de revisar")
+                {
+                    Foreground = Brushes.Red
+                });
                 textBlock_Mensaje.Inlines.Add(bold);
             }
         }
 
         private bool guardarMComite()
         {
-            MiembroComite nuevoMComite;
+            MiembroComite nuevoMLComite;
             if (combobox_MiembroC.SelectedIndex <= -1)
-            {//insert into como lider
-                nuevoMComite = new MiembroComite();
-            } else
-            {//update into como lider
+            {
+                nuevoMLComite = new MiembroComite()
+                {
+                    nombre = textbox_Nombre.Text,
+                    apellidoPaterno = textbox_ApellidoP.Text,
+                    apellidoMaterno = textbox_ApellidoM.Text,
+                    correoElectronico = textbox_CorreoE.Text,
+                    nivelExperiencia = (string)((ComboBoxItem)combobox_NivelE.SelectedValue).Content,
+                    nombreUsuario = textbox_Usuario.Text,
+                    contrasenia = textbox_Contrasena.Text,
+                    evaluador = false,
+                    liderComite = true,
+                    ComiteId = comiteId
+                };
+                try
+                {
+                    miembroComiteDAO.RegistrarMCLider(nuevoMLComite);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                }
+
+            }
+            else
+            {
+                nuevoMLComite = new MiembroComite()
+                {
+                    nombre = textbox_Nombre.Text,
+                    apellidoPaterno = textbox_ApellidoP.Text,
+                    apellidoMaterno = textbox_ApellidoM.Text,
+                    nombreUsuario = textbox_Usuario.Text,
+                    contrasenia = textbox_Contrasena.Text,
+                    ComiteId = comiteId
+                };
                 foreach (MiembroComite miembro in listaMCNoLider)
                 {
-                    //if (combobox_MiembroC.SelectedItem.ToString().Equals(
-                        //miembro.Nombre + " " + miembro.ApellidoPaterno))
-                    //{
-                        //nuevoMComite = new MiembroComite(
-                        //    miembro.Nombre, miembro.ApellidoPaterno, miembro.ApellidoMaterno);
-                    //}
+                    if (combobox_MiembroC.SelectedItem.ToString().Equals(
+                            miembro.nombre + " " + miembro.apellidoPaterno))
+                    {
+                        miembroComiteDAO.ActualizarMCLider(nuevoMLComite);
+                    }
                 }
             }
             return true;
@@ -141,9 +175,9 @@ namespace SGEA_DS
             InitializeComponent();
         }
 
-        public CU01_2(string comiteLider)
+        public CU01_2(int comiteId)
         {
-            this.comite = comiteLider;
+            this.comiteId = comiteId;
             InitializeComponent();
             llenarComboBox();
             agregarTextBox();
@@ -163,25 +197,13 @@ namespace SGEA_DS
 
         private void llenarComboBox()
         {
-            //daoMiembroComite = new DAOMiembroComite();
-            //listaMCNoLider = daoMiembroComite.GetMCNoLider();
+            miembroComiteDAO = new MiembroComiteDAO();
+            listaMCNoLider = miembroComiteDAO.RecuperarMCNoLider();
             
-            MiembroComite miembroPrueba = new MiembroComite();//"Jose Miguel", "Martinez", "Rojano", "jmmroj@uv.mx", 2
-            miembroPrueba.nombre = "Jose Miguel";
-            miembroPrueba.apellidoPaterno = "Martinez";
-            MiembroComite miembroPrueba2= new MiembroComite();//"Andrea", "Durian", "Hernandez", "aduhe@uv.mx", 3
-            miembroPrueba2.nombre = "Andrea";
-            miembroPrueba2.apellidoPaterno = "Durian";
-            listaMCNoLider.Add(miembroPrueba);
-            listaMCNoLider.Add(miembroPrueba2);
-            /**/
-
             foreach (MiembroComite miembro in listaMCNoLider)
             {
                 combobox_MiembroC.Items.Add(miembro.nombre + " " + miembro.apellidoPaterno);
             }
-            /**/
-            
         }
 
         private void llenarTextBox()
@@ -190,25 +212,25 @@ namespace SGEA_DS
             {
                 foreach (MiembroComite miembro in listaMCNoLider)
                 {
-                    /*if (combobox_MiembroC.SelectedItem.ToString().Equals(
-                        miembro.Nombre + " " + miembro.ApellidoPaterno))
+                    if (combobox_MiembroC.SelectedItem.ToString().Equals(
+                        miembro.nombre + " " + miembro.apellidoPaterno))
                     {
-                        textbox_Nombre.Text = miembro.Nombre;
+                        textbox_Nombre.Text = miembro.nombre;
                         textbox_Nombre.IsReadOnly = true;
-                        textbox_ApellidoP.Text = miembro.ApellidoPaterno;
+                        textbox_ApellidoP.Text = miembro.apellidoPaterno;
                         textbox_ApellidoP.IsReadOnly = true;
-                        textbox_ApellidoM.Text = miembro.ApellidoMaterno;
+                        textbox_ApellidoM.Text = miembro.apellidoMaterno;
                         textbox_ApellidoM.IsReadOnly = true;
-                        textbox_CorreoE.Text = miembro.CorreoElectronico;
+                        textbox_CorreoE.Text = miembro.correoElectronico;
                         textbox_CorreoE.IsReadOnly = true;
-                        combobox_NivelE.SelectedIndex = (miembro.NivelExperiencia - 1);
+                        combobox_NivelE.Text = miembro.nivelExperiencia;
                         combobox_NivelE.IsEnabled = false;
-                    }*/
+                    }
                 }
             }
         }
 
-        
+
         private void Combobox_MiembroC_DropDownClosed(object sender, EventArgs e)
         {
             if (handle) llenarTextBox();
@@ -221,10 +243,10 @@ namespace SGEA_DS
             handle = !cmb.IsDropDownOpen;
             llenarTextBox();
         }
-        
+
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
         }
     }
 }

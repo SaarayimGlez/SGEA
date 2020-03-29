@@ -1,30 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using DataAccess;
+using SGEA_DS;
+using Controlador;
+using Logica;
 
-namespace SGEA_DS {
-    /// <summary>
-    /// Lógica de interacción para MainWindow.xaml
-    /// </summary>
-    public partial class CU01_1 : Window {
+namespace Controlador
+{
 
-        private List<Comite> listaComite;
+    public partial class CU01_1 : Window
+    {
+
+        private List<string> listaComite;
         private List<RadioButton> listaRbComite;
-        //private DAOComite daoComite;
+        private ComiteDAO comiteDAO;
+        private List<int> listaIdComite;
 
         public CU01_1()
         {
@@ -34,22 +28,18 @@ namespace SGEA_DS {
 
         private void llenarListaComite()
         {
-            /*daoComite = new DAOComite();
-            listaComite = daoComite.GetComites();*/
+            comiteDAO = new ComiteDAO();
+            listaComite = comiteDAO.RecuperarComitesSinLider(2);
             listaRbComite = new List<RadioButton>();
+            listaIdComite = new List<int>();
 
-            listaComite = new List<Comite>();
-            Comite comitePrueba1 = new Comite();
-            comitePrueba1.nombre = "Comité de promoción";
-            Comite comitePrueba2 = new Comite();
-            comitePrueba2.nombre = "Comité de evaluación";
-            listaComite.Add(comitePrueba1);
-            listaComite.Add(comitePrueba2);
-            /**/
 
-            foreach (Comite comite in listaComite)
+            foreach (string comite in listaComite)
             {
-                insertarFila(comite.nombre);
+                String patronSimbolo = @"\s-\s?[+*]?\s?-\s";
+                String[] elementoComite = System.Text.RegularExpressions.Regex.Split(comite, patronSimbolo);
+                listaIdComite.Add(Convert.ToInt32(elementoComite[1]));
+                insertarFila(elementoComite[0]);
             }
             
         }
@@ -61,11 +51,11 @@ namespace SGEA_DS {
 
         private void click_Aceptar(object sender, RoutedEventArgs e)
         {
-            foreach (RadioButton rbComite in listaRbComite)
+            for (int i = 0; i < listaRbComite.Count; i++)
             {
-                if (rbComite.IsChecked == true)
+                if (listaRbComite[i].IsChecked == true)
                 {
-                    CU01_2 win2 = new CU01_2(Convert.ToString(rbComite.Content));
+                    CU01_2 win2 = new CU01_2(listaIdComite[i]);
                     win2.Show();
                     this.Close();
                 }

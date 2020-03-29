@@ -17,5 +17,7 @@ namespace DataAccess
         public int Id { get; set; }
         public string @abstract { get; set; }
         public byte documento { get; set; }
+    
+        public virtual Actividad Actividad { get; set; }
     }
 }
