@@ -75,8 +75,16 @@ namespace Logica
             bool respuesta = false;
             try
             {
-                _context.ComiteSet.Add(comite);
-                _context.SaveChanges();
+                var comiteRepetido = _context.ComiteSet
+                    .Where(
+                        comiteR => comiteR.nombre.Equals(comite.nombre)
+                    ).ToList();
+                if (comiteRepetido.Count == 0)
+                {
+                    _context.ComiteSet.Add(comite);
+                    _context.SaveChanges();
+                    respuesta = true;
+                } 
             }
             catch (Exception e)
             {

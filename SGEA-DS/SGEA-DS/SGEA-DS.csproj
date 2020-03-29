@@ -89,6 +89,13 @@
     <Compile Include="..\Controlador\CU01_2.xaml.cs">
       <DependentUpon>CU01_2.xaml</DependentUpon>
     </Compile>
+    <Page Include="CU04.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="..\Controlador\CU04.xaml.cs">
+      <DependentUpon>CU04.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

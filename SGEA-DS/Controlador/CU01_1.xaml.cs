@@ -23,13 +23,19 @@ namespace Controlador
         public CU01_1()
         {
             InitializeComponent();
-            llenarListaComite();
+            llenarListaComite(2);
         }
 
-        private void llenarListaComite()
+        public CU01_1(int eventoId)
+        {
+            InitializeComponent();
+            llenarListaComite(eventoId);
+        }
+
+        private void llenarListaComite(int eventoId)
         {
             comiteDAO = new ComiteDAO();
-            listaComite = comiteDAO.RecuperarComitesSinLider(2);
+            listaComite = comiteDAO.RecuperarComitesSinLider(eventoId);
             listaRbComite = new List<RadioButton>();
             listaIdComite = new List<int>();
 

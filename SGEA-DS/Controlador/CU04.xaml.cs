@@ -12,15 +12,27 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DataAccess;
+using Logica;
 
-namespace SGEA_DS {
-    public partial class CU04 : Window {
+namespace Controlador
+{
+    public partial class CU04 : Window
+    {
+        private int eventoId;
+        private ComiteDAO comiteDAO;
 
         public CU04()
         {
             InitializeComponent();
         }
-        
+
+        public CU04(int eventoId)
+        {
+            this.eventoId = eventoId;
+            InitializeComponent();
+        }
+
         private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key >= Key.A && e.Key <= Key.Z)
@@ -36,7 +48,7 @@ namespace SGEA_DS {
                     e.Handled = true;
                 }
             }
-            
+
         }
 
         private void click_Aceptar(object sender, RoutedEventArgs e)
@@ -61,14 +73,17 @@ namespace SGEA_DS {
 
         private bool nuevoComite()
         {
-            Comite nuevoComite = new Comite(textbox_Nombre.Text, textbox_Descripcion.Text);
-            //MessageBox.Show(nuevoComite.Descripcion);
-            return true;
+            Comite nuevoComite = new Comite();
+            nuevoComite.nombre = textbox_Nombre.Text;
+            nuevoComite.descripcion = textbox_Descripcion.Text;
+            nuevoComite.EventoId = 2;//eventoId
+            comiteDAO = new ComiteDAO();
+            return comiteDAO.RegistrarComite(nuevoComite);
         }
 
         private bool validarDatos()
         {
-            if (textbox_Nombre.Text.Any(char.IsPunctuation) | textbox_Descripcion.Text.Any(char.IsPunctuation) | 
+            if (textbox_Nombre.Text.Any(char.IsPunctuation) | textbox_Descripcion.Text.Any(char.IsPunctuation) |
                 textbox_Nombre.Text.Any(char.IsDigit) | textbox_Descripcion.Text.Any(char.IsDigit) |
                 string.IsNullOrWhiteSpace(textbox_Nombre.Text) | string.IsNullOrWhiteSpace(textbox_Descripcion.Text))
             {

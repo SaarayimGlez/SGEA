@@ -1,5 +1,5 @@
 ﻿using DataAccess;
-using Modelo;
+//using Modelo;
 
 namespace Logica
 {
