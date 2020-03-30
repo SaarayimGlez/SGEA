@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -22,9 +23,9 @@ namespace SGEA_DS
 
         private void llenarListaActividades()
         {
-            List<Actividad> listaActividades = new List<Actividad>();
+            /*List<Actividad> listaActividades = new List<Actividad>();
             
-            /**/
+            /*
             Actividad actividadPrueba1 = new Actividad();
             actividadPrueba1.aula = "Explanada";
             actividadPrueba1.fecha = new DateTime(2020, 4, 1);
@@ -45,15 +46,15 @@ namespace SGEA_DS
 
             listaActividades.Add(actividadPrueba1);
             listaActividades.Add(actividadPrueba2);
-            /**/
+            /*
 
             foreach (Actividad actividad in listaActividades)
             {
                 insertarFila(actividad);
-            }
+            }*/
         }
 
-        private void insertarFila(Actividad actividad)
+        /*private void insertarFila(Actividad actividad)
         {
             grid_Programa.RowDefinitions.Add(new RowDefinition());
             int row = grid_Programa.RowDefinitions.Count - 1;
@@ -95,7 +96,7 @@ namespace SGEA_DS
                 Grid.SetRow(listaLabel[i], row);
                 Grid.SetColumn(listaLabel[i], i);
             }
-        }
+        }*/
 
         private Brush definirColor(string tipo)
         {
@@ -129,7 +130,6 @@ namespace SGEA_DS
 
         private void click_Aceptar(object sender, RoutedEventArgs e)
         {
-            
             string file = KnownFolders.Downloads.Path + @"\programaIMG.png";
             BitmapEncoder encoder = new PngBitmapEncoder();
             RenderTargetBitmap pngFinal;
