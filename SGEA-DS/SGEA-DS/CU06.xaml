@@ -15,7 +15,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGEA_DS"
         mc:Ignorable="d"
-        Title="Registrar comité" Height="450" Width="800">
+        Title="Registrar patrocinador" Height="450" Width="800">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="323" Margin="10,29,0,0" VerticalAlignment="Top" Width="772">
             <Grid.RowDefinitions>
@@ -29,7 +29,7 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Por favor introduce el nombre del comité y una descripción corta de este" HorizontalAlignment="Right" VerticalAlignment="Top" Height="66" Width="762" FontSize="18" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label Content="Por favor llena los datos del patrocinador" HorizontalAlignment="Right" VerticalAlignment="Top" Height="66" Width="762" FontSize="18" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
             <TextBox x:Name="textbox_Nombre" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Nombre(s)" materialDesign:HintAssist.IsFloating="True" KeyDown="textbox_Alfabetico_KeyDown"/>
             <TextBlock x:Name="textBlock_Mensaje" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" Width="366" FontSize="14" FontWeight="Normal" Grid.Column="1"/>
             <TextBox x:Name="textbox_ApellidoP" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Apellido paterno" materialDesign:HintAssist.IsFloating="True" KeyDown="textbox_Alfabetico_KeyDown" Grid.Column="1"/>

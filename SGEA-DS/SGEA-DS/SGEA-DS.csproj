@@ -118,8 +118,15 @@
     <Compile Include="..\Controlador\CU05.xaml.cs">
       <DependentUpon>CU05.xaml</DependentUpon>
     </Compile>
+    <Page Include="CU06.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CU06.xaml.cs">
+      <DependentUpon>CU06.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

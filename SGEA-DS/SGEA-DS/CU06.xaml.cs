@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Logica;
+using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,11 +18,19 @@ using System.Windows.Shapes;
 namespace SGEA_DS {
     public partial class CU06 : Window {
 
+        private int eventoId;
+
         public CU06()
         {
             InitializeComponent();
         }
-        
+
+        public CU06(int eventoId)
+        {
+            InitializeComponent();
+            this.eventoId = eventoId;
+        }
+
         private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key >= Key.A && e.Key <= Key.Z)
@@ -85,15 +95,28 @@ namespace SGEA_DS {
             else
             {
                 textBlock_Mensaje.Text = String.Empty;
-                var bold = new Bold(new Run("Hay datos inválidos o el patrocinador ya existe, favor de revisar") { Foreground = Brushes.Red });
+                var bold = new Bold(new Run(
+                    "Hay datos inválidos o el patrocinador ya existe, favor de revisar")
+                    {
+                        Foreground = Brushes.Red
+                    });
                 textBlock_Mensaje.Inlines.Add(bold);
             }
         }
 
         private bool nuevoComite()
         {
-            //Patrocinador nuevoPatrocinador = new Patrocinador();
-            return true;
+            PatrocinadorDAO patrocinadorDAO = new PatrocinadorDAO();
+            return patrocinadorDAO.RegistrarPatrocinador(new Patrocinador() {
+                nombre = textbox_Nombre.Text,
+                apellidoPaterno = textbox_ApellidoP.Text,
+                apellidoMaterno = textbox_ApellidoM.Text,
+                empresa = textbox_Empresa.Text,
+                direccion = textbox_Direccion.Text,
+                correoElectronico = textbox_CorreoE.Text,
+                numeroTelefono = textbox_NumeroTel.Text,
+                Ingreso = new Ingreso() { monto = 100, concepto = "registro de patrocinador", fecha = DateTime.Today}///
+            } );
         }
 
         private bool validarDatos()

@@ -107,7 +107,7 @@ namespace Controlador
                 };
                 try
                 {
-                    miembroComiteDAO.RegistrarMCLider(nuevoMLComite);
+                    return miembroComiteDAO.RegistrarMCLider(nuevoMLComite);
                 }
                 catch (Exception e)
                 {
@@ -131,11 +131,11 @@ namespace Controlador
                     if (combobox_MiembroC.SelectedItem.ToString().Equals(
                             miembro.nombre + " " + miembro.apellidoPaterno))
                     {
-                        miembroComiteDAO.ActualizarMCLider(nuevoMLComite);
+                        return miembroComiteDAO.ActualizarMCLider(nuevoMLComite);
                     }
                 }
             }
-            return true;
+            return false;
         }
 
         private bool validarDatos()
