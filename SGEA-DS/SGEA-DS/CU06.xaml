@@ -1,0 +1,52 @@
+﻿<Window x:Class="SGEA_DS.CU06"
+        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGEA_DS"
+        mc:Ignorable="d"
+        Title="Registrar comité" Height="450" Width="800">
+    <Grid>
+        <Grid HorizontalAlignment="Left" Height="323" Margin="10,29,0,0" VerticalAlignment="Top" Width="772">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Por favor introduce el nombre del comité y una descripción corta de este" HorizontalAlignment="Right" VerticalAlignment="Top" Height="66" Width="762" FontSize="18" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="textbox_Nombre" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Nombre(s)" materialDesign:HintAssist.IsFloating="True" KeyDown="textbox_Alfabetico_KeyDown"/>
+            <TextBlock x:Name="textBlock_Mensaje" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" Width="366" FontSize="14" FontWeight="Normal" Grid.Column="1"/>
+            <TextBox x:Name="textbox_ApellidoP" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Apellido paterno" materialDesign:HintAssist.IsFloating="True" KeyDown="textbox_Alfabetico_KeyDown" Grid.Column="1"/>
+            <TextBox x:Name="textbox_ApellidoM" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Apellido materno" materialDesign:HintAssist.IsFloating="True" KeyDown="textbox_Alfabetico_KeyDown"/>
+            <TextBox x:Name="textbox_Empresa" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Empresa" materialDesign:HintAssist.IsFloating="True" Grid.Column="1"/>
+            <TextBox x:Name="textbox_Direccion" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Dirección" materialDesign:HintAssist.IsFloating="True"/>
+            <TextBox x:Name="textbox_CorreoE" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="3" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Correo electrónico" materialDesign:HintAssist.IsFloating="True" PreviewKeyDown="textbox_Espacio_PreviewKeyDown" Grid.Column="1"/>
+            <TextBox x:Name="textbox_NumeroTel" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Número telefónico" materialDesign:HintAssist.IsFloating="True" KeyDown="textbox_Numerico_KeyDown" PreviewKeyDown="textbox_Espacio_PreviewKeyDown"/>
+
+        </Grid>
+        <Grid HorizontalAlignment="Left" Height="63" Margin="396,357,0,0" VerticalAlignment="Top" Width="386">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="button_Aceptar" Content="Aceptar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Click="click_Aceptar"/>
+            <Button x:Name="button_Cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Grid.Column="1" Click="click_Cancelar"/>
+        </Grid>
+    </Grid>
+</Window>
