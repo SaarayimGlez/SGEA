@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActividadDAO.cs" />
+    <Compile Include="RegistroArticuloDAO.cs" />
     <Compile Include="ComiteDAO.cs" />
     <Compile Include="MiembroComiteDAO.cs" />
     <Compile Include="OrganizadorDAO.cs" />

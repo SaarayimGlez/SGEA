@@ -40,6 +40,7 @@ namespace Logica
             {
                 _context.MiembroComiteSet.Add(miembroComite);
                 _context.SaveChanges();
+                respuesta = true;
             }
             catch (Exception e)
             {
@@ -64,6 +65,7 @@ namespace Logica
                 miembroLider.contrasenia = miembroCLider.contrasenia;
                 miembroLider.ComiteId = miembroCLider.ComiteId;
                 _context.SaveChanges();
+                respuesta = true;
             }
             catch (Exception e)
             {

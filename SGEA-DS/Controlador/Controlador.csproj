@@ -63,6 +63,7 @@
     <Compile Include="CU01_1.xaml.cs" />
     <Compile Include="CU01_2.xaml.cs" />
     <Compile Include="CU04.xaml.cs" />
+    <Compile Include="CU05.xaml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

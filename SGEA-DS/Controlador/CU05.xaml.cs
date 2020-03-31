@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -9,52 +8,37 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Logica;
 using Microsoft.WindowsAPICodePack.Shell;
 
-namespace SGEA_DS
+namespace Controlador
 {
     public partial class CU05 : Window {
-
+        
         public CU05()
         {
             InitializeComponent();
-            llenarListaActividades();
+            llenarListaActividades(2);
         }
 
-        private void llenarListaActividades()
+        public CU05(int eventoId)
         {
-            /*List<Actividad> listaActividades = new List<Actividad>();
-            
-            /*
-            Actividad actividadPrueba1 = new Actividad();
-            actividadPrueba1.aula = "Explanada";
-            actividadPrueba1.fecha = new DateTime(2020, 4, 1);
-            actividadPrueba1.horaFin = new TimeSpan(14,00,0);
-            actividadPrueba1.horaInicio = new TimeSpan(13,00,0);
-            actividadPrueba1.nombre = "Inauguración del evento";
-            actividadPrueba1.ponente = null;
-            actividadPrueba1.tipo = "Acto protocolario";
-            Actividad actividadPrueba2 = new Actividad();
-            actividadPrueba2.aula = "Sala de conferencias";
-            actividadPrueba2.costo = 25;
-            actividadPrueba2.fecha = new DateTime(2020, 4, 1);
-            actividadPrueba2.horaFin = new TimeSpan(16, 0, 0);
-            actividadPrueba2.horaInicio = new TimeSpan(14, 0, 0);
-            actividadPrueba2.nombre = "Dia de la salud y más cosas";
-            actividadPrueba2.ponente = "Armado Castañeda";
-            actividadPrueba2.tipo = "Conferencia";
+            InitializeComponent();
+            llenarListaActividades(eventoId);
+        }
 
-            listaActividades.Add(actividadPrueba1);
-            listaActividades.Add(actividadPrueba2);
-            /*
+        private void llenarListaActividades(int eventoId)
+        {
+            ActividadDAO actividadDAO = new ActividadDAO();
+            List<List<string>> listaActividades = actividadDAO.RecuperarProgramaEvento(eventoId);
 
-            foreach (Actividad actividad in listaActividades)
+            foreach (List<string> actividad in listaActividades)
             {
                 insertarFila(actividad);
-            }*/
+            }
         }
 
-        /*private void insertarFila(Actividad actividad)
+        private void insertarFila(List<string> actividad)
         {
             grid_Programa.RowDefinitions.Add(new RowDefinition());
             int row = grid_Programa.RowDefinitions.Count - 1;
@@ -68,22 +52,24 @@ namespace SGEA_DS
                 listaTxtBlock.Add(new TextBlock());
                 listaTxtBlock[i].TextWrapping = TextWrapping.Wrap;
             }
-            listaTxtBlock[0].Text = actividad.nombre;
-            if(actividad.costo == 0)
+            listaTxtBlock[0].Text = actividad[0];
+
+            if(actividad[1].Equals("0"))
             {
                 listaTxtBlock[1].Text = "";
             }
             else
             {
-                listaTxtBlock[1].Text = "$" + actividad.costo.ToString();
+                listaTxtBlock[1].Text = "$" + actividad[1];
             }
-            listaTxtBlock[2].Text = actividad.fecha.ToString("MM/dd/yyyy");
-            listaTxtBlock[3].Text = actividad.horaInicio.ToString(@"hh\:mm");
-            listaTxtBlock[4].Text = actividad.horaFin.ToString(@"hh\:mm");
-            listaTxtBlock[5].Text = actividad.ponente;
-            listaTxtBlock[6].Text = actividad.aula;
 
-            rectangulo.Fill = definirColor(actividad.tipo);
+            listaTxtBlock[2].Text = actividad[2];
+            listaTxtBlock[3].Text = actividad[3];
+            listaTxtBlock[4].Text = actividad[4];
+            listaTxtBlock[6].Text = actividad[5];
+            listaTxtBlock[5].Text = actividad[7];
+
+            rectangulo.Fill = definirColor(actividad[6]);
             grid_Programa.Children.Add(rectangulo);
             Grid.SetRow(rectangulo, row);
             Grid.SetColumnSpan(rectangulo, column);
@@ -96,7 +82,7 @@ namespace SGEA_DS
                 Grid.SetRow(listaLabel[i], row);
                 Grid.SetColumn(listaLabel[i], i);
             }
-        }*/
+        }
 
         private Brush definirColor(string tipo)
         {
@@ -123,6 +109,9 @@ namespace SGEA_DS
                     break;
                 case "Mesa redonda":
                     color = "#FFDDD9";
+                    break;
+                default:
+                    color = "#FFFFFF";
                     break;
             }
             return new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
