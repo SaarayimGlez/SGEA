@@ -41,20 +41,28 @@ namespace SGEA_DS {
 
         private void GuardarPatrocinador(object sender,RoutedEventArgs e) {
             try {
-                //if (ValidarDatos()) {
+                if (ValidarDatos()) {
                     using (var container = new DataModelContainer()) {
                         var result = container.PatrocinadorSet.SingleOrDefault(patrocinador => patrocinador.Id == editable.Id);
                         if (result != null) {
-                            result = editable;
+                            result.nombre = TBNombre.Text;
+                            result.apellidoPaterno = TBPaterno.Text;
+                            result.apellidoMaterno = TBMaterno.Text;
+                            result.correoElectronico = TBCorreo.Text;
+                            result.direccion = TBDireccion.Text;
+                            result.empresa = TBEmpresa.Text;
                             container.SaveChanges();
                         }
                     }
-               /* } else {
+                } else {
                     LBMensaje.Content = "Los datos son incorrectos, por favor verifique su información";
-                }*/
+                    return;
+                }
             } catch (Exception) {
                 LBMensaje.Content = "No hay conexión a la base de datos, inténtelo más tarde";
+                return;
             }
+            LBMensaje.Content = "Operación realizada con éxito";
         }
 
         private void CancelarModificacion(object sender,RoutedEventArgs e) {
@@ -104,7 +112,7 @@ namespace SGEA_DS {
             validacion = ComprobarFormatoEmail();
             if (!string.IsNullOrEmpty(TBDireccion.Text)) {
                 foreach (char caracter in TBDireccion.Text) {
-                    if (!char.IsLetter(caracter) && !char.IsDigit(caracter) && caracter == '#' && caracter == ' ' && caracter == '.') {
+                    if (!char.IsLetter(caracter) && !char.IsDigit(caracter) && caracter != '#' && caracter != ' ' && caracter != '.' && caracter != ',') {
                         validacion = false;
                     }
                 }
@@ -113,9 +121,8 @@ namespace SGEA_DS {
             }
             if (!string.IsNullOrEmpty(TBEmpresa.Text)) {
                 foreach (char caracter in TBEmpresa.Text) {
-                    if (!char.IsLetter(caracter)) {
+                    if (!char.IsLetter(caracter) && caracter != ' ') {
                         validacion = false;
-                        Console.WriteLine(validacion);
                     }
                 }
             } else {

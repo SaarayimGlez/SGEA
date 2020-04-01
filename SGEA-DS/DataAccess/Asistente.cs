@@ -21,7 +21,7 @@ namespace DataAccess
         public string correoElectronico { get; set; }
 
         public override String ToString() {
-            return nombre + apellidoPaterno + apellidoMaterno;
+            return nombre + " " + apellidoPaterno + " " + apellidoMaterno;
         }
     }
 }

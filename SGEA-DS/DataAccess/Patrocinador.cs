@@ -24,7 +24,7 @@ namespace DataAccess
         public string numeroTelefono { get; set; }
 
         public override string ToString() {
-            return nombre + apellidoPaterno + apellidoMaterno;
+            return nombre + " " + apellidoPaterno + " " + apellidoMaterno;
         }
     }
 }

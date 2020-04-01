@@ -23,7 +23,7 @@ namespace DataAccess
         public virtual Adscripcion Adscripcion { get; set; }
 
         public override String ToString() {
-            return nombre + apellidoPaterno + apellidoMaterno;
+            return nombre + " " + apellidoPaterno + " " + apellidoMaterno;
         }
     }
 }
