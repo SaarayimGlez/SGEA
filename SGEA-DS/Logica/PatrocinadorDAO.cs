@@ -40,5 +40,37 @@ namespace Logica
             }
             return respuesta;
         }
+
+        public List<Patrocinador> RecuperarPatrocinador(int eventoId)
+        {
+            List<Patrocinador> listaPatrocinador = new List<Patrocinador>();
+            try
+            {
+                var patrocinadorRecuperado = _context.PatrocinadorSet
+                    /*.Join(
+                        _context.EventoSet,
+                        patrocinador => patrocinador.Ingreso.RegistroArticulo.Articulo.Actividad.EventoId,
+                        evento => evento.Id,
+                        (patrocinador, evento) => new
+                        {
+                            EventoId = evento.Id,
+                            Patrocinador = patrocinador
+                        }
+                     ).Where(
+                        evento => evento.EventoId == eventoId
+                     );
+
+                foreach (var patrocinador in patrocinadorRecuperado)
+                {
+                    listaPatrocinador.Add(patrocinador.Patrocinador);
+                }*/.ToList();
+                listaPatrocinador = patrocinadorRecuperado;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return listaPatrocinador;
+        }
     }
 }

@@ -71,7 +71,6 @@
     <Compile Include="Calendario.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Comite.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
