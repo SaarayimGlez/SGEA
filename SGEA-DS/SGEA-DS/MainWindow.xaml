@@ -7,8 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <RadioButton Content="RadioButton" HorizontalAlignment="Left" Margin="330,207,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="269,153,0,0" VerticalAlignment="Top"/>
-
+        <Button Content="CU02" HorizontalAlignment="Left" Margin="61,34,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="CU11" HorizontalAlignment="Left" Margin="61,95,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="CU13" HorizontalAlignment="Left" Margin="61,158,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_2"/>
+        <Button Content="CU37" HorizontalAlignment="Left" Margin="61,223,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
+        <Button Content="CU39" HorizontalAlignment="Left" Margin="61,294,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_4"/>
     </Grid>
 </Window>
