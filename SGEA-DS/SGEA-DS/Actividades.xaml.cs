@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
+using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -25,9 +26,6 @@ namespace SGEA_DS {
             Evento = evento;
             Centinel = centinela;
             InitializeComponent();
-            Console.WriteLine(evento);
-            Console.ReadLine();
-            Console.WriteLine(Centinel);
             CargarDatos();
         }
 

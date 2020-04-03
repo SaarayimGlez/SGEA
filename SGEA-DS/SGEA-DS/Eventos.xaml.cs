@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,12 +54,16 @@ namespace SGEA_DS {
         }
 
         private void CargarDatos() {
-            using (var container = new DataModelContainer()) {
-                var eventos = (from evento in container.EventoSet
-                               orderby evento.Id
-                               select evento).ToList();
-                
-                LBEventos.ItemsSource = eventos;
+            try {
+                using (var container = new DataModelContainer()) {
+                    var eventos = (from evento in container.EventoSet
+                                   orderby evento.Id
+                                   select evento).ToList();
+
+                    LBEventos.ItemsSource = eventos;
+                }
+            } catch (Exception) {
+                LBMensaje.Content = "No hay conexión a la base de datos, inténtelo más tarde";
             }
         }
     }
