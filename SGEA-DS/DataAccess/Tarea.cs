@@ -7,18 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Tarea
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Tarea
-    {
-        public int Id { get; set; }
-        public string descripcion { get; set; }
-        public string nombre { get; set; }
-        public int ActividadId { get; set; }
-    
-        public virtual Actividad Actividad { get; set; }
-    }
+    public int Id { get; set; }
+    public string descripcion { get; set; }
+    public string nombre { get; set; }
+    public int ActividadId { get; set; }
+
+    public virtual Actividad Actividad { get; set; }
 }

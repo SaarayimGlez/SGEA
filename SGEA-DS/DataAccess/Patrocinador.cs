@@ -7,24 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
-{
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Patrocinador
-    {
-        public int Id { get; set; }
-        public string nombre { get; set; }
-        public string apellidoPaterno { get; set; }
-        public string apellidoMaterno { get; set; }
-        public string correoElectronico { get; set; }
-        public string empresa { get; set; }
-        public string direccion { get; set; }
-        public string numeroTelefono { get; set; }
+using System;
+using System.Collections.Generic;
 
-        public override string ToString() {
-            return nombre + " " + apellidoPaterno + " " + apellidoMaterno;
-        }
-    }
+public partial class Patrocinador
+{
+    public int Id { get; set; }
+    public string nombre { get; set; }
+    public string apellidoPaterno { get; set; }
+    public string apellidoMaterno { get; set; }
+    public string correoElectronico { get; set; }
+    public string empresa { get; set; }
+    public string direccion { get; set; }
+    public string numeroTelefono { get; set; }
+    public Nullable<int> IngresoPatrocinador_Patrocinador_Id { get; set; }
+
+    public virtual Ingreso IngresoSet { get; set; }
 }

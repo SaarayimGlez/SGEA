@@ -7,17 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Presupuesto
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Presupuesto
-    {
-        public int Id { get; set; }
-        public string concepto { get; set; }
-        public double supuestoPresupuesto { get; set; }
-    
-        public virtual Evento Evento { get; set; }
-    }
+    public int Id { get; set; }
+    public string concepto { get; set; }
+    public double supuestoPresupuesto { get; set; }
+
+    public virtual Evento Evento { get; set; }
 }
