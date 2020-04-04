@@ -7,28 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Participante
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Participante
-    {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Participante()
-        {
-            this.Actividad = new HashSet<Actividad>();
-        }
-    
-        public int Id { get; set; }
-        public string nombre { get; set; }
-        public string apellidoPaterno { get; set; }
-        public string apellidoMaterno { get; set; }
-        public string titulo { get; set; }
-        public int AdscripcionId { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Actividad> Actividad { get; set; }
-        public virtual Adscripcion Adscripcion { get; set; }
-    }
+    public int Id { get; set; }
+    public string nombre { get; set; }
+    public string apellidoPaterno { get; set; }
+    public string apellidoMaterno { get; set; }
+    public string titulo { get; set; }
+    public int AdscripcionId { get; set; }
+
+    public virtual Adscripcion Adscripcion { get; set; }
 }

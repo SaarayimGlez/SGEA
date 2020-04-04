@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
-using DataAccess;
-using SGEA_DS;
-using Controlador;
 using Logica;
 
-namespace Controlador
+namespace SGEA_DS
 {
 
     public partial class CU01_1 : Window
@@ -17,13 +13,13 @@ namespace Controlador
 
         private List<string> listaComite;
         private List<RadioButton> listaRbComite;
-        private ComiteDAO comiteDAO;
+        private Comite_Logica comiteDAO;
         private List<int> listaIdComite;
 
         public CU01_1()
         {
             InitializeComponent();
-            llenarListaComite(2);
+            llenarListaComite(1);
         }
 
         public CU01_1(int eventoId)
@@ -34,7 +30,7 @@ namespace Controlador
 
         private void llenarListaComite(int eventoId)
         {
-            comiteDAO = new ComiteDAO();
+            comiteDAO = new Comite_Logica();
             listaComite = comiteDAO.RecuperarComitesSinLider(eventoId);
             listaRbComite = new List<RadioButton>();
             listaIdComite = new List<int>();

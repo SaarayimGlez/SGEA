@@ -7,18 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Evento
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Evento
-    {
-        public int Id { get; set; }
-        public string nombre { get; set; }
-        public System.DateTime fechaInicio { get; set; }
-        public System.DateTime fechaFin { get; set; }
-        public string lugar { get; set; }
-        public string institucionOrganizadora { get; set; }
-    }
+    public int Id { get; set; }
+    public string nombre { get; set; }
+    public System.DateTime fechaInicio { get; set; }
+    public System.DateTime fechaFin { get; set; }
+    public string lugar { get; set; }
+    public string institucionOrganizadora { get; set; }
 }

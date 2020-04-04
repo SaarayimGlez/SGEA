@@ -53,12 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActividadDAO.cs" />
-    <Compile Include="RegistroArticuloDAO.cs" />
-    <Compile Include="ComiteDAO.cs" />
-    <Compile Include="MiembroComiteDAO.cs" />
-    <Compile Include="OrganizadorDAO.cs" />
-    <Compile Include="PatrocinadorDAO.cs" />
+    <Compile Include="Actividad_Logica.cs" />
+    <Compile Include="RegistroArticulo_Logica.cs" />
+    <Compile Include="Comite_Logica.cs" />
+    <Compile Include="MiembroComite_Logica.cs" />
+    <Compile Include="Patrocinador_Logica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

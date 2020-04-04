@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccess;
+using Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,30 +28,8 @@ namespace SGEA_DS {
 
         private void llenarListaPatrocinadores()
         {
-            List<Patrocinador> listaPatrocinador = new List<Patrocinador>();
-
-            /**/
-            Patrocinador patrocinador1 = new Patrocinador();
-            Patrocinador patrocinador2 = new Patrocinador();
-            Patrocinador patrocinador3 = new Patrocinador();
-            Patrocinador patrocinador4 = new Patrocinador();
-            patrocinador1.nombre = "nombre1";
-            patrocinador1.apellidoPaterno = "apelldio1";
-            patrocinador1.apellidoMaterno = "apellido12";
-            patrocinador1.correoElectronico = "correo1";
-            patrocinador1.empresa = "empresa1";
-            patrocinador1.direccion = "dir1";
-            patrocinador1.numeroTelefono = "1";
-            patrocinador2.nombre = "nombre2";
-            patrocinador2.apellidoPaterno = "apelldio2";
-            patrocinador2.apellidoMaterno = "apellido22";
-            patrocinador2.correoElectronico = "correo2";
-            patrocinador2.empresa = "empresa2";
-            patrocinador2.direccion = "dir2";
-            patrocinador2.numeroTelefono = "2";
-            listaPatrocinador.Add(patrocinador1);
-            listaPatrocinador.Add(patrocinador2);
-            /**/
+            Patrocinador_Logica patrocinadorDAO = new Patrocinador_Logica();
+            List<Patrocinador> listaPatrocinador = patrocinadorDAO.RecuperarPatrocinador();
 
             for (int i = 0; i < listaPatrocinador.Count; i++)
             {
@@ -77,12 +57,12 @@ namespace SGEA_DS {
             lblPatrocinador.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
             lblPatrocinador.FontSize = 20;
             
-            spToolTip.Children.Add(new TextBlock() { Text = "Nombre:\t\t" + patrocinador.nombre });
-            spToolTip.Children.Add(new TextBlock() { Text = "Apellido paterno:\t" + patrocinador.apellidoPaterno });
-            spToolTip.Children.Add(new TextBlock() { Text = "Apellido materno:\t" + patrocinador.apellidoMaterno });
-            spToolTip.Children.Add(new TextBlock() { Text = "Correo electrónico:" + patrocinador.correoElectronico });
-            spToolTip.Children.Add(new TextBlock() { Text = "Direccion:\t  " + patrocinador.direccion });
-            spToolTip.Children.Add(new TextBlock() { Text = "Numweo telefónico:" + patrocinador.numeroTelefono });
+            spToolTip.Children.Add(new TextBlock() { Text = "Nombre:\t\t  " + patrocinador.nombre });
+            spToolTip.Children.Add(new TextBlock() { Text = "Apellido paterno:\t  " + patrocinador.apellidoPaterno });
+            spToolTip.Children.Add(new TextBlock() { Text = "Apellido materno:\t  " + patrocinador.apellidoMaterno });
+            spToolTip.Children.Add(new TextBlock() { Text = "Correo electrónico: " + patrocinador.correoElectronico });
+            spToolTip.Children.Add(new TextBlock() { Text = "Direccion:\t   " + patrocinador.direccion });
+            spToolTip.Children.Add(new TextBlock() { Text = "Numweo telefónico: " + patrocinador.numeroTelefono });
 
             ToolTip tooltip = new ToolTip { Content = spToolTip };
             rectangulo.ToolTip = tooltip;

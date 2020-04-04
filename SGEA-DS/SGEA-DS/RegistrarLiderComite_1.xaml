@@ -1,4 +1,4 @@
-﻿<Window x:Class="Controlador.CU01_1"
+﻿<Window x:Class="SGEA_DS.CU01_1"
         
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"

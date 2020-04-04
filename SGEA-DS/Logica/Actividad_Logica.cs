@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class ActividadDAO
+    public class Actividad_Logica
     {
         private DataModelContainer _context;
 
-        public ActividadDAO()
+        public Actividad_Logica()
         {
             _context = new DataModelContainer();
         }
@@ -50,58 +50,40 @@ namespace Logica
                             HoraFin = calendario.horaFin,
                             Actividad = actividad
                         }
-                     )
-                     .GroupJoin(
-                        _context.ArticuloSet,
-                        actividad => actividad.Actividad.ActividadId,
-                        articulo => articulo.Actividad.Id,
-                        (x, y) => new
-                        {
-                            Actividad = x,
-                            Articulo = y
-                        }
-                     )
-                     .SelectMany(
-                        x => x.Articulo.DefaultIfEmpty(),
-                        (x, y) => new
-                        {
-                            Actividad = x.Actividad,
-                            Articulo = y
-                        }
                      ).Where(
-                        evento => evento.Actividad.Actividad.EventoId == eventoId
+                        evento => evento.Actividad.EventoId == eventoId
                      );
                 
-                actividadesEvento = actividadesEvento.OrderBy(x => x.Actividad.Fecha);
-                actividadesEvento = actividadesEvento.OrderBy(x => x.Actividad.HoraInicio);
+                actividadesEvento = actividadesEvento.OrderBy(calendario => calendario.Fecha);
+                actividadesEvento = actividadesEvento.OrderBy(calendario => calendario.HoraInicio);
 
                 foreach (var lista in actividadesEvento)
                 {
                     listaActividad.Add(new List<string>(new string[] {
-                        lista.Actividad.Actividad.Nombre,
-                        lista.Actividad.Actividad.Costo.ToString(),
-                        lista.Actividad.Fecha.ToString("MM/dd/yyyy"),
-                        lista.Actividad.HoraInicio.ToString(@"hh\:mm"),
-                        lista.Actividad.HoraInicio.ToString(@"hh\:mm"),
-                        lista.Actividad.Actividad.Aula,
-                        lista.Actividad.Actividad.Tipo
+                        lista.Actividad.Nombre,
+                        lista.Actividad.Costo.ToString(),
+                        lista.Fecha.ToString("MM/dd/yyyy"),
+                        lista.HoraInicio.ToString(@"hh\:mm"),
+                        lista.HoraInicio.ToString(@"hh\:mm"),
+                        lista.Actividad.Aula,
+                        lista.Actividad.Tipo
                     }));
-                    if (lista.Articulo != null)
+                    if (lista.Actividad.ArticuloAct != null)
                     {
-                        RegistroArticuloDAO registroArticuloDAO = new RegistroArticuloDAO();
-                        listaActividad[listaActividad.Count - 1].Add(registroArticuloDAO.RecuperarAutor(lista.Articulo));
+                        RegistroArticulo_Logica registroArticuloDAO = new RegistroArticulo_Logica();
+                        listaActividad[listaActividad.Count - 1].Add(registroArticuloDAO.RecuperarAutor(lista.Actividad.ArticuloAct));
                     }
-                    if (lista.Actividad.Actividad.MagistralAct != null)
+                    if (lista.Actividad.MagistralAct != null)
                     {
                         listaActividad[listaActividad.Count - 1].Add(
-                            lista.Actividad.Actividad.MagistralAct.nombre + " " 
-                            + lista.Actividad.Actividad.MagistralAct.apellidoPaterno + " " 
-                            + lista.Actividad.Actividad.MagistralAct.apellidoMaterno);
+                            lista.Actividad.MagistralAct.nombre + " " 
+                            + lista.Actividad.MagistralAct.apellidoPaterno + " " 
+                            + lista.Actividad.MagistralAct.apellidoMaterno);
                     }
-                    if (lista.Actividad.Actividad.ParticipanteAct != null)
+                    if (lista.Actividad.ParticipanteAct != null)
                     {
                         string participanteAct = "";
-                        foreach (Participante participante in lista.Actividad.Actividad.ParticipanteAct)
+                        foreach (Participante participante in lista.Actividad.ParticipanteAct)
                         {
                             if (participanteAct.Equals(""))
                             {

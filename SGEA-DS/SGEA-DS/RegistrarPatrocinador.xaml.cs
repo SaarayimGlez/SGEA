@@ -18,8 +18,6 @@ using System.Windows.Shapes;
 namespace SGEA_DS {
     public partial class CU06 : Window {
 
-        private int eventoId;
-
         public CU06()
         {
             InitializeComponent();
@@ -28,7 +26,6 @@ namespace SGEA_DS {
         public CU06(int eventoId)
         {
             InitializeComponent();
-            this.eventoId = eventoId;
         }
 
         private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
@@ -106,7 +103,7 @@ namespace SGEA_DS {
 
         private bool nuevoComite()
         {
-            PatrocinadorDAO patrocinadorDAO = new PatrocinadorDAO();
+            Patrocinador_Logica patrocinadorDAO = new Patrocinador_Logica();
             return patrocinadorDAO.RegistrarPatrocinador(new Patrocinador() {
                 nombre = textbox_Nombre.Text,
                 apellidoPaterno = textbox_ApellidoP.Text,
@@ -114,8 +111,7 @@ namespace SGEA_DS {
                 empresa = textbox_Empresa.Text,
                 direccion = textbox_Direccion.Text,
                 correoElectronico = textbox_CorreoE.Text,
-                numeroTelefono = textbox_NumeroTel.Text,
-                Ingreso = new Ingreso() { monto = 100, concepto = "registro de patrocinador", fecha = DateTime.Today}///
+                numeroTelefono = textbox_NumeroTel.Text
             } );
         }
 

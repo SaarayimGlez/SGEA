@@ -38,12 +38,12 @@ namespace DataAccess
         public virtual DbSet<Egreso> EgresoSet { get; set; }
         public virtual DbSet<Material> MaterialSet { get; set; }
         public virtual DbSet<Ingreso> IngresoSet { get; set; }
-        public virtual DbSet<Patrocinador> PatrocinadorSet { get; set; }
         public virtual DbSet<Evento> EventoSet { get; set; }
         public virtual DbSet<Presupuesto> PresupuestoSet { get; set; }
         public virtual DbSet<Comite> ComiteSet { get; set; }
         public virtual DbSet<Asistente> AsistenteSet { get; set; }
         public virtual DbSet<Tarea> TareaSet { get; set; }
         public virtual DbSet<Organizador> OrganizadorSet { get; set; }
+        public virtual DbSet<Patrocinador> PatrocinadorSet { get; set; }
     }
 }

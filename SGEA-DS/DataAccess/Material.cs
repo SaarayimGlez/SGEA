@@ -7,20 +7,14 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Material
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Material
-    {
-        public int Id { get; set; }
-        public string tipo { get; set; }
-        public int cantidad { get; set; }
-        public double costo { get; set; }
-        public int ActividadId { get; set; }
-    
-        public virtual Actividad Actividad { get; set; }
-        public virtual Egreso Egreso { get; set; }
-    }
+    public int Id { get; set; }
+    public string tipo { get; set; }
+    public int cantidad { get; set; }
+    public double costo { get; set; }
+    public int ActividadId { get; set; }
 }

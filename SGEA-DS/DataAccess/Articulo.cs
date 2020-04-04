@@ -7,17 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Articulo
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Articulo
-    {
-        public int Id { get; set; }
-        public string @abstract { get; set; }
-        public byte documento { get; set; }
-    
-        public virtual Actividad Actividad { get; set; }
-    }
+    public int Id { get; set; }
+    public string @abstract { get; set; }
+    public byte documento { get; set; }
 }

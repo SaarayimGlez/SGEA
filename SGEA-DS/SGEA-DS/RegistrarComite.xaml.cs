@@ -1,29 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using DataAccess;
 using Logica;
 
-namespace Controlador
+namespace SGEA_DS
 {
     public partial class CU04 : Window
     {
         private int eventoId;
-        private ComiteDAO comiteDAO;
+        private Comite_Logica comiteDAO;
 
         public CU04()
         {
+            this.eventoId = 1;
             InitializeComponent();
         }
 
@@ -76,8 +69,8 @@ namespace Controlador
             Comite nuevoComite = new Comite();
             nuevoComite.nombre = textbox_Nombre.Text;
             nuevoComite.descripcion = textbox_Descripcion.Text;
-            nuevoComite.EventoId = 2;//eventoId
-            comiteDAO = new ComiteDAO();
+            nuevoComite.EventoId = eventoId;
+            comiteDAO = new Comite_Logica();
             return comiteDAO.RegistrarComite(nuevoComite);
         }
 

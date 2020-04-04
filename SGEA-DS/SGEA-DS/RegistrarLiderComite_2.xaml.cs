@@ -4,15 +4,12 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
-using System.Text.RegularExpressions;
 using System.Windows.Input;
 using System.Linq;
 using DataAccess;
-using SGEA_DS;
-using Controlador;
 using Logica;
 
-namespace Controlador
+namespace SGEA_DS
 {
 
     public partial class CU01_2 : Window
@@ -22,7 +19,7 @@ namespace Controlador
         private bool handle = true;
         private List<TextBox> listaTBSinNum;
         private List<TextBox> listaTBSinEspacio;
-        private MiembroComiteDAO miembroComiteDAO;
+        private MiembroComite_Logica miembroComiteDAO;
 
         private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
         {
@@ -105,6 +102,10 @@ namespace Controlador
                     liderComite = true,
                     ComiteId = comiteId
                 };
+                if(comiteId == 1)
+                {
+                    nuevoMLComite.evaluador = true;
+                }
                 try
                 {
                     return miembroComiteDAO.RegistrarMCLider(nuevoMLComite);
@@ -126,6 +127,10 @@ namespace Controlador
                     contrasenia = textbox_Contrasena.Text,
                     ComiteId = comiteId
                 };
+                if (comiteId == 1)
+                {
+                    nuevoMLComite.evaluador = true;
+                }
                 foreach (MiembroComite miembro in listaMCNoLider)
                 {
                     if (combobox_MiembroC.SelectedItem.ToString().Equals(
@@ -197,7 +202,7 @@ namespace Controlador
 
         private void llenarComboBox()
         {
-            miembroComiteDAO = new MiembroComiteDAO();
+            miembroComiteDAO = new MiembroComite_Logica();
             listaMCNoLider = miembroComiteDAO.RecuperarMCNoLider();
             
             foreach (MiembroComite miembro in listaMCNoLider)

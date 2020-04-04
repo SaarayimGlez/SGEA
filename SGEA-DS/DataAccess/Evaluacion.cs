@@ -7,20 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Evaluacion
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Evaluacion
-    {
-        public int Id { get; set; }
-        public int calificacion { get; set; }
-        public string descripcion { get; set; }
-        public System.DateTime fecha { get; set; }
-        public int ArticuloId { get; set; }
-    
-        public virtual Articulo Articulo { get; set; }
-        public virtual MiembroComite MiembroComite { get; set; }
-    }
+    public int Id { get; set; }
+    public int calificacion { get; set; }
+    public string descripcion { get; set; }
+    public System.DateTime fecha { get; set; }
+    public int ArticuloId { get; set; }
+
+    public virtual Articulo Articulo { get; set; }
+    public virtual MiembroComite MiembroComite { get; set; }
 }

@@ -7,19 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Egreso
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Egreso
-    {
-        public int Id { get; set; }
-        public string concepto { get; set; }
-        public double monto { get; set; }
-        public System.DateTime fecha { get; set; }
-    
-        public virtual Magistral Magistral { get; set; }
-        public virtual Material Material { get; set; }
-    }
+    public int Id { get; set; }
+    public string concepto { get; set; }
+    public double monto { get; set; }
+    public System.DateTime fecha { get; set; }
+
+    public virtual Magistral Magistral { get; set; }
+    public virtual Material Material { get; set; }
 }

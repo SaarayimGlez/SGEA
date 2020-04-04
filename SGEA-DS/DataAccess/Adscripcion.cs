@@ -7,18 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Adscripcion
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Adscripcion
-    {
-        public int Id { get; set; }
-        public string ciudad { get; set; }
-        public string direccion { get; set; }
-        public string correoElectronico { get; set; }
-        public string estado { get; set; }
-        public string nombre { get; set; }
-    }
+    public int Id { get; set; }
+    public string ciudad { get; set; }
+    public string direccion { get; set; }
+    public string correoElectronico { get; set; }
+    public string estado { get; set; }
+    public string nombre { get; set; }
 }

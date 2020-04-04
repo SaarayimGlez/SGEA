@@ -11,14 +11,14 @@ using System.Windows.Shapes;
 using Logica;
 using Microsoft.WindowsAPICodePack.Shell;
 
-namespace Controlador
+namespace SGEA_DS
 {
     public partial class CU05 : Window {
         
         public CU05()
         {
             InitializeComponent();
-            llenarListaActividades(2);
+            llenarListaActividades(1);
         }
 
         public CU05(int eventoId)
@@ -29,7 +29,7 @@ namespace Controlador
 
         private void llenarListaActividades(int eventoId)
         {
-            ActividadDAO actividadDAO = new ActividadDAO();
+            Actividad_Logica actividadDAO = new Actividad_Logica();
             List<List<string>> listaActividades = actividadDAO.RecuperarProgramaEvento(eventoId);
 
             foreach (List<string> actividad in listaActividades)

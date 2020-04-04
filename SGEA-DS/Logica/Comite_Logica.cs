@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class ComiteDAO
+    public class Comite_Logica
     {
         private DataModelContainer _context;
 
-        public ComiteDAO()
+        public Comite_Logica()
         {
             _context = new DataModelContainer();
         }
@@ -37,18 +37,18 @@ namespace Logica
                         _context.MiembroComiteSet,
                         comite => comite.ComiteId,
                         miembro => miembro.ComiteId,
-                        (x, y) => new
+                        (comite, miembroC) => new
                         {
-                            Comite = x,
-                            MiembroComite = y
+                            Comite = comite,
+                            MiembroComite = miembroC
                         }
                      )
                      .SelectMany(
-                        x => x.MiembroComite.DefaultIfEmpty(),
-                        (x, y) => new
+                        tempComite => tempComite.MiembroComite.DefaultIfEmpty(),
+                        (tempComite, tempMiembroC) => new
                         {
-                            Comite = x.Comite,
-                            MiembroComite = y
+                            Comite = tempComite.Comite,
+                            MiembroComite = tempMiembroC
                         }
                      ).Where(
                         evento => evento.Comite.EventoId == eventoId 

@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class MiembroComiteDAO
+    public class MiembroComite_Logica
     {
         private DataModelContainer _context;
 
-        public MiembroComiteDAO()
+        public MiembroComite_Logica()
         {
             _context = new DataModelContainer();
         }
