@@ -30,8 +30,8 @@
             <ComboBoxItem Content="Licenciatura en Estadística"/>
         </ComboBox>
         <TextBox x:Name="TBlugar" HorizontalAlignment="Left" Height="23" Margin="274,284,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="354"/>
-        <Button Content="Aceptar" HorizontalAlignment="Left" Margin="501,356,0,0" VerticalAlignment="Top" Width="90" Click="GuardarEvento"/>
-        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="650,356,0,0" VerticalAlignment="Top" Width="90" Background="#FF7348C0" Click="CancelarEvento"/>
+        <Button x:Name="button_Aceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="501,356,0,0" VerticalAlignment="Top" Width="90" Click="GuardarEvento"/>
+        <Button x:Name="button_Cancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="650,356,0,0" VerticalAlignment="Top" Width="90" Background="#FF7348C0" Click="CancelarEvento"/>
         <Label Name="LBMensage" HorizontalAlignment="Left" Margin="38,339,0,0" VerticalAlignment="Top" Height="49" Width="402" Foreground="#DDDD0000" FontWeight="Bold"/>
     </Grid>
 </Window>

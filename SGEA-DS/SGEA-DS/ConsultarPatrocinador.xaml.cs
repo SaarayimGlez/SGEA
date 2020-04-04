@@ -83,6 +83,8 @@ namespace SGEA_DS {
 
         private void click_Cancelar(object sender, RoutedEventArgs e)
         {
+            MainWindow main = new MainWindow();
+            main.Show();
             this.Close();
         }
 

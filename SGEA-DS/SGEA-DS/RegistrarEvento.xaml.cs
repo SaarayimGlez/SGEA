@@ -20,6 +20,8 @@ namespace SGEA_DS
     /// </summary>
     public partial class RegistrarEvento : Window
     {
+        private int eventoId;
+
         public RegistrarEvento()
         {
             InitializeComponent();
@@ -43,7 +45,11 @@ namespace SGEA_DS
                 DataModelContainer container = new DataModelContainer();
                 container.EventoSet.Add(nuevo);
                 container.SaveChanges();
+                var eventoRegistrado = container.EventoSet.ToList();
+                eventoId = eventoRegistrado[eventoRegistrado.Count - 1].Id;
                 LBMensage.Content = "Evento creado con éxito*";
+                button_Cancelar.Content = "Regresar";
+                button_Aceptar.Visibility = Visibility.Hidden;
             }
             catch (Exception ex)
             {
@@ -54,9 +60,18 @@ namespace SGEA_DS
 
         private void CancelarEvento(object sender, RoutedEventArgs e)
         {
-            VentanaPrincipal main = new VentanaPrincipal();
-            main.Show();
-            this.Close();
+            MainWindow main;
+            if ((button_Cancelar.Content as string) == "Regresar")
+            {
+                main = new MainWindow(eventoId, TBnombre.Text);
+                main.Show();
+                this.Close();
+            } else
+            {
+                main = new MainWindow();
+                main.Show();
+                this.Close();
+            }
         }
 
         private bool ValidarDatos()

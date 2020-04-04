@@ -4,663 +4,663 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="DataModelStoreContainer">
-    <EntitySet Name="ActividadSet" EntityType="DataModel.Store.ActividadSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ArticuloSet" EntityType="DataModel.Store.ArticuloSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="RegistroArticuloSet" EntityType="DataModel.Store.RegistroArticuloSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="AdscripcionSet" EntityType="DataModel.Store.AdscripcionSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="AutorSet" EntityType="DataModel.Store.AutorSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="EvaluacionSet" EntityType="DataModel.Store.EvaluacionSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="MiembroComiteSet" EntityType="DataModel.Store.MiembroComiteSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="CalendarioSet" EntityType="DataModel.Store.CalendarioSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="MagistralSet" EntityType="DataModel.Store.MagistralSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ParticipanteSet" EntityType="DataModel.Store.ParticipanteSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="EgresoSet" EntityType="DataModel.Store.EgresoSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="MaterialSet" EntityType="DataModel.Store.MaterialSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="IngresoSet" EntityType="DataModel.Store.IngresoSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="EventoSet" EntityType="DataModel.Store.EventoSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PresupuestoSet" EntityType="DataModel.Store.PresupuestoSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ComiteSet" EntityType="DataModel.Store.ComiteSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="AsistenteSet" EntityType="DataModel.Store.AsistenteSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TareaSet" EntityType="DataModel.Store.TareaSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="OrganizadorSet" EntityType="DataModel.Store.OrganizadorSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PatrocinadorSet" EntityType="DataModel.Store.PatrocinadorSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ActividadParticipante" EntityType="DataModel.Store.ActividadParticipante" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ActividadAsistente" EntityType="DataModel.Store.ActividadAsistente" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="ActividadArticulo" Association="DataModel.Store.ActividadArticulo">
-      <End Role="Actividad" EntitySet="ActividadSet" />
-      <End Role="Articulo" EntitySet="ArticuloSet" />
-    </AssociationSet>
-    <AssociationSet Name="ArticuloRegistroArticulo" Association="DataModel.Store.ArticuloRegistroArticulo">
-      <End Role="Articulo" EntitySet="ArticuloSet" />
-      <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
-    </AssociationSet>
-    <AssociationSet Name="AutorRegistroArticulo" Association="DataModel.Store.AutorRegistroArticulo">
-      <End Role="Autor" EntitySet="AutorSet" />
-      <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
-    </AssociationSet>
-    <AssociationSet Name="ArticuloEvaluacion" Association="DataModel.Store.ArticuloEvaluacion">
-      <End Role="Articulo" EntitySet="ArticuloSet" />
-      <End Role="Evaluacion" EntitySet="EvaluacionSet" />
-    </AssociationSet>
-    <AssociationSet Name="EvaluacionMiembroComite" Association="DataModel.Store.EvaluacionMiembroComite">
-      <End Role="Evaluacion" EntitySet="EvaluacionSet" />
-      <End Role="MiembroComite" EntitySet="MiembroComiteSet" />
-    </AssociationSet>
-    <AssociationSet Name="ActividadCalendario" Association="DataModel.Store.ActividadCalendario">
-      <End Role="Actividad" EntitySet="ActividadSet" />
-      <End Role="Calendario" EntitySet="CalendarioSet" />
-    </AssociationSet>
-    <AssociationSet Name="AdscripcionParticipante" Association="DataModel.Store.AdscripcionParticipante">
-      <End Role="Adscripcion" EntitySet="AdscripcionSet" />
-      <End Role="Participante" EntitySet="ParticipanteSet" />
-    </AssociationSet>
-    <AssociationSet Name="AdscripcionMagistral" Association="DataModel.Store.AdscripcionMagistral">
-      <End Role="Adscripcion" EntitySet="AdscripcionSet" />
-      <End Role="Magistral" EntitySet="MagistralSet" />
-    </AssociationSet>
-    <AssociationSet Name="AdscripcionAutor" Association="DataModel.Store.AdscripcionAutor">
-      <End Role="Adscripcion" EntitySet="AdscripcionSet" />
-      <End Role="Autor" EntitySet="AutorSet" />
-    </AssociationSet>
-    <AssociationSet Name="ActividadMagistral" Association="DataModel.Store.ActividadMagistral">
-      <End Role="Actividad" EntitySet="ActividadSet" />
-      <End Role="Magistral" EntitySet="MagistralSet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ActividadParticipante_Actividad" Association="DataModel.Store.FK_ActividadParticipante_Actividad">
-      <End Role="Actividad" EntitySet="ActividadSet" />
-      <End Role="ActividadParticipante" EntitySet="ActividadParticipante" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ActividadParticipante_Participante" Association="DataModel.Store.FK_ActividadParticipante_Participante">
-      <End Role="Participante" EntitySet="ParticipanteSet" />
-      <End Role="ActividadParticipante" EntitySet="ActividadParticipante" />
-    </AssociationSet>
-    <AssociationSet Name="EgresoMagistral" Association="DataModel.Store.EgresoMagistral">
-      <End Role="Egreso" EntitySet="EgresoSet" />
-      <End Role="Magistral" EntitySet="MagistralSet" />
-    </AssociationSet>
-    <AssociationSet Name="EgresoMaterial" Association="DataModel.Store.EgresoMaterial">
-      <End Role="Egreso" EntitySet="EgresoSet" />
-      <End Role="Material" EntitySet="MaterialSet" />
-    </AssociationSet>
-    <AssociationSet Name="ActividadMaterial" Association="DataModel.Store.ActividadMaterial">
-      <End Role="Actividad" EntitySet="ActividadSet" />
-      <End Role="Material" EntitySet="MaterialSet" />
-    </AssociationSet>
-    <AssociationSet Name="RegistroArticuloIngreso" Association="DataModel.Store.RegistroArticuloIngreso">
-      <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
-      <End Role="Ingreso" EntitySet="IngresoSet" />
-    </AssociationSet>
-    <AssociationSet Name="EventoActividad" Association="DataModel.Store.EventoActividad">
-      <End Role="Evento" EntitySet="EventoSet" />
-      <End Role="Actividad" EntitySet="ActividadSet" />
-    </AssociationSet>
-    <AssociationSet Name="EventoPresupuesto" Association="DataModel.Store.EventoPresupuesto">
-      <End Role="Evento" EntitySet="EventoSet" />
-      <End Role="Presupuesto" EntitySet="PresupuestoSet" />
-    </AssociationSet>
-    <AssociationSet Name="EventoComite" Association="DataModel.Store.EventoComite">
-      <End Role="Evento" EntitySet="EventoSet" />
-      <End Role="Comite" EntitySet="ComiteSet" />
-    </AssociationSet>
-    <AssociationSet Name="ComiteActividad" Association="DataModel.Store.ComiteActividad">
-      <End Role="Comite" EntitySet="ComiteSet" />
-      <End Role="Actividad" EntitySet="ActividadSet" />
-    </AssociationSet>
-    <AssociationSet Name="ComiteMiembroComite" Association="DataModel.Store.ComiteMiembroComite">
-      <End Role="Comite" EntitySet="ComiteSet" />
-      <End Role="MiembroComite" EntitySet="MiembroComiteSet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ActividadAsistente_Actividad" Association="DataModel.Store.FK_ActividadAsistente_Actividad">
-      <End Role="Actividad" EntitySet="ActividadSet" />
-      <End Role="ActividadAsistente" EntitySet="ActividadAsistente" />
-    </AssociationSet>
-    <AssociationSet Name="FK_ActividadAsistente_Asistente" Association="DataModel.Store.FK_ActividadAsistente_Asistente">
-      <End Role="Asistente" EntitySet="AsistenteSet" />
-      <End Role="ActividadAsistente" EntitySet="ActividadAsistente" />
-    </AssociationSet>
-    <AssociationSet Name="ActividadTarea" Association="DataModel.Store.ActividadTarea">
-      <End Role="Actividad" EntitySet="ActividadSet" />
-      <End Role="Tarea" EntitySet="TareaSet" />
-    </AssociationSet>
-    <AssociationSet Name="FK_IngresoPatrocinador" Association="DataModel.Store.FK_IngresoPatrocinador">
-      <End Role="Ingreso" EntitySet="IngresoSet" />
-      <End Role="PatrocinadorSet" EntitySet="PatrocinadorSet" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="ActividadSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="costo" Type="float" Nullable="false" />
-    <Property Name="aula" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="tipo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="EventoId" Type="int" Nullable="false" />
-    <Property Name="ComiteId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ArticuloSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="abstract" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="documento" Type="tinyint" Nullable="false" />
-    <Property Name="ActividadArticulo_Articulo_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="RegistroArticuloSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="comprobantePago" Type="tinyint" Nullable="false" />
-    <Property Name="fecha" Type="datetime" Nullable="false" />
-    <Property Name="hora" Type="time" Nullable="false" Precision="7" />
-    <Property Name="cantidadPago" Type="float" Nullable="false" />
-    <Property Name="AutorId" Type="int" Nullable="false" />
-    <Property Name="Articulo_Id" Type="int" Nullable="false" />
-    <Property Name="RegistroArticuloIngreso_RegistroArticulo_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="AdscripcionSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ciudad" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="estado" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="AutorSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="AdscripcionId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="EvaluacionSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="calificacion" Type="int" Nullable="false" />
-    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="fecha" Type="datetime" Nullable="false" />
-    <Property Name="ArticuloId" Type="int" Nullable="false" />
-    <Property Name="MiembroComite_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="MiembroComiteSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="nivelExperiencia" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="liderComite" Type="bit" Nullable="false" />
-    <Property Name="ComiteId" Type="int" Nullable="false" />
-    <Property Name="nombreUsuario" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="contrasenia" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="evaluador" Type="bit" Nullable="false" />
-  </EntityType>
-  <EntityType Name="CalendarioSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="fecha" Type="datetime" Nullable="false" />
-    <Property Name="horaInicio" Type="time" Nullable="false" Precision="7" />
-    <Property Name="horaFin" Type="time" Nullable="false" Precision="7" />
-    <Property Name="ActividadId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="MagistralSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="AdscripcionId" Type="int" Nullable="false" />
-    <Property Name="ActividadMagistral_Magistral_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ParticipanteSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="titulo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="AdscripcionId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="EgresoSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="concepto" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="monto" Type="float" Nullable="false" />
-    <Property Name="fecha" Type="datetime" Nullable="false" />
-    <Property Name="Magistral_Id" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="MaterialSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="tipo" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="cantidad" Type="int" Nullable="false" />
-    <Property Name="costo" Type="float" Nullable="false" />
-    <Property Name="ActividadId" Type="int" Nullable="false" />
-    <Property Name="EgresoMaterial_Material_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="IngresoSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="concepto" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="monto" Type="float" Nullable="false" />
-    <Property Name="fecha" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="EventoSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="fechaInicio" Type="datetime" Nullable="false" />
-    <Property Name="fechaFin" Type="datetime" Nullable="false" />
-    <Property Name="lugar" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="institucionOrganizadora" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="EventoPresupuesto_Evento_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PresupuestoSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="concepto" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="supuestoPresupuesto" Type="float" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ComiteSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="EventoId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="AsistenteSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="true" />
-    <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TareaSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ActividadId" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="OrganizadorSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombreUsuario" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="contrasenia" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PatrocinadorSet">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="empresa" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="numeroTelefono" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="IngresoPatrocinador_Patrocinador_Id" Type="int" Nullable="true" />
-  </EntityType>
-  <EntityType Name="ActividadParticipante">
-    <Key>
-      <PropertyRef Name="ActividadParticipante_Participante_Id" />
-      <PropertyRef Name="Participante_Id" />
-    </Key>
-    <Property Name="ActividadParticipante_Participante_Id" Type="int" Nullable="false" />
-    <Property Name="Participante_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ActividadAsistente">
-    <Key>
-      <PropertyRef Name="ActividadAsistente_Asistente_Id" />
-      <PropertyRef Name="ActividadAsistente_Actividad_Id" />
-    </Key>
-    <Property Name="ActividadAsistente_Asistente_Id" Type="int" Nullable="false" />
-    <Property Name="ActividadAsistente_Actividad_Id" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="ActividadArticulo">
-    <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="1" />
-    <End Role="Articulo" Type="DataModel.Store.ArticuloSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Actividad">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Articulo">
-        <PropertyRef Name="ActividadArticulo_Articulo_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ArticuloRegistroArticulo">
-    <End Role="Articulo" Type="DataModel.Store.ArticuloSet" Multiplicity="1" />
-    <End Role="RegistroArticulo" Type="DataModel.Store.RegistroArticuloSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Articulo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="RegistroArticulo">
-        <PropertyRef Name="Articulo_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="AutorRegistroArticulo">
-    <End Role="Autor" Type="DataModel.Store.AutorSet" Multiplicity="1" />
-    <End Role="RegistroArticulo" Type="DataModel.Store.RegistroArticuloSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Autor">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="RegistroArticulo">
-        <PropertyRef Name="AutorId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ArticuloEvaluacion">
-    <End Role="Articulo" Type="DataModel.Store.ArticuloSet" Multiplicity="1" />
-    <End Role="Evaluacion" Type="DataModel.Store.EvaluacionSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Articulo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Evaluacion">
-        <PropertyRef Name="ArticuloId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="EvaluacionMiembroComite">
-    <End Role="Evaluacion" Type="DataModel.Store.EvaluacionSet" Multiplicity="*" />
-    <End Role="MiembroComite" Type="DataModel.Store.MiembroComiteSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="MiembroComite">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Evaluacion">
-        <PropertyRef Name="MiembroComite_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ActividadCalendario">
-    <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="1" />
-    <End Role="Calendario" Type="DataModel.Store.CalendarioSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Actividad">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Calendario">
-        <PropertyRef Name="ActividadId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="AdscripcionParticipante">
-    <End Role="Adscripcion" Type="DataModel.Store.AdscripcionSet" Multiplicity="1" />
-    <End Role="Participante" Type="DataModel.Store.ParticipanteSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Adscripcion">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Participante">
-        <PropertyRef Name="AdscripcionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="AdscripcionMagistral">
-    <End Role="Adscripcion" Type="DataModel.Store.AdscripcionSet" Multiplicity="1" />
-    <End Role="Magistral" Type="DataModel.Store.MagistralSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Adscripcion">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Magistral">
-        <PropertyRef Name="AdscripcionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="AdscripcionAutor">
-    <End Role="Adscripcion" Type="DataModel.Store.AdscripcionSet" Multiplicity="1" />
-    <End Role="Autor" Type="DataModel.Store.AutorSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Adscripcion">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Autor">
-        <PropertyRef Name="AdscripcionId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ActividadMagistral">
-    <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="1" />
-    <End Role="Magistral" Type="DataModel.Store.MagistralSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Actividad">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Magistral">
-        <PropertyRef Name="ActividadMagistral_Magistral_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="EgresoMagistral">
-    <End Role="Egreso" Type="DataModel.Store.EgresoSet" Multiplicity="*" />
-    <End Role="Magistral" Type="DataModel.Store.MagistralSet" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Magistral">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Egreso">
-        <PropertyRef Name="Magistral_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="EgresoMaterial">
-    <End Role="Egreso" Type="DataModel.Store.EgresoSet" Multiplicity="1" />
-    <End Role="Material" Type="DataModel.Store.MaterialSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Egreso">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Material">
-        <PropertyRef Name="EgresoMaterial_Material_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ActividadMaterial">
-    <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="1" />
-    <End Role="Material" Type="DataModel.Store.MaterialSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Actividad">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Material">
-        <PropertyRef Name="ActividadId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="RegistroArticuloIngreso">
-    <End Role="RegistroArticulo" Type="DataModel.Store.RegistroArticuloSet" Multiplicity="*" />
-    <End Role="Ingreso" Type="DataModel.Store.IngresoSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Ingreso">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="RegistroArticulo">
-        <PropertyRef Name="RegistroArticuloIngreso_RegistroArticulo_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="EventoActividad">
-    <End Role="Evento" Type="DataModel.Store.EventoSet" Multiplicity="1" />
-    <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Evento">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Actividad">
-        <PropertyRef Name="EventoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="EventoPresupuesto">
-    <End Role="Evento" Type="DataModel.Store.EventoSet" Multiplicity="*" />
-    <End Role="Presupuesto" Type="DataModel.Store.PresupuestoSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Presupuesto">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Evento">
-        <PropertyRef Name="EventoPresupuesto_Evento_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="EventoComite">
-    <End Role="Evento" Type="DataModel.Store.EventoSet" Multiplicity="1" />
-    <End Role="Comite" Type="DataModel.Store.ComiteSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Evento">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Comite">
-        <PropertyRef Name="EventoId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ComiteActividad">
-    <End Role="Comite" Type="DataModel.Store.ComiteSet" Multiplicity="1" />
-    <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Comite">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Actividad">
-        <PropertyRef Name="ComiteId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ComiteMiembroComite">
-    <End Role="Comite" Type="DataModel.Store.ComiteSet" Multiplicity="1" />
-    <End Role="MiembroComite" Type="DataModel.Store.MiembroComiteSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Comite">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="MiembroComite">
-        <PropertyRef Name="ComiteId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ActividadTarea">
-    <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="1" />
-    <End Role="Tarea" Type="DataModel.Store.TareaSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Actividad">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Tarea">
-        <PropertyRef Name="ActividadId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_IngresoPatrocinador">
-    <End Role="Ingreso" Type="DataModel.Store.IngresoSet" Multiplicity="0..1" />
-    <End Role="PatrocinadorSet" Type="DataModel.Store.PatrocinadorSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Ingreso">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="PatrocinadorSet">
-        <PropertyRef Name="IngresoPatrocinador_Patrocinador_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ActividadParticipante_Actividad">
-    <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="1" />
-    <End Role="ActividadParticipante" Type="DataModel.Store.ActividadParticipante" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Actividad">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ActividadParticipante">
-        <PropertyRef Name="ActividadParticipante_Participante_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ActividadParticipante_Participante">
-    <End Role="ActividadParticipante" Type="DataModel.Store.ActividadParticipante" Multiplicity="*" />
-    <End Role="Participante" Type="DataModel.Store.ParticipanteSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Participante">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ActividadParticipante">
-        <PropertyRef Name="Participante_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ActividadAsistente_Actividad">
-    <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="1" />
-    <End Role="ActividadAsistente" Type="DataModel.Store.ActividadAsistente" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Actividad">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ActividadAsistente">
-        <PropertyRef Name="ActividadAsistente_Asistente_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_ActividadAsistente_Asistente">
-    <End Role="ActividadAsistente" Type="DataModel.Store.ActividadAsistente" Multiplicity="*" />
-    <End Role="Asistente" Type="DataModel.Store.AsistenteSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="Asistente">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="ActividadAsistente">
-        <PropertyRef Name="ActividadAsistente_Actividad_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ActividadAsistente">
+          <Key>
+            <PropertyRef Name="ActividadAsistente_Asistente_Id" />
+            <PropertyRef Name="ActividadAsistente_Actividad_Id" />
+          </Key>
+          <Property Name="ActividadAsistente_Asistente_Id" Type="int" Nullable="false" />
+          <Property Name="ActividadAsistente_Actividad_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActividadParticipante">
+          <Key>
+            <PropertyRef Name="ActividadParticipante_Participante_Id" />
+            <PropertyRef Name="Participante_Id" />
+          </Key>
+          <Property Name="ActividadParticipante_Participante_Id" Type="int" Nullable="false" />
+          <Property Name="Participante_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ActividadSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="costo" Type="float" Nullable="false" />
+          <Property Name="aula" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EventoId" Type="int" Nullable="false" />
+          <Property Name="ComiteId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdscripcionSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ciudad" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="estado" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ArticuloSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="abstract" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="documento" Type="tinyint" Nullable="false" />
+          <Property Name="ActividadArticulo_Articulo_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AsistenteSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="nvarchar(max)" />
+          <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AutorSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="nvarchar(max)" />
+          <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AdscripcionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CalendarioSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="horaInicio" Type="time" Precision="7" Nullable="false" />
+          <Property Name="horaFin" Type="time" Precision="7" Nullable="false" />
+          <Property Name="ActividadId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ComiteSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EventoId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EgresoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="concepto" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="monto" Type="float" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="Magistral_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="EvaluacionSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="calificacion" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="ArticuloId" Type="int" Nullable="false" />
+          <Property Name="MiembroComite_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EventoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="fechaInicio" Type="datetime" Nullable="false" />
+          <Property Name="fechaFin" Type="datetime" Nullable="false" />
+          <Property Name="lugar" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="institucionOrganizadora" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="EventoPresupuesto_Evento_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="IngresoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="concepto" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="monto" Type="float" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MagistralSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="nvarchar(max)" />
+          <Property Name="AdscripcionId" Type="int" Nullable="false" />
+          <Property Name="ActividadMagistral_Magistral_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MaterialSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="cantidad" Type="int" Nullable="false" />
+          <Property Name="costo" Type="float" Nullable="false" />
+          <Property Name="ActividadId" Type="int" Nullable="false" />
+          <Property Name="EgresoMaterial_Material_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MiembroComiteSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="nvarchar(max)" />
+          <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nivelExperiencia" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="liderComite" Type="bit" Nullable="false" />
+          <Property Name="ComiteId" Type="int" Nullable="false" />
+          <Property Name="nombreUsuario" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="contrasenia" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="evaluador" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="OrganizadorSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreUsuario" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="contrasenia" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParticipanteSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="nvarchar(max)" />
+          <Property Name="titulo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AdscripcionId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PatrocinadorSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoPaterno" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="apellidoMaterno" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="correoElectronico" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="empresa" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="direccion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="numeroTelefono" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IngresoPatrocinador_Patrocinador_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="PresupuestoSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="concepto" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="supuestoPresupuesto" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RegistroArticuloSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="comprobantePago" Type="tinyint" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="hora" Type="time" Precision="7" Nullable="false" />
+          <Property Name="cantidadPago" Type="float" Nullable="false" />
+          <Property Name="AutorId" Type="int" Nullable="false" />
+          <Property Name="Articulo_Id" Type="int" Nullable="false" />
+          <Property Name="RegistroArticuloIngreso_RegistroArticulo_Id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TareaSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ActividadId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ActividadArticulo">
+          <End Role="ActividadSet" Type="Self.ActividadSet" Multiplicity="1" />
+          <End Role="ArticuloSet" Type="Self.ArticuloSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActividadSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticuloSet">
+              <PropertyRef Name="ActividadArticulo_Articulo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadAsistente_Actividad">
+          <End Role="ActividadSet" Type="Self.ActividadSet" Multiplicity="1" />
+          <End Role="ActividadAsistente" Type="Self.ActividadAsistente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActividadSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActividadAsistente">
+              <PropertyRef Name="ActividadAsistente_Asistente_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadAsistente_Asistente">
+          <End Role="AsistenteSet" Type="Self.AsistenteSet" Multiplicity="1" />
+          <End Role="ActividadAsistente" Type="Self.ActividadAsistente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AsistenteSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActividadAsistente">
+              <PropertyRef Name="ActividadAsistente_Actividad_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadCalendario">
+          <End Role="ActividadSet" Type="Self.ActividadSet" Multiplicity="1" />
+          <End Role="CalendarioSet" Type="Self.CalendarioSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActividadSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CalendarioSet">
+              <PropertyRef Name="ActividadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadMagistral">
+          <End Role="ActividadSet" Type="Self.ActividadSet" Multiplicity="1" />
+          <End Role="MagistralSet" Type="Self.MagistralSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActividadSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MagistralSet">
+              <PropertyRef Name="ActividadMagistral_Magistral_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadMaterial">
+          <End Role="ActividadSet" Type="Self.ActividadSet" Multiplicity="1" />
+          <End Role="MaterialSet" Type="Self.MaterialSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActividadSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialSet">
+              <PropertyRef Name="ActividadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadParticipante_Actividad">
+          <End Role="ActividadSet" Type="Self.ActividadSet" Multiplicity="1" />
+          <End Role="ActividadParticipante" Type="Self.ActividadParticipante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActividadSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActividadParticipante">
+              <PropertyRef Name="ActividadParticipante_Participante_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadParticipante_Participante">
+          <End Role="ParticipanteSet" Type="Self.ParticipanteSet" Multiplicity="1" />
+          <End Role="ActividadParticipante" Type="Self.ActividadParticipante" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParticipanteSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActividadParticipante">
+              <PropertyRef Name="Participante_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ActividadTarea">
+          <End Role="ActividadSet" Type="Self.ActividadSet" Multiplicity="1" />
+          <End Role="TareaSet" Type="Self.TareaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ActividadSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TareaSet">
+              <PropertyRef Name="ActividadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdscripcionAutor">
+          <End Role="AdscripcionSet" Type="Self.AdscripcionSet" Multiplicity="1" />
+          <End Role="AutorSet" Type="Self.AutorSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdscripcionSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AutorSet">
+              <PropertyRef Name="AdscripcionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdscripcionMagistral">
+          <End Role="AdscripcionSet" Type="Self.AdscripcionSet" Multiplicity="1" />
+          <End Role="MagistralSet" Type="Self.MagistralSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdscripcionSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MagistralSet">
+              <PropertyRef Name="AdscripcionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdscripcionParticipante">
+          <End Role="AdscripcionSet" Type="Self.AdscripcionSet" Multiplicity="1" />
+          <End Role="ParticipanteSet" Type="Self.ParticipanteSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdscripcionSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParticipanteSet">
+              <PropertyRef Name="AdscripcionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticuloEvaluacion">
+          <End Role="ArticuloSet" Type="Self.ArticuloSet" Multiplicity="1" />
+          <End Role="EvaluacionSet" Type="Self.EvaluacionSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticuloSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EvaluacionSet">
+              <PropertyRef Name="ArticuloId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ArticuloRegistroArticulo">
+          <End Role="ArticuloSet" Type="Self.ArticuloSet" Multiplicity="1" />
+          <End Role="RegistroArticuloSet" Type="Self.RegistroArticuloSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ArticuloSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroArticuloSet">
+              <PropertyRef Name="Articulo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AutorRegistroArticulo">
+          <End Role="AutorSet" Type="Self.AutorSet" Multiplicity="1" />
+          <End Role="RegistroArticuloSet" Type="Self.RegistroArticuloSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutorSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroArticuloSet">
+              <PropertyRef Name="AutorId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComiteActividad">
+          <End Role="ComiteSet" Type="Self.ComiteSet" Multiplicity="1" />
+          <End Role="ActividadSet" Type="Self.ActividadSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComiteSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActividadSet">
+              <PropertyRef Name="ComiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ComiteMiembroComite">
+          <End Role="ComiteSet" Type="Self.ComiteSet" Multiplicity="1" />
+          <End Role="MiembroComiteSet" Type="Self.MiembroComiteSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ComiteSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MiembroComiteSet">
+              <PropertyRef Name="ComiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EgresoMagistral">
+          <End Role="MagistralSet" Type="Self.MagistralSet" Multiplicity="0..1" />
+          <End Role="EgresoSet" Type="Self.EgresoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagistralSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EgresoSet">
+              <PropertyRef Name="Magistral_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EgresoMaterial">
+          <End Role="EgresoSet" Type="Self.EgresoSet" Multiplicity="1" />
+          <End Role="MaterialSet" Type="Self.MaterialSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EgresoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialSet">
+              <PropertyRef Name="EgresoMaterial_Material_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EvaluacionMiembroComite">
+          <End Role="MiembroComiteSet" Type="Self.MiembroComiteSet" Multiplicity="1" />
+          <End Role="EvaluacionSet" Type="Self.EvaluacionSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MiembroComiteSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EvaluacionSet">
+              <PropertyRef Name="MiembroComite_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventoActividad">
+          <End Role="EventoSet" Type="Self.EventoSet" Multiplicity="1" />
+          <End Role="ActividadSet" Type="Self.ActividadSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ActividadSet">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventoComite">
+          <End Role="EventoSet" Type="Self.EventoSet" Multiplicity="1" />
+          <End Role="ComiteSet" Type="Self.ComiteSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ComiteSet">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventoPresupuesto">
+          <End Role="PresupuestoSet" Type="Self.PresupuestoSet" Multiplicity="0..1" />
+          <End Role="EventoSet" Type="Self.EventoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PresupuestoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventoSet">
+              <PropertyRef Name="EventoPresupuesto_Evento_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngresoPatrocinador">
+          <End Role="IngresoSet" Type="Self.IngresoSet" Multiplicity="0..1" />
+          <End Role="PatrocinadorSet" Type="Self.PatrocinadorSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IngresoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PatrocinadorSet">
+              <PropertyRef Name="IngresoPatrocinador_Patrocinador_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroArticuloIngreso">
+          <End Role="IngresoSet" Type="Self.IngresoSet" Multiplicity="1" />
+          <End Role="RegistroArticuloSet" Type="Self.RegistroArticuloSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IngresoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroArticuloSet">
+              <PropertyRef Name="RegistroArticuloIngreso_RegistroArticulo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DataModelStoreContainer">
+          <EntitySet Name="ActividadAsistente" EntityType="Self.ActividadAsistente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActividadParticipante" EntityType="Self.ActividadParticipante" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ActividadSet" EntityType="Self.ActividadSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdscripcionSet" EntityType="Self.AdscripcionSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticuloSet" EntityType="Self.ArticuloSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AsistenteSet" EntityType="Self.AsistenteSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AutorSet" EntityType="Self.AutorSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CalendarioSet" EntityType="Self.CalendarioSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ComiteSet" EntityType="Self.ComiteSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EgresoSet" EntityType="Self.EgresoSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EvaluacionSet" EntityType="Self.EvaluacionSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EventoSet" EntityType="Self.EventoSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IngresoSet" EntityType="Self.IngresoSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MagistralSet" EntityType="Self.MagistralSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaterialSet" EntityType="Self.MaterialSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MiembroComiteSet" EntityType="Self.MiembroComiteSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrganizadorSet" EntityType="Self.OrganizadorSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParticipanteSet" EntityType="Self.ParticipanteSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PatrocinadorSet" EntityType="Self.PatrocinadorSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PresupuestoSet" EntityType="Self.PresupuestoSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroArticuloSet" EntityType="Self.RegistroArticuloSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TareaSet" EntityType="Self.TareaSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_ActividadArticulo" Association="Self.FK_ActividadArticulo">
+            <End Role="ActividadSet" EntitySet="ActividadSet" />
+            <End Role="ArticuloSet" EntitySet="ArticuloSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadAsistente_Actividad" Association="Self.FK_ActividadAsistente_Actividad">
+            <End Role="ActividadSet" EntitySet="ActividadSet" />
+            <End Role="ActividadAsistente" EntitySet="ActividadAsistente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadAsistente_Asistente" Association="Self.FK_ActividadAsistente_Asistente">
+            <End Role="AsistenteSet" EntitySet="AsistenteSet" />
+            <End Role="ActividadAsistente" EntitySet="ActividadAsistente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadCalendario" Association="Self.FK_ActividadCalendario">
+            <End Role="ActividadSet" EntitySet="ActividadSet" />
+            <End Role="CalendarioSet" EntitySet="CalendarioSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadMagistral" Association="Self.FK_ActividadMagistral">
+            <End Role="ActividadSet" EntitySet="ActividadSet" />
+            <End Role="MagistralSet" EntitySet="MagistralSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadMaterial" Association="Self.FK_ActividadMaterial">
+            <End Role="ActividadSet" EntitySet="ActividadSet" />
+            <End Role="MaterialSet" EntitySet="MaterialSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadParticipante_Actividad" Association="Self.FK_ActividadParticipante_Actividad">
+            <End Role="ActividadSet" EntitySet="ActividadSet" />
+            <End Role="ActividadParticipante" EntitySet="ActividadParticipante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadParticipante_Participante" Association="Self.FK_ActividadParticipante_Participante">
+            <End Role="ParticipanteSet" EntitySet="ParticipanteSet" />
+            <End Role="ActividadParticipante" EntitySet="ActividadParticipante" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ActividadTarea" Association="Self.FK_ActividadTarea">
+            <End Role="ActividadSet" EntitySet="ActividadSet" />
+            <End Role="TareaSet" EntitySet="TareaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdscripcionAutor" Association="Self.FK_AdscripcionAutor">
+            <End Role="AdscripcionSet" EntitySet="AdscripcionSet" />
+            <End Role="AutorSet" EntitySet="AutorSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdscripcionMagistral" Association="Self.FK_AdscripcionMagistral">
+            <End Role="AdscripcionSet" EntitySet="AdscripcionSet" />
+            <End Role="MagistralSet" EntitySet="MagistralSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdscripcionParticipante" Association="Self.FK_AdscripcionParticipante">
+            <End Role="AdscripcionSet" EntitySet="AdscripcionSet" />
+            <End Role="ParticipanteSet" EntitySet="ParticipanteSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticuloEvaluacion" Association="Self.FK_ArticuloEvaluacion">
+            <End Role="ArticuloSet" EntitySet="ArticuloSet" />
+            <End Role="EvaluacionSet" EntitySet="EvaluacionSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ArticuloRegistroArticulo" Association="Self.FK_ArticuloRegistroArticulo">
+            <End Role="ArticuloSet" EntitySet="ArticuloSet" />
+            <End Role="RegistroArticuloSet" EntitySet="RegistroArticuloSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AutorRegistroArticulo" Association="Self.FK_AutorRegistroArticulo">
+            <End Role="AutorSet" EntitySet="AutorSet" />
+            <End Role="RegistroArticuloSet" EntitySet="RegistroArticuloSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComiteActividad" Association="Self.FK_ComiteActividad">
+            <End Role="ComiteSet" EntitySet="ComiteSet" />
+            <End Role="ActividadSet" EntitySet="ActividadSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ComiteMiembroComite" Association="Self.FK_ComiteMiembroComite">
+            <End Role="ComiteSet" EntitySet="ComiteSet" />
+            <End Role="MiembroComiteSet" EntitySet="MiembroComiteSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EgresoMagistral" Association="Self.FK_EgresoMagistral">
+            <End Role="MagistralSet" EntitySet="MagistralSet" />
+            <End Role="EgresoSet" EntitySet="EgresoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EgresoMaterial" Association="Self.FK_EgresoMaterial">
+            <End Role="EgresoSet" EntitySet="EgresoSet" />
+            <End Role="MaterialSet" EntitySet="MaterialSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EvaluacionMiembroComite" Association="Self.FK_EvaluacionMiembroComite">
+            <End Role="MiembroComiteSet" EntitySet="MiembroComiteSet" />
+            <End Role="EvaluacionSet" EntitySet="EvaluacionSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventoActividad" Association="Self.FK_EventoActividad">
+            <End Role="EventoSet" EntitySet="EventoSet" />
+            <End Role="ActividadSet" EntitySet="ActividadSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventoComite" Association="Self.FK_EventoComite">
+            <End Role="EventoSet" EntitySet="EventoSet" />
+            <End Role="ComiteSet" EntitySet="ComiteSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventoPresupuesto" Association="Self.FK_EventoPresupuesto">
+            <End Role="PresupuestoSet" EntitySet="PresupuestoSet" />
+            <End Role="EventoSet" EntitySet="EventoSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngresoPatrocinador" Association="Self.FK_IngresoPatrocinador">
+            <End Role="IngresoSet" EntitySet="IngresoSet" />
+            <End Role="PatrocinadorSet" EntitySet="PatrocinadorSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroArticuloIngreso" Association="Self.FK_RegistroArticuloIngreso">
+            <End Role="IngresoSet" EntitySet="IngresoSet" />
+            <End Role="RegistroArticuloSet" EntitySet="RegistroArticuloSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -738,21 +738,8 @@
             <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
             <End Role="Ingreso" EntitySet="IngresoSet" />
           </AssociationSet>
-          <EntitySet Name="EventoSet" EntityType="DataModel.Evento" />
-          <AssociationSet Name="EventoActividad" Association="DataModel.EventoActividad">
-            <End Role="Evento" EntitySet="EventoSet" />
-            <End Role="Actividad" EntitySet="ActividadSet" />
-          </AssociationSet>
           <EntitySet Name="PresupuestoSet" EntityType="DataModel.Presupuesto" />
-          <AssociationSet Name="EventoPresupuesto" Association="DataModel.EventoPresupuesto">
-            <End Role="Evento" EntitySet="EventoSet" />
-            <End Role="Presupuesto" EntitySet="PresupuestoSet" />
-          </AssociationSet>
           <EntitySet Name="ComiteSet" EntityType="DataModel.Comite" />
-          <AssociationSet Name="EventoComite" Association="DataModel.EventoComite">
-            <End Role="Evento" EntitySet="EventoSet" />
-            <End Role="Comite" EntitySet="ComiteSet" />
-          </AssociationSet>
           <AssociationSet Name="ComiteActividad" Association="DataModel.ComiteActividad">
             <End Role="Comite" EntitySet="ComiteSet" />
             <End Role="Actividad" EntitySet="ActividadSet" />
@@ -777,6 +764,19 @@
             <End Role="Ingreso" EntitySet="IngresoSet" />
             <End Role="PatrocinadorSet" EntitySet="PatrocinadorSet" />
           </AssociationSet>
+          <EntitySet Name="EventoSet" EntityType="DataModel.Evento" />
+          <AssociationSet Name="FK_EventoActividad" Association="DataModel.FK_EventoActividad">
+            <End Role="EventoSet" EntitySet="EventoSet" />
+            <End Role="Actividad" EntitySet="ActividadSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventoComite" Association="DataModel.FK_EventoComite">
+            <End Role="EventoSet" EntitySet="EventoSet" />
+            <End Role="Comite" EntitySet="ComiteSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EventoPresupuesto" Association="DataModel.FK_EventoPresupuesto">
+            <End Role="Presupuesto" EntitySet="PresupuestoSet" />
+            <End Role="EventoSet" EntitySet="EventoSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Actividad">
           <Key>
@@ -791,10 +791,10 @@
           <NavigationProperty Name="Magistral" Relationship="DataModel.ActividadMagistral" FromRole="Actividad" ToRole="Magistral" />
           <NavigationProperty Name="Participante" Relationship="DataModel.ActividadParticipante" FromRole="Actividad" ToRole="Participante" />
           <NavigationProperty Name="Material" Relationship="DataModel.ActividadMaterial" FromRole="Actividad" ToRole="Material" />
-          <NavigationProperty Name="Evento" Relationship="DataModel.EventoActividad" FromRole="Actividad" ToRole="Evento" />
           <Property Name="EventoId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Comite" Relationship="DataModel.ComiteActividad" FromRole="Actividad" ToRole="Comite" />
           <Property Name="ComiteId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EventoSet" Relationship="DataModel.FK_EventoActividad" FromRole="Actividad" ToRole="EventoSet" />
         </EntityType>
         <EntityType Name="Articulo">
           <Key>
@@ -1051,29 +1051,6 @@
           <End Type="DataModel.RegistroArticulo" Role="RegistroArticulo" Multiplicity="0..1" />
           <End Type="DataModel.Ingreso" Role="Ingreso" Multiplicity="1" />
         </Association>
-        <EntityType Name="Evento">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="fechaFin" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="lugar" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="institucionOrganizadora" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <Association Name="EventoActividad">
-          <End Type="DataModel.Evento" Role="Evento" Multiplicity="1" />
-          <End Type="DataModel.Actividad" Role="Actividad" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Evento">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Actividad">
-              <PropertyRef Name="EventoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="Presupuesto">
           <Key>
             <PropertyRef Name="Id" />
@@ -1081,12 +1058,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="concepto" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="supuestoPresupuesto" Type="Double" Nullable="false" />
-          <NavigationProperty Name="Evento" Relationship="DataModel.EventoPresupuesto" FromRole="Presupuesto" ToRole="Evento" />
+          <NavigationProperty Name="EventoSet" Relationship="DataModel.FK_EventoPresupuesto" FromRole="Presupuesto" ToRole="EventoSet" />
         </EntityType>
-        <Association Name="EventoPresupuesto">
-          <End Type="DataModel.Evento" Role="Evento" Multiplicity="1" />
-          <End Type="DataModel.Presupuesto" Role="Presupuesto" Multiplicity="1" />
-        </Association>
         <EntityType Name="Comite">
           <Key>
             <PropertyRef Name="Id" />
@@ -1094,21 +1067,9 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Evento" Relationship="DataModel.EventoComite" FromRole="Comite" ToRole="Evento" />
           <Property Name="EventoId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EventoSet" Relationship="DataModel.FK_EventoComite" FromRole="Comite" ToRole="EventoSet" />
         </EntityType>
-        <Association Name="EventoComite">
-          <End Type="DataModel.Evento" Role="Evento" Multiplicity="1" />
-          <End Type="DataModel.Comite" Role="Comite" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Evento">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Comite">
-              <PropertyRef Name="EventoId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ComiteActividad">
           <End Type="DataModel.Comite" Role="Comite" Multiplicity="1" />
           <End Type="DataModel.Actividad" Role="Actividad" Multiplicity="*" />
@@ -1201,6 +1162,57 @@
             </Principal>
             <Dependent Role="PatrocinadorSet">
               <PropertyRef Name="IngresoPatrocinador_Patrocinador_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="fechaFin" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="lugar" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="institucionOrganizadora" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EventoPresupuesto_Evento_Id" Type="Int32" />
+          <NavigationProperty Name="ActividadSet" Relationship="DataModel.FK_EventoActividad" FromRole="EventoSet" ToRole="Actividad" />
+          <NavigationProperty Name="ComiteSet" Relationship="DataModel.FK_EventoComite" FromRole="EventoSet" ToRole="Comite" />
+          <NavigationProperty Name="PresupuestoSet" Relationship="DataModel.FK_EventoPresupuesto" FromRole="EventoSet" ToRole="Presupuesto" />
+        </EntityType>
+        <Association Name="FK_EventoActividad">
+          <End Type="DataModel.Evento" Role="EventoSet" Multiplicity="1" />
+          <End Type="DataModel.Actividad" Role="Actividad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Actividad">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventoComite">
+          <End Type="DataModel.Evento" Role="EventoSet" Multiplicity="1" />
+          <End Type="DataModel.Comite" Role="Comite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EventoSet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comite">
+              <PropertyRef Name="EventoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EventoPresupuesto">
+          <End Type="DataModel.Presupuesto" Role="Presupuesto" Multiplicity="0..1" />
+          <End Type="DataModel.Evento" Role="EventoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Presupuesto">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EventoSet">
+              <PropertyRef Name="EventoPresupuesto_Evento_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1361,18 +1373,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EventoSet">
-      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Evento)">
-        <MappingFragment StoreEntitySet="EventoSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="nombre" ColumnName="nombre" />
-          <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
-          <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
-          <ScalarProperty Name="lugar" ColumnName="lugar" />
-          <ScalarProperty Name="institucionOrganizadora" ColumnName="institucionOrganizadora" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="PresupuestoSet">
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.Presupuesto)">
         <MappingFragment StoreEntitySet="PresupuestoSet">
@@ -1502,14 +1502,6 @@
         <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="EventoPresupuesto" TypeName="DataModel.EventoPresupuesto" StoreEntitySet="EventoSet">
-      <EndProperty Name="Presupuesto">
-        <ScalarProperty Name="Id" ColumnName="EventoPresupuesto_Evento_Id" />
-      </EndProperty>
-      <EndProperty Name="Evento">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="ActividadAsistente" TypeName="DataModel.ActividadAsistente" StoreEntitySet="ActividadAsistente">
       <EndProperty Name="Actividad">
         <ScalarProperty Name="Id" ColumnName="ActividadAsistente_Asistente_Id" />
@@ -1518,6 +1510,19 @@
         <ScalarProperty Name="Id" ColumnName="ActividadAsistente_Actividad_Id" />
       </EndProperty>
     </AssociationSetMapping>
+          <EntitySetMapping Name="EventoSet">
+            <EntityTypeMapping TypeName="DataModel.Evento">
+              <MappingFragment StoreEntitySet="EventoSet">
+                <ScalarProperty Name="EventoPresupuesto_Evento_Id" ColumnName="EventoPresupuesto_Evento_Id" />
+                <ScalarProperty Name="institucionOrganizadora" ColumnName="institucionOrganizadora" />
+                <ScalarProperty Name="lugar" ColumnName="lugar" />
+                <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
+                <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

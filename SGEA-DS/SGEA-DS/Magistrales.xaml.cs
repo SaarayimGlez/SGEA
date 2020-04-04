@@ -29,7 +29,7 @@ namespace SGEA_DS {
         public Evento Evento { get => evento; set => evento = value; }
 
         private void TerminarConsulta(object sender,RoutedEventArgs e) {
-            VentanaPrincipal main = new VentanaPrincipal();
+            MainWindow main = new MainWindow();
             main.Show();
             this.Close();
         }

@@ -15,6 +15,8 @@ namespace SGEA_DS
         private List<RadioButton> listaRbComite;
         private Comite_Logica comiteDAO;
         private List<int> listaIdComite;
+        private int eventoId;
+        private string nombreEvento;
 
         public CU01_1()
         {
@@ -22,9 +24,10 @@ namespace SGEA_DS
             llenarListaComite(1);
         }
 
-        public CU01_1(int eventoId)
+        public CU01_1(int eventoId, string nombreEvento)
         {
             InitializeComponent();
+            this.Title = "Registrar lider de comité del evento: " + nombreEvento;
             llenarListaComite(eventoId);
         }
 
@@ -66,6 +69,8 @@ namespace SGEA_DS
 
         private void click_Cancelar(object sender, RoutedEventArgs e)
         {
+            MainWindow main = new MainWindow(eventoId, nombreEvento);
+            main.Show();
             this.Close();
         }
 

@@ -18,17 +18,18 @@ namespace SGEA_DS
         public CU05()
         {
             InitializeComponent();
-            llenarListaActividades(1);
+            llenarListaActividades(1, "NombreDeEvent");
         }
 
-        public CU05(int eventoId)
+        public CU05(int eventoId, string nombreEvento)
         {
             InitializeComponent();
-            llenarListaActividades(eventoId);
+            llenarListaActividades(eventoId, nombreEvento);
         }
 
-        private void llenarListaActividades(int eventoId)
+        private void llenarListaActividades(int eventoId, string nombreEvento)
         {
+            label_Evento.Content = nombreEvento;
             Actividad_Logica actividadDAO = new Actividad_Logica();
             List<List<string>> listaActividades = actividadDAO.RecuperarProgramaEvento(eventoId);
 
@@ -154,6 +155,8 @@ namespace SGEA_DS
         
         private void click_Cancelar(object sender, RoutedEventArgs e)
         {
+            MainWindow main = new MainWindow();
+            main.Show();
             this.Close();
         }
 

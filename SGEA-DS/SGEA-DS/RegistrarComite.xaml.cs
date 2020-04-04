@@ -12,18 +12,21 @@ namespace SGEA_DS
     public partial class CU04 : Window
     {
         private int eventoId;
+        private string nombreEvento;
         private Comite_Logica comiteDAO;
 
         public CU04()
         {
-            this.eventoId = 1;
             InitializeComponent();
+            this.eventoId = 1;
         }
 
-        public CU04(int eventoId)
+        public CU04(int eventoId, string nombreEvento)
         {
-            this.eventoId = eventoId;
             InitializeComponent();
+            this.eventoId = eventoId;
+            this.nombreEvento = nombreEvento;
+            this.Title = "Registrar lider de comité del evento: " + nombreEvento;
         }
 
         private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
@@ -87,6 +90,8 @@ namespace SGEA_DS
 
         private void click_Cancelar(object sender, RoutedEventArgs e)
         {
+            MainWindow main = new MainWindow(eventoId, nombreEvento);
+            main.Show();
             this.Close();
         }
 

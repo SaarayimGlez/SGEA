@@ -7,15 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Organizador
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Organizador
-    {
-        public int Id { get; set; }
-        public string nombreUsuario { get; set; }
-        public string contrasenia { get; set; }
-    }
+    public int Id { get; set; }
+    public string nombreUsuario { get; set; }
+    public string contrasenia { get; set; }
 }

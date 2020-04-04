@@ -25,7 +25,7 @@
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="textBlock_Mensaje" HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal" Grid.Column="0" Grid.ColumnSpan="1"/>
-            <Button x:Name="button_Aceptar" Content="Aceptar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="90" Height="37" Click="click_Aceptar" Grid.Column="1"/>
+            <Button x:Name="button_Aceptar" Content="Descargar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="90" Height="37" Click="click_Aceptar" Grid.Column="1"/>
             <Button x:Name="button_Cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="90" Height="37" Grid.Column="2" Click="click_Cancelar"/>
         </Grid>
         <ScrollViewer HorizontalAlignment="Left" Height="286" Margin="10,66,0,0" VerticalAlignment="Top" Width="772">

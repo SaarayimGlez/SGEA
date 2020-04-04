@@ -7,10 +7,16 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Button Content="Registrar evento" HorizontalAlignment="Left" Margin="61,34,0,0" VerticalAlignment="Top" Width="186" Click="Button_Click"/>
-        <Button Content="Modificar patrocinador" HorizontalAlignment="Left" Margin="61,95,0,0" VerticalAlignment="Top" Width="186" Click="Button_Click_1"/>
-        <Button Content="Consultar número de asistentes por actividad-" HorizontalAlignment="Left" Margin="61,158,0,0" VerticalAlignment="Top" Width="186" Click="Button_Click_2"/>
-        <Button Content="Consultar magistrales" HorizontalAlignment="Left" Margin="61,223,0,0" VerticalAlignment="Top" Width="186" Click="Button_Click_3"/>
-        <Button Content="Consultar actividades-" HorizontalAlignment="Left" Margin="61,294,0,0" VerticalAlignment="Top" Width="186" Click="Button_Click_4"/>
+        <Button Content="Registrar evento" HorizontalAlignment="Left" Margin="44,60,0,0" VerticalAlignment="Top" Width="325" Click="Button_Click"/>
+        <Button Content="Modificar patrocinador" HorizontalAlignment="Left" Margin="44,121,0,0" VerticalAlignment="Top" Width="325" Click="Button_Click_1"/>
+        <Button Content="Consultar número de asistentes por actividad" HorizontalAlignment="Left" Margin="44,184,0,0" VerticalAlignment="Top" Width="325" Click="Button_Click_2"/>
+        <Button Content="Consultar magistrales" HorizontalAlignment="Left" Margin="44,249,0,0" VerticalAlignment="Top" Width="325" Click="Button_Click_3"/>
+        <Button Content="Consultar actividades" HorizontalAlignment="Left" Margin="44,320,0,0" VerticalAlignment="Top" Width="325" Click="Button_Click_4"/>
+        <Button x:Name="button_RegistrarLC" Content="Registrar cuenta lider de comité" HorizontalAlignment="Left" Margin="426,60,0,0" VerticalAlignment="Top" Width="325" Click="Button_AsignarLiderC" IsEnabled="False"/>
+        <Button x:Name="button_RegistrarC" Content="Registrar comité" HorizontalAlignment="Left" Margin="426,121,0,0" VerticalAlignment="Top" Width="325" Click="Button_RegistrarComite" IsEnabled="False"/>
+        <Button Content="Generar programa del evento" HorizontalAlignment="Left" Margin="426,184,0,0" VerticalAlignment="Top" Width="325" Click="Button_GenerarPrograma"/>
+        <Button Content="Registrar patrocinador" HorizontalAlignment="Left" Margin="426,249,0,0" VerticalAlignment="Top" Width="325" Click="Button_RegistrarPatrocinador"/>
+        <Button Content="Consultar patrocinadores" HorizontalAlignment="Left" Margin="426,320,0,0" VerticalAlignment="Top" Width="325" Click="Button_ConsultarPatrocinador"/>
+        <Label Content="Para ejecutar los CU bloqueados, primero hay que registrar un evento, los otros CU usan la informacion predefinida" HorizontalAlignment="Left" Margin="85,372,0,0" VerticalAlignment="Top" Width="621"/>
     </Grid>
 </Window>

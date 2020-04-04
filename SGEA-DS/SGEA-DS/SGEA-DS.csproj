@@ -132,14 +132,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="VentanaEvento.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="VentanaPrincipal.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -201,12 +193,6 @@
     </Compile>
     <Compile Include="Magistrales.xaml.cs">
       <DependentUpon>Magistrales.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="VentanaEvento.xaml.cs">
-      <DependentUpon>VentanaEvento.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="VentanaPrincipal.xaml.cs">
-      <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

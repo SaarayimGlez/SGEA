@@ -66,7 +66,7 @@ namespace SGEA_DS {
         }
 
         private void CancelarModificacion(object sender,RoutedEventArgs e) {
-            VentanaPrincipal main = new VentanaPrincipal();
+            MainWindow main = new MainWindow();
             main.Show();
             this.Close();
         }
