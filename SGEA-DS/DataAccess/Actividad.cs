@@ -37,9 +37,5 @@ namespace DataAccess
         public virtual ICollection<Material> Material { get; set; }
         public virtual Evento Evento { get; set; }
         public virtual Comite Comite { get; set; }
-
-        public override String ToString() {
-            return nombre;
-        }
     }
 }

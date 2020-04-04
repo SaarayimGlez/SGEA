@@ -20,9 +20,5 @@ namespace DataAccess
         public string correoElectronico { get; set; }
         public string estado { get; set; }
         public string nombre { get; set; }
-
-        public override String ToString() {
-            return nombre;
-        }
     }
 }

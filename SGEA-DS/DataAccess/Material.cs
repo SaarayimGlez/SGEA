@@ -7,14 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Material
+namespace DataAccess
 {
-    public int Id { get; set; }
-    public string tipo { get; set; }
-    public int cantidad { get; set; }
-    public double costo { get; set; }
-    public int ActividadId { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Material
+    {
+        public int Id { get; set; }
+        public string tipo { get; set; }
+        public int cantidad { get; set; }
+        public double costo { get; set; }
+        public int ActividadId { get; set; }
+    }
 }

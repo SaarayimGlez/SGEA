@@ -1,13 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Test
+﻿namespace Test
 {
-    [TestClass]
+    //[TestClass]
     public class CU38Tests
     {
-        [TestMethod]
+        /*[TestMethod]
         public void TestMethod1()
         {
-        }
+        }*/
     }
 }

@@ -59,9 +59,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SGEA-DS\SGEA-DS.csproj">
-      <Project>{fb374879-e175-463a-9071-bee04efa75ab}</Project>
-      <Name>SGEA-DS</Name>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{80a79348-389b-4a50-a709-f303d68e4ba8}</Project>
+      <Name>Logica</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

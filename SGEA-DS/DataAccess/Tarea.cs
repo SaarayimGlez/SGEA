@@ -7,15 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Tarea
+namespace DataAccess
 {
-    public int Id { get; set; }
-    public string descripcion { get; set; }
-    public string nombre { get; set; }
-    public int ActividadId { get; set; }
-
-    public virtual Actividad Actividad { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Tarea
+    {
+        public int Id { get; set; }
+        public string descripcion { get; set; }
+        public string nombre { get; set; }
+        public int ActividadId { get; set; }
+    
+        public virtual Actividad Actividad { get; set; }
+    }
 }

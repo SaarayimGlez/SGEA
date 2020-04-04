@@ -7,15 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Comite
+namespace DataAccess
 {
-    public int Id { get; set; }
-    public string descripcion { get; set; }
-    public string nombre { get; set; }
-    public int EventoId { get; set; }
-
-    public virtual Evento Evento { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Comite
+    {
+        public int Id { get; set; }
+        public string descripcion { get; set; }
+        public string nombre { get; set; }
+        public int EventoId { get; set; }
+    
+        public virtual Evento Evento { get; set; }
+    }
 }

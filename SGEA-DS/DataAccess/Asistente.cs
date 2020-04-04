@@ -19,9 +19,5 @@ namespace DataAccess
         public string apellidoPaterno { get; set; }
         public string apellidoMaterno { get; set; }
         public string correoElectronico { get; set; }
-
-        public override String ToString() {
-            return nombre + " " + apellidoPaterno + " " + apellidoMaterno;
-        }
     }
 }

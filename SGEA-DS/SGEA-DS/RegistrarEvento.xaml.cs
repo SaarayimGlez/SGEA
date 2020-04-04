@@ -54,7 +54,7 @@ namespace SGEA_DS
 
         private void CancelarEvento(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
+            VentanaPrincipal main = new VentanaPrincipal();
             main.Show();
             this.Close();
         }

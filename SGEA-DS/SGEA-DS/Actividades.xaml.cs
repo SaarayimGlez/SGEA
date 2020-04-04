@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -68,15 +68,15 @@ namespace SGEA_DS {
         }
 
         private void TerminarConsulta(object sender,RoutedEventArgs e) {
-            MainWindow main = new MainWindow();
+            VentanaPrincipal main = new VentanaPrincipal();
             main.Show();
             this.Close();
         }
 
         private void MostrarDetalles(object sender,RoutedEventArgs e) {
             if(LBActividades.SelectedItem != null) {
-                DetallesActividad detalles = new DetallesActividad((Actividad)LBActividades.SelectedItem,this);
-                detalles.Show();
+                /*DetallesActividad detalles = new DetallesActividad((Actividad)LBActividades.SelectedItem,this);
+                detalles.Show();*/
                 this.Close();
             }
         }

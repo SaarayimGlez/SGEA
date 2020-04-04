@@ -21,7 +21,7 @@ namespace SGEA_DS {
         private Actividad actividad;
         private Actividades ventana;
 
-        public DetallesActividad(Actividad actividad, Actividades actividades) {
+        /*public DetallesActividad(Actividad actividad, Actividades actividades) {
             Actividad = actividad;
             Ventana = actividades;
             InitializeComponent();
@@ -41,6 +41,6 @@ namespace SGEA_DS {
         private void RegresarVentana(object sender,RoutedEventArgs e) {
             Ventana.Show();
             this.Close();
-        }
+        }*/
     }
 }
