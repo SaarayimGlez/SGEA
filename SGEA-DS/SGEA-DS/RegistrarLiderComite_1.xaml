@@ -27,6 +27,7 @@
             </Grid.ColumnDefinitions>
             <Label Content="Por favor selecciona un comité" HorizontalAlignment="Right" VerticalAlignment="Top" Height="34" Width="691" FontSize="22" AutomationProperties.IsColumnHeader="True" Margin="0,31,37,0" Grid.RowSpan="2"/>
         </Grid>
+        <TextBlock x:Name="textBlock_Mensaje" HorizontalAlignment="Left" Margin="31,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal"/>
         <Grid HorizontalAlignment="Left" Height="63" Margin="396,357,0,0" VerticalAlignment="Top" Width="386">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

@@ -13,18 +13,16 @@ namespace SGEA_DS
     {
         private int eventoId;
         private string nombreEvento;
-        private Comite_Logica comiteDAO;
 
         public CU04()
         {
             InitializeComponent();
-            this.eventoId = 1;
         }
 
         public CU04(int eventoId, string nombreEvento)
         {
             InitializeComponent();
-            this.eventoId = eventoId;
+            this.eventoId = 1;//eventoId;
             this.nombreEvento = nombreEvento;
             this.Title = "Registrar lider de comité del evento: " + nombreEvento;
         }
@@ -51,9 +49,12 @@ namespace SGEA_DS
         {
             if (validarDatos() && nuevoComite())
             {
-                textBlock_Mensaje.Text = String.Empty;
-                var bold = new Bold(new Run("Comité registrado con éxito"));
-                textBlock_Mensaje.Inlines.Add(bold);
+                if (!textBlock_Mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
+                {
+                    textBlock_Mensaje.Text = String.Empty;
+                    var bold = new Bold(new Run("Comité registrado con éxito"));
+                    textBlock_Mensaje.Inlines.Add(bold);
+                }
                 button_Cancelar.Content = "Regresar";
                 button_Aceptar.Visibility = Visibility.Hidden;
                 textbox_Nombre.IsEnabled = false;
@@ -73,7 +74,17 @@ namespace SGEA_DS
             nuevoComite.nombre = textbox_Nombre.Text;
             nuevoComite.descripcion = textbox_Descripcion.Text;
             nuevoComite.EventoId = eventoId;
-            comiteDAO = new Comite_Logica();
+            Comite_Logica comiteDAO = new Comite_Logica();
+            if (!comiteDAO.ComprobarConexion())
+            {
+                textBlock_Mensaje.Text = String.Empty;
+                var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
+                {
+                    Foreground = Brushes.Red
+                });
+                textBlock_Mensaje.Inlines.Add(bold);
+                return true;
+            }
             return comiteDAO.RegistrarComite(nuevoComite);
         }
 

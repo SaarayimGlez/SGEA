@@ -31,11 +31,23 @@ namespace SGEA_DS
         {
             label_Evento.Content = nombreEvento;
             Actividad_Logica actividadDAO = new Actividad_Logica();
-            List<List<string>> listaActividades = actividadDAO.RecuperarProgramaEvento(eventoId);
-
-            foreach (List<string> actividad in listaActividades)
+            if (!actividadDAO.ComprobarConexion())
             {
-                insertarFila(actividad);
+                textBlock_Mensaje.Text = String.Empty;
+                var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
+                {
+                    Foreground = Brushes.Red
+                });
+                textBlock_Mensaje.Inlines.Add(bold);
+                button_Cancelar.Content = "Regresar";
+                button_Aceptar.Visibility = Visibility.Hidden;            }
+            else
+            {
+                List<List<string>> listaActividades = actividadDAO.RecuperarProgramaEvento(eventoId);
+                foreach (List<string> actividad in listaActividades)
+                {
+                    insertarFila(actividad);
+                }
             }
         }
 

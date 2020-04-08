@@ -25,6 +25,7 @@
             </Grid.ColumnDefinitions>
             <Label Content="Pon el cursor en la empresa que quieras ver su información más detallada" HorizontalAlignment="Right" VerticalAlignment="Top" Height="38" Width="762" FontSize="18" Grid.ColumnSpan="2"/>
         </Grid>
+        <TextBlock x:Name="textBlock_Mensaje" HorizontalAlignment="Left" Margin="31,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal"/>
         <Grid HorizontalAlignment="Left" Height="63" Margin="396,357,0,0" VerticalAlignment="Top" Width="386">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>

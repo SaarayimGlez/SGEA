@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Media;
 using Logica;
 
@@ -17,36 +18,45 @@ namespace SGEA_DS
         private List<int> listaIdComite;
         private int eventoId;
         private string nombreEvento;
-
-        public CU01_1()
-        {
-            InitializeComponent();
-            llenarListaComite(1);
-        }
+        
 
         public CU01_1(int eventoId, string nombreEvento)
         {
             InitializeComponent();
+            this.eventoId = eventoId;
+            this.nombreEvento = nombreEvento;
             this.Title = "Registrar lider de comité del evento: " + nombreEvento;
-            llenarListaComite(eventoId);
+            llenarListaComite(1);
         }
 
         private void llenarListaComite(int eventoId)
         {
             comiteDAO = new Comite_Logica();
-            listaComite = comiteDAO.RecuperarComitesSinLider(eventoId);
-            listaRbComite = new List<RadioButton>();
-            listaIdComite = new List<int>();
-
-
-            foreach (string comite in listaComite)
+            if (!comiteDAO.ComprobarConexion())
             {
-                String patronSimbolo = @"\s-\s?[+*]?\s?-\s";
-                String[] elementoComite = System.Text.RegularExpressions.Regex.Split(comite, patronSimbolo);
-                listaIdComite.Add(Convert.ToInt32(elementoComite[1]));
-                insertarFila(elementoComite[0]);
+                textBlock_Mensaje.Text = String.Empty;
+                var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
+                {
+                    Foreground = Brushes.Red
+                });
+                textBlock_Mensaje.Inlines.Add(bold);
+                button_Cancelar.Content = "Regresar";
+                button_Aceptar.Visibility = Visibility.Hidden;
             }
-            
+            else
+            {
+                listaComite = comiteDAO.RecuperarComitesSinLider(eventoId);
+                listaRbComite = new List<RadioButton>();
+                listaIdComite = new List<int>();
+
+                foreach (string comite in listaComite)
+                {
+                    String patronSimbolo = @"\s-\s?[+*]?\s?-\s";
+                    String[] elementoComite = System.Text.RegularExpressions.Regex.Split(comite, patronSimbolo);
+                    listaIdComite.Add(Convert.ToInt32(elementoComite[1]));
+                    insertarFila(elementoComite[0]);
+                }
+            }
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -69,7 +79,7 @@ namespace SGEA_DS
 
         private void click_Cancelar(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow(eventoId, nombreEvento);
+            MainWindow main = new MainWindow(this.eventoId, this.nombreEvento);
             main.Show();
             this.Close();
         }

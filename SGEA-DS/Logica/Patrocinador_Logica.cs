@@ -8,27 +8,11 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class Patrocinador_Logica
+    public class Patrocinador_Logica : ConexionBD_Logica
     {
-        private DataModelContainer _context;
 
-        public Patrocinador_Logica()
+        public Patrocinador_Logica() : base()
         {
-            _context = new DataModelContainer();
-        }
-
-        public bool ComprobarConexion()
-        {
-            DbConnection conn = _context.Database.Connection;
-            try
-            {
-                conn.Open();   // check the database connection
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
         }
 
         public bool RegistrarPatrocinador(Patrocinador patrocinador)

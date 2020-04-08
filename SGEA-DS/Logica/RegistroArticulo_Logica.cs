@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class RegistroArticulo_Logica
+    public class RegistroArticulo_Logica : ConexionBD_Logica
     {
-        private DataModelContainer _context;
-
-        public RegistroArticulo_Logica()
+        public RegistroArticulo_Logica() : base()
         {
-            _context = new DataModelContainer();
         }
 
         public string RecuperarAutor(Articulo articulo)

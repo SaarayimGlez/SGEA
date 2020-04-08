@@ -1,19 +1,17 @@
 ﻿using DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class Actividad_Logica
+    public class Actividad_Logica : ConexionBD_Logica
     {
-        private DataModelContainer _context;
-
-        public Actividad_Logica()
+        public Actividad_Logica() : base()
         {
-            _context = new DataModelContainer();
         }
 
         public List<List<string>> RecuperarProgramaEvento(int eventoId)
@@ -64,7 +62,7 @@ namespace Logica
                         lista.Actividad.Costo.ToString(),
                         lista.Fecha.ToString("MM/dd/yyyy"),
                         lista.HoraInicio.ToString(@"hh\:mm"),
-                        lista.HoraInicio.ToString(@"hh\:mm"),
+                        lista.HoraFin.ToString(@"hh\:mm"),
                         lista.Actividad.Aula,
                         lista.Actividad.Tipo
                     }));
@@ -97,7 +95,6 @@ namespace Logica
                                     + participante.apellidoPaterno + " "
                                     + participante.apellidoMaterno;
                             }
-                            
                         }
                         listaActividad[listaActividad.Count - 1].Add(participanteAct);
                     }

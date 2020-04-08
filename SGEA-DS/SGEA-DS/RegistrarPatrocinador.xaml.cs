@@ -74,11 +74,14 @@ namespace SGEA_DS {
 
         private void click_Aceptar(object sender, RoutedEventArgs e)
         {
-            if (validarDatos() && nuevoComite())
+            if (validarDatos() && nuevoPatrocinador())
             {
-                textBlock_Mensaje.Text = String.Empty;
-                var bold = new Bold(new Run("Patrocinador registrado con éxito"));
-                textBlock_Mensaje.Inlines.Add(bold);
+                if (!textBlock_Mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
+                {
+                    textBlock_Mensaje.Text = String.Empty;
+                    var bold = new Bold(new Run("Patrocinador registrado con éxito"));
+                    textBlock_Mensaje.Inlines.Add(bold);
+                }
                 button_Cancelar.Content = "Regresar";
                 button_Aceptar.Visibility = Visibility.Hidden;
                 textbox_Nombre.IsEnabled = false;
@@ -101,9 +104,19 @@ namespace SGEA_DS {
             }
         }
 
-        private bool nuevoComite()
+        private bool nuevoPatrocinador()
         {
             Patrocinador_Logica patrocinadorDAO = new Patrocinador_Logica();
+            if (!patrocinadorDAO.ComprobarConexion())
+            {
+                textBlock_Mensaje.Text = String.Empty;
+                var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
+                {
+                    Foreground = Brushes.Red
+                });
+                textBlock_Mensaje.Inlines.Add(bold);
+                return true;
+            }
             return patrocinadorDAO.RegistrarPatrocinador(new Patrocinador() {
                 nombre = textbox_Nombre.Text,
                 apellidoPaterno = textbox_ApellidoP.Text,

@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class MiembroComite_Logica
+    public class MiembroComite_Logica : ConexionBD_Logica
     {
-        private DataModelContainer _context;
 
-        public MiembroComite_Logica()
+        public MiembroComite_Logica() : base()
         {
-            _context = new DataModelContainer();
         }
 
         public List<MiembroComite> RecuperarMCNoLider()

@@ -7,13 +7,11 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class Comite_Logica
+    public class Comite_Logica : ConexionBD_Logica
     {
-        private DataModelContainer _context;
 
-        public Comite_Logica()
+        public Comite_Logica() : base()
         {
-            _context = new DataModelContainer();
         }
 
         public List<string> RecuperarComitesSinLider(int eventoId)

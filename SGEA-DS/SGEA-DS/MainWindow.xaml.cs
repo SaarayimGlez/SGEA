@@ -14,6 +14,7 @@ namespace SGEA_DS
         public MainWindow()
         {
             InitializeComponent();
+            desbloquearBotones();
         }
 
         public MainWindow(int eventoId, string nombreEvento)

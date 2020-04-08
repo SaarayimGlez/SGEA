@@ -16,6 +16,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SGEA_DS {
+
     public partial class CU38 : Window {
 
         public CU38()
@@ -29,16 +30,28 @@ namespace SGEA_DS {
         private void llenarListaPatrocinadores()
         {
             Patrocinador_Logica patrocinadorDAO = new Patrocinador_Logica();
-            List<Patrocinador> listaPatrocinador = patrocinadorDAO.RecuperarPatrocinador();
-
-            for (int i = 0; i < listaPatrocinador.Count; i++)
+            if (!patrocinadorDAO.ComprobarConexion())
             {
-                if ((i + 1) % 2 != 0)
+                textBlock_Mensaje.Text = String.Empty;
+                var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
+                    {
+                        Foreground = Brushes.Red
+                    });
+                textBlock_Mensaje.Inlines.Add(bold);
+            } else
+            {
+                List<Patrocinador> listaPatrocinador = patrocinadorDAO.RecuperarPatrocinador();
+
+                for (int i = 0; i < listaPatrocinador.Count; i++)
                 {
-                    insertarParticipante(listaPatrocinador[i], 0);
-                } else
-                {
-                    insertarParticipante(listaPatrocinador[i], 1);
+                    if ((i + 1) % 2 != 0)
+                    {
+                        insertarParticipante(listaPatrocinador[i], 0);
+                    }
+                    else
+                    {
+                        insertarParticipante(listaPatrocinador[i], 1);
+                    }
                 }
             }
         }
