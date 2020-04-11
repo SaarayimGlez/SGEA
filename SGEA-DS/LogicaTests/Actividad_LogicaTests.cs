@@ -30,7 +30,8 @@ namespace Logica.Tests
                     magistral o autor*/
                 }));
 
-            CollectionAssert.AreEqual(
+            CollectionAssert.AreEqual
+                (
                     listaEsperada.SelectMany(item => item).ToList(),
                     listaRecibida.SelectMany(item => item).ToList()
                 );

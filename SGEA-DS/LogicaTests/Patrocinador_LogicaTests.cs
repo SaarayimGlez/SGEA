@@ -17,13 +17,13 @@ namespace Logica.Tests
             Patrocinador_Logica patrocinadorDAO = new Patrocinador_Logica();
             bool recibido = patrocinadorDAO.RegistrarPatrocinador(new Patrocinador()
             {
-                nombre = "",
-                apellidoPaterno = "",
-                apellidoMaterno = "",
-                empresa = "",
-                direccion = "",
-                correoElectronico = "",
-                numeroTelefono = ""
+                nombre = "nombre PRUEBA",
+                apellidoPaterno = "apellido paterno PRUEBA",
+                apellidoMaterno = "apellido materno PRUEBA",
+                empresa = "empresa PRUEBA",
+                direccion = "direccion PRUEBA",
+                correoElectronico = "correoElectronico@PRUEBA.com",
+                numeroTelefono = "1215920816"
             });
             Assert.AreEqual(recibido, true);
         }
@@ -36,26 +36,36 @@ namespace Logica.Tests
             List<Patrocinador> listaEsperada = new List<Patrocinador>();
             listaEsperada.Add(new Patrocinador()
             {
-                nombre = "",
-                apellidoPaterno = "",
-                apellidoMaterno = "",
-                empresa = "",
-                direccion = "",
-                correoElectronico = "",
-                numeroTelefono = ""
+                nombre = "Miguel",
+                apellidoPaterno = "Hernandez",
+                apellidoMaterno = "Duran",
+                empresa = "Comex",
+                direccion = "Lucio #15 Col. Lomas de Casa Blanca",
+                correoElectronico = "promoComex@comex.com",
+                numeroTelefono = "8465972"
+
             });
             listaEsperada.Add(new Patrocinador()
             {
-                nombre = "",
-                apellidoPaterno = "",
-                apellidoMaterno = "",
-                empresa = "",
-                direccion = "",
-                correoElectronico = "",
-                numeroTelefono = ""
+                nombre = "Jimena",
+                apellidoPaterno = "Suarez",
+                apellidoMaterno = "Potrillo",
+                empresa = "Chedraui",
+                direccion = "Chedrahui Caram #20 Col. Centro",
+                correoElectronico = "patrocinios@chedrahui.com",
+                numeroTelefono = "8465963"
             });
 
-            CollectionAssert.AreEqual(listaEsperada, listaRecibida);
+            foreach (var miembro in listaRecibida.Zip(listaEsperada, Tuple.Create))
+            {
+                Assert.AreEqual(miembro.Item1.nombre, miembro.Item2.nombre);
+                Assert.AreEqual(miembro.Item1.apellidoPaterno, miembro.Item2.apellidoPaterno);
+                Assert.AreEqual(miembro.Item1.apellidoMaterno, miembro.Item2.apellidoMaterno);
+                Assert.AreEqual(miembro.Item1.correoElectronico, miembro.Item2.correoElectronico);
+                Assert.AreEqual(miembro.Item1.empresa, miembro.Item2.empresa);
+                Assert.AreEqual(miembro.Item1.direccion, miembro.Item2.direccion);
+                Assert.AreEqual(miembro.Item1.numeroTelefono, miembro.Item2.numeroTelefono);
+            }
         }
     }
 }

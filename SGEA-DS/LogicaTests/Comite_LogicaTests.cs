@@ -17,9 +17,13 @@ namespace Logica.Tests
             Comite_Logica comiteDAO = new Comite_Logica();
             List<string> listaRecibida = comiteDAO.RecuperarComitesSinLider(1);
             List<string> listaEsperada = new List<string>();
-            listaEsperada.Add("");
-
-            CollectionAssert.AreEqual(listaEsperada, listaRecibida);
+            listaEsperada.Add("Comite de promocion -- 1");
+            listaEsperada.Add("Comite del dia -- 8");
+            CollectionAssert.AreEqual
+                (
+                    listaEsperada.SelectMany(item => item).ToList(),
+                    listaRecibida.SelectMany(item => item).ToList()
+                );
         }
 
         [TestMethod()]
@@ -28,8 +32,8 @@ namespace Logica.Tests
             Comite_Logica comiteDAO = new Comite_Logica();
             bool recibido = comiteDAO.RegistrarComite(new Comite()
             {
-                nombre = "",
-                descripcion = "",
+                nombre = "comite PRUEBA",
+                descripcion = "descripcion PRUEBA",
                 EventoId = 1
             });
             Assert.AreEqual(recibido, true);

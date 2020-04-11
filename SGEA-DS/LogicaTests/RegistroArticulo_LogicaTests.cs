@@ -15,8 +15,8 @@ namespace Logica.Tests
         public void RecuperarAutorTest()
         {
             RegistroArticulo_Logica registroArticulo_Logica = new RegistroArticulo_Logica();
-            string esperado = "";
-            string recibido = registroArticulo_Logica.RecuperarAutor(new Articulo());
+            string esperado = "Armando Flores Magon";
+            string recibido = registroArticulo_Logica.RecuperarAutor(new Articulo() { Id = 1 });
             Assert.AreEqual(esperado, recibido);
         }
     }
