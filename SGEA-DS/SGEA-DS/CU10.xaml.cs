@@ -14,9 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace SGEA_DS {
-    public partial class CU06 : Window {
+    public partial class CU10 : Window {
 
-        public CU06()
+        public CU10()
         {
             InitializeComponent();
         }
@@ -57,6 +57,24 @@ namespace SGEA_DS {
 
         }
 
+        private void textbox_NumDinero_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key >= Key.D0 && e.Key <= Key.D9)
+            {
+            }
+            else
+            {
+                if (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
+                {
+                }
+                else
+                {
+                    e.Handled = true;
+                }
+            }
+
+        }
+
         private void textbox_Espacio_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space)
@@ -69,7 +87,7 @@ namespace SGEA_DS {
         {
             if (validarDatos() && nuevoComite())
             {
-                textBlock_Mensaje.Text = String.Empty;
+                /*textBlock_Mensaje.Text = String.Empty;
                 var bold = new Bold(new Run("Patrocinador registrado con éxito"));
                 textBlock_Mensaje.Inlines.Add(bold);
                 button_Cancelar.Content = "Regresar";
@@ -80,7 +98,7 @@ namespace SGEA_DS {
                 textbox_Empresa.IsEnabled = false;
                 textbox_Direccion.IsEnabled = false;
                 textbox_CorreoE.IsEnabled = false;
-                textbox_NumeroTel.IsEnabled = false;
+                textbox_NumeroTel.IsEnabled = false;*/
             }
             else
             {
@@ -98,7 +116,7 @@ namespace SGEA_DS {
 
         private bool validarDatos()
         {
-            if (textbox_Nombre.Text.Any(char.IsPunctuation) | textbox_ApellidoP.Text.Any(char.IsPunctuation) |
+            /*if (textbox_Nombre.Text.Any(char.IsPunctuation) | textbox_ApellidoP.Text.Any(char.IsPunctuation) |
                 textbox_ApellidoM.Text.Any(char.IsPunctuation) | textbox_Nombre.Text.Any(char.IsDigit) | 
                 textbox_ApellidoP.Text.Any(char.IsDigit) | textbox_ApellidoM.Text.Any(char.IsDigit))
             {
@@ -108,7 +126,7 @@ namespace SGEA_DS {
                 textbox_NumeroTel.Text.Any(char.IsLetter) | textbox_NumeroTel.Text.Any(char.IsPunctuation))
             { 
                 return false;
-            }
+            }*/
             return true;
         }
 
