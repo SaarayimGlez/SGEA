@@ -26,11 +26,6 @@
         <EntityTypeShape EntityType="DataModel.Participante" Width="1.5" PointX="7.5" PointY="27" />
         <AssociationConnector Association="DataModel.AdscripcionParticipante" />
         <AssociationConnector Association="DataModel.ActividadParticipante" />
-        <EntityTypeShape EntityType="DataModel.Egreso" Width="1.5" PointX="10.25" PointY="14" />
-        <AssociationConnector Association="DataModel.EgresoMagistral" />
-        <EntityTypeShape EntityType="DataModel.Material" Width="1.5" PointX="12.5" PointY="21.125" />
-        <AssociationConnector Association="DataModel.EgresoMaterial" />
-        <AssociationConnector Association="DataModel.ActividadMaterial" />
         <EntityTypeShape EntityType="DataModel.Ingreso" Width="1.5" PointX="12" PointY="17.875" />
         <AssociationConnector Association="DataModel.RegistroArticuloIngreso" />
         <EntityTypeShape EntityType="DataModel.Presupuesto" Width="1.5" PointX="3" PointY="26" />
@@ -48,6 +43,11 @@
         <AssociationConnector Association="DataModel.FK_EventoActividad" />
         <AssociationConnector Association="DataModel.FK_EventoComite" />
         <AssociationConnector Association="DataModel.FK_EventoPresupuesto" />
+        <EntityTypeShape EntityType="DataModel.Egreso" Width="1.5" PointX="9.75" PointY="25" />
+        <AssociationConnector Association="DataModel.FK_EgresoMagistral" />
+        <EntityTypeShape EntityType="DataModel.Material" Width="1.5" PointX="15" PointY="23.125" />
+        <AssociationConnector Association="DataModel.FK_ActividadMaterial" />
+        <AssociationConnector Association="DataModel.FK_EgresoMaterial" />
       </Diagram>
       <Diagram DiagramId="443b65acaf1942b198e0b46829ab37b4" Name="Diagram2" >
         <EntityTypeShape EntityType="DataModel.Actividad" Width="1.5" PointX="5.25" PointY="21.375" />
@@ -71,11 +71,6 @@
         <EntityTypeShape EntityType="DataModel.Participante" Width="1.5" PointX="7.5" PointY="27" />
         <AssociationConnector Association="DataModel.AdscripcionParticipante" />
         <AssociationConnector Association="DataModel.ActividadParticipante" />
-        <EntityTypeShape EntityType="DataModel.Egreso" Width="1.5" PointX="10.25" PointY="14" />
-        <AssociationConnector Association="DataModel.EgresoMagistral" />
-        <EntityTypeShape EntityType="DataModel.Material" Width="1.5" PointX="12.5" PointY="21.125" />
-        <AssociationConnector Association="DataModel.EgresoMaterial" />
-        <AssociationConnector Association="DataModel.ActividadMaterial" />
         <EntityTypeShape EntityType="DataModel.Ingreso" Width="1.5" PointX="12" PointY="17.875" />
         <AssociationConnector Association="DataModel.RegistroArticuloIngreso" />
         <EntityTypeShape EntityType="DataModel.Presupuesto" Width="1.5" PointX="3" PointY="26" />

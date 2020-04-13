@@ -154,7 +154,7 @@
           <Property Name="tipo" Type="nvarchar(max)" Nullable="false" />
           <Property Name="cantidad" Type="int" Nullable="false" />
           <Property Name="costo" Type="float" Nullable="false" />
-          <Property Name="ActividadId" Type="int" Nullable="false" />
+          <Property Name="ActividadId" Type="int" />
           <Property Name="EgresoMaterial_Material_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="MiembroComiteSet">
@@ -297,7 +297,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_ActividadMaterial">
-          <End Role="ActividadSet" Type="Self.ActividadSet" Multiplicity="1" />
+          <End Role="ActividadSet" Type="Self.ActividadSet" Multiplicity="0..1" />
           <End Role="MaterialSet" Type="Self.MaterialSet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ActividadSet">
@@ -719,20 +719,6 @@
             <End Role="Actividad" EntitySet="ActividadSet" />
             <End Role="Participante" EntitySet="ParticipanteSet" />
           </AssociationSet>
-          <EntitySet Name="EgresoSet" EntityType="DataModel.Egreso" />
-          <AssociationSet Name="EgresoMagistral" Association="DataModel.EgresoMagistral">
-            <End Role="Egreso" EntitySet="EgresoSet" />
-            <End Role="Magistral" EntitySet="MagistralSet" />
-          </AssociationSet>
-          <EntitySet Name="MaterialSet" EntityType="DataModel.Material" />
-          <AssociationSet Name="EgresoMaterial" Association="DataModel.EgresoMaterial">
-            <End Role="Egreso" EntitySet="EgresoSet" />
-            <End Role="Material" EntitySet="MaterialSet" />
-          </AssociationSet>
-          <AssociationSet Name="ActividadMaterial" Association="DataModel.ActividadMaterial">
-            <End Role="Actividad" EntitySet="ActividadSet" />
-            <End Role="Material" EntitySet="MaterialSet" />
-          </AssociationSet>
           <EntitySet Name="IngresoSet" EntityType="DataModel.Ingreso" />
           <AssociationSet Name="RegistroArticuloIngreso" Association="DataModel.RegistroArticuloIngreso">
             <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
@@ -777,6 +763,20 @@
             <End Role="Presupuesto" EntitySet="PresupuestoSet" />
             <End Role="EventoSet" EntitySet="EventoSet" />
           </AssociationSet>
+          <EntitySet Name="EgresoSet" EntityType="DataModel.Egreso" />
+          <AssociationSet Name="FK_EgresoMagistral" Association="DataModel.FK_EgresoMagistral">
+            <End Role="Magistral" EntitySet="MagistralSet" />
+            <End Role="EgresoSet" EntitySet="EgresoSet" />
+          </AssociationSet>
+          <EntitySet Name="MaterialSet" EntityType="DataModel.Material" />
+          <AssociationSet Name="FK_ActividadMaterial" Association="DataModel.FK_ActividadMaterial">
+            <End Role="Actividad" EntitySet="ActividadSet" />
+            <End Role="MaterialSet" EntitySet="MaterialSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EgresoMaterial" Association="DataModel.FK_EgresoMaterial">
+            <End Role="Egreso" EntitySet="EgresoSet" />
+            <End Role="MaterialSet" EntitySet="MaterialSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Actividad">
           <Key>
@@ -790,11 +790,11 @@
           <NavigationProperty Name="Articulo" Relationship="DataModel.ActividadArticulo" FromRole="Actividad" ToRole="Articulo" />
           <NavigationProperty Name="Magistral" Relationship="DataModel.ActividadMagistral" FromRole="Actividad" ToRole="Magistral" />
           <NavigationProperty Name="Participante" Relationship="DataModel.ActividadParticipante" FromRole="Actividad" ToRole="Participante" />
-          <NavigationProperty Name="Material" Relationship="DataModel.ActividadMaterial" FromRole="Actividad" ToRole="Material" />
           <Property Name="EventoId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Comite" Relationship="DataModel.ComiteActividad" FromRole="Actividad" ToRole="Comite" />
           <Property Name="ComiteId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="EventoSet" Relationship="DataModel.FK_EventoActividad" FromRole="Actividad" ToRole="EventoSet" />
+          <NavigationProperty Name="MaterialSet" Relationship="DataModel.FK_ActividadMaterial" FromRole="Actividad" ToRole="MaterialSet" />
         </EntityType>
         <EntityType Name="Articulo">
           <Key>
@@ -938,6 +938,7 @@
           <Property Name="apellidoMaterno" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Adscripcion" Relationship="DataModel.AdscripcionMagistral" FromRole="Magistral" ToRole="Adscripcion" />
           <Property Name="AdscripcionId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="EgresoSet" Relationship="DataModel.FK_EgresoMagistral" FromRole="Magistral" ToRole="EgresoSet" />
         </EntityType>
         <EntityType Name="Participante">
           <Key>
@@ -994,47 +995,6 @@
         <Association Name="ActividadParticipante">
           <End Type="DataModel.Actividad" Role="Actividad" Multiplicity="*" />
           <End Type="DataModel.Participante" Role="Participante" Multiplicity="*" />
-        </Association>
-        <EntityType Name="Egreso">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="concepto" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="monto" Type="Double" Nullable="false" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Magistral" Relationship="DataModel.EgresoMagistral" FromRole="Egreso" ToRole="Magistral" />
-          <NavigationProperty Name="Material" Relationship="DataModel.EgresoMaterial" FromRole="Egreso" ToRole="Material" />
-        </EntityType>
-        <Association Name="EgresoMagistral">
-          <End Type="DataModel.Egreso" Role="Egreso" Multiplicity="*" />
-          <End Type="DataModel.Magistral" Role="Magistral" Multiplicity="0..1" />
-        </Association>
-        <EntityType Name="Material">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tipo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <Property Name="costo" Type="Double" Nullable="false" />
-          <Property Name="ActividadId" Type="Int32" Nullable="false" />
-        </EntityType>
-        <Association Name="EgresoMaterial">
-          <End Type="DataModel.Egreso" Role="Egreso" Multiplicity="1" />
-          <End Type="DataModel.Material" Role="Material" Multiplicity="0..1" />
-        </Association>
-        <Association Name="ActividadMaterial">
-          <End Type="DataModel.Actividad" Role="Actividad" Multiplicity="1" />
-          <End Type="DataModel.Material" Role="Material" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Actividad">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Material">
-              <PropertyRef Name="ActividadId" />
-            </Dependent>
-          </ReferentialConstraint>
         </Association>
         <EntityType Name="Ingreso">
           <Key>
@@ -1216,6 +1176,67 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Egreso">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="concepto" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="monto" Type="Double" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Magistral_Id" Type="Int32" />
+          <NavigationProperty Name="MagistralSet" Relationship="DataModel.FK_EgresoMagistral" FromRole="EgresoSet" ToRole="Magistral" />
+          <NavigationProperty Name="MaterialSet" Relationship="DataModel.FK_EgresoMaterial" FromRole="Egreso" ToRole="MaterialSet" />
+        </EntityType>
+        <Association Name="FK_EgresoMagistral">
+          <End Type="DataModel.Magistral" Role="Magistral" Multiplicity="0..1" />
+          <End Type="DataModel.Egreso" Role="EgresoSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Magistral">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EgresoSet">
+              <PropertyRef Name="Magistral_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipo" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="cantidad" Type="Int32" Nullable="false" />
+          <Property Name="costo" Type="Double" Nullable="false" />
+          <Property Name="ActividadId" Type="Int32" />
+          <Property Name="EgresoMaterial_Material_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ActividadSet" Relationship="DataModel.FK_ActividadMaterial" FromRole="MaterialSet" ToRole="Actividad" />
+          <NavigationProperty Name="EgresoSet" Relationship="DataModel.FK_EgresoMaterial" FromRole="MaterialSet" ToRole="Egreso" />
+        </EntityType>
+        <Association Name="FK_ActividadMaterial">
+          <End Type="DataModel.Actividad" Role="Actividad" Multiplicity="0..1" />
+          <End Type="DataModel.Material" Role="MaterialSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialSet">
+              <PropertyRef Name="ActividadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EgresoMaterial">
+          <End Type="DataModel.Egreso" Role="Egreso" Multiplicity="1" />
+          <End Type="DataModel.Material" Role="MaterialSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Egreso">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MaterialSet">
+              <PropertyRef Name="EgresoMaterial_Material_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1342,27 +1363,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="EgresoSet">
-      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Egreso)">
-        <MappingFragment StoreEntitySet="EgresoSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="concepto" ColumnName="concepto" />
-          <ScalarProperty Name="monto" ColumnName="monto" />
-          <ScalarProperty Name="fecha" ColumnName="fecha" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MaterialSet">
-      <EntityTypeMapping TypeName="IsTypeOf(DataModel.Material)">
-        <MappingFragment StoreEntitySet="MaterialSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="tipo" ColumnName="tipo" />
-          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
-          <ScalarProperty Name="costo" ColumnName="costo" />
-          <ScalarProperty Name="ActividadId" ColumnName="ActividadId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="IngresoSet">
       <EntityTypeMapping TypeName="IsTypeOf(DataModel.Ingreso)">
         <MappingFragment StoreEntitySet="IngresoSet">
@@ -1477,23 +1477,6 @@
         <ScalarProperty Name="Id" ColumnName="Participante_Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="EgresoMagistral" TypeName="DataModel.EgresoMagistral" StoreEntitySet="EgresoSet">
-      <EndProperty Name="Magistral">
-        <ScalarProperty Name="Id" ColumnName="Magistral_Id" />
-      </EndProperty>
-      <EndProperty Name="Egreso">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-      <Condition ColumnName="Magistral_Id" IsNull="false" />
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="EgresoMaterial" TypeName="DataModel.EgresoMaterial" StoreEntitySet="MaterialSet">
-      <EndProperty Name="Egreso">
-        <ScalarProperty Name="Id" ColumnName="EgresoMaterial_Material_Id" />
-      </EndProperty>
-      <EndProperty Name="Material">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="RegistroArticuloIngreso" TypeName="DataModel.RegistroArticuloIngreso" StoreEntitySet="RegistroArticuloSet">
       <EndProperty Name="Ingreso">
         <ScalarProperty Name="Id" ColumnName="RegistroArticuloIngreso_RegistroArticulo_Id" />
@@ -1519,6 +1502,29 @@
                 <ScalarProperty Name="fechaFin" ColumnName="fechaFin" />
                 <ScalarProperty Name="fechaInicio" ColumnName="fechaInicio" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EgresoSet">
+            <EntityTypeMapping TypeName="DataModel.Egreso">
+              <MappingFragment StoreEntitySet="EgresoSet">
+                <ScalarProperty Name="Magistral_Id" ColumnName="Magistral_Id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="concepto" ColumnName="concepto" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaterialSet">
+            <EntityTypeMapping TypeName="DataModel.Material">
+              <MappingFragment StoreEntitySet="MaterialSet">
+                <ScalarProperty Name="EgresoMaterial_Material_Id" ColumnName="EgresoMaterial_Material_Id" />
+                <ScalarProperty Name="ActividadId" ColumnName="ActividadId" />
+                <ScalarProperty Name="costo" ColumnName="costo" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

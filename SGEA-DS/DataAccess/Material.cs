@@ -16,5 +16,9 @@ public partial class Material
     public string tipo { get; set; }
     public int cantidad { get; set; }
     public double costo { get; set; }
-    public int ActividadId { get; set; }
+    public Nullable<int> ActividadId { get; set; }
+    public int EgresoMaterial_Material_Id { get; set; }
+
+    public virtual Actividad ActividadSet { get; set; }
+    public virtual Egreso EgresoSet { get; set; }
 }

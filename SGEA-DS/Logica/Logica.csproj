@@ -60,6 +60,8 @@
     <Compile Include="Comite_Logica.cs" />
     <Compile Include="MiembroComite_Logica.cs" />
     <Compile Include="Patrocinador_Logica.cs" />
+	<Compile Include="Egreso_Logica.cs" />
+    <Compile Include="Material_Logica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
