@@ -138,7 +138,7 @@ namespace SGEA_DS
             {
                 concepto = textbox_Concepto.Text,
                 fecha = Convert.ToDateTime(textbox_Fecha.Text),
-                monto = float.Parse(textbox_Monto.Text)
+                monto = float.Parse(textbox_Monto.Text, NumberFormatInfo.InvariantInfo)
             };
             Egreso_Logica egreso_Logica = new Egreso_Logica();
             egreso_Logica.RegistrarEgreso(nuevoEgreso);
