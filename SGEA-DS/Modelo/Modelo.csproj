@@ -56,6 +56,8 @@
     <Compile Include="Evento.cs" />
     <Compile Include="MiembroComite.cs" />
     <Compile Include="Patrocinador.cs" />
+	<Compile Include="Material.cs" />
+	<Compile Include="Egreso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
