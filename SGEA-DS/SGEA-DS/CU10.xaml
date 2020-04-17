@@ -1,4 +1,4 @@
-﻿<Window x:Class="SGEA_DS.CU10"
+﻿<local:VentanaCtrolEvento x:Class="SGEA_DS.CU10"
         
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -14,9 +14,9 @@
         xmlns:local="clr-namespace:SGEA_DS"
         mc:Ignorable="d"
         Title="Registrar egreso" Height="450" Width="800">
-    <Window.Resources>
+    <local:VentanaCtrolEvento.Resources>
         <BooleanToVisibilityConverter x:Key="boolToVisible"/>
-    </Window.Resources>
+    </local:VentanaCtrolEvento.Resources>
     <Grid>
         <Grid HorizontalAlignment="Left" Height="323" Margin="10,29,0,0" VerticalAlignment="Top" Width="772">
             <Grid.RowDefinitions>
@@ -52,4 +52,4 @@
             <Button x:Name="button_Cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Grid.Column="1" Click="click_Cancelar"/>
         </Grid>
     </Grid>
-</Window>
+</local:VentanaCtrolEvento>

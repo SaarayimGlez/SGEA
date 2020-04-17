@@ -11,80 +11,14 @@ using System.Windows.Media;
 
 namespace SGEA_DS
 {
-    public partial class CU10 : Window
+    public partial class CU10 : VentanaCtrolEvento
     {
 
         public CU10()
         {
             InitializeComponent();
         }
-
-        private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key >= Key.A && e.Key <= Key.Z)
-            {
-            }
-            else
-            {
-                if (e.Key == Key.Oem3 | e.Key == Key.Oem1 | e.Key == Key.DeadCharProcessed)
-                {
-                }
-                else
-                {
-                    e.Handled = true;
-                }
-            }
-
-        }
-
-        private void textbox_Numerico_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (Keyboard.Modifiers == ModifierKeys.Shift)
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                if ((e.Key >= Key.D0 && e.Key <= Key.D9) ||
-                       (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
-                {
-                }
-                else
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-
-        private void textbox_NumDinero_KeyDown(object sender, KeyEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            if ((!textBox.Text.Equals("") &&
-                textBox.Text.Contains(".") &&
-                (e.Key == Key.OemPeriod)) ||
-                (Keyboard.Modifiers == ModifierKeys.Shift))
-            {
-                e.Handled = true;
-            }
-            else
-            {
-                if ((e.Key >= Key.D0 && e.Key <= Key.D9) ||
-                       (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) ||
-                       (e.Key == Key.OemPeriod))
-                {
-                }
-                else
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-
-        private void DataPicker_KeyDown(object sender, KeyEventArgs e)
-        {
-            e.Handled = true;
-        }
-
+        
         private void click_Aceptar(object sender, RoutedEventArgs e)
         {
             if (validarDatos() && nuevoComite())
