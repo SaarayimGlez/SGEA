@@ -54,8 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionBD_Logica.cs" />
-    <Compile Include="Egreso_Logica.cs" />
-    <Compile Include="Material_Logica.cs" />
+    <Compile Include="Evento_Logica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,13 +67,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
-      <Project>{806e8765-0126-47f6-8fcc-6baabb18b6d3}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Modelo\Modelo.csproj">
       <Project>{9b28c064-09d5-4dfc-a0b7-02bb11fd6e67}</Project>
       <Name>Modelo</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\Users\GANADOR\Downloads\8\desSOFT\ELproyecto\SGEA-DS\DataAccess\DataAccess.csproj">
+      <Project>{806e8765-0126-47f6-8fcc-6baabb18b6d3}</Project>
+      <Name>DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
