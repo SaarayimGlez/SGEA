@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Modelo
 {
     [DataContract]
-    public partial class Evento
+    public partial class Magistral
     {
         [DataMember]
         public int Id { get; set; }
@@ -17,18 +17,13 @@ namespace Modelo
         public string nombre { get; set; }
 
         [DataMember]
-        public System.DateTime fechaInicio { get; set; }
+        public string apellidoPaterno { get; set; }
 
         [DataMember]
-        public System.DateTime fechaFin { get; set; }
+        public string apellidoMaterno { get; set; }
 
         [DataMember]
-        public string lugar { get; set; }
-
-        [DataMember]
-        public string institucionOrganizadora { get; set; }
-
-        [DataMember]
-        public Nullable<int> EventoPresupuesto_Evento_Id { get; set; }
+        public int AdscripcionId { get; set; }
+        
     }
 }

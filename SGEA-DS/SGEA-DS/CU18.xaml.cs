@@ -11,11 +11,11 @@ using System.Windows.Media;
 
 namespace SGEA_DS
 {
-    public partial class CU15 : VentanaCtrolEvento
+    public partial class CU18 : VentanaCtrolEvento
     {
         private int eventoId;
 
-        public CU15(/*int idEvento*/)
+        public CU18(/*int idEvento*/)
         {
             InitializeComponent();
             this.eventoId = 1;
@@ -24,7 +24,7 @@ namespace SGEA_DS
 
         private void llenarCampos(int idEvento)
         {
-            Evento_Logica evento_Logica = new Evento_Logica();
+            /*Evento_Logica evento_Logica = new Evento_Logica();
             if (!evento_Logica.ComprobarConexion())
             {
                 textBlock_Mensaje.Text = "sin conexion";
@@ -39,12 +39,12 @@ namespace SGEA_DS
                 combobox_IOrganizadora.Text = eventoModificar.institucionOrganizadora;
                 datePicker_FInicio.Text = eventoModificar.fechaInicio.ToString("dd/MM/yyyy");
                 datePicker_FFin.Text = eventoModificar.fechaFin.ToString("dd/MM/yyyy");
-            }
+            }*/
         }
 
         private void click_Aceptar(object sender, RoutedEventArgs e)
         {
-            if (textBlock_Mensaje.Text.Equals("sin conexion") || validarDatos())
+            /*if (textBlock_Mensaje.Text.Equals("sin conexion") || validarDatos())
             {
                 modificarEvento();
                 if (!textBlock_Mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
@@ -70,12 +70,12 @@ namespace SGEA_DS
                         Foreground = Brushes.Red
                     });
                 textBlock_Mensaje.Inlines.Add(bold);
-            }
+            }*/
         }
         
         private bool modificarEvento()
         {
-            Evento_Logica evento_Logica = new Evento_Logica();
+            /*Evento_Logica evento_Logica = new Evento_Logica();
             if (textBlock_Mensaje.Text.Equals("sin conexion") || 
                 !evento_Logica.ComprobarConexion())
             {
@@ -96,19 +96,20 @@ namespace SGEA_DS
                 fechaFin = Convert.ToDateTime(datePicker_FInicio.Text)
             };
 
-            return evento_Logica.ModificarEvento(eventoActualizado);
+            return evento_Logica.ModificarEvento(eventoActualizado);*/
+            return true;
         }
 
         private bool validarDatos()
         {
 
-            if (string.IsNullOrWhiteSpace(textbox_Nombre.Text) || 
+            /*if (string.IsNullOrWhiteSpace(textbox_Nombre.Text) || 
                 string.IsNullOrWhiteSpace(textbox_Lugar.Text) || 
                 string.IsNullOrEmpty(datePicker_FInicio.Text) ||
                 string.IsNullOrEmpty(datePicker_FInicio.Text))
             { 
                 return false;
-            }
+            }*/
             return true;
         }
 

@@ -14,18 +14,14 @@ namespace SGEA_DS
 
         public void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key >= Key.A && e.Key <= Key.Z)
+            if ((e.Key >= Key.A && e.Key <= Key.Z) || 
+                (e.Key == Key.Oem3 || e.Key == Key.Oem1 ||
+                    e.Key == Key.DeadCharProcessed))
             {
             }
             else
             {
-                if (e.Key == Key.Oem3 | e.Key == Key.Oem1 | e.Key == Key.DeadCharProcessed)
-                {
-                }
-                else
-                {
-                    e.Handled = true;
-                }
+                e.Handled = true;
             }
         }
 
@@ -75,6 +71,23 @@ namespace SGEA_DS
         public void DataPicker_KeyDown(object sender, KeyEventArgs e)
         {
             e.Handled = true;
+        }
+
+        public void textbox_AlfInstitucion_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (((e.Key == Key.D8 || e.Key == Key.D9) && 
+                Keyboard.Modifiers == ModifierKeys.Shift) || 
+                (e.Key >= Key.A && e.Key <= Key.Z) || 
+                (e.Key == Key.Oem3 || e.Key == Key.Oem1 || 
+                e.Key == Key.DeadCharProcessed || e.Key == Key.OemMinus || 
+                e.Key == Key.Subtract))
+            {
+            }
+            else
+            {
+                textbox_Numerico_KeyDown(sender, e);
+            }
         }
     }
 }

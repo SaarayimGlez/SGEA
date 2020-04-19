@@ -54,7 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionBD_Logica.cs" />
-    <Compile Include="Evento_Logica.cs" />
+    <Compile Include="Adscripcion_Logica.cs" />
+    <Compile Include="Magistral_Logica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

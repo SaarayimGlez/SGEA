@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class Evento_Logica : ConexionBD_Logica
+    public class Magistral_Logica : ConexionBD_Logica
     {
 
-        public Evento_Logica() : base()
+        public Magistral_Logica() : base()
         {
         }
 
-        public Modelo.Evento RecuperarEvento(int eventoId)
+        /*public Modelo.Evento RecuperarEvento(int eventoId)
         {
             Modelo.Evento eventoRecuperado = new Modelo.Evento();
             try
@@ -66,6 +66,6 @@ namespace Logica
                 return false;
             }
             return false;
-        }
+        }*/
     }
 }

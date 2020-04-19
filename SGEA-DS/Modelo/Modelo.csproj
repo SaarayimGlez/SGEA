@@ -52,8 +52,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adscripcion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Evento.cs" />
+    <Compile Include="Magistral.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
