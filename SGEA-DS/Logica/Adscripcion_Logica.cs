@@ -15,47 +15,44 @@ namespace Logica
         {
         }
 
-        /*public Modelo. RecuperarEvento(int eventoId)
+        public Modelo.Adscripcion RecuperarAdscripcion(int adscripcionId)
         {
-            Modelo.Evento eventoRecuperado = new Modelo.Evento();
+            Modelo.Adscripcion adscripcionRecuperada = new Modelo.Adscripcion();
             try
             {
-                var listaEventoBD = _context.EventoSet.ToList();
-                foreach (Evento eventoBD in listaEventoBD)
+                var adscripcionOriginal = _context.AdscripcionSet.SingleOrDefault(
+                    adscripcion => adscripcion.Id == adscripcionId);
+                if (adscripcionOriginal != null)
                 {
-                    if (eventoBD.Id == eventoId)
-                    {
-                        eventoRecuperado.nombre = eventoBD.nombre;
-                        eventoRecuperado.lugar = eventoBD.lugar;
-                        eventoRecuperado.institucionOrganizadora = 
-                            eventoBD.institucionOrganizadora;
-                        eventoRecuperado.fechaInicio = eventoBD.fechaInicio;
-                        eventoRecuperado.fechaFin = eventoBD.fechaFin;
-                    }
+                    adscripcionRecuperada.Id = adscripcionOriginal.Id;
+                    adscripcionRecuperada.nombre = adscripcionOriginal.nombre;
+                    adscripcionRecuperada.ciudad = adscripcionOriginal.ciudad;
+                    adscripcionRecuperada.correoElectronico = adscripcionOriginal.correoElectronico;
+                    adscripcionRecuperada.direccion = adscripcionOriginal.direccion;
+                    adscripcionRecuperada.estado = adscripcionOriginal.estado;
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-            return eventoRecuperado;
+            return adscripcionRecuperada;
         }
 
-        public bool ModificarEvento(Modelo.Evento eventoModificado)
+        public bool ModificarAdscripcion(Modelo.Adscripcion adscripcionModificada)
         {
             try
             {
-                var eventoOriginal = _context.EventoSet.SingleOrDefault(
-                    evento => evento.Id == eventoModificado.Id);
-
-                if(eventoOriginal != null)
+                var adscripcionOriginal = _context.AdscripcionSet.SingleOrDefault(
+                    adscripcion => adscripcion.Id == adscripcionModificada.Id);
+                if (adscripcionOriginal != null)
                 {
-                    eventoOriginal.nombre = eventoModificado.nombre;
-                    eventoOriginal.lugar = eventoModificado.lugar;
-                    eventoOriginal.institucionOrganizadora = 
-                        eventoModificado.institucionOrganizadora;
-                    eventoOriginal.fechaInicio = eventoModificado.fechaInicio;
-                    eventoOriginal.fechaFin = eventoModificado.fechaFin;
+                    adscripcionOriginal.Id = adscripcionModificada.Id;
+                    adscripcionOriginal.nombre = adscripcionModificada.nombre;
+                    adscripcionOriginal.ciudad = adscripcionModificada.ciudad;
+                    adscripcionOriginal.correoElectronico = adscripcionModificada.correoElectronico;
+                    adscripcionOriginal.direccion = adscripcionModificada.direccion;
+                    adscripcionOriginal.estado = adscripcionModificada.estado;
                     _context.SaveChanges();
                     return true;
                 }
@@ -66,6 +63,6 @@ namespace Logica
                 return false;
             }
             return false;
-        }*/
+        }
     }
 }

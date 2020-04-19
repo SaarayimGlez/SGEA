@@ -1,0 +1,39 @@
+﻿<local:CtrolUsrCtrolEvento x:Class="SGEA_DS.CU18_1"
+        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGEA_DS"
+        mc:Ignorable="d"
+        d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid HorizontalAlignment="Center" Height="356" Margin="5,5,5,0" VerticalAlignment="Top" Width="772">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".2*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Por favor selecciona un magistral a modificar" HorizontalAlignment="Right" VerticalAlignment="Top" Height="32" Width="762" FontSize="18" Grid.ColumnSpan="2"/>
+            <ComboBox x:Name="comboBox_magistral" HorizontalAlignment="Center" Margin="10,0" Grid.Row="1" VerticalAlignment="Center" Width="341" Height="51" materialDesign:HintAssist.Hint="Magistrales" Style="{StaticResource MaterialDesignFloatingHintComboBox}" SelectionChanged="Combobox_Magistral_SelectionChanged"/>
+            <TextBlock x:Name="textBlock_mensaje" HorizontalAlignment="Left" Margin="10,307,0,-55" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" Width="366" FontSize="14" FontWeight="Normal" Grid.Row="1"/>
+        </Grid>
+        <Grid HorizontalAlignment="Center" Height="49" Margin="396,371,0,0" VerticalAlignment="Top" Width="386">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="button_aceptar" Content="Aceptar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Top" Width="91" Height="37" Click="Click_Aceptar" IsEnabled="False"/>
+            <Button x:Name="button_cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Top" Width="91" Height="37" Grid.Column="1" Click="Click_Cancelar"/>
+        </Grid>
+    </Grid>
+</local:CtrolUsrCtrolEvento>

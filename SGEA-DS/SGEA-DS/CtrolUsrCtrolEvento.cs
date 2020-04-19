@@ -9,14 +9,13 @@ using System.Windows.Input;
 
 namespace SGEA_DS
 {
-    public class VentanaCtrolEvento : Window
+    public class CtrolUsrCtrolEvento : UserControl
     {
 
-        public void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
+        public void Textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
         {
             if ((e.Key >= Key.A && e.Key <= Key.Z) || 
-                (e.Key == Key.Oem3 || e.Key == Key.Oem1 ||
-                    e.Key == Key.DeadCharProcessed))
+                (e.Key == Key.Oem3 || e.Key == Key.Oem1 || e.Key == Key.DeadCharProcessed))
             {
             }
             else
@@ -25,7 +24,7 @@ namespace SGEA_DS
             }
         }
 
-        public void textbox_Numerico_KeyDown(object sender, KeyEventArgs e)
+        public void Textbox_Numerico_KeyDown(object sender, KeyEventArgs e)
         {
             if (Keyboard.Modifiers == ModifierKeys.Shift)
             {
@@ -33,8 +32,8 @@ namespace SGEA_DS
             }
             else
             {
-                if ((e.Key >= Key.D0 && e.Key <= Key.D9) ||
-                       (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
+                if ((e.Key >= Key.D0 && e.Key <= Key.D9) || 
+                    (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9))
                 {
                 }
                 else
@@ -44,21 +43,18 @@ namespace SGEA_DS
             }
         }
 
-        public void textbox_NumDinero_KeyDown(object sender, KeyEventArgs e)
+        public void Textbox_NumDinero_KeyDown(object sender, KeyEventArgs e)
         {
             TextBox textBox = sender as TextBox;
-            if ((!textBox.Text.Equals("") &&
-                textBox.Text.Contains(".") &&
-                (e.Key == Key.OemPeriod)) ||
-                (Keyboard.Modifiers == ModifierKeys.Shift))
+            if ((!textBox.Text.Equals("") && textBox.Text.Contains(".") && 
+                e.Key == Key.OemPeriod) || (Keyboard.Modifiers == ModifierKeys.Shift))
             {
                 e.Handled = true;
             }
             else
             {
                 if ((e.Key >= Key.D0 && e.Key <= Key.D9) ||
-                       (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) ||
-                       (e.Key == Key.OemPeriod))
+                    (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) || (e.Key == Key.OemPeriod))
                 {
                 }
                 else
@@ -73,20 +69,17 @@ namespace SGEA_DS
             e.Handled = true;
         }
 
-        public void textbox_AlfInstitucion_KeyDown(object sender, KeyEventArgs e)
+        public void Textbox_AlfInstitucion_KeyDown(object sender, KeyEventArgs e)
         {
-
             if (((e.Key == Key.D8 || e.Key == Key.D9) && 
-                Keyboard.Modifiers == ModifierKeys.Shift) || 
-                (e.Key >= Key.A && e.Key <= Key.Z) || 
-                (e.Key == Key.Oem3 || e.Key == Key.Oem1 || 
-                e.Key == Key.DeadCharProcessed || e.Key == Key.OemMinus || 
-                e.Key == Key.Subtract))
+                Keyboard.Modifiers == ModifierKeys.Shift) || (e.Key >= Key.A && e.Key <= Key.Z) || 
+                (e.Key == Key.Oem3 || e.Key == Key.Oem1 || e.Key == Key.DeadCharProcessed || 
+                e.Key == Key.OemMinus || e.Key == Key.Subtract))
             {
             }
             else
             {
-                textbox_Numerico_KeyDown(sender, e);
+                Textbox_Numerico_KeyDown(sender, e);
             }
         }
     }

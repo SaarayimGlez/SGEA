@@ -15,49 +15,50 @@ namespace Logica
         {
         }
 
-        /*public Modelo.Evento RecuperarEvento(int eventoId)
+
+        public List<Modelo.Magistral> RecuperarMagistral()
         {
-            Modelo.Evento eventoRecuperado = new Modelo.Evento();
+            List<Modelo.Magistral> listaMagistral = new List<Modelo.Magistral>();
             try
             {
-                var listaEventoBD = _context.EventoSet.ToList();
-                foreach (Evento eventoBD in listaEventoBD)
+                var listaMagistralBD = _context.MagistralSet.ToList();
+                foreach (Magistral magistralBD in listaMagistralBD)
                 {
-                    if (eventoBD.Id == eventoId)
-                    {
-                        eventoRecuperado.nombre = eventoBD.nombre;
-                        eventoRecuperado.lugar = eventoBD.lugar;
-                        eventoRecuperado.institucionOrganizadora = 
-                            eventoBD.institucionOrganizadora;
-                        eventoRecuperado.fechaInicio = eventoBD.fechaInicio;
-                        eventoRecuperado.fechaFin = eventoBD.fechaFin;
-                    }
+                    listaMagistral.Add(new Modelo.Magistral() {
+                        Id = magistralBD.Id,
+                        nombre = magistralBD.nombre,
+                        apellidoPaterno = magistralBD.apellidoPaterno,
+                        apellidoMaterno = magistralBD.apellidoMaterno,
+                        AdscripcionId = magistralBD.AdscripcionId
+                    });
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-            return eventoRecuperado;
+            return listaMagistral;
         }
 
-        public bool ModificarEvento(Modelo.Evento eventoModificado)
+        public bool ModificarMagistral(Modelo.Magistral magistralModificado,
+            Modelo.Adscripcion adscripcionModificada)
         {
+            Adscripcion_Logica adscripcion_Logica = new Adscripcion_Logica();
             try
             {
-                var eventoOriginal = _context.EventoSet.SingleOrDefault(
-                    evento => evento.Id == eventoModificado.Id);
+                var magistralOriginal = _context.MagistralSet.SingleOrDefault(
+                    magistral => magistral.Id == magistralModificado.Id);
 
-                if(eventoOriginal != null)
+                if(magistralOriginal != null)
                 {
-                    eventoOriginal.nombre = eventoModificado.nombre;
-                    eventoOriginal.lugar = eventoModificado.lugar;
-                    eventoOriginal.institucionOrganizadora = 
-                        eventoModificado.institucionOrganizadora;
-                    eventoOriginal.fechaInicio = eventoModificado.fechaInicio;
-                    eventoOriginal.fechaFin = eventoModificado.fechaFin;
-                    _context.SaveChanges();
-                    return true;
+                    magistralOriginal.nombre = magistralModificado.nombre;
+                    magistralOriginal.apellidoPaterno = magistralModificado.apellidoPaterno;
+                    magistralOriginal.apellidoMaterno = magistralModificado.apellidoMaterno;
+                    if (adscripcion_Logica.ModificarAdscripcion(adscripcionModificada))
+                    {
+                        _context.SaveChanges();
+                        return true;
+                    }
                 }
             }
             catch (Exception e)
@@ -66,6 +67,6 @@ namespace Logica
                 return false;
             }
             return false;
-        }*/
+        }
     }
 }
