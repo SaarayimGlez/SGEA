@@ -1,5 +1,4 @@
 ﻿using Logica;
-using Modelo;
 using System;
 using System.Globalization;
 using System.Linq;

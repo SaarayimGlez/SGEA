@@ -15,16 +15,12 @@ namespace Logica
         {
         }
 
-        public bool RegistrarEgreso(Modelo.Egreso egreso)
+        public bool RegistrarEgreso(Egreso egreso)
         {
             bool respuesta = false;
             try
             {
-                _context.EgresoSet.Add(new Egreso() {
-                    concepto = egreso.concepto,
-                    monto = egreso.monto,
-                    fecha = egreso.fecha,
-                });
+                _context.EgresoSet.Add(egreso);
                 _context.SaveChanges();
                 respuesta = true;
             }
@@ -35,21 +31,12 @@ namespace Logica
             return respuesta;
         }
 
-        public List<Modelo.Egreso> RecuperarEgreso()
+        public List<Egreso> RecuperarEgreso()
         {
-            List<Modelo.Egreso> listaEgreso = new List<Modelo.Egreso>();
+            List<Egreso> listaEgreso = new List<Egreso>();
             try
             {
-                var listaEgresoBD = _context.EgresoSet.ToList();
-                foreach (Egreso egresoBD in listaEgresoBD)
-                {
-                    listaEgreso.Add(new Modelo.Egreso() {
-                        Id = egresoBD.Id,
-                        concepto = egresoBD.concepto,
-                        fecha = egresoBD.fecha,
-                        monto = egresoBD.monto
-                    });
-                }
+                listaEgreso = _context.EgresoSet.ToList();
             }
             catch (Exception e)
             {

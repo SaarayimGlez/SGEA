@@ -1,5 +1,4 @@
-﻿using DataAccess;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +13,13 @@ namespace Logica
         {
         }
 
-        public bool RegistrarMaterial(Modelo.Material material, int egresoId)
+        public bool RegistrarMaterial(Material material, int egresoId)
         {
             bool respuesta = false;
             try
             {
-                _context.MaterialSet.Add(new Material() {
-                    cantidad = material.cantidad,
-                    costo = material.costo,
-                    tipo = material.tipo,
-                    EgresoMaterial_Material_Id = egresoId
-                });
+                material.EgresoMaterial_Material_Id = egresoId;
+                _context.MaterialSet.Add(material);
                 _context.SaveChanges();
                 respuesta = true;
             }

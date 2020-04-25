@@ -8,21 +8,24 @@ using System.Threading.Tasks;
 namespace Modelo
 {
     [DataContract]
-    public partial class Egreso
+    public partial class Autor 
     {
         [DataMember]
         public int Id { get; set; }
 
         [DataMember]
-        public string concepto { get; set; }
+        public string nombre { get; set; }
 
         [DataMember]
-        public double monto { get; set; }
+        public string apellidoPaterno { get; set; }
 
         [DataMember]
-        public System.DateTime fecha { get; set; }
+        public string apellidoMaterno { get; set; }
 
         [DataMember]
-        public Nullable<int> Magistral_Id { get; set; }
+        string correoElectronico { get; set; }
+
+        [DataMember]
+        public int AdscripcionId { get; set; }
     }
 }
