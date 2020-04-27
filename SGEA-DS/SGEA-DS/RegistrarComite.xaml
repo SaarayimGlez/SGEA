@@ -1,4 +1,4 @@
-﻿<Window x:Class="SGEA_DS.CU04"
+﻿<local:VentanaCtrolEvento x:Class="SGEA_DS.CU04"
         
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -15,7 +15,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGEA_DS"
         mc:Ignorable="d"
-        Title="Registrar comité" Height="450" Width="800">
+        Title="Registrar comité" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid HorizontalAlignment="Left" Height="323" Margin="10,29,0,0" VerticalAlignment="Top" Width="772">
             <Grid.RowDefinitions>
@@ -27,17 +27,17 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Label Content="Por favor introduce el nombre del comité y una descripción corta de este" HorizontalAlignment="Right" VerticalAlignment="Top" Height="66" Width="762" FontSize="18" Grid.RowSpan="2"/>
-            <TextBox x:Name="textbox_Nombre" HorizontalAlignment="Right" Height="58" Margin="0,30,386,38" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="344" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True" KeyDown="textbox_Alfabetico_KeyDown"/>
-            <TextBox x:Name="textbox_Descripcion" HorizontalAlignment="Center" Height="58" Margin="42,7,42,59" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="688" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Descripción" materialDesign:HintAssist.IsFloating="True" KeyDown="textbox_Alfabetico_KeyDown"/>
-            <TextBlock x:Name="textBlock_Mensaje" HorizontalAlignment="Left" Margin="31,129,0,-50" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal"/>
+            <TextBox x:Name="textBox_nombre" HorizontalAlignment="Right" Height="58" Margin="0,30,386,38" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="344" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True" KeyDown="Textbox_Alfabetico_KeyDown"/>
+            <TextBox x:Name="textBox_descripcion" HorizontalAlignment="Center" Height="58" Margin="42,7,42,59" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="688" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Descripción" materialDesign:HintAssist.IsFloating="True" KeyDown="Textbox_Alfabetico_KeyDown"/>
+            <TextBlock x:Name="textBlock_mensaje" HorizontalAlignment="Left" Margin="31,129,0,-50" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal"/>
         </Grid>
         <Grid HorizontalAlignment="Left" Height="63" Margin="396,357,0,0" VerticalAlignment="Top" Width="386">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="button_Aceptar" Content="Aceptar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Click="click_Aceptar"/>
-            <Button x:Name="button_Cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Grid.Column="1" Click="click_Cancelar"/>
+            <Button x:Name="button_aceptar" Content="Aceptar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Click="Click_Aceptar"/>
+            <Button x:Name="button_cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Grid.Column="1" Click="Click_Cancelar"/>
         </Grid>
     </Grid>
-</Window>
+</local:VentanaCtrolEvento>

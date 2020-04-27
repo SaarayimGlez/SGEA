@@ -8,10 +8,8 @@ using Logica;
 
 namespace SGEA_DS
 {
-
-    public partial class CU01_1 : Window
+    public partial class CU01_1 : UserControl
     {
-
         private List<string> listaComite;
         private List<RadioButton> listaRbComite;
         private Comite_Logica comiteDAO;
@@ -25,23 +23,22 @@ namespace SGEA_DS
             InitializeComponent();
             this.eventoId = eventoId;
             this.nombreEvento = nombreEvento;
-            this.Title = "Registrar lider de comité del evento: " + nombreEvento;
-            llenarListaComite(1);
+            LlenarListaComite(1);
         }
 
-        private void llenarListaComite(int eventoId)
+        private void LlenarListaComite(int eventoId)
         {
             comiteDAO = new Comite_Logica();
             if (!comiteDAO.ComprobarConexion())
             {
-                textBlock_Mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = String.Empty;
                 var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
                 {
                     Foreground = Brushes.Red
                 });
-                textBlock_Mensaje.Inlines.Add(bold);
-                button_Cancelar.Content = "Regresar";
-                button_Aceptar.Visibility = Visibility.Hidden;
+                textBlock_mensaje.Inlines.Add(bold);
+                button_cancelar.Content = "Regresar";
+                button_aceptar.Visibility = Visibility.Hidden;
             }
             else
             {
@@ -54,7 +51,7 @@ namespace SGEA_DS
                     String patronSimbolo = @"\s-\s?[+*]?\s?-\s";
                     String[] elementoComite = System.Text.RegularExpressions.Regex.Split(comite, patronSimbolo);
                     listaIdComite.Add(Convert.ToInt32(elementoComite[1]));
-                    insertarFila(elementoComite[0]);
+                    InsertarFila(elementoComite[0]);
                 }
             }
         }
@@ -64,28 +61,27 @@ namespace SGEA_DS
 
         }
 
-        private void click_Aceptar(object sender, RoutedEventArgs e)
+        private void Click_Aceptar(object sender, RoutedEventArgs e)
         {
             for (int i = 0; i < listaRbComite.Count; i++)
             {
                 if (listaRbComite[i].IsChecked == true)
                 {
-                    CU01_2 win2 = new CU01_2(listaIdComite[i]);
-                    win2.Show();
-                    this.Close();
+                    Switcher.Switch(new CU01_2(listaIdComite[i]));
                 }
             }
         }
 
-        private void click_Cancelar(object sender, RoutedEventArgs e)
+        private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow(this.eventoId, this.nombreEvento);
+            MainWindow main = new MainWindow();
             main.Show();
-            this.Close();
+            var window = Window.GetWindow(this);
+            window.Close();
         }
 
         
-        private void insertarFila(string comite)
+        private void InsertarFila(string comite)
         {
             GridPrincipal.RowDefinitions.Insert(GridPrincipal.RowDefinitions.Count, new RowDefinition());
             var rbComite = new RadioButton();

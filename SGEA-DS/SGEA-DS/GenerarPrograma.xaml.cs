@@ -18,40 +18,40 @@ namespace SGEA_DS
         public CU05()
         {
             InitializeComponent();
-            llenarListaActividades(1, "NombreDeEvent");
+            LlenarListaActividades(1, "NombreDeEvent");
         }
 
         public CU05(int eventoId, string nombreEvento)
         {
             InitializeComponent();
-            llenarListaActividades(eventoId, nombreEvento);
+            LlenarListaActividades(eventoId, nombreEvento);
         }
 
-        private void llenarListaActividades(int eventoId, string nombreEvento)
+        private void LlenarListaActividades(int eventoId, string nombreEvento)
         {
             label_Evento.Content = nombreEvento;
             Actividad_Logica actividadDAO = new Actividad_Logica();
             if (!actividadDAO.ComprobarConexion())
             {
-                textBlock_Mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = String.Empty;
                 var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
                 {
                     Foreground = Brushes.Red
                 });
-                textBlock_Mensaje.Inlines.Add(bold);
-                button_Cancelar.Content = "Regresar";
-                button_Aceptar.Visibility = Visibility.Hidden;            }
+                textBlock_mensaje.Inlines.Add(bold);
+                button_cancelar.Content = "Regresar";
+                button_aceptar.Visibility = Visibility.Hidden;            }
             else
             {
                 List<List<string>> listaActividades = actividadDAO.RecuperarProgramaEvento(eventoId);
                 foreach (List<string> actividad in listaActividades)
                 {
-                    insertarFila(actividad);
+                    InsertarFila(actividad);
                 }
             }
         }
 
-        private void insertarFila(List<string> actividad)
+        private void InsertarFila(List<string> actividad)
         {
             grid_Programa.RowDefinitions.Add(new RowDefinition());
             int row = grid_Programa.RowDefinitions.Count - 1;
@@ -82,7 +82,7 @@ namespace SGEA_DS
             listaTxtBlock[6].Text = actividad[5];
             listaTxtBlock[5].Text = actividad[7];
 
-            rectangulo.Fill = definirColor(actividad[6]);
+            rectangulo.Fill = DefinirColor(actividad[6]);
             grid_Programa.Children.Add(rectangulo);
             Grid.SetRow(rectangulo, row);
             Grid.SetColumnSpan(rectangulo, column);
@@ -97,7 +97,7 @@ namespace SGEA_DS
             }
         }
 
-        private Brush definirColor(string tipo)
+        private Brush DefinirColor(string tipo)
         {
             string color = "";
             switch (tipo)
@@ -130,7 +130,7 @@ namespace SGEA_DS
             return new SolidColorBrush((Color)ColorConverter.ConvertFromString(color));
         }
 
-        private void click_Aceptar(object sender, RoutedEventArgs e)
+        private void Click_Aceptar(object sender, RoutedEventArgs e)
         {
             string file = KnownFolders.Downloads.Path + @"\programaIMG.png";
             BitmapEncoder encoder = new PngBitmapEncoder();
@@ -158,14 +158,14 @@ namespace SGEA_DS
                 encoder.Save(stm);
             }
 
-            textBlock_Mensaje.Text = String.Empty;
+            textBlock_mensaje.Text = String.Empty;
             var bold = new Bold(new Run(@"Programa descargado en \Descargas\ProgramaIMG.png"));
-            textBlock_Mensaje.Inlines.Add(bold);
-            button_Cancelar.Content = "Regresar";
-            button_Aceptar.Visibility = Visibility.Hidden;
+            textBlock_mensaje.Inlines.Add(bold);
+            button_cancelar.Content = "Regresar";
+            button_aceptar.Visibility = Visibility.Hidden;
         }
         
-        private void click_Cancelar(object sender, RoutedEventArgs e)
+        private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
             MainWindow main = new MainWindow();
             main.Show();

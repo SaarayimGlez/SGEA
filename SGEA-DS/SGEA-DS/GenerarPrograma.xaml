@@ -15,7 +15,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGEA_DS"
         mc:Ignorable="d"
-        Title="Registrar comité" Height="450" Width="800">
+        Title="Registrar comité" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Si lo desea, puede descargar el programa en 'Descargas'" FontSize="18" Margin="20,25,10,359"/>
         <Grid HorizontalAlignment="Left" Height="63" Margin="20,357,0,0" VerticalAlignment="Top" Width="762">
@@ -24,9 +24,9 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="textBlock_Mensaje" HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal" Grid.Column="0" Grid.ColumnSpan="1"/>
-            <Button x:Name="button_Aceptar" Content="Descargar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="90" Height="37" Click="click_Aceptar" Grid.Column="1"/>
-            <Button x:Name="button_Cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="90" Height="37" Grid.Column="2" Click="click_Cancelar"/>
+            <TextBlock x:Name="textBlock_mensaje" HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal" Grid.Column="0" Grid.ColumnSpan="1"/>
+            <Button x:Name="button_aceptar" Content="Descargar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="90" Height="37" Click="Click_Aceptar" Grid.Column="1"/>
+            <Button x:Name="button_cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="90" Height="37" Grid.Column="2" Click="Click_Cancelar"/>
         </Grid>
         <ScrollViewer HorizontalAlignment="Left" Height="286" Margin="10,66,0,0" VerticalAlignment="Top" Width="772">
             <Canvas x:Name="canvas_Programa" Width="734" VerticalAlignment="Top">

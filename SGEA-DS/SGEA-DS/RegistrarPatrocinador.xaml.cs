@@ -14,9 +14,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
-namespace SGEA_DS {
-    public partial class CU06 : Window {
+namespace SGEA_DS
+{
+    public partial class CU06 : VentanaCtrolEvento
+    {
 
         public CU06()
         {
@@ -27,124 +30,89 @@ namespace SGEA_DS {
         {
             InitializeComponent();
         }
-
-        private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
+        
+        private void Click_Aceptar(object sender, RoutedEventArgs e)
         {
-            if (e.Key >= Key.A && e.Key <= Key.Z)
+            if (ValidarDatos() && NuevoPatrocinador())
             {
-            }
-            else
-            {
-                if (e.Key == Key.Oem3 | e.Key == Key.Oem1 | e.Key == Key.DeadCharProcessed)
+                if (!textBlock_mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
                 {
-                }
-                else
-                {
-                    e.Handled = true;
-                }
-            }
-            
-        }
-
-        private void textbox_Numerico_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key >= Key.D0 && e.Key <= Key.D9)
-            {
-            }
-            else
-            {
-                if (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9)
-                {
-                }
-                else
-                {
-                    e.Handled = true;
-                }
-            }
-
-        }
-
-        private void textbox_Espacio_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Space)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void click_Aceptar(object sender, RoutedEventArgs e)
-        {
-            if (validarDatos() && nuevoPatrocinador())
-            {
-                if (!textBlock_Mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
-                {
-                    textBlock_Mensaje.Text = String.Empty;
+                    textBlock_mensaje.Text = String.Empty;
                     var bold = new Bold(new Run("Patrocinador registrado con éxito"));
-                    textBlock_Mensaje.Inlines.Add(bold);
+                    textBlock_mensaje.Inlines.Add(bold);
                 }
-                button_Cancelar.Content = "Regresar";
-                button_Aceptar.Visibility = Visibility.Hidden;
-                textbox_Nombre.IsEnabled = false;
-                textbox_ApellidoP.IsEnabled = false;
-                textbox_ApellidoM.IsEnabled = false;
-                textbox_Empresa.IsEnabled = false;
-                textbox_Direccion.IsEnabled = false;
-                textbox_CorreoE.IsEnabled = false;
-                textbox_NumeroTel.IsEnabled = false;
+                button_cancelar.Content = "Regresar";
+                button_aceptar.Visibility = Visibility.Hidden;
+                textBox_nombre.IsEnabled = false;
+                textBox_apellidoP.IsEnabled = false;
+                textBox_apellidoM.IsEnabled = false;
+                textBox_empresa.IsEnabled = false;
+                textBox_direccion.IsEnabled = false;
+                textBox_correoE.IsEnabled = false;
+                textBox_numeroTel.IsEnabled = false;
             }
             else
             {
-                textBlock_Mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = String.Empty;
                 var bold = new Bold(new Run(
                     "Hay datos inválidos o el patrocinador ya existe, favor de revisar")
                     {
                         Foreground = Brushes.Red
                     });
-                textBlock_Mensaje.Inlines.Add(bold);
+                textBlock_mensaje.Inlines.Add(bold);
             }
         }
 
-        private bool nuevoPatrocinador()
+        private bool NuevoPatrocinador()
         {
             Patrocinador_Logica patrocinadorDAO = new Patrocinador_Logica();
             if (!patrocinadorDAO.ComprobarConexion())
             {
-                textBlock_Mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = String.Empty;
                 var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
                 {
                     Foreground = Brushes.Red
                 });
-                textBlock_Mensaje.Inlines.Add(bold);
+                textBlock_mensaje.Inlines.Add(bold);
                 return true;
             }
             return patrocinadorDAO.RegistrarPatrocinador(new Patrocinador() {
-                nombre = textbox_Nombre.Text,
-                apellidoPaterno = textbox_ApellidoP.Text,
-                apellidoMaterno = textbox_ApellidoM.Text,
-                empresa = textbox_Empresa.Text,
-                direccion = textbox_Direccion.Text,
-                correoElectronico = textbox_CorreoE.Text,
-                numeroTelefono = textbox_NumeroTel.Text
+                nombre = textBox_nombre.Text,
+                apellidoPaterno = textBox_apellidoP.Text,
+                apellidoMaterno = textBox_apellidoM.Text,
+                empresa = textBox_empresa.Text,
+                direccion = textBox_direccion.Text,
+                correoElectronico = textBox_correoE.Text,
+                numeroTelefono = textBox_numeroTel.Text
             } );
         }
 
-        private bool validarDatos()
+        private bool ValidarDatos()
         {
-            if (textbox_Nombre.Text.Any(char.IsPunctuation) | textbox_ApellidoP.Text.Any(char.IsPunctuation) |
-                textbox_ApellidoM.Text.Any(char.IsPunctuation) | textbox_Nombre.Text.Any(char.IsDigit) | 
-                textbox_ApellidoP.Text.Any(char.IsDigit) | textbox_ApellidoM.Text.Any(char.IsDigit))
+            if (textBox_nombre.Text.Any(char.IsPunctuation) | 
+                textBox_apellidoP.Text.Any(char.IsPunctuation) | 
+                textBox_apellidoM.Text.Any(char.IsPunctuation) | 
+                textBox_nombre.Text.Any(char.IsDigit) | 
+                textBox_apellidoP.Text.Any(char.IsDigit) | textBox_apellidoM.Text.Any(char.IsDigit))
             {
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(textbox_CorreoE.Text) | string.IsNullOrWhiteSpace(textbox_NumeroTel.Text) |
-                textbox_NumeroTel.Text.Any(char.IsLetter) | textbox_NumeroTel.Text.Any(char.IsPunctuation))
+            if (string.IsNullOrWhiteSpace(textBox_correoE.Text) | 
+                string.IsNullOrWhiteSpace(textBox_numeroTel.Text) | 
+                textBox_numeroTel.Text.Any(char.IsLetter) | 
+                textBox_numeroTel.Text.Any(char.IsPunctuation))
             { 
+                return false;
+            }
+            if (!Regex.IsMatch(
+                textBox_correoE.Text, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"))
+            {
                 return false;
             }
             return true;
         }
 
-        private void click_Cancelar(object sender, RoutedEventArgs e)
+        private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
             MainWindow main = new MainWindow();
             main.Show();

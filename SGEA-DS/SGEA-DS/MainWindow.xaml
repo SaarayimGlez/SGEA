@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGEA_DS"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Button Content="Registrar evento" HorizontalAlignment="Left" Margin="44,60,0,0" VerticalAlignment="Top" Width="325" Click="Button_Click"/>
         <Button Content="Modificar patrocinador" HorizontalAlignment="Left" Margin="44,121,0,0" VerticalAlignment="Top" Width="325" Click="Button_Click_1"/>

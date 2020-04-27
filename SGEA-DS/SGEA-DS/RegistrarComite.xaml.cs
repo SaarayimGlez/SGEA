@@ -9,7 +9,7 @@ using Logica;
 
 namespace SGEA_DS
 {
-    public partial class CU04 : Window
+    public partial class CU04 : VentanaCtrolEvento
     {
         private int eventoId;
         private string nombreEvento;
@@ -27,79 +27,61 @@ namespace SGEA_DS
             this.Title = "Registrar lider de comité del evento: " + nombreEvento;
         }
 
-        private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
+        private void Click_Aceptar(object sender, RoutedEventArgs e)
         {
-            if (e.Key >= Key.A && e.Key <= Key.Z)
+            if (ValidarDatos() && NuevoComite())
             {
-            }
-            else
-            {
-                if (e.Key == Key.Oem3 | e.Key == Key.Oem1 | e.Key == Key.DeadCharProcessed)
+                if (!textBlock_mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
                 {
-                }
-                else
-                {
-                    e.Handled = true;
-                }
-            }
-
-        }
-
-        private void click_Aceptar(object sender, RoutedEventArgs e)
-        {
-            if (validarDatos() && nuevoComite())
-            {
-                if (!textBlock_Mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
-                {
-                    textBlock_Mensaje.Text = String.Empty;
+                    textBlock_mensaje.Text = String.Empty;
                     var bold = new Bold(new Run("Comité registrado con éxito"));
-                    textBlock_Mensaje.Inlines.Add(bold);
+                    textBlock_mensaje.Inlines.Add(bold);
                 }
-                button_Cancelar.Content = "Regresar";
-                button_Aceptar.Visibility = Visibility.Hidden;
-                textbox_Nombre.IsEnabled = false;
-                textbox_Descripcion.IsEnabled = false;
+                button_cancelar.Content = "Regresar";
+                button_aceptar.Visibility = Visibility.Hidden;
+                textBox_nombre.IsEnabled = false;
+                textBox_descripcion.IsEnabled = false;
             }
             else
             {
-                textBlock_Mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = String.Empty;
                 var bold = new Bold(new Run("Hay datos inválidos o el comité ya existe, favor de revisar") { Foreground = Brushes.Red });
-                textBlock_Mensaje.Inlines.Add(bold);
+                textBlock_mensaje.Inlines.Add(bold);
             }
         }
 
-        private bool nuevoComite()
+        private bool NuevoComite()
         {
             Comite nuevoComite = new Comite();
-            nuevoComite.nombre = textbox_Nombre.Text;
-            nuevoComite.descripcion = textbox_Descripcion.Text;
+            nuevoComite.nombre = textBox_nombre.Text;
+            nuevoComite.descripcion = textBox_descripcion.Text;
             nuevoComite.EventoId = eventoId;
             Comite_Logica comiteDAO = new Comite_Logica();
             if (!comiteDAO.ComprobarConexion())
             {
-                textBlock_Mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = String.Empty;
                 var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
                 {
                     Foreground = Brushes.Red
                 });
-                textBlock_Mensaje.Inlines.Add(bold);
+                textBlock_mensaje.Inlines.Add(bold);
                 return true;
             }
             return comiteDAO.RegistrarComite(nuevoComite);
         }
 
-        private bool validarDatos()
+        private bool ValidarDatos()
         {
-            if (textbox_Nombre.Text.Any(char.IsPunctuation) | textbox_Descripcion.Text.Any(char.IsPunctuation) |
-                textbox_Nombre.Text.Any(char.IsDigit) | textbox_Descripcion.Text.Any(char.IsDigit) |
-                string.IsNullOrWhiteSpace(textbox_Nombre.Text) | string.IsNullOrWhiteSpace(textbox_Descripcion.Text))
+            if (textBox_nombre.Text.Any(char.IsPunctuation) | textBox_descripcion.Text.Any(char.IsPunctuation) |
+                textBox_nombre.Text.Any(char.IsDigit) | textBox_descripcion.Text.Any(char.IsDigit) |
+                string.IsNullOrWhiteSpace(textBox_nombre.Text) | string.IsNullOrWhiteSpace(textBox_descripcion.Text))
             {
                 return false;
             }
             return true;
         }
 
-        private void click_Cancelar(object sender, RoutedEventArgs e)
+        private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
             MainWindow main = new MainWindow(eventoId, nombreEvento);
             main.Show();

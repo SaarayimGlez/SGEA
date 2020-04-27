@@ -69,7 +69,8 @@ namespace Logica
                     if (lista.Actividad.ArticuloAct != null)
                     {
                         RegistroArticulo_Logica registroArticuloDAO = new RegistroArticulo_Logica();
-                        listaActividad[listaActividad.Count - 1].Add(registroArticuloDAO.RecuperarAutor(lista.Actividad.ArticuloAct));
+                        listaActividad[listaActividad.Count - 1].Add(
+                            registroArticuloDAO.RecuperarAutor(lista.Actividad.ArticuloAct));
                     }
                     if (lista.Actividad.MagistralAct != null)
                     {

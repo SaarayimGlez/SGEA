@@ -22,22 +22,22 @@ namespace SGEA_DS {
         public CU38()
         {
             InitializeComponent();
-            llenarListaPatrocinadores();
+            LlenarListaPatrocinadores();
             ToolTipService.ShowDurationProperty.OverrideMetadata(
                 typeof(DependencyObject), new FrameworkPropertyMetadata(Int32.MaxValue));
         }
 
-        private void llenarListaPatrocinadores()
+        private void LlenarListaPatrocinadores()
         {
             Patrocinador_Logica patrocinadorDAO = new Patrocinador_Logica();
             if (!patrocinadorDAO.ComprobarConexion())
             {
-                textBlock_Mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = String.Empty;
                 var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
                     {
                         Foreground = Brushes.Red
                     });
-                textBlock_Mensaje.Inlines.Add(bold);
+                textBlock_mensaje.Inlines.Add(bold);
             } else
             {
                 List<Patrocinador> listaPatrocinador = patrocinadorDAO.RecuperarPatrocinador();
@@ -46,17 +46,17 @@ namespace SGEA_DS {
                 {
                     if ((i + 1) % 2 != 0)
                     {
-                        insertarParticipante(listaPatrocinador[i], 0);
+                        InsertarParticipante(listaPatrocinador[i], 0);
                     }
                     else
                     {
-                        insertarParticipante(listaPatrocinador[i], 1);
+                        InsertarParticipante(listaPatrocinador[i], 1);
                     }
                 }
             }
         }
 
-        private void insertarParticipante(Patrocinador patrocinador, int column)
+        private void InsertarParticipante(Patrocinador patrocinador, int column)
         {
             if (column == 0)
             {
@@ -70,19 +70,27 @@ namespace SGEA_DS {
             lblPatrocinador.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
             lblPatrocinador.FontSize = 20;
             
-            spToolTip.Children.Add(new TextBlock() { Text = "Nombre:\t\t  " + patrocinador.nombre });
-            spToolTip.Children.Add(new TextBlock() { Text = "Apellido paterno:\t  " + patrocinador.apellidoPaterno });
-            spToolTip.Children.Add(new TextBlock() { Text = "Apellido materno:\t  " + patrocinador.apellidoMaterno });
-            spToolTip.Children.Add(new TextBlock() { Text = "Correo electrónico: " + patrocinador.correoElectronico });
-            spToolTip.Children.Add(new TextBlock() { Text = "Direccion:\t   " + patrocinador.direccion });
-            spToolTip.Children.Add(new TextBlock() { Text = "Numweo telefónico: " + patrocinador.numeroTelefono });
+            spToolTip.Children.Add(new TextBlock() {
+                Text = "Nombre:\t\t  " + patrocinador.nombre });
+            spToolTip.Children.Add(new TextBlock() {
+                Text = "Apellido paterno:\t  " + patrocinador.apellidoPaterno });
+            spToolTip.Children.Add(new TextBlock() {
+                Text = "Apellido materno:\t  " + patrocinador.apellidoMaterno });
+            spToolTip.Children.Add(new TextBlock() {
+                Text = "Correo electrónico: " + patrocinador.correoElectronico });
+            spToolTip.Children.Add(new TextBlock() {
+                Text = "Direccion:\t   " + patrocinador.direccion });
+            spToolTip.Children.Add(new TextBlock() {
+                Text = "Numweo telefónico: " + patrocinador.numeroTelefono });
 
             ToolTip tooltip = new ToolTip { Content = spToolTip };
             rectangulo.ToolTip = tooltip;
             if (!tooltip.IsOpen) tooltip.StaysOpen = true;
 
-            rectangulo.Fill = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ad76ad"));
-            rectangulo.Stroke = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
+            rectangulo.Fill = 
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ad76ad"));
+            rectangulo.Stroke = 
+                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
             rectangulo.StrokeThickness = 2;
             grid_Patrocinadores.Children.Add(rectangulo);
             Grid.SetRow(rectangulo, row);
@@ -94,7 +102,7 @@ namespace SGEA_DS {
             Grid.SetColumn(lblPatrocinador, column);
         }
 
-        private void click_Cancelar(object sender, RoutedEventArgs e)
+        private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
             MainWindow main = new MainWindow();
             main.Show();

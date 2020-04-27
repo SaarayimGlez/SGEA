@@ -12,7 +12,7 @@ using Logica;
 namespace SGEA_DS
 {
 
-    public partial class CU01_2 : Window
+    public partial class CU01_2 : CtrolUsrCtrolEvento
     {
         private int comiteId;
         private List<MiembroComite> listaMCNoLider;
@@ -21,53 +21,28 @@ namespace SGEA_DS
         private List<TextBox> listaTBSinEspacio;
         private MiembroComite_Logica miembroComiteDAO;
 
-        private void textbox_Alfabetico_KeyDown(object sender, KeyEventArgs e)
+        private void Click_Aceptar(object sender, RoutedEventArgs e)
         {
-            if (e.Key >= Key.A && e.Key <= Key.Z)
+            if (textBlock_mensaje.Text.Equals("sin conexion") || ValidarDatos())
             {
-            }
-            else
-            {
-                if (e.Key == Key.Oem3 | e.Key == Key.Oem1 | e.Key == Key.DeadCharProcessed)
+                GuardarMComite();
+                if (!textBlock_mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
                 {
-                }
-                else
-                {
-                    e.Handled = true;
-                }
-            }
-        }
-
-        private void textbox_Espacio_PreviewKeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Space)
-            {
-                e.Handled = true;
-            }
-        }
-
-        private void click_Aceptar(object sender, RoutedEventArgs e)
-        {
-            if (textBlock_Mensaje.Text.Equals("sin conexion") || validarDatos())
-            {
-                guardarMComite();
-                if (!textBlock_Mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
-                {
-                    textBlock_Mensaje.Text = String.Empty;
+                    textBlock_mensaje.Text = String.Empty;
                     var bold = new Bold(new Run("Lider registrado con éxito" +
                         Environment.NewLine + "Usuario: "));
-                    textBlock_Mensaje.Inlines.Add(bold);
-                    var normal = new Run(textbox_Usuario.Text + Environment.NewLine);
-                    textBlock_Mensaje.Inlines.Add(normal);
+                    textBlock_mensaje.Inlines.Add(bold);
+                    var normal = new Run(textBox_usuario.Text + Environment.NewLine);
+                    textBlock_mensaje.Inlines.Add(normal);
                     bold = new Bold(new Run("Contraseña: "));
-                    textBlock_Mensaje.Inlines.Add(bold);
-                    normal = new Run(textbox_Contrasena.Text);
-                    textBlock_Mensaje.Inlines.Add(normal);
+                    textBlock_mensaje.Inlines.Add(bold);
+                    normal = new Run(textBox_contrasena.Text);
+                    textBlock_mensaje.Inlines.Add(normal);
                 }
-                button_Cancelar.Content = "Regresar";
-                button_Aceptar.Visibility = Visibility.Hidden;
-                combobox_MiembroC.IsEnabled = false;
-                combobox_NivelE.IsEnabled = false;
+                button_cancelar.Content = "Regresar";
+                button_aceptar.Visibility = Visibility.Hidden;
+                comboBox_miembroC.IsEnabled = false;
+                comboBox_nivelE.IsEnabled = false;
                 foreach (TextBox textBox in listaTBSinNum)
                 {
                     textBox.IsEnabled = false;
@@ -78,63 +53,51 @@ namespace SGEA_DS
                 }
             } else
             {
-                textBlock_Mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = String.Empty;
                 var bold = new Bold(new Run("Hay datos inválidos, favor de revisar")
                 {
                     Foreground = Brushes.Red
                 });
-                textBlock_Mensaje.Inlines.Add(bold);
+                textBlock_mensaje.Inlines.Add(bold);
             }
         }
 
-        private bool guardarMComite()
+        private bool GuardarMComite()
         {
-            MiembroComite nuevoMLComite;
             if (!miembroComiteDAO.ComprobarConexion())
             {
-                textBlock_Mensaje.Text = String.Empty;
-                textBlock_Mensaje.Text = "Se ha perdido conexión con la base de datos";
-                textBlock_Mensaje.Foreground = Brushes.Red;
-                textBlock_Mensaje.FontWeight = FontWeights.Bold;
+                textBlock_mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = "Se ha perdido conexión con la base de datos";
+                textBlock_mensaje.Foreground = Brushes.Red;
+                textBlock_mensaje.FontWeight = FontWeights.Bold;
                 return true;
             }
-            if (combobox_MiembroC.SelectedIndex <= -1)
+            MiembroComite nuevoMLComite = new MiembroComite()
             {
-                nuevoMLComite = new MiembroComite()
-                {
-                    nombre = textbox_Nombre.Text,
-                    apellidoPaterno = textbox_ApellidoP.Text,
-                    apellidoMaterno = textbox_ApellidoM.Text,
-                    correoElectronico = textbox_CorreoE.Text,
-                    nivelExperiencia = (string)((ComboBoxItem)combobox_NivelE.SelectedValue).Content,
-                    nombreUsuario = textbox_Usuario.Text,
-                    contrasenia = textbox_Contrasena.Text,
-                    evaluador = false,
-                    liderComite = true,
-                    ComiteId = comiteId
-                };
-            }
-            else
+                nombre = textBox_nombre.Text,
+                apellidoPaterno = textBox_apellidoP.Text,
+                apellidoMaterno = textBox_apellidoM.Text,
+                nombreUsuario = textBox_usuario.Text,
+                contrasenia = textBox_contrasena.Text,
+                evaluador = false,
+                ComiteId = comiteId
+            };
+            if (comboBox_miembroC.SelectedIndex <= -1)
             {
-                nuevoMLComite = new MiembroComite()
-                {
-                    nombre = textbox_Nombre.Text,
-                    apellidoPaterno = textbox_ApellidoP.Text,
-                    apellidoMaterno = textbox_ApellidoM.Text,
-                    nombreUsuario = textbox_Usuario.Text,
-                    contrasenia = textbox_Contrasena.Text,
-                    ComiteId = comiteId
-                };
+                nuevoMLComite.correoElectronico = textBox_correoE.Text;
+                nuevoMLComite.nivelExperiencia =
+                        (string)((ComboBoxItem)comboBox_nivelE.SelectedValue).Content;
+                nuevoMLComite.liderComite = true;
             }
             if (comiteId == 1)
             {
                 nuevoMLComite.evaluador = true;
             }
-            if (combobox_MiembroC.SelectedIndex > -1)
+            if (comboBox_miembroC.SelectedIndex > -1)
             {
                 foreach (MiembroComite miembro in listaMCNoLider)
                 {
-                    if (combobox_MiembroC.SelectedItem.ToString().Equals(
+                    if (comboBox_miembroC.SelectedItem.ToString().Equals(
                             miembro.nombre + " " + miembro.apellidoPaterno))
                     {
                         return miembroComiteDAO.ActualizarMCLider(nuevoMLComite);
@@ -144,9 +107,9 @@ namespace SGEA_DS
             return miembroComiteDAO.RegistrarMCLider(nuevoMLComite);
         }
 
-        private bool validarDatos()
+        private bool ValidarDatos()
         {
-            if (combobox_MiembroC.SelectedIndex <= -1)
+            if (comboBox_miembroC.SelectedIndex <= -1)
             {
                 foreach (TextBox textBox in listaTBSinNum)
                 {
@@ -156,7 +119,7 @@ namespace SGEA_DS
                         return false;
                     }
                 }
-                if (combobox_NivelE.SelectedIndex <= -1)
+                if (comboBox_nivelE.SelectedIndex <= -1)
                 {
                     return false;
                 }
@@ -171,38 +134,41 @@ namespace SGEA_DS
             return true;
         }
 
-        private void click_Cancelar(object sender, RoutedEventArgs e)
+        private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            MainWindow main = new MainWindow();
+            main.Show();
+            var window = Window.GetWindow(this);
+            window.Close();
         }
         
         public CU01_2(int comiteId)
         {
             this.comiteId = comiteId;
             InitializeComponent();
-            agregarTextBox();
-            llenarComboBox();
+            AgregarTextBox();
+            LlenarComboBox();
         }
 
-        private void agregarTextBox()
+        private void AgregarTextBox()
         {
             listaTBSinNum = new List<TextBox>();
             listaTBSinEspacio = new List<TextBox>();
-            listaTBSinNum.Add(textbox_Nombre);
-            listaTBSinNum.Add(textbox_ApellidoP);
-            listaTBSinNum.Add(textbox_ApellidoM);
-            listaTBSinEspacio.Add(textbox_CorreoE);
-            listaTBSinEspacio.Add(textbox_Usuario);
-            listaTBSinEspacio.Add(textbox_Contrasena);
+            listaTBSinNum.Add(textBox_nombre);
+            listaTBSinNum.Add(textBox_apellidoP);
+            listaTBSinNum.Add(textBox_apellidoM);
+            listaTBSinEspacio.Add(textBox_correoE);
+            listaTBSinEspacio.Add(textBox_usuario);
+            listaTBSinEspacio.Add(textBox_contrasena);
         }
 
-        private void llenarComboBox()
+        private void LlenarComboBox()
         {
             miembroComiteDAO = new MiembroComite_Logica();
             if (!miembroComiteDAO.ComprobarConexion())
             {
-                textBlock_Mensaje.Text = "sin conexion";
-                click_Aceptar(new object(), new RoutedEventArgs());
+                textBlock_mensaje.Text = "sin conexion";
+                Click_Aceptar(new object(), new RoutedEventArgs());
             }
             else
             {
@@ -210,30 +176,30 @@ namespace SGEA_DS
 
                 foreach (MiembroComite miembro in listaMCNoLider)
                 {
-                    combobox_MiembroC.Items.Add(miembro.nombre + " " + miembro.apellidoPaterno);
+                    comboBox_miembroC.Items.Add(miembro.nombre + " " + miembro.apellidoPaterno);
                 }
             }
         }
 
-        private void llenarTextBox()
+        private void LlenarTextBox()
         {
-            if (combobox_MiembroC.SelectedIndex > -1)
+            if (comboBox_miembroC.SelectedIndex > -1)
             {
                 foreach (MiembroComite miembro in listaMCNoLider)
                 {
-                    if (combobox_MiembroC.SelectedItem.ToString().Equals(
+                    if (comboBox_miembroC.SelectedItem.ToString().Equals(
                         miembro.nombre + " " + miembro.apellidoPaterno))
                     {
-                        textbox_Nombre.Text = miembro.nombre;
-                        textbox_Nombre.IsReadOnly = true;
-                        textbox_ApellidoP.Text = miembro.apellidoPaterno;
-                        textbox_ApellidoP.IsReadOnly = true;
-                        textbox_ApellidoM.Text = miembro.apellidoMaterno;
-                        textbox_ApellidoM.IsReadOnly = true;
-                        textbox_CorreoE.Text = miembro.correoElectronico;
-                        textbox_CorreoE.IsReadOnly = true;
-                        combobox_NivelE.Text = miembro.nivelExperiencia;
-                        combobox_NivelE.IsEnabled = false;
+                        textBox_nombre.Text = miembro.nombre;
+                        textBox_nombre.IsReadOnly = true;
+                        textBox_apellidoP.Text = miembro.apellidoPaterno;
+                        textBox_apellidoP.IsReadOnly = true;
+                        textBox_apellidoM.Text = miembro.apellidoMaterno;
+                        textBox_apellidoM.IsReadOnly = true;
+                        textBox_correoE.Text = miembro.correoElectronico;
+                        textBox_correoE.IsReadOnly = true;
+                        comboBox_nivelE.Text = miembro.nivelExperiencia;
+                        comboBox_nivelE.IsEnabled = false;
                     }
                 }
             }
@@ -242,7 +208,7 @@ namespace SGEA_DS
 
         private void Combobox_MiembroC_DropDownClosed(object sender, EventArgs e)
         {
-            if (handle) llenarTextBox();
+            if (handle) LlenarTextBox();
             handle = true;
         }
 
@@ -250,7 +216,7 @@ namespace SGEA_DS
         {
             ComboBox cmb = sender as ComboBox;
             handle = !cmb.IsDropDownOpen;
-            llenarTextBox();
+            LlenarTextBox();
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

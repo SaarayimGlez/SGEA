@@ -77,7 +77,8 @@ namespace SGEA_DS
 
         private void Button_AsignarLiderC(object sender, RoutedEventArgs e)
         {
-            CU01_1 asignarLiderComite = new CU01_1(this.eventoId, this.nombreEvento);
+            VentanaUserControl asignarLiderComite = 
+                new VentanaUserControl(this.eventoId, this.nombreEvento);
             asignarLiderComite.Show();
             this.Close();
         }

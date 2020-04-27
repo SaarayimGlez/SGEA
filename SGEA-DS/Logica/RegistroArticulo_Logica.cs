@@ -42,7 +42,8 @@ namespace Logica
 
                 foreach (var parteNombre in autorRecuperado)
                 {
-                    autor = parteNombre.NombreAutor + " " + parteNombre.ApellidoPAutor + " " + parteNombre.ApellidoMAutor;
+                    autor = parteNombre.NombreAutor + " " + 
+                        parteNombre.ApellidoPAutor + " " + parteNombre.ApellidoMAutor;
                 }
             }
             catch (Exception e)
