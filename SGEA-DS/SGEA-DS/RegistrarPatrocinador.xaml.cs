@@ -1,5 +1,4 @@
 ﻿using Logica;
-using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+using Modelo;
 
 namespace SGEA_DS
 {
@@ -76,7 +76,7 @@ namespace SGEA_DS
                 textBlock_mensaje.Inlines.Add(bold);
                 return true;
             }
-            return patrocinadorDAO.RegistrarPatrocinador(new Patrocinador() {
+            return patrocinadorDAO.RegistrarPatrocinador(new Modelo.Patrocinador() {
                 nombre = textBox_nombre.Text,
                 apellidoPaterno = textBox_apellidoP.Text,
                 apellidoMaterno = textBox_apellidoM.Text,

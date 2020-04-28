@@ -68,7 +68,7 @@ namespace Logica
             return listaComite;
         }
 
-        public bool RegistrarComite(Comite comite)
+        public bool RegistrarComite(Modelo.Comite comite)
         {
             bool respuesta = false;
             try
@@ -79,7 +79,11 @@ namespace Logica
                     ).ToList();
                 if (comiteRepetido.Count == 0)
                 {
-                    _context.ComiteSet.Add(comite);
+                    _context.ComiteSet.Add(new Comite() {
+                        nombre = comite.nombre,
+                        descripcion = comite.descripcion,
+                        EventoId = comite.EventoId
+                    });
                     _context.SaveChanges();
                     respuesta = true;
                 } 

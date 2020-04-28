@@ -6,8 +6,8 @@ using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Input;
 using System.Linq;
-using DataAccess;
 using Logica;
+using Modelo;
 
 namespace SGEA_DS
 {
@@ -15,7 +15,7 @@ namespace SGEA_DS
     public partial class CU01_2 : CtrolUsrCtrolEvento
     {
         private int comiteId;
-        private List<MiembroComite> listaMCNoLider;
+        private List<Modelo.MiembroComite> listaMCNoLider;
         private bool handle = true;
         private List<TextBox> listaTBSinNum;
         private List<TextBox> listaTBSinEspacio;
@@ -72,7 +72,7 @@ namespace SGEA_DS
                 textBlock_mensaje.FontWeight = FontWeights.Bold;
                 return true;
             }
-            MiembroComite nuevoMLComite = new MiembroComite()
+            Modelo.MiembroComite nuevoMLComite = new Modelo.MiembroComite()
             {
                 nombre = textBox_nombre.Text,
                 apellidoPaterno = textBox_apellidoP.Text,
@@ -95,7 +95,7 @@ namespace SGEA_DS
             }
             if (comboBox_miembroC.SelectedIndex > -1)
             {
-                foreach (MiembroComite miembro in listaMCNoLider)
+                foreach (Modelo.MiembroComite miembro in listaMCNoLider)
                 {
                     if (comboBox_miembroC.SelectedItem.ToString().Equals(
                             miembro.nombre + " " + miembro.apellidoPaterno))
@@ -174,7 +174,7 @@ namespace SGEA_DS
             {
                 listaMCNoLider = miembroComiteDAO.RecuperarMCNoLider();
 
-                foreach (MiembroComite miembro in listaMCNoLider)
+                foreach (Modelo.MiembroComite miembro in listaMCNoLider)
                 {
                     comboBox_miembroC.Items.Add(miembro.nombre + " " + miembro.apellidoPaterno);
                 }
@@ -185,7 +185,7 @@ namespace SGEA_DS
         {
             if (comboBox_miembroC.SelectedIndex > -1)
             {
-                foreach (MiembroComite miembro in listaMCNoLider)
+                foreach (Modelo.MiembroComite miembro in listaMCNoLider)
                 {
                     if (comboBox_miembroC.SelectedItem.ToString().Equals(
                         miembro.nombre + " " + miembro.apellidoPaterno))

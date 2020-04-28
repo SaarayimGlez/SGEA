@@ -15,7 +15,7 @@ namespace Logica
         {
         }
 
-        public bool RegistrarPatrocinador(Patrocinador patrocinador)
+        public bool RegistrarPatrocinador(Modelo.Patrocinador patrocinador)
         {
             bool respuesta = false;
             try
@@ -26,7 +26,15 @@ namespace Logica
                     ).ToList();
                 if (patrocinadorRepetido.Count == 0)
                 {
-                    _context.PatrocinadorSet.Add(patrocinador);
+                    _context.PatrocinadorSet.Add(new Patrocinador() {
+                        apellidoMaterno = patrocinador.apellidoMaterno,
+                        apellidoPaterno = patrocinador.apellidoPaterno,
+                        correoElectronico = patrocinador.correoElectronico,
+                        direccion = patrocinador.direccion,
+                        empresa = patrocinador.empresa,
+                        nombre = patrocinador.nombre,
+                        numeroTelefono = patrocinador.numeroTelefono
+                    });
                     _context.SaveChanges();
                     respuesta = true;
                 }
@@ -38,12 +46,26 @@ namespace Logica
             return respuesta;
         }
 
-        public List<Patrocinador> RecuperarPatrocinador()
+        public List<Modelo.Patrocinador> RecuperarPatrocinador()
         {
-            List<Patrocinador> listaPatrocinador = new List<Patrocinador>();
+            List<Modelo.Patrocinador> listaPatrocinador = new List<Modelo.Patrocinador>();
             try
             {
-                listaPatrocinador = _context.PatrocinadorSet.ToList();
+                var listaPatrocinadorBD = _context.PatrocinadorSet.ToList();
+
+                foreach (Patrocinador patrocinadorBD in listaPatrocinadorBD)
+                {
+                    listaPatrocinador.Add(new Modelo.Patrocinador()
+                    {
+                        apellidoMaterno = patrocinadorBD.apellidoMaterno,
+                        apellidoPaterno = patrocinadorBD.apellidoPaterno,
+                        correoElectronico = patrocinadorBD.correoElectronico,
+                        direccion = patrocinadorBD.direccion,
+                        empresa = patrocinadorBD.empresa,
+                        nombre = patrocinadorBD.nombre,
+                        numeroTelefono = patrocinadorBD.numeroTelefono
+                    });
+                }
             }
             catch (Exception e)
             {

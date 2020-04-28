@@ -4,8 +4,8 @@ using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using DataAccess;
 using Logica;
+using Modelo;
 
 namespace SGEA_DS
 {
@@ -52,7 +52,7 @@ namespace SGEA_DS
 
         private bool NuevoComite()
         {
-            Comite nuevoComite = new Comite();
+            Modelo.Comite nuevoComite = new Modelo.Comite();
             nuevoComite.nombre = textBox_nombre.Text;
             nuevoComite.descripcion = textBox_descripcion.Text;
             nuevoComite.EventoId = eventoId;

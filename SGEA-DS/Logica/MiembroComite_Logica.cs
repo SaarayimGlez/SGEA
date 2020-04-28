@@ -14,15 +14,27 @@ namespace Logica
         {
         }
 
-        public List<MiembroComite> RecuperarMCNoLider()
+        public List<Modelo.MiembroComite> RecuperarMCNoLider()
         {
-            List<MiembroComite> listaMCNoLider = new List<MiembroComite>();
+            List<Modelo.MiembroComite> listaMCNoLider = new List<Modelo.MiembroComite>();
             try
             {
-                listaMCNoLider = _context.MiembroComiteSet
+                var listaMCNoLiderBD = _context.MiembroComiteSet
                     .Where(
                         miembro => miembro.liderComite == false
                     ).ToList();
+
+                foreach (MiembroComite mCNoLiderBD in listaMCNoLiderBD)
+                {
+                    listaMCNoLider.Add(new Modelo.MiembroComite()
+                    {
+                        apellidoMaterno = mCNoLiderBD.apellidoMaterno,
+                        apellidoPaterno = mCNoLiderBD.apellidoPaterno,
+                        correoElectronico = mCNoLiderBD.correoElectronico,
+                        nivelExperiencia = mCNoLiderBD.nivelExperiencia,
+                        nombre = mCNoLiderBD.nombre
+                    });
+                }
             }
             catch (Exception e)
             {
@@ -31,12 +43,23 @@ namespace Logica
             return listaMCNoLider;
         }
 
-        public bool RegistrarMCLider(MiembroComite miembroComite)
+        public bool RegistrarMCLider(Modelo.MiembroComite miembroComite)
         {
             bool respuesta = false;
             try
             {
-                _context.MiembroComiteSet.Add(miembroComite);
+                _context.MiembroComiteSet.Add(new MiembroComite() {
+                    apellidoMaterno = miembroComite.apellidoMaterno,
+                    apellidoPaterno = miembroComite.apellidoPaterno,
+                    correoElectronico = miembroComite.correoElectronico,
+                    nivelExperiencia = miembroComite.nivelExperiencia,
+                    nombre = miembroComite.nombre,
+                    ComiteId = miembroComite.ComiteId,
+                    contrasenia = miembroComite.contrasenia,
+                    evaluador = miembroComite.evaluador,
+                    liderComite = miembroComite.liderComite,
+                    nombreUsuario = miembroComite.nombreUsuario
+                });
                 _context.SaveChanges();
                 respuesta = true;
             }
@@ -47,7 +70,7 @@ namespace Logica
             return respuesta;
         }
 
-        public bool ActualizarMCLider(MiembroComite miembroCLider)
+        public bool ActualizarMCLider(Modelo.MiembroComite miembroCLider)
         {
             bool respuesta = false;
             try

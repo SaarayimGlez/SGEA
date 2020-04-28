@@ -1,4 +1,4 @@
-﻿using DataAccess;
+﻿using Modelo;
 using Logica;
 using System;
 using System.Collections.Generic;
@@ -40,7 +40,8 @@ namespace SGEA_DS {
                 textBlock_mensaje.Inlines.Add(bold);
             } else
             {
-                List<Patrocinador> listaPatrocinador = patrocinadorDAO.RecuperarPatrocinador();
+                List<Modelo.Patrocinador> listaPatrocinador = 
+                    patrocinadorDAO.RecuperarPatrocinador();
 
                 for (int i = 0; i < listaPatrocinador.Count; i++)
                 {
@@ -56,7 +57,7 @@ namespace SGEA_DS {
             }
         }
 
-        private void InsertarParticipante(Patrocinador patrocinador, int column)
+        private void InsertarParticipante(Modelo.Patrocinador patrocinador, int column)
         {
             if (column == 0)
             {
