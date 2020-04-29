@@ -104,6 +104,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="RegistrarPresupuesto.xaml.cs">
+      <DependentUpon>RegistrarPresupuesto.xaml</DependentUpon>
+    </Compile>
     <Page Include="Actividades.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -221,6 +224,10 @@
     <Compile Include="ConsultarPatrocinador.xaml.cs">
       <DependentUpon>ConsultarPatrocinador.xaml</DependentUpon>
     </Compile>
+    <Page Include="RegistrarPresupuesto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

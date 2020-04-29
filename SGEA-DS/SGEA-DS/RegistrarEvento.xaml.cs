@@ -41,7 +41,7 @@ namespace SGEA_DS
                 LBMensage.Content = "Los datos son incorrectos, por favor verifique su información*";
                 return;
             }
-            try {
+            try {z
                 DataModelContainer container = new DataModelContainer();
                 container.EventoSet.Add(nuevo);
                 container.SaveChanges();

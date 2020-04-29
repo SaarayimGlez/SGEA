@@ -31,6 +31,11 @@ namespace SGEA_DS {
         private void MostrarActividaes(object sender,MouseButtonEventArgs e) {
             if (LBEventos.SelectedItem != null) {
                 switch (Centinel) {
+                    case 08:
+                        RegistrarPresupuesto presupuesto = new RegistrarPresupuesto(Centinel,(Evento)LBEventos.SelectedItem);
+                        presupuesto.Show();
+                        this.ShowActivated = false;
+                        break;
                     case 13:
                         Actividades actividades = new Actividades((Evento)LBEventos.SelectedItem, Centinel);
                         actividades.Show();
