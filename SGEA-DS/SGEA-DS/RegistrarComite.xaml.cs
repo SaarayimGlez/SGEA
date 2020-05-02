@@ -83,8 +83,8 @@ namespace SGEA_DS
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow(eventoId, nombreEvento);
-            main.Show();
+            GestionComite gestionComite = new GestionComite();
+            gestionComite.Show();
             this.Close();
         }
 

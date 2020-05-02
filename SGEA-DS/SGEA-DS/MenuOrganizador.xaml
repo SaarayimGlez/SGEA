@@ -1,0 +1,17 @@
+﻿<Window x:Class="SGEA_DS.MenuOrganizador"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGEA_DS"
+        mc:Ignorable="d"
+        Title="Sistema gestor de eventos académicos" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Button Content="Gestión de evento" HorizontalAlignment="Center" Margin="260,42,260,0" VerticalAlignment="Top" Width="272" Height="80" FontSize="18" Click="Click_GestionEvento"/>
+        <Button Content="Gestión de patrocinadores" HorizontalAlignment="Center" Margin="260,188,260,0" VerticalAlignment="Top" Width="272" Height="80" FontSize="18" Click="Click_GestionPatrocinadores"/>
+        <Grid Margin="66,0,66,38" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="18" Click="Click_ModificarContrasena" IsEnabled="False"/>
+            <Button Content="Cerrar sesión" HorizontalAlignment="Left" Margin="509,0,0,0" VerticalAlignment="Top" Width="150" FontSize="18" Click="Click_CerrarSesion"/>
+        </Grid>
+    </Grid>
+</Window>

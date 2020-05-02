@@ -167,8 +167,8 @@ namespace SGEA_DS
         
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            main.Show();
+            GestionEvento_2 gestionEvento_2 = new GestionEvento_2();
+            gestionEvento_2.Show();
             this.Close();
         }
 

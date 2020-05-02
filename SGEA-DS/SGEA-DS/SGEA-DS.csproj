@@ -120,6 +120,33 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CtrolUsrCtrolEvento.cs" />
+    <Compile Include="GestionActividades.xaml.cs">
+      <DependentUpon>GestionActividades.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultaDatosPersonales.xaml.cs">
+      <DependentUpon>ConsultaDatosPersonales.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionComite.xaml.cs">
+      <DependentUpon>GestionComite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionEgreso.xaml.cs">
+      <DependentUpon>GestionEgreso.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionEvento.xaml.cs">
+      <DependentUpon>GestionEvento.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionEvento_2.xaml.cs">
+      <DependentUpon>GestionEvento_2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionPatrocinador.xaml.cs">
+      <DependentUpon>GestionPatrocinador.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuOrganizador.xaml.cs">
+      <DependentUpon>MenuOrganizador.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VentanaUserControl.xaml.cs">
       <DependentUpon>VentanaUserControl.xaml</DependentUpon>
     </Compile>
@@ -149,6 +176,38 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="GestionActividades.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConsultaDatosPersonales.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionComite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionEgreso.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionEvento.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionEvento_2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionPatrocinador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Magistrales.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -156,6 +215,10 @@
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MenuOrganizador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ModificarPatrocinador.xaml">
       <Generator>MSBuild:Compile</Generator>
