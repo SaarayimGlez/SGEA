@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logica;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,9 +27,20 @@ namespace SGEA_DS
 
         private void Click_Entrar(object sender, RoutedEventArgs e)
         {
-            MenuOrganizador menuOrganizador = new MenuOrganizador();
-            menuOrganizador.Show();
-            this.Close();
+            MiembroComite_Logica miembroComite_Logica = new MiembroComite_Logica();
+            Modelo.MiembroComite usuarioActual = miembroComite_Logica.RecuperarMiembroComite(textBox_usuario.Text);
+            if (usuarioActual != null)
+            {
+                GestionEvento gestionEvento = new GestionEvento(usuarioActual);
+                gestionEvento.Show();
+                this.Close();
+            }
+            else
+            {
+                MenuOrganizador menuOrganizador = new MenuOrganizador();
+                menuOrganizador.Show();
+                this.Close();
+            }
         }
 
     }

@@ -63,14 +63,14 @@ namespace SGEA_DS
 
         private void Button_RegistrarComite(object sender, RoutedEventArgs e)
         {
-            CU04 registroComite = new CU04(this.eventoId, this.nombreEvento);
+            CU04 registroComite = new CU04(null);
             registroComite.Show();
             this.Close();
         }
 
         private void Button_GenerarPrograma(object sender, RoutedEventArgs e)
         {
-            CU05 registroComite = new CU05();
+            CU05 registroComite = new CU05(null);
             registroComite.Show();
             this.Close();
         }
@@ -78,7 +78,7 @@ namespace SGEA_DS
         private void Button_AsignarLiderC(object sender, RoutedEventArgs e)
         {
             VentanaUserControl asignarLiderComite = 
-                new VentanaUserControl(this.eventoId, this.nombreEvento);
+                new VentanaUserControl(null);
             asignarLiderComite.Show();
             this.Close();
         }

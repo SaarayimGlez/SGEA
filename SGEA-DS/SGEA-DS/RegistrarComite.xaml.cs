@@ -11,20 +11,18 @@ namespace SGEA_DS
 {
     public partial class CU04 : VentanaCtrolEvento
     {
-        private int eventoId;
-        private string nombreEvento;
+        private Modelo.Evento evento;
 
         public CU04()
         {
             InitializeComponent();
         }
 
-        public CU04(int eventoId, string nombreEvento)
+        public CU04(Modelo.Evento evento)
         {
             InitializeComponent();
-            this.eventoId = 1;//eventoId;
-            this.nombreEvento = nombreEvento;
-            this.Title = "Registrar lider de comité del evento: " + nombreEvento;
+            this.evento = evento;
+            this.Title = "Registrar lider de comité del evento: " + evento.nombre;
         }
 
         private void Click_Aceptar(object sender, RoutedEventArgs e)
@@ -45,7 +43,9 @@ namespace SGEA_DS
             else
             {
                 textBlock_mensaje.Text = String.Empty;
-                var bold = new Bold(new Run("Hay datos inválidos o el comité ya existe, favor de revisar") { Foreground = Brushes.Red });
+                var bold = new Bold(new Run(
+                    "Hay datos inválidos o el comité ya existe, favor de revisar"
+                    ) { Foreground = Brushes.Red });
                 textBlock_mensaje.Inlines.Add(bold);
             }
         }
@@ -55,7 +55,7 @@ namespace SGEA_DS
             Modelo.Comite nuevoComite = new Modelo.Comite();
             nuevoComite.nombre = textBox_nombre.Text;
             nuevoComite.descripcion = textBox_descripcion.Text;
-            nuevoComite.EventoId = eventoId;
+            nuevoComite.EventoId = evento.Id;
             Comite_Logica comiteDAO = new Comite_Logica();
             if (!comiteDAO.ComprobarConexion())
             {
@@ -72,9 +72,11 @@ namespace SGEA_DS
 
         private bool ValidarDatos()
         {
-            if (textBox_nombre.Text.Any(char.IsPunctuation) | textBox_descripcion.Text.Any(char.IsPunctuation) |
+            if (textBox_nombre.Text.Any(char.IsPunctuation) | 
+                textBox_descripcion.Text.Any(char.IsPunctuation) |
                 textBox_nombre.Text.Any(char.IsDigit) | textBox_descripcion.Text.Any(char.IsDigit) |
-                string.IsNullOrWhiteSpace(textBox_nombre.Text) | string.IsNullOrWhiteSpace(textBox_descripcion.Text))
+                string.IsNullOrWhiteSpace(textBox_nombre.Text) | 
+                string.IsNullOrWhiteSpace(textBox_descripcion.Text))
             {
                 return false;
             }
@@ -83,7 +85,7 @@ namespace SGEA_DS
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
-            GestionComite gestionComite = new GestionComite();
+            GestionComite gestionComite = new GestionComite(this.evento);
             gestionComite.Show();
             this.Close();
         }

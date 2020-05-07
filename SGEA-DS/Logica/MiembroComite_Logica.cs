@@ -94,5 +94,33 @@ namespace Logica
             }
             return respuesta;
         }
+
+        public Modelo.MiembroComite RecuperarMiembroComite(string usuario)
+        {
+            Modelo.MiembroComite listaMiembroComite = null;
+            try
+            {
+                var listaMiembroComiteBD = _context.MiembroComiteSet
+                    .Where(
+                        miembro => miembro.nombreUsuario == usuario
+                    ).ToList();
+
+                foreach (MiembroComite miembroComiteBD in listaMiembroComiteBD)
+                {
+                    listaMiembroComite = new Modelo.MiembroComite()
+                    {
+                        nombreUsuario = miembroComiteBD.nombreUsuario,
+                        ComiteId = miembroComiteBD.ComiteId,
+                        evaluador = miembroComiteBD.evaluador,
+                        liderComite = miembroComiteBD.liderComite
+                    };
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return listaMiembroComite;
+        }
     }
 }

@@ -19,11 +19,11 @@ namespace SGEA_DS
     /// </summary>
     public partial class VentanaUserControl : Window
     {
-        public VentanaUserControl(int eventoId, string nombreEvento)
+        public VentanaUserControl(Modelo.Evento evento)
         {
             InitializeComponent();
             Switcher.pageSwitcher = this;
-            Switcher.Switch(new CU01_1(eventoId, nombreEvento));
+            Switcher.Switch(new CU01_1(evento));
         }
 
         public void Navigate(UserControl nextPage)

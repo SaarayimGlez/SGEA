@@ -19,9 +19,17 @@ namespace SGEA_DS
     /// </summary>
     public partial class GestionEvento_2 : Window
     {
+        private Modelo.Evento evento;
+
         public GestionEvento_2()
         {
             InitializeComponent();
+        }
+
+        public GestionEvento_2(Modelo.Evento evento)
+        {
+            InitializeComponent();
+            this.evento = evento;
         }
 
         private void Click_Regresar(object sender, RoutedEventArgs e)
@@ -40,8 +48,8 @@ namespace SGEA_DS
 
         private void Click_GenerarPrograma(object sender, RoutedEventArgs e)
         {
-            CU05 registroComite = new CU05();
-            registroComite.Show();
+            CU05 generarPrograma = new CU05(this.evento);
+            generarPrograma.Show();
             this.Close();
         }
 
@@ -54,7 +62,7 @@ namespace SGEA_DS
 
         private void Click_Comites(object sender, RoutedEventArgs e)
         {
-            GestionComite gestionComite = new GestionComite();
+            GestionComite gestionComite = new GestionComite(this.evento);
             gestionComite.Show();
             this.Close();
         }

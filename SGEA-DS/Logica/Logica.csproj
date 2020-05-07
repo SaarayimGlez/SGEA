@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Actividad_Logica.cs" />
     <Compile Include="ConexionBD_Logica.cs" />
+    <Compile Include="Evento_Logica.cs" />
     <Compile Include="RegistroArticulo_Logica.cs" />
     <Compile Include="Comite_Logica.cs" />
     <Compile Include="MiembroComite_Logica.cs" />

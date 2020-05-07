@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Comite.cs" />
+    <Compile Include="Evento.cs" />
     <Compile Include="MiembroComite.cs" />
     <Compile Include="Patrocinador.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -15,21 +15,15 @@ namespace SGEA_DS
 {
     public partial class CU05 : Window {
         
-        public CU05()
+        public CU05(Modelo.Evento evento)
         {
             InitializeComponent();
-            LlenarListaActividades(1, "NombreDeEvent");
+            LlenarListaActividades(evento);
         }
 
-        public CU05(int eventoId, string nombreEvento)
+        private void LlenarListaActividades(Modelo.Evento evento)
         {
-            InitializeComponent();
-            LlenarListaActividades(eventoId, nombreEvento);
-        }
-
-        private void LlenarListaActividades(int eventoId, string nombreEvento)
-        {
-            label_Evento.Content = nombreEvento;
+            label_Evento.Content = evento.nombre;
             Actividad_Logica actividadDAO = new Actividad_Logica();
             if (!actividadDAO.ComprobarConexion())
             {
@@ -43,7 +37,8 @@ namespace SGEA_DS
                 button_aceptar.Visibility = Visibility.Hidden;            }
             else
             {
-                List<List<string>> listaActividades = actividadDAO.RecuperarProgramaEvento(eventoId);
+                List<List<string>> listaActividades = 
+                    actividadDAO.RecuperarProgramaEvento(evento.Id);
                 foreach (List<string> actividad in listaActividades)
                 {
                     InsertarFila(actividad);

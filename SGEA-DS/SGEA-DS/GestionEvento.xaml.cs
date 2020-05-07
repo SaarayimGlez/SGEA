@@ -22,15 +22,25 @@ namespace SGEA_DS
     /// </summary>
     public partial class GestionEvento : Window
     {
-        public GestionEvento(/*string nombreUsuario*/)
+        private Modelo.MiembroComite usuario;
+
+        public GestionEvento(Modelo.MiembroComite usuario)
         {
             InitializeComponent();
-            LlenarListaEventos(/*nombreUsuario*/);
+            this.usuario = usuario;
+            LlenarListaEventos(usuario);
         }
 
-        private void LlenarListaEventos(/*string nombreUsuario*/)
+        public GestionEvento()
         {
-            /*Evento_Logica evento_Logica = new Evento_Logica();
+            InitializeComponent();
+            this.usuario = null;
+            LlenarListaEventos(null);
+        }
+
+        private void LlenarListaEventos(Modelo.MiembroComite usuario)
+        {
+            Evento_Logica evento_Logica = new Evento_Logica();
             if (!evento_Logica.ComprobarConexion())
             {
                 textBlock_mensaje.Text = String.Empty;
@@ -42,25 +52,21 @@ namespace SGEA_DS
             }
             else
             {
-                MiembroComite_Logica miembroComite_Logica = new MiembroComite_Logica();
-                Modelo.MiembroComite usuarioActual = miembroComite_Logica.RecuperarMiembroComite(nombreUsuario);
-                if (usuarioActual != null)
+                List<Modelo.Evento> listaEvento;
+                if (usuario != null)
                 {
-                    List<Modelo.Evento> listaEvento = evento_Logica.RecuperarEventos(usuarioActual.ComiteId);
+                    listaEvento = evento_Logica.RecuperarEventos(usuario.ComiteId);
                 } else
                 {
-                    List<Modelo.Evento> listaEvento = evento_Logica.RecuperarEventos(0);
+                    listaEvento = evento_Logica.RecuperarEventos(0);
                     MostrarCrearEvento();
                 }
 
-                foreach (Modelo.Evento evento in listaEventos)
+                foreach (Modelo.Evento evento in listaEvento)
                 {
-                    InsertarFila(evento, usuarioActual);
+                    InsertarFila(evento, usuario);
                 }
-            }*/
-            MostrarCrearEvento();
-            InsertarFila("Escuela de verano FEI 2020", null);
-            InsertarFila("Convivio", null);
+            }
         }
 
         private void MostrarCrearEvento()
@@ -85,7 +91,7 @@ namespace SGEA_DS
             this.Close();
         }
 
-        private void InsertarFila(/*Modelo.Evento*/string evento, Modelo.MiembroComite usuarioActual)
+        private void InsertarFila(Modelo.Evento evento, Modelo.MiembroComite usuarioActual)
         {
             grid_eventos.RowDefinitions.Insert(
                 grid_eventos.RowDefinitions.Count, new RowDefinition());
@@ -93,7 +99,7 @@ namespace SGEA_DS
             gridEventoIndv.RowDefinitions.Add(new RowDefinition());
             var btnEvento = new Button();
             btnEvento.Content = new TextBlock() {
-                Text = evento/*.nombre*/,
+                Text = evento.nombre,
                 TextWrapping = TextWrapping.WrapWithOverflow,
                 TextAlignment = TextAlignment.Center
             };
@@ -103,7 +109,7 @@ namespace SGEA_DS
             btnEvento.Width = 472;
             btnEvento.FontSize = 18;
             btnEvento.Click += (sender, EventArgs) => {
-                Click_Evento(sender, EventArgs, evento/*.Id*/);
+                Click_Evento(sender, EventArgs, evento);
             };
             if (usuarioActual == null)
             {
@@ -117,7 +123,7 @@ namespace SGEA_DS
                 btnEvento.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 btnEvento.Width = 375;
                 btnModificar.Click += (sender, EventArgs) => {
-                    Click_ModificarEvento(sender, EventArgs, evento/*.Id*/); };
+                    Click_ModificarEvento(sender, EventArgs, evento.Id); };
                 gridEventoIndv.Children.Add(btnModificar);
             }
             gridEventoIndv.Children.Add(btnEvento);
@@ -125,16 +131,19 @@ namespace SGEA_DS
             Grid.SetRow(gridEventoIndv, grid_eventos.RowDefinitions.Count - 1);
         }
 
-        private void Click_ModificarEvento(object sender, RoutedEventArgs e, string/*int*/ eventoId)
+        private void Click_ModificarEvento(object sender, RoutedEventArgs e, int eventoId)
         {
             throw new NotImplementedException();
         }
 
-        private void Click_Evento(object sender, RoutedEventArgs e, string/*int*/ eventoId)
+        private void Click_Evento(object sender, RoutedEventArgs e, Modelo.Evento evento)
         {
-            GestionEvento_2 gestionEvento_2 = new GestionEvento_2();
-            gestionEvento_2.Show();
-            this.Close();
+            if (this.usuario == null)
+            {
+                GestionEvento_2 gestionEvento_2 = new GestionEvento_2(evento);
+                gestionEvento_2.Show();
+                this.Close();
+            }
         }
 
         private void Click_Regresar(object sender, RoutedEventArgs e)

@@ -10,25 +10,20 @@ namespace SGEA_DS
 {
     public partial class CU01_1 : UserControl
     {
-        private List<string> listaComite;
         private List<RadioButton> listaRbComite;
-        private Comite_Logica comiteDAO;
         private List<int> listaIdComite;
-        private int eventoId;
-        private string nombreEvento;
-        
+        private Modelo.Evento evento;
 
-        public CU01_1(int eventoId, string nombreEvento)
+        public CU01_1(Modelo.Evento evento)
         {
             InitializeComponent();
-            this.eventoId = eventoId;
-            this.nombreEvento = nombreEvento;
-            LlenarListaComite(1);
+            this.evento = evento;
+            LlenarListaComite(evento.Id);
         }
 
         private void LlenarListaComite(int eventoId)
         {
-            comiteDAO = new Comite_Logica();
+            Comite_Logica comiteDAO = new Comite_Logica();
             if (!comiteDAO.ComprobarConexion())
             {
                 textBlock_mensaje.Text = String.Empty;
@@ -42,14 +37,15 @@ namespace SGEA_DS
             }
             else
             {
-                listaComite = comiteDAO.RecuperarComitesSinLider(eventoId);
+                List<string> listaComite = comiteDAO.RecuperarComitesSinLider(eventoId);
                 listaRbComite = new List<RadioButton>();
                 listaIdComite = new List<int>();
 
                 foreach (string comite in listaComite)
                 {
                     String patronSimbolo = @"\s-\s?[+*]?\s?-\s";
-                    String[] elementoComite = System.Text.RegularExpressions.Regex.Split(comite, patronSimbolo);
+                    String[] elementoComite = 
+                        System.Text.RegularExpressions.Regex.Split(comite, patronSimbolo);
                     listaIdComite.Add(Convert.ToInt32(elementoComite[1]));
                     InsertarFila(elementoComite[0]);
                 }
@@ -67,14 +63,14 @@ namespace SGEA_DS
             {
                 if (listaRbComite[i].IsChecked == true)
                 {
-                    Switcher.Switch(new CU01_2(listaIdComite[i]));
+                    Switcher.Switch(new CU01_2(listaIdComite[i], this.evento));
                 }
             }
         }
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
-            GestionComite gestionComite = new GestionComite();
+            GestionComite gestionComite = new GestionComite(this.evento);
             gestionComite.Show();
             var window = Window.GetWindow(this);
             window.Close();
@@ -83,7 +79,8 @@ namespace SGEA_DS
         
         private void InsertarFila(string comite)
         {
-            GridPrincipal.RowDefinitions.Insert(GridPrincipal.RowDefinitions.Count, new RowDefinition());
+            GridPrincipal.RowDefinitions.Insert(
+                GridPrincipal.RowDefinitions.Count, new RowDefinition());
             var rbComite = new RadioButton();
             rbComite.Content= comite;
             rbComite.VerticalAlignment = System.Windows.VerticalAlignment.Center;

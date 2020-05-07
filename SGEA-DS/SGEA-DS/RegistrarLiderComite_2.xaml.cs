@@ -20,6 +20,7 @@ namespace SGEA_DS
         private List<TextBox> listaTBSinNum;
         private List<TextBox> listaTBSinEspacio;
         private MiembroComite_Logica miembroComiteDAO;
+        private Modelo.Evento evento;
 
         private void Click_Aceptar(object sender, RoutedEventArgs e)
         {
@@ -136,15 +137,16 @@ namespace SGEA_DS
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
-            GestionComite gestionComite = new GestionComite();
+            GestionComite gestionComite = new GestionComite(this.evento);
             gestionComite.Show();
             var window = Window.GetWindow(this);
             window.Close();
         }
         
-        public CU01_2(int comiteId)
+        public CU01_2(int comiteId, Modelo.Evento evento)
         {
             this.comiteId = comiteId;
+            this.evento = evento;
             InitializeComponent();
             AgregarTextBox();
             LlenarComboBox();

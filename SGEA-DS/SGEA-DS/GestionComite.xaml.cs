@@ -19,14 +19,17 @@ namespace SGEA_DS
     /// </summary>
     public partial class GestionComite : Window
     {
-        public GestionComite()
+        private Modelo.Evento evento;
+
+        public GestionComite(Modelo.Evento evento)
         {
             InitializeComponent();
+            this.evento = evento;
         }
 
         private void Click_Regresar(object sender, RoutedEventArgs e)
         {
-            GestionEvento_2 gestionEvento_2 = new GestionEvento_2();
+            GestionEvento_2 gestionEvento_2 = new GestionEvento_2(this.evento);
             gestionEvento_2.Show();
             this.Close();
         }
@@ -34,14 +37,14 @@ namespace SGEA_DS
         private void Click_RegistrarLider(object sender, RoutedEventArgs e)
         {
             VentanaUserControl asignarLiderComite =
-                new VentanaUserControl(1, "");
+                new VentanaUserControl(this.evento);
             asignarLiderComite.Show();
             this.Close();
         }
 
         private void Click_Registrar(object sender, RoutedEventArgs e)
         {
-            CU04 registroComite = new CU04(1, "");
+            CU04 registroComite = new CU04(this.evento);
             registroComite.Show();
             this.Close();
         }
