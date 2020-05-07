@@ -113,11 +113,11 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\ELproyecto\SGEA-DS\Logica\Logica.csproj">
+    <ProjectReference Include="..\Logica\Logica.csproj">
       <Project>{80a79348-389b-4a50-a709-f303d68e4ba8}</Project>
       <Name>Logica</Name>
     </ProjectReference>
-    <ProjectReference Include="C:\ELproyecto\SGEA-DS\Modelo\Modelo.csproj">
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
       <Project>{9b28c064-09d5-4dfc-a0b7-02bb11fd6e67}</Project>
       <Name>Modelo</Name>
     </ProjectReference>
