@@ -33,12 +33,12 @@
                 <ColumnDefinition Width="331*"/>
             </Grid.ColumnDefinitions>
             <Label Content="Por favor modifica el o los campo deseados" HorizontalAlignment="Right" VerticalAlignment="Top" Height="66" Width="762" FontSize="18" Grid.RowSpan="2" Grid.ColumnSpan="4"/>
-            <TextBox x:Name="textbox_Nombre" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True" Grid.ColumnSpan="2"/>
-            <TextBlock x:Name="textBlock_Mensaje" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" Width="366" FontSize="14" FontWeight="Normal" Grid.ColumnSpan="2"/>
-            <TextBox x:Name="textbox_Lugar" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Lugar" materialDesign:HintAssist.IsFloating="True" KeyDown="textbox_Alfabetico_KeyDown" Grid.Column="2" Grid.ColumnSpan="2"/>
-            <DatePicker x:Name="datePicker_FInicio" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="3" VerticalAlignment="Center" Width="311" FontSize="18" TextOptions.TextHintingMode="Animated" materialDesign:HintAssist.Hint="Inicio" materialDesign:HintAssist.IsFloating="True" KeyDown="DataPicker_KeyDown" Grid.ColumnSpan="2" Grid.Column="1"/>
-            <DatePicker x:Name="datePicker_FFin" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="3" VerticalAlignment="Center" Width="311" FontSize="18" TextOptions.TextHintingMode="Animated" materialDesign:HintAssist.Hint="Fin" materialDesign:HintAssist.IsFloating="True" KeyDown="DataPicker_KeyDown" Grid.Column="3"/>
-            <ComboBox x:Name="combobox_IOrganizadora" Grid.ColumnSpan="4" HorizontalAlignment="Center" Margin="10,0" Grid.Row="2" VerticalAlignment="Center" Width="366" Height="45" materialDesign:HintAssist.Hint="Institución organizadora" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+            <TextBox x:Name="textBox_nombre" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True" Grid.ColumnSpan="2"/>
+            <TextBlock x:Name="textBlock_mensaje" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" Width="366" FontSize="14" FontWeight="Normal" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="textBox_lugar" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Lugar" materialDesign:HintAssist.IsFloating="True" KeyDown="textbox_Alfabetico_KeyDown" Grid.Column="2" Grid.ColumnSpan="2"/>
+            <DatePicker x:Name="datePicker_fInicio" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="3" VerticalAlignment="Center" Width="311" FontSize="18" TextOptions.TextHintingMode="Animated" materialDesign:HintAssist.Hint="Inicio" materialDesign:HintAssist.IsFloating="True" KeyDown="DataPicker_KeyDown" Grid.ColumnSpan="2" Grid.Column="1"/>
+            <DatePicker x:Name="datePicker_fFin" HorizontalAlignment="Center" Height="48" Margin="10,0" Grid.Row="3" VerticalAlignment="Center" Width="311" FontSize="18" TextOptions.TextHintingMode="Animated" materialDesign:HintAssist.Hint="Fin" materialDesign:HintAssist.IsFloating="True" KeyDown="DataPicker_KeyDown" Grid.Column="3"/>
+            <ComboBox x:Name="comboBox_iOrganizadora" Grid.ColumnSpan="4" HorizontalAlignment="Center" Margin="10,0" Grid.Row="2" VerticalAlignment="Center" Width="366" Height="45" materialDesign:HintAssist.Hint="Institución organizadora" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
                 <ComboBoxItem Content="Licenciatura en Ingeniería de Software"/>
                 <ComboBoxItem Content="Licenciatura en Redes y Servicios de Cómputo"/>
                 <ComboBoxItem Content="Licenciatura en Tecnologías computacionales"/>
@@ -51,8 +51,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="button_Aceptar" Content="Aceptar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Click="click_Aceptar"/>
-            <Button x:Name="button_Cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Grid.Column="1" Click="click_Cancelar"/>
+            <Button x:Name="button_aceptar" Content="Aceptar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Click="click_Aceptar"/>
+            <Button x:Name="button_cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Grid.Column="1" Click="click_Cancelar"/>
         </Grid>
     </Grid>
 </local:VentanaCtrolEvento>

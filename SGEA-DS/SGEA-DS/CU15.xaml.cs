@@ -19,100 +19,100 @@ namespace SGEA_DS
         {
             InitializeComponent();
             this.eventoId = 1;
-            llenarCampos(eventoId);
+            LlenarCampos(eventoId);
         }
 
-        private void llenarCampos(int idEvento)
+        private void LlenarCampos(int idEvento)
         {
             Evento_Logica evento_Logica = new Evento_Logica();
             if (!evento_Logica.ComprobarConexion())
             {
-                textBlock_Mensaje.Text = "sin conexion";
-                click_Aceptar(new object(), new RoutedEventArgs());
+                textBlock_mensaje.Text = "sin conexion";
+                Click_Aceptar(new object(), new RoutedEventArgs());
             }
             else
             {
                 Evento eventoModificar = evento_Logica.RecuperarEvento(idEvento);
 
-                textbox_Nombre.Text = eventoModificar.nombre;
-                textbox_Lugar.Text = eventoModificar.lugar;
-                combobox_IOrganizadora.Text = eventoModificar.institucionOrganizadora;
-                datePicker_FInicio.Text = eventoModificar.fechaInicio.ToString("dd/MM/yyyy");
-                datePicker_FFin.Text = eventoModificar.fechaFin.ToString("dd/MM/yyyy");
+                textBox_nombre.Text = eventoModificar.nombre;
+                textBox_lugar.Text = eventoModificar.lugar;
+                comboBox_iOrganizadora.Text = eventoModificar.institucionOrganizadora;
+                datePicker_fInicio.Text = eventoModificar.fechaInicio.ToString("dd/MM/yyyy");
+                datePicker_fFin.Text = eventoModificar.fechaFin.ToString("dd/MM/yyyy");
             }
         }
 
-        private void click_Aceptar(object sender, RoutedEventArgs e)
+        private void Click_Aceptar(object sender, RoutedEventArgs e)
         {
-            if (textBlock_Mensaje.Text.Equals("sin conexion") || validarDatos())
+            if (textBlock_mensaje.Text.Equals("sin conexion") || ValidarDatos())
             {
-                modificarEvento();
-                if (!textBlock_Mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
+                ModificarEvento();
+                if (!textBlock_mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
                 {
-                    textBlock_Mensaje.Text = String.Empty;
+                    textBlock_mensaje.Text = String.Empty;
                     var bold = new Bold(new Run("Evento modificado con éxito"));
-                    textBlock_Mensaje.Inlines.Add(bold);
+                    textBlock_mensaje.Inlines.Add(bold);
                 }
-                button_Cancelar.Content = "Regresar";
-                button_Aceptar.Visibility = Visibility.Hidden;
-                textbox_Nombre.IsEnabled = false;
-                textbox_Lugar.IsEnabled = false;
-                combobox_IOrganizadora.IsEnabled = false;
-                datePicker_FInicio.IsEnabled = false;
-                datePicker_FFin.IsEnabled = false;
+                button_cancelar.Content = "Regresar";
+                button_aceptar.Visibility = Visibility.Hidden;
+                textBox_nombre.IsEnabled = false;
+                textBox_lugar.IsEnabled = false;
+                comboBox_iOrganizadora.IsEnabled = false;
+                datePicker_fInicio.IsEnabled = false;
+                datePicker_fFin.IsEnabled = false;
             }
             else
             {
-                textBlock_Mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = String.Empty;
                 var bold = new Bold(
                     new Run("Hay datos inválidos o incompletos, favor de revisar")
                     {
                         Foreground = Brushes.Red
                     });
-                textBlock_Mensaje.Inlines.Add(bold);
+                textBlock_mensaje.Inlines.Add(bold);
             }
         }
         
-        private bool modificarEvento()
+        private bool ModificarEvento()
         {
             Evento_Logica evento_Logica = new Evento_Logica();
-            if (textBlock_Mensaje.Text.Equals("sin conexion") || 
+            if (textBlock_mensaje.Text.Equals("sin conexion") || 
                 !evento_Logica.ComprobarConexion())
             {
-                textBlock_Mensaje.Text = String.Empty;
-                textBlock_Mensaje.Text = "Se ha perdido conexión con la base de datos";
-                textBlock_Mensaje.Foreground = Brushes.Red;
-                textBlock_Mensaje.FontWeight = FontWeights.Bold;
+                textBlock_mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = "Se ha perdido conexión con la base de datos";
+                textBlock_mensaje.Foreground = Brushes.Red;
+                textBlock_mensaje.FontWeight = FontWeights.Bold;
                 return true;
             }
 
             Evento eventoActualizado = new Evento()
             {
                 Id = eventoId,
-                nombre = textbox_Nombre.Text,
-                lugar = textbox_Lugar.Text,
-                institucionOrganizadora = combobox_IOrganizadora.Text,
-                fechaInicio = Convert.ToDateTime(datePicker_FInicio.Text),
-                fechaFin = Convert.ToDateTime(datePicker_FInicio.Text)
+                nombre = textBox_nombre.Text,
+                lugar = textBox_lugar.Text,
+                institucionOrganizadora = comboBox_iOrganizadora.Text,
+                fechaInicio = Convert.ToDateTime(datePicker_fInicio.Text),
+                fechaFin = Convert.ToDateTime(datePicker_fInicio.Text)
             };
 
             return evento_Logica.ModificarEvento(eventoActualizado);
         }
 
-        private bool validarDatos()
+        private bool ValidarDatos()
         {
 
-            if (string.IsNullOrWhiteSpace(textbox_Nombre.Text) || 
-                string.IsNullOrWhiteSpace(textbox_Lugar.Text) || 
-                string.IsNullOrEmpty(datePicker_FInicio.Text) ||
-                string.IsNullOrEmpty(datePicker_FInicio.Text))
+            if (string.IsNullOrWhiteSpace(textBox_nombre.Text) || 
+                string.IsNullOrWhiteSpace(textBox_lugar.Text) || 
+                string.IsNullOrEmpty(datePicker_fInicio.Text) ||
+                string.IsNullOrEmpty(datePicker_fInicio.Text))
             { 
                 return false;
             }
             return true;
         }
 
-        private void click_Cancelar(object sender, RoutedEventArgs e)
+        private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
