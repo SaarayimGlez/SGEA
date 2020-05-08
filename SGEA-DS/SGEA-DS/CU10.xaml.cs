@@ -19,71 +19,71 @@ namespace SGEA_DS
             InitializeComponent();
         }
         
-        private void click_Aceptar(object sender, RoutedEventArgs e)
+        private void Click_Aceptar(object sender, RoutedEventArgs e)
         {
-            if (validarDatos() && nuevoComite())
+            if (ValidarDatos() && NuevoComite())
             {
-                textBlock_Mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = String.Empty;
                 var bold = new Bold(new Run("Egreso registrado con éxito"));
-                textBlock_Mensaje.Inlines.Add(bold);
-                button_Cancelar.Content = "Regresar";
-                button_Aceptar.Visibility = Visibility.Hidden;
-                textbox_Concepto.IsEnabled = false;
-                textbox_Fecha.IsEnabled = false;
-                textbox_Monto.IsEnabled = false;
-                if (textbox_Tipo.IsVisible)
+                textBlock_mensaje.Inlines.Add(bold);
+                button_cancelar.Content = "Regresar";
+                button_aceptar.Visibility = Visibility.Hidden;
+                textBox_concepto.IsEnabled = false;
+                textBox_fecha.IsEnabled = false;
+                textBox_monto.IsEnabled = false;
+                if (textBox_tipo.IsVisible)
                 {
-                    textbox_Tipo.IsEnabled = false;
-                    textbox_Costo.IsEnabled = false;
-                    textbox_Cantidad.IsEnabled = false;
-                    checkbox_Material.IsEnabled = false;
+                    textBox_tipo.IsEnabled = false;
+                    textBox_costo.IsEnabled = false;
+                    textBox_cantidad.IsEnabled = false;
+                    checkBox_material.IsEnabled = false;
                 }
             }
             else
             {
-                textBlock_Mensaje.Text = String.Empty;
+                textBlock_mensaje.Text = String.Empty;
                 var bold = new Bold(
                     new Run("Hay datos inválidos, favor de revisar")
                     {
                         Foreground = Brushes.Red
                     });
-                textBlock_Mensaje.Inlines.Add(bold);
+                textBlock_mensaje.Inlines.Add(bold);
             }
         }
 
-        private void textBox_TextChanged(object sender, EventArgs e)
+        private void TextBox_TextChanged(object sender, EventArgs e)
         {
-            if (!textbox_Cantidad.Text.Equals("") && !textbox_Costo.Text.Equals(""))
+            if (!textBox_cantidad.Text.Equals("") && !textBox_costo.Text.Equals(""))
             {
                 int numCamtidad;
                 double numCosto;
-                int.TryParse(textbox_Cantidad.Text, out numCamtidad);
-                double.TryParse(textbox_Costo.Text, 
+                int.TryParse(textBox_cantidad.Text, out numCamtidad);
+                double.TryParse(textBox_costo.Text, 
                     NumberStyles.AllowDecimalPoint, 
                     NumberFormatInfo.InvariantInfo, 
                     out numCosto);
                 double total = numCamtidad * numCosto;
-                textbox_Monto.Text = total.ToString().Replace(',', '.');
+                textBox_monto.Text = total.ToString().Replace(',', '.');
             }
         }
 
-        private bool nuevoComite()
+        private bool NuevoComite()
         {
             Egreso nuevoEgreso = new Egreso()
             {
-                concepto = textbox_Concepto.Text,
-                fecha = Convert.ToDateTime(textbox_Fecha.Text),
-                monto = float.Parse(textbox_Monto.Text, NumberFormatInfo.InvariantInfo)
+                concepto = textBox_concepto.Text,
+                fecha = Convert.ToDateTime(textBox_fecha.Text),
+                monto = float.Parse(textBox_monto.Text, NumberFormatInfo.InvariantInfo)
             };
             Egreso_Logica egreso_Logica = new Egreso_Logica();
             egreso_Logica.RegistrarEgreso(nuevoEgreso);
-            if (textbox_Tipo.IsVisible)
+            if (textBox_tipo.IsVisible)
             {
                 Material nuevoMaterial = new Material()
                 {
-                    cantidad = int.Parse(textbox_Cantidad.Text),
-                    costo = double.Parse(textbox_Costo.Text, NumberFormatInfo.InvariantInfo),
-                    tipo = textbox_Tipo.Text
+                    cantidad = int.Parse(textBox_cantidad.Text),
+                    costo = double.Parse(textBox_costo.Text, NumberFormatInfo.InvariantInfo),
+                    tipo = textBox_tipo.Text
                 };
                 Material_Logica material_Logica = new Material_Logica();
                 material_Logica.RegistrarMaterial(
@@ -93,19 +93,19 @@ namespace SGEA_DS
             return true;
         }
 
-        private bool validarDatos()
+        private bool ValidarDatos()
         {
-            if (string.IsNullOrWhiteSpace(textbox_Monto.Text) || 
-                string.IsNullOrWhiteSpace(textbox_Fecha.Text) || 
-                string.IsNullOrEmpty(textbox_Concepto.Text))
+            if (string.IsNullOrWhiteSpace(textBox_monto.Text) || 
+                string.IsNullOrWhiteSpace(textBox_fecha.Text) || 
+                string.IsNullOrEmpty(textBox_concepto.Text))
             { 
                 return false;
             }
-            if (textbox_Tipo.IsVisible)
+            if (textBox_tipo.IsVisible)
             {
-                if (string.IsNullOrWhiteSpace(textbox_Cantidad.Text) ||
-                string.IsNullOrWhiteSpace(textbox_Costo.Text) ||
-                string.IsNullOrEmpty(textbox_Tipo.Text))
+                if (string.IsNullOrWhiteSpace(textBox_cantidad.Text) ||
+                string.IsNullOrWhiteSpace(textBox_costo.Text) ||
+                string.IsNullOrEmpty(textBox_tipo.Text))
                 {
                     return false;
                 }
@@ -113,9 +113,8 @@ namespace SGEA_DS
             return true;
         }
 
-        private void click_Cancelar(object sender, RoutedEventArgs e)
+        private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
-            this.Close();
             this.Close();
         }
 

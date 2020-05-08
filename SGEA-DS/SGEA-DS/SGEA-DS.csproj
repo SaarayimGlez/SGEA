@@ -256,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="CU10.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="Actividades.xaml.cs">
       <DependentUpon>Actividades.xaml</DependentUpon>
     </Compile>
@@ -308,6 +312,10 @@
     </Compile>
     <Compile Include="ConsultarPatrocinador.xaml.cs">
       <DependentUpon>ConsultarPatrocinador.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CU10.xaml.cs">
+      <DependentUpon>CU10.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
