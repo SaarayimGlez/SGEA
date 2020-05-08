@@ -35,8 +35,6 @@ namespace DataAccess
         public virtual DbSet<Calendario> CalendarioSet { get; set; }
         public virtual DbSet<Magistral> MagistralSet { get; set; }
         public virtual DbSet<Participante> ParticipanteSet { get; set; }
-        public virtual DbSet<Egreso> EgresoSet { get; set; }
-        public virtual DbSet<Material> MaterialSet { get; set; }
         public virtual DbSet<Ingreso> IngresoSet { get; set; }
         public virtual DbSet<Presupuesto> PresupuestoSet { get; set; }
         public virtual DbSet<Comite> ComiteSet { get; set; }
@@ -45,5 +43,7 @@ namespace DataAccess
         public virtual DbSet<Organizador> OrganizadorSet { get; set; }
         public virtual DbSet<Patrocinador> PatrocinadorSet { get; set; }
         public virtual DbSet<Evento> EventoSet { get; set; }
+        public virtual DbSet<Egreso> EgresoSet { get; set; }
+        public virtual DbSet<Material> MaterialSet { get; set; }
     }
 }
