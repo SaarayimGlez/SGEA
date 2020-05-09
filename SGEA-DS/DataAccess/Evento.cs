@@ -7,32 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Evento
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Evento
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Evento()
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Evento()
-        {
-            this.ActividadSet = new HashSet<Actividad>();
-            this.ComiteSet = new HashSet<Comite>();
-        }
-    
-        public int Id { get; set; }
-        public string nombre { get; set; }
-        public System.DateTime fechaInicio { get; set; }
-        public System.DateTime fechaFin { get; set; }
-        public string lugar { get; set; }
-        public string institucionOrganizadora { get; set; }
-        public Nullable<int> EventoPresupuesto_Evento_Id { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Actividad> ActividadSet { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comite> ComiteSet { get; set; }
-        public virtual Presupuesto PresupuestoSet { get; set; }
+        this.ActividadSet = new HashSet<Actividad>();
+        this.ComiteSet = new HashSet<Comite>();
     }
+
+    public int Id { get; set; }
+    public string nombre { get; set; }
+    public System.DateTime fechaInicio { get; set; }
+    public System.DateTime fechaFin { get; set; }
+    public string lugar { get; set; }
+    public string institucionOrganizadora { get; set; }
+    public Nullable<int> EventoPresupuesto_Evento_Id { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Actividad> ActividadSet { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Comite> ComiteSet { get; set; }
+    public virtual Presupuesto PresupuestoSet { get; set; }
 }

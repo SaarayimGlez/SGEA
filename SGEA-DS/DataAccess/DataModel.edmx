@@ -795,6 +795,7 @@
           <Property Name="ComiteId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="EventoSet" Relationship="DataModel.FK_EventoActividad" FromRole="Actividad" ToRole="EventoSet" />
           <NavigationProperty Name="MaterialSet" Relationship="DataModel.FK_ActividadMaterial" FromRole="Actividad" ToRole="MaterialSet" />
+          <NavigationProperty Name="Asistente" Relationship="DataModel.ActividadAsistente" FromRole="Actividad" ToRole="Asistente" />
         </EntityType>
         <EntityType Name="Articulo">
           <Key>
