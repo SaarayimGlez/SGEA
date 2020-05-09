@@ -84,6 +84,10 @@
       <Project>{80A79348-389B-4A50-A709-F303D68E4BA8}</Project>
       <Name>Logica</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{9B28C064-09D5-4DFC-A0B7-02BB11FD6E67}</Project>
+      <Name>Modelo</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

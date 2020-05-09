@@ -33,7 +33,9 @@ namespace SGEA_DS
 
         private void Click_Registrar(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            CU10 registroEgreso = new CU10();
+            registroEgreso.Show();
+            this.Close();
         }
 
         private void Click_Consultar(object sender, RoutedEventArgs e)

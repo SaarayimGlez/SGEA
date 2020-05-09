@@ -49,6 +49,7 @@ namespace SGEA_DS
                     Foreground = Brushes.Red
                 });
                 textBlock_mensaje.Inlines.Add(bold);
+                label_instrucciones.Content = "";
             }
             else
             {
@@ -123,7 +124,7 @@ namespace SGEA_DS
                 btnEvento.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
                 btnEvento.Width = 375;
                 btnModificar.Click += (sender, EventArgs) => {
-                    Click_ModificarEvento(sender, EventArgs, evento.Id); };
+                    Click_ModificarEvento(sender, EventArgs, evento); };
                 gridEventoIndv.Children.Add(btnModificar);
             }
             gridEventoIndv.Children.Add(btnEvento);
@@ -131,9 +132,11 @@ namespace SGEA_DS
             Grid.SetRow(gridEventoIndv, grid_eventos.RowDefinitions.Count - 1);
         }
 
-        private void Click_ModificarEvento(object sender, RoutedEventArgs e, int eventoId)
+        private void Click_ModificarEvento(object sender, RoutedEventArgs e, Modelo.Evento evento)
         {
-            throw new NotImplementedException();
+            CU15 modificarEvento = new CU15(evento);
+            modificarEvento.Show();
+            this.Close();
         }
 
         private void Click_Evento(object sender, RoutedEventArgs e, Modelo.Evento evento)

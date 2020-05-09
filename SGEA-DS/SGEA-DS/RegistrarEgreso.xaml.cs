@@ -21,11 +21,14 @@ namespace SGEA_DS
         
         private void Click_Aceptar(object sender, RoutedEventArgs e)
         {
-            if (ValidarDatos() && NuevoComite())
+            if (ValidarDatos() && NuevoEgreso())
             {
-                textBlock_mensaje.Text = String.Empty;
-                var bold = new Bold(new Run("Egreso registrado con éxito"));
-                textBlock_mensaje.Inlines.Add(bold);
+                if (!textBlock_mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
+                {
+                    textBlock_mensaje.Text = String.Empty;
+                    var bold = new Bold(new Run("Egreso registrado con éxito"));
+                    textBlock_mensaje.Inlines.Add(bold);
+                }
                 button_cancelar.Content = "Regresar";
                 button_aceptar.Visibility = Visibility.Hidden;
                 textBox_concepto.IsEnabled = false;
@@ -67,7 +70,7 @@ namespace SGEA_DS
             }
         }
 
-        private bool NuevoComite()
+        private bool NuevoEgreso()
         {
             Egreso nuevoEgreso = new Egreso()
             {
@@ -76,6 +79,16 @@ namespace SGEA_DS
                 monto = float.Parse(textBox_monto.Text, NumberFormatInfo.InvariantInfo)
             };
             Egreso_Logica egreso_Logica = new Egreso_Logica();
+            if (!egreso_Logica.ComprobarConexion())
+            {
+                textBlock_mensaje.Text = String.Empty;
+                var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
+                {
+                    Foreground = Brushes.Red
+                });
+                textBlock_mensaje.Inlines.Add(bold);
+                return true;
+            }
             egreso_Logica.RegistrarEgreso(nuevoEgreso);
             if (textBox_tipo.IsVisible)
             {
@@ -115,6 +128,8 @@ namespace SGEA_DS
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
+            GestionEgreso gestionEgreso = new GestionEgreso();
+            gestionEgreso.Show();
             this.Close();
         }
 

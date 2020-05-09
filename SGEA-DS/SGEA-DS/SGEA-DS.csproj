@@ -257,11 +257,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="CU10.xaml">
+    <Page Include="RegistrarEgreso.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-	<Page Include="CU15.xaml">
+    <Page Include="ModificarEvento.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -318,17 +318,16 @@
     <Compile Include="ConsultarPatrocinador.xaml.cs">
       <DependentUpon>ConsultarPatrocinador.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CU10.xaml.cs">
-      <DependentUpon>CU10.xaml</DependentUpon>
+    <Compile Include="RegistrarEgreso.xaml.cs">
+      <DependentUpon>RegistrarEgreso.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-	<Compile Include="CU15.xaml.cs">
-      <DependentUpon>CU15.xaml</DependentUpon>
+    <Compile Include="ModificarEvento.xaml.cs">
+      <DependentUpon>ModificarEvento.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="VentanaCtrolEvento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

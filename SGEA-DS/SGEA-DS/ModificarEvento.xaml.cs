@@ -13,13 +13,13 @@ namespace SGEA_DS
 {
     public partial class CU15 : VentanaCtrolEvento
     {
-        private int eventoId;
+        private Modelo.Evento evento;
 
-        public CU15(/*int idEvento*/)
+        public CU15(Modelo.Evento evento)
         {
             InitializeComponent();
-            this.eventoId = 1;
-            LlenarCampos(eventoId);
+            this.evento = evento;
+            LlenarCampos(evento.Id);
         }
 
         private void LlenarCampos(int idEvento)
@@ -88,7 +88,7 @@ namespace SGEA_DS
 
             Evento eventoActualizado = new Evento()
             {
-                Id = eventoId,
+                Id = evento.Id,
                 nombre = textBox_nombre.Text,
                 lugar = textBox_lugar.Text,
                 institucionOrganizadora = comboBox_iOrganizadora.Text,
@@ -114,6 +114,8 @@ namespace SGEA_DS
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
+            GestionEvento gestionEvento = new GestionEvento();
+            gestionEvento.Show();
             this.Close();
         }
 
