@@ -71,7 +71,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="CU10.xaml">
+    <Page Include="CU21.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Diploma.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gafete.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -79,8 +87,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CU10.xaml.cs">
-      <DependentUpon>CU10.xaml</DependentUpon>
+    <Compile Include="CU21.xaml.cs">
+      <DependentUpon>CU21.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diploma.xaml.cs">
+      <DependentUpon>Diploma.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gafete.xaml.cs">
+      <DependentUpon>Gafete.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -112,13 +126,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="C:\ELproyecto\SGEA-DS\DataAccess\DataAccess.csproj">
-      <Project>{806e8765-0126-47f6-8fcc-6baabb18b6d3}</Project>
-      <Name>DataAccess</Name>
-    </ProjectReference>
-    <ProjectReference Include="C:\ELproyecto\SGEA-DS\Logica\Logica.csproj">
+    <ProjectReference Include="..\Logica\Logica.csproj">
       <Project>{80a79348-389b-4a50-a709-f303d68e4ba8}</Project>
       <Name>Logica</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modelo\Modelo.csproj">
+      <Project>{9b28c064-09d5-4dfc-a0b7-02bb11fd6e67}</Project>
+      <Name>Modelo</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
