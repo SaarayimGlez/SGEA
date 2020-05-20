@@ -8,7 +8,7 @@
         Title="Diploma" Height="350" Width="700" WindowStartupLocation="CenterScreen">
     <Grid>
         <Canvas x:Name="canvas_diploma" Width="692">
-            <Grid x:Name="grid_diploma" HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="692" Grid.ColumnSpan="4" Grid.RowSpan="3">
+            <Grid x:Name="grid_diploma" HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="692" Grid.ColumnSpan="4" Grid.RowSpan="3" Background="White">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="2.8*"/>
                     <RowDefinition Height=".5*"/>
@@ -23,8 +23,8 @@
                 </Grid.ColumnDefinitions>
                 <Rectangle Fill="#FF28AD56" HorizontalAlignment="Left" Height="12" VerticalAlignment="Top" Width="500" Grid.Column="3" Grid.Row="1"/>
                 <Rectangle Fill="#FF18529D" HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="24" Grid.RowSpan="4" Grid.Column="1"/>
-                <Image HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="90" Grid.RowSpan="2" Grid.Column="2"/>
-                <Image HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="90" Grid.RowSpan="2" Grid.Column="4"/>
+                <Image HorizontalAlignment="Center" Height="79" VerticalAlignment="Top" Width="90" Grid.RowSpan="2" Grid.Column="2" Source="Utilidades/logoUV.jpg"/>
+                <Image HorizontalAlignment="Center" Height="79" VerticalAlignment="Center" Width="79" Grid.RowSpan="2" Grid.Column="4" Source="Utilidades/logoFEI.png"/>
                 <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="3" FontSize="24">
                     <TextBlock TextAlignment="Center">
                     <Bold>Universidad Veracruzana</Bold><LineBreak/>

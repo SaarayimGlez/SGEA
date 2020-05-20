@@ -18,31 +18,32 @@
         <BooleanToVisibilityConverter x:Key="boolToVisible"/>
     </Window.Resources>
     <Grid>
-        <Grid x:Name="grid_gafete" HorizontalAlignment="Center" Height="320" Margin="0" VerticalAlignment="Center" Width="334">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="20*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="2*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <Rectangle Fill="#FF28AD56" HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="15" Grid.Column="2" Grid.RowSpan="4"/>
-            <Rectangle Fill="#FF18529D" HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="15" Grid.RowSpan="4"/>
-            <Rectangle Fill="#FF28AD56" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="334" Grid.Row="3" Grid.ColumnSpan="3"/>
-            <Rectangle Grid.ColumnSpan="3" Fill="#FF18529D" HorizontalAlignment="Left" Height="64" Grid.Row="1" VerticalAlignment="Top" Width="334"/>
-            <Label x:Name="label_rol" Content="ASISTENTE" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="304" Height="62" FontSize="48" Foreground="White" FontWeight="Bold"/>
-            <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="304" Height="62" FontSize="24" Foreground="White" FontWeight="Medium">
-                <TextBlock x:Name="textBlock_evento" TextWrapping="WrapWithOverflow" Text="Foro de Egresados 2016" TextAlignment="Center"/>
-            </Label>
-            <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="304" Height="128" FontSize="36" Foreground="Black" FontWeight="ExtraBlack" Grid.Column="1">
-                <TextBlock x:Name="textBlock_nombre" TextWrapping="WrapWithOverflow" Text="Puxka Acosta Domínguez" TextAlignment="Center"/>
-            </Label>
-            <Image HorizontalAlignment="Center" Height="64" VerticalAlignment="Top" Width="64" Grid.Column="1" Grid.Row="0" Margin="88,0,152,0"/>
-        </Grid>
-
+        <Canvas x:Name="canvas_gafete" Width="334">
+            <Grid x:Name="grid_gafete" HorizontalAlignment="Center" Height="320" Margin="0" VerticalAlignment="Center" Width="334" Background="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Rectangle Fill="#FF28AD56" HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="15" Grid.Column="2" Grid.RowSpan="4"/>
+                <Rectangle Fill="#FF18529D" HorizontalAlignment="Left" Height="320" VerticalAlignment="Top" Width="15" Grid.RowSpan="4"/>
+                <Rectangle Fill="#FF28AD56" HorizontalAlignment="Left" Height="64" VerticalAlignment="Top" Width="334" Grid.Row="3" Grid.ColumnSpan="3"/>
+                <Rectangle Grid.ColumnSpan="3" Fill="#FF18529D" HorizontalAlignment="Left" Height="64" Grid.Row="1" VerticalAlignment="Top" Width="334"/>
+                <Label x:Name="label_rol" Content="ASISTENTE" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="304" Height="62" FontSize="48" Foreground="White" FontWeight="Bold"/>
+                <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center"  Grid.Column="1" HorizontalAlignment="Left" Grid.Row="3" VerticalAlignment="Top" Width="304" Height="62" FontSize="24" Foreground="White" FontWeight="Medium">
+                    <TextBlock x:Name="textBlock_evento" TextWrapping="WrapWithOverflow" Text="Foro de Egresados 2016" TextAlignment="Center"/>
+                </Label>
+                <Label VerticalContentAlignment="Center" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" Width="304" Height="128" FontSize="36" Foreground="Black" FontWeight="ExtraBlack" Grid.Column="1">
+                    <TextBlock x:Name="textBlock_nombre" TextWrapping="WrapWithOverflow" Text="Puxka Acosta Domínguez" TextAlignment="Center"/>
+                </Label>
+                <Image HorizontalAlignment="Center" Height="64" VerticalAlignment="Top" Width="64" Grid.Column="1" Grid.Row="0" Source="Utilidades/logoFEI.png"/>
+            </Grid>
+        </Canvas>
     </Grid>
 </Window>

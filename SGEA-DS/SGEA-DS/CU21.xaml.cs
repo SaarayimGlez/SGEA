@@ -32,7 +32,8 @@ namespace SGEA_DS
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Gafete gafete = new Gafete("La Chirris");
+            gafete.Show();
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)

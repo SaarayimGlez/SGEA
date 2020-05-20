@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Microsoft.WindowsAPICodePack.Shell;
+using System.IO;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -13,12 +14,15 @@ namespace SGEA_DS
         public Diploma()
         {
             InitializeComponent();
-            DescargarDiploma();
+            Loaded += delegate
+            {
+                DescargarDiploma();
+            };
         }
-
+        
         private void DescargarDiploma()
         {
-            string file = KnownFolders.Downloads.Path + @"\programaIMG.png";
+            string file = KnownFolders.Downloads.Path + @"\1diploma.png";
             BitmapEncoder encoder = new PngBitmapEncoder();
             RenderTargetBitmap pngFinal;
 
@@ -38,6 +42,7 @@ namespace SGEA_DS
             {
                 encoder.Save(stm);
             }
+            this.Close();
         }
     }
 }
