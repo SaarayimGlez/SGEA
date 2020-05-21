@@ -28,7 +28,7 @@ namespace SGEA_DS
         private void Click_Entrar(object sender, RoutedEventArgs e)
         {
             MiembroComite_Logica miembroComite_Logica = new MiembroComite_Logica();
-            Modelo.MiembroComite usuarioActual = miembroComite_Logica.RecuperarMiembroComite(textBox_usuario.Text);
+            Modelo.MiembroComite usuarioActual = miembroComite_Logica.RecuperarMiembroComite(1);
             if (usuarioActual != null)
             {
                 GestionEvento gestionEvento = new GestionEvento(usuarioActual);

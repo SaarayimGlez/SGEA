@@ -7,18 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Material
+namespace DataAccess
 {
-    public int Id { get; set; }
-    public string tipo { get; set; }
-    public int cantidad { get; set; }
-    public double costo { get; set; }
-    public Nullable<int> ActividadId { get; set; }
-    public int EgresoMaterial_Material_Id { get; set; }
-
-    public virtual Actividad ActividadSet { get; set; }
-    public virtual Egreso EgresoSet { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Material
+    {
+        public int Id { get; set; }
+        public string tipo { get; set; }
+        public int cantidad { get; set; }
+        public double costo { get; set; }
+        public Nullable<int> ActividadId { get; set; }
+        public int EgresoMaterial_Material_Id { get; set; }
+    
+        public virtual Actividad ActividadSet { get; set; }
+        public virtual Egreso EgresoSet { get; set; }
+    }
 }

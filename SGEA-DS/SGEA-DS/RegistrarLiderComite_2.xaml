@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button x:Name="button_aceptar" Content="Aceptar" Grid.Column="1" HorizontalAlignment="Center" Margin="51,69,51,-2" Grid.Row="4" VerticalAlignment="Center" Width="91" Height="37" Grid.RowSpan="2" Click="Click_Aceptar"/>
-            <Button x:Name="button_cancelar" Content="Cancelar" Grid.Column="2" HorizontalAlignment="Center" Margin="51,69,51,-2" Grid.Row="4" VerticalAlignment="Center" Width="91" Height="37" Grid.RowSpan="2" Click="Click_Cancelar"/>
+            <Button x:Name="button_cancelar" Content="Regresar" Grid.Column="2" HorizontalAlignment="Center" Margin="51,69,51,-2" Grid.Row="4" VerticalAlignment="Center" Width="91" Height="37" Grid.RowSpan="2" Click="Click_Cancelar"/>
             <Label Content="Porfavor selecciona un miembro de la lista si el líder ya está registrado, &#xD;&#xA;sino, ingresa sus datos en los campos" HorizontalAlignment="Right" VerticalAlignment="Top" Height="66" Width="762" FontSize="18" Grid.ColumnSpan="3"/>
             <ComboBox x:Name="comboBox_miembroC" Text="Miembro comite" IsEditable="True" IsReadOnly="True" HorizontalAlignment="Center" Margin="21,10,21,5" Grid.Row="1" VerticalAlignment="Center" Width="344" Height="53" SelectionChanged="Combobox_MiembroC_SelectionChanged" DropDownClosed="Combobox_MiembroC_DropDownClosed">
             </ComboBox>

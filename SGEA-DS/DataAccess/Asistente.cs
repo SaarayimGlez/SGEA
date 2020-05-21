@@ -7,14 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Asistente
+namespace DataAccess
 {
-    public int Id { get; set; }
-    public string nombre { get; set; }
-    public string apellidoPaterno { get; set; }
-    public string apellidoMaterno { get; set; }
-    public string correoElectronico { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Asistente
+    {
+        public int Id { get; set; }
+        public string nombre { get; set; }
+        public string apellidoPaterno { get; set; }
+        public string apellidoMaterno { get; set; }
+        public string correoElectronico { get; set; }
+    }
 }

@@ -7,24 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Egreso
+namespace DataAccess
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Egreso()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Egreso
     {
-        this.MaterialSet = new HashSet<Material>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Egreso()
+        {
+            this.MaterialSet = new HashSet<Material>();
+        }
+    
+        public int Id { get; set; }
+        public string concepto { get; set; }
+        public double monto { get; set; }
+        public System.DateTime fecha { get; set; }
+        public Nullable<int> Magistral_Id { get; set; }
+    
+        public virtual Magistral MagistralSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Material> MaterialSet { get; set; }
     }
-
-    public int Id { get; set; }
-    public string concepto { get; set; }
-    public double monto { get; set; }
-    public System.DateTime fecha { get; set; }
-    public Nullable<int> Magistral_Id { get; set; }
-
-    public virtual Magistral MagistralSet { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Material> MaterialSet { get; set; }
 }

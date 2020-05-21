@@ -7,21 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Presupuesto
+namespace DataAccess
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Presupuesto()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Presupuesto
     {
-        this.EventoSet = new HashSet<Evento>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Presupuesto()
+        {
+            this.Evento = new HashSet<Evento>();
+        }
+    
+        public int Id { get; set; }
+        public string concepto { get; set; }
+        public double supuestoPresupuesto { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Evento> Evento { get; set; }
     }
-
-    public int Id { get; set; }
-    public string concepto { get; set; }
-    public double supuestoPresupuesto { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Evento> EventoSet { get; set; }
 }

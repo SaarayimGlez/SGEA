@@ -14,10 +14,13 @@ using Microsoft.WindowsAPICodePack.Shell;
 namespace SGEA_DS
 {
     public partial class CU05 : Window {
-        
+
+        Modelo.Evento evento;
+
         public CU05(Modelo.Evento evento)
         {
             InitializeComponent();
+            this.evento = evento;
             LlenarListaActividades(evento);
         }
 
@@ -162,7 +165,7 @@ namespace SGEA_DS
         
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
-            GestionEvento_2 gestionEvento_2 = new GestionEvento_2();
+            GestionEvento_2 gestionEvento_2 = new GestionEvento_2(this.evento);
             gestionEvento_2.Show();
             this.Close();
         }

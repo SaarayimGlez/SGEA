@@ -26,9 +26,10 @@ namespace SGEA_DS
         {
             if (textBlock_mensaje.Text.Equals("sin conexion") || ValidarDatos())
             {
-                GuardarMComite();
+                GuardarUsuario();
                 if (!textBlock_mensaje.Text.Equals("Se ha perdido conexión con la base de datos"))
                 {
+                    GuardarMComite();
                     textBlock_mensaje.Text = String.Empty;
                     var bold = new Bold(new Run("Lider registrado con éxito" +
                         Environment.NewLine + "Usuario: "));
@@ -40,8 +41,7 @@ namespace SGEA_DS
                     normal = new Run(textBox_contrasena.Text);
                     textBlock_mensaje.Inlines.Add(normal);
                 }
-                button_cancelar.Content = "Regresar";
-                button_aceptar.Visibility = Visibility.Hidden;
+                button_aceptar.IsEnabled = false;
                 comboBox_miembroC.IsEnabled = false;
                 comboBox_nivelE.IsEnabled = false;
                 foreach (TextBox textBox in listaTBSinNum)
@@ -63,9 +63,9 @@ namespace SGEA_DS
             }
         }
 
-        private bool GuardarMComite()
+        private bool GuardarUsuario()
         {
-            if (!miembroComiteDAO.ComprobarConexion())
+            if (miembroComiteDAO.ComprobarConexion())
             {
                 textBlock_mensaje.Text = String.Empty;
                 textBlock_mensaje.Text = "Se ha perdido conexión con la base de datos";
@@ -73,13 +73,23 @@ namespace SGEA_DS
                 textBlock_mensaje.FontWeight = FontWeights.Bold;
                 return true;
             }
+            Modelo.Usuario nuevoUsuario = new Modelo.Usuario()
+            {
+                nombreUsuario = textBox_usuario.Text,
+                contrasenia = textBox_contrasena.Text
+            };
+            Usuario_Logica usuario_Logica = new Usuario_Logica();
+            return usuario_Logica.RegistrarUsuario(nuevoUsuario);
+        }
+
+        private bool GuardarMComite()
+        {
+            Usuario_Logica usuario_Logica = new Usuario_Logica();
             Modelo.MiembroComite nuevoMLComite = new Modelo.MiembroComite()
             {
                 nombre = textBox_nombre.Text,
                 apellidoPaterno = textBox_apellidoP.Text,
                 apellidoMaterno = textBox_apellidoM.Text,
-                nombreUsuario = textBox_usuario.Text,
-                contrasenia = textBox_contrasena.Text,
                 evaluador = false,
                 ComiteId = comiteId
             };
@@ -101,11 +111,15 @@ namespace SGEA_DS
                     if (comboBox_miembroC.SelectedItem.ToString().Equals(
                             miembro.nombre + " " + miembro.apellidoPaterno))
                     {
-                        return miembroComiteDAO.ActualizarMCLider(nuevoMLComite);
+                        return miembroComiteDAO.ActualizarMCLider(
+                            nuevoMLComite,
+                            usuario_Logica.RecuperarUsuario().Last().Id);
                     }
                 }
             }
-            return miembroComiteDAO.RegistrarMCLider(nuevoMLComite);
+            return miembroComiteDAO.RegistrarMCLider(
+                nuevoMLComite,
+                usuario_Logica.RecuperarUsuario().Last().Id);
         }
 
         private bool ValidarDatos()
@@ -137,10 +151,7 @@ namespace SGEA_DS
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
-            GestionComite gestionComite = new GestionComite(this.evento);
-            gestionComite.Show();
-            var window = Window.GetWindow(this);
-            window.Close();
+            Switcher.Switch(new CU01_1(this.evento));
         }
         
         public CU01_2(int comiteId, Modelo.Evento evento)

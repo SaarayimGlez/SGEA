@@ -7,22 +7,33 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class MiembroComite
+namespace DataAccess
 {
-    public int Id { get; set; }
-    public string nombre { get; set; }
-    public string apellidoPaterno { get; set; }
-    public string apellidoMaterno { get; set; }
-    public string correoElectronico { get; set; }
-    public string nivelExperiencia { get; set; }
-    public bool liderComite { get; set; }
-    public int ComiteId { get; set; }
-    public string nombreUsuario { get; set; }
-    public string contrasenia { get; set; }
-    public bool evaluador { get; set; }
-
-    public virtual Comite Comite { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class MiembroComite
+    {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MiembroComite()
+        {
+            this.Evaluacion = new HashSet<Evaluacion>();
+        }
+    
+        public int Id { get; set; }
+        public string nombre { get; set; }
+        public string apellidoPaterno { get; set; }
+        public string apellidoMaterno { get; set; }
+        public string correoElectronico { get; set; }
+        public string nivelExperiencia { get; set; }
+        public bool liderComite { get; set; }
+        public int ComiteId { get; set; }
+        public bool evaluador { get; set; }
+        public Nullable<int> idUsuario { get; set; }
+    
+        public virtual Comite Comite { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Evaluacion> Evaluacion { get; set; }
+        public virtual Usuario Usuario { get; set; }
+    }
 }

@@ -29,8 +29,8 @@
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="button_aceptar" Content="Aceptar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Click="Click_Aceptar"/>
-            <Button x:Name="button_cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Click="Click_Cancelar" Grid.Column="1"/>
+            <Button x:Name="button_aceptar" Content="Continuar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="97" Height="37" Click="Click_Aceptar"/>
+            <Button x:Name="button_cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="97" Height="37" Click="Click_Cancelar" Grid.Column="1"/>
         </Grid>
     </Grid>
 </UserControl>

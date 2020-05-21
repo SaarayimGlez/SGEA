@@ -55,10 +55,12 @@
     <Compile Include="Comite.cs" />
     <Compile Include="Evento.cs" />
     <Compile Include="MiembroComite.cs" />
+    <Compile Include="Organizador.cs" />
     <Compile Include="Patrocinador.cs" />
-	<Compile Include="Material.cs" />
-	<Compile Include="Egreso.cs" />
+    <Compile Include="Material.cs" />
+    <Compile Include="Egreso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

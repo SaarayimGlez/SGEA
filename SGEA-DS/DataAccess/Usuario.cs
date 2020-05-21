@@ -12,21 +12,22 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Ingreso
+    public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ingreso()
+        public Usuario()
         {
-            this.PatrocinadorSet = new HashSet<Patrocinador>();
+            this.MiembroComite = new HashSet<MiembroComite>();
+            this.Organizador = new HashSet<Organizador>();
         }
     
         public int Id { get; set; }
-        public string concepto { get; set; }
-        public double monto { get; set; }
-        public System.DateTime fecha { get; set; }
+        public string nombreUsuario { get; set; }
+        public string contrasenia { get; set; }
     
-        public virtual RegistroArticulo RegistroArticulo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrocinador> PatrocinadorSet { get; set; }
+        public virtual ICollection<MiembroComite> MiembroComite { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Organizador> Organizador { get; set; }
     }
 }

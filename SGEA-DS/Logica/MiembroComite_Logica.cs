@@ -43,7 +43,7 @@ namespace Logica
             return listaMCNoLider;
         }
 
-        public bool RegistrarMCLider(Modelo.MiembroComite miembroComite)
+        public bool RegistrarMCLider(Modelo.MiembroComite miembroComite, int idUsuario)
         {
             bool respuesta = false;
             try
@@ -55,10 +55,9 @@ namespace Logica
                     nivelExperiencia = miembroComite.nivelExperiencia,
                     nombre = miembroComite.nombre,
                     ComiteId = miembroComite.ComiteId,
-                    contrasenia = miembroComite.contrasenia,
                     evaluador = miembroComite.evaluador,
                     liderComite = miembroComite.liderComite,
-                    nombreUsuario = miembroComite.nombreUsuario
+                    idUsuario = idUsuario
                 });
                 _context.SaveChanges();
                 respuesta = true;
@@ -70,7 +69,7 @@ namespace Logica
             return respuesta;
         }
 
-        public bool ActualizarMCLider(Modelo.MiembroComite miembroCLider)
+        public bool ActualizarMCLider(Modelo.MiembroComite miembroCLider, int idUsuario)
         {
             bool respuesta = false;
             try
@@ -82,8 +81,7 @@ namespace Logica
                         && miembroNLider.apellidoMaterno == miembroCLider.apellidoMaterno
                     ).First<MiembroComite>();
                 miembroLider.liderComite = true;
-                miembroLider.nombreUsuario = miembroCLider.nombreUsuario;
-                miembroLider.contrasenia = miembroCLider.contrasenia;
+                miembroLider.idUsuario = idUsuario;
                 miembroLider.ComiteId = miembroCLider.ComiteId;
                 _context.SaveChanges();
                 respuesta = true;
@@ -95,21 +93,21 @@ namespace Logica
             return respuesta;
         }
 
-        public Modelo.MiembroComite RecuperarMiembroComite(string usuario)
+        public Modelo.MiembroComite RecuperarMiembroComite(int idUsuario)
         {
             Modelo.MiembroComite listaMiembroComite = null;
             try
             {
                 var listaMiembroComiteBD = _context.MiembroComiteSet
                     .Where(
-                        miembro => miembro.nombreUsuario == usuario
+                        miembro => miembro.idUsuario == idUsuario
                     ).ToList();
 
                 foreach (MiembroComite miembroComiteBD in listaMiembroComiteBD)
                 {
                     listaMiembroComite = new Modelo.MiembroComite()
                     {
-                        nombreUsuario = miembroComiteBD.nombreUsuario,
+                        idUsuario = miembroComiteBD.idUsuario,
                         ComiteId = miembroComiteBD.ComiteId,
                         evaluador = miembroComiteBD.evaluador,
                         liderComite = miembroComiteBD.liderComite
