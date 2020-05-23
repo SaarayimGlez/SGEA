@@ -22,7 +22,7 @@ namespace SGEA_DS
         {
             InitializeComponent();
             this.evento = evento;
-            this.Title = "Registrar lider de comité del evento: " + evento.nombre;
+            this.Title = "Registrar comité";
         }
 
         private void Click_Aceptar(object sender, RoutedEventArgs e)
@@ -35,10 +35,8 @@ namespace SGEA_DS
                     var bold = new Bold(new Run("Comité registrado con éxito"));
                     textBlock_mensaje.Inlines.Add(bold);
                 }
-                button_cancelar.Content = "Regresar";
-                button_aceptar.Visibility = Visibility.Hidden;
-                textBox_nombre.IsEnabled = false;
-                textBox_descripcion.IsEnabled = false;
+                textBox_nombre.Text = "";
+                textBox_descripcion.Text = "";
             }
             else
             {

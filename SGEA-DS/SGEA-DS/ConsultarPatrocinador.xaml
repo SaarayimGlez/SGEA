@@ -1,4 +1,4 @@
-﻿<Window x:Class="SGEA_DS.CU38"
+﻿<UserControl x:Class="SGEA_DS.CU38"
         
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -13,25 +13,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGEA_DS"
         mc:Ignorable="d"
-        Title="Consultar patrocinadores" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <Grid x:Name="grid_Patrocinadores" HorizontalAlignment="Left" Height="323" Margin="10,29,0,0" VerticalAlignment="Top" Width="772">
+        <Grid x:Name="grid_Patrocinadores" HorizontalAlignment="Left" Height="281" Margin="10,71,0,0" VerticalAlignment="Top" Width="772">
             <Grid.RowDefinitions>
-                <RowDefinition Height=".3*"/>
             </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <Label Content="Pon el cursor en la empresa que quieras ver su información más detallada" HorizontalAlignment="Right" VerticalAlignment="Top" Height="38" Width="762" FontSize="18" Grid.ColumnSpan="2"/>
         </Grid>
+        <Label Content="Selecciona la empresa que quieras ver su información más detallada" HorizontalAlignment="Right" VerticalAlignment="Top" Height="38" Width="567" FontSize="18" Margin="0,28,194,0"/>
         <TextBlock x:Name="textBlock_mensaje" HorizontalAlignment="Left" Margin="31,352,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal"/>
         <Grid HorizontalAlignment="Left" Height="63" Margin="396,357,0,0" VerticalAlignment="Top" Width="386">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="button_cancelar" Content="Regresar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Grid.Column="1" Click="Click_Cancelar"/>
+            <Button x:Name="button_cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="111" Height="37" Grid.Column="1" Click="Click_Cancelar"/>
+            <Button x:Name="button_verDetalles" Content="Ver detalles" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="111" Height="37" Click="Click_VerDetalles"/>
         </Grid>
     </Grid>
-</Window>
+</UserControl>

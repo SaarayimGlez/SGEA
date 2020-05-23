@@ -17,14 +17,15 @@ using System.Windows.Shapes;
 
 namespace SGEA_DS {
 
-    public partial class CU38 : Window {
+    public partial class CU38 : UserControl
+    {
+        private List<RadioButton> listaRbPatrocinador;
+        private List<Modelo.Patrocinador> listaPatrocinador;
 
         public CU38()
         {
             InitializeComponent();
             LlenarListaPatrocinadores();
-            ToolTipService.ShowDurationProperty.OverrideMetadata(
-                typeof(DependencyObject), new FrameworkPropertyMetadata(Int32.MaxValue));
         }
 
         private void LlenarListaPatrocinadores()
@@ -40,74 +41,54 @@ namespace SGEA_DS {
                 textBlock_mensaje.Inlines.Add(bold);
             } else
             {
-                List<Modelo.Patrocinador> listaPatrocinador = 
+                listaPatrocinador = 
                     patrocinadorDAO.RecuperarPatrocinador();
+                listaRbPatrocinador = new List<RadioButton>();
 
-                for (int i = 0; i < listaPatrocinador.Count; i++)
+                foreach (Modelo.Patrocinador patrocinador in listaPatrocinador)
                 {
-                    if ((i + 1) % 2 != 0)
-                    {
-                        InsertarParticipante(listaPatrocinador[i], 0);
-                    }
-                    else
-                    {
-                        InsertarParticipante(listaPatrocinador[i], 1);
-                    }
+                    InsertarParticipante(patrocinador.empresa);
                 }
             }
         }
 
-        private void InsertarParticipante(Modelo.Patrocinador patrocinador, int column)
+        private void InsertarParticipante(string empresa)
         {
-            if (column == 0)
-            {
-                grid_Patrocinadores.RowDefinitions.Add(new RowDefinition());
-            }
-            int row = grid_Patrocinadores.RowDefinitions.Count - 1;
-            var rectangulo = new Rectangle();
-            var lblPatrocinador = new Label();
-            var spToolTip = new StackPanel();
-            lblPatrocinador.VerticalAlignment = System.Windows.VerticalAlignment.Center;
-            lblPatrocinador.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
-            lblPatrocinador.FontSize = 20;
-            
-            spToolTip.Children.Add(new TextBlock() {
-                Text = "Nombre:\t\t  " + patrocinador.nombre });
-            spToolTip.Children.Add(new TextBlock() {
-                Text = "Apellido paterno:\t  " + patrocinador.apellidoPaterno });
-            spToolTip.Children.Add(new TextBlock() {
-                Text = "Apellido materno:\t  " + patrocinador.apellidoMaterno });
-            spToolTip.Children.Add(new TextBlock() {
-                Text = "Correo electrónico: " + patrocinador.correoElectronico });
-            spToolTip.Children.Add(new TextBlock() {
-                Text = "Direccion:\t   " + patrocinador.direccion });
-            spToolTip.Children.Add(new TextBlock() {
-                Text = "Numweo telefónico: " + patrocinador.numeroTelefono });
-
-            ToolTip tooltip = new ToolTip { Content = spToolTip };
-            rectangulo.ToolTip = tooltip;
-            if (!tooltip.IsOpen) tooltip.StaysOpen = true;
-
-            rectangulo.Fill = 
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ad76ad"));
-            rectangulo.Stroke = 
-                new SolidColorBrush((Color)ColorConverter.ConvertFromString("#ffffff"));
-            rectangulo.StrokeThickness = 2;
-            grid_Patrocinadores.Children.Add(rectangulo);
-            Grid.SetRow(rectangulo, row);
-            Grid.SetColumn(rectangulo, column);
-
-            lblPatrocinador.Content = patrocinador.empresa;
-            grid_Patrocinadores.Children.Add(lblPatrocinador);
-            Grid.SetRow(lblPatrocinador, row);
-            Grid.SetColumn(lblPatrocinador, column);
+            grid_Patrocinadores.RowDefinitions.Insert(
+                grid_Patrocinadores.RowDefinitions.Count, new RowDefinition());
+            var rbPatrocinador = new RadioButton();
+            rbPatrocinador.Content = empresa;
+            rbPatrocinador.VerticalAlignment = System.Windows.VerticalAlignment.Center;
+            rbPatrocinador.HorizontalAlignment = System.Windows.HorizontalAlignment.Center;
+            rbPatrocinador.Height = 18;
+            rbPatrocinador.Width = 350;
+            rbPatrocinador.RenderTransformOrigin = new Point(0.5, 0.5);
+            rbPatrocinador.FontSize = 14;
+            TransformGroup transformGroupRb = new TransformGroup();
+            transformGroupRb.Children.Add(new ScaleTransform(2, 2));
+            rbPatrocinador.RenderTransform = transformGroupRb;
+            grid_Patrocinadores.Children.Add(rbPatrocinador);
+            Grid.SetRow(rbPatrocinador, grid_Patrocinadores.RowDefinitions.Count - 1);
+            listaRbPatrocinador.Add(rbPatrocinador);
         }
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
             GestionPatrocinador gestionPatrocinador = new GestionPatrocinador();
             gestionPatrocinador.Show();
-            this.Close();
+            var window = Window.GetWindow(this);
+            window.Close();
+        }
+
+        private void Click_VerDetalles(object sender, RoutedEventArgs e)
+        {
+            for (int i = 0; i < listaRbPatrocinador.Count; i++)
+            {
+                if (listaRbPatrocinador[i].IsChecked == true)
+                {
+                    Switcher.Switch(new CU38_2(listaPatrocinador[i]));
+                }
+            }
         }
 
     }

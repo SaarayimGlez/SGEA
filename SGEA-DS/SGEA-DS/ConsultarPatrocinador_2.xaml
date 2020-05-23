@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="SGEA_DS.CU38_2"
+            TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+            Background="{DynamicResource MaterialDesignPaper}"
+            TextElement.FontWeight="Medium"
+            TextElement.FontSize="14"
+            FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SGEA_DS"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Padding="0" Margin="25,2.5,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF673AB7" Click="Click_Cancelar">
+            <materialDesign:PackIcon Kind="ArrowLeftBoldCircle" Height="30" Width="30" />
+        </Button>
+        <Grid Height="366" VerticalAlignment="Center" HorizontalAlignment="Center" Width="736" Background="White" ShowGridLines="True" Margin="0,30,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Nombre" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="236" FontSize="16" Margin="10,10,0,0" Grid.Row="2"/>
+            <Label x:Name="nombre" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="481" FontSize="16" Margin="10,10,0,0" Grid.Row="2" Grid.Column="1"/>
+            <Label Content="Apellido paterno" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="236" FontSize="16" Margin="10,10,0,0" Grid.Row="3"/>
+            <Label x:Name="apellidoPaterno" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="481" FontSize="16" Margin="10,10,0,0" Grid.Row="3" Grid.Column="1"/>
+            <Label Content="Apellido materno" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="236" FontSize="16" Margin="10,10,0,0" Grid.Row="4"/>
+            <Label x:Name="apellidoMaterno" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="481" FontSize="16" Margin="10,10,0,0" Grid.Row="4" Grid.Column="1"/>
+            <Label Content="Dirección" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="236" FontSize="16" Margin="10,10,0,0" Grid.Row="6"/>
+            <Label x:Name="direccion" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="481" FontSize="16" Margin="10,10,0,0" Grid.Row="6" Grid.Column="1"/>
+            <Label Content="Correo electrónico" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="236" FontSize="16" Margin="10,10,0,0" Grid.Row="7"/>
+            <Label x:Name="correoElectronico" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="481" FontSize="16" Margin="10,10,0,0" Grid.Row="7" Grid.Column="1"/>
+            <Label Content="Número telefónico" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="236" FontSize="16" Margin="10,10,0,0" Grid.Row="8"/>
+            <Label x:Name="numeroTelefonico" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="481" FontSize="16" Margin="10,10,0,0" Grid.Row="8" Grid.Column="1"/>
+        </Grid>
+        <Grid  Height="366" VerticalAlignment="Center" HorizontalAlignment="Center" Width="736" Margin="0,30,0,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".5*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Fill="#320b86" HorizontalAlignment="Left" Height="44" VerticalAlignment="Top" Width="736" Grid.ColumnSpan="2"/>
+            <Label x:Name="empresa" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="727" FontSize="16" Grid.ColumnSpan="2" Foreground="#DDFFFFFF" Margin="10,10,-1,0"/>
+            <Rectangle Fill="#9a67ea" HorizontalAlignment="Left" Height="44" VerticalAlignment="Top" Width="736" Grid.ColumnSpan="2" Grid.Row="1"/>
+            <Label Content="Datos de persona de contacto" HorizontalAlignment="Left" VerticalAlignment="Top" Height="33" Width="727" FontSize="16" Margin="10,10,-1,0" Foreground="#DDFFFFFF" Grid.Row="1"/>
+            <Rectangle Fill="#9a67ea" HorizontalAlignment="Left" Height="44" Width="736" Grid.ColumnSpan="2" Grid.Row="5"/>
+            <Label Content="Datos de empresa" HorizontalAlignment="Left" Height="33" Width="727" FontSize="16" Grid.ColumnSpan="2" Grid.Row="5" Foreground="#DDFFFFFF" Margin="10,10,-1,0"/>
+        </Grid>
+    </Grid>
+</UserControl>

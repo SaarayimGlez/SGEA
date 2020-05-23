@@ -92,9 +92,9 @@ namespace SGEA_DS
 
         private void Button_ConsultarPatrocinador(object sender, RoutedEventArgs e)
         {
-            CU38 consultaPátrocinador = new CU38();
+            /*CU38 consultaPátrocinador = new CU38();
             consultaPátrocinador.Show();
-            this.Close();
+            this.Close();*/
         }
     }
 }

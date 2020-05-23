@@ -26,7 +26,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Content="Por favor introduce el nombre del comité y una descripción corta de este" HorizontalAlignment="Right" VerticalAlignment="Top" Height="66" Width="762" FontSize="18" Grid.RowSpan="2"/>
+            <Label Content="Por favor introduce el nombre del comité y una descripción corta de este" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="33" Width="762" FontSize="18"/>
             <TextBox x:Name="textBox_nombre" HorizontalAlignment="Right" Height="58" Margin="0,30,386,38" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="344" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True" KeyDown="Textbox_Alfabetico_KeyDown"/>
             <TextBox x:Name="textBox_descripcion" HorizontalAlignment="Center" Height="58" Margin="42,7,42,59" Grid.Row="2" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="688" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Descripción" materialDesign:HintAssist.IsFloating="True" KeyDown="Textbox_Alfabetico_KeyDown"/>
             <TextBlock x:Name="textBlock_mensaje" HorizontalAlignment="Left" Margin="31,129,0,-50" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal"/>
@@ -39,5 +39,8 @@
             <Button x:Name="button_aceptar" Content="Aceptar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Click="Click_Aceptar"/>
             <Button x:Name="button_cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Grid.Column="1" Click="Click_Cancelar"/>
         </Grid>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Padding="0" Margin="25,18,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF673AB7" Click="Click_Cancelar">
+            <materialDesign:PackIcon Kind="ArrowLeftBoldCircle" Height="30" Width="30" />
+        </Button>
     </Grid>
 </local:VentanaCtrolEvento>

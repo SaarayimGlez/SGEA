@@ -159,8 +159,6 @@ namespace SGEA_DS
             textBlock_mensaje.Text = String.Empty;
             var bold = new Bold(new Run(@"Programa descargado en \Descargas\ProgramaIMG.png"));
             textBlock_mensaje.Inlines.Add(bold);
-            button_cancelar.Content = "Regresar";
-            button_aceptar.Visibility = Visibility.Hidden;
         }
         
         private void Click_Cancelar(object sender, RoutedEventArgs e)

@@ -89,6 +89,7 @@
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
     </Reference>
@@ -102,6 +103,7 @@
     <Reference Include="System.Security.Principal.Windows, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Principal.Windows.4.7.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -121,6 +123,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CtrolUsrCtrolEvento.cs" />
+    <Compile Include="ConsultarPatrocinador_2.xaml.cs">
+      <DependentUpon>ConsultarPatrocinador_2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GestionActividades.xaml.cs">
       <DependentUpon>GestionActividades.xaml</DependentUpon>
     </Compile>
@@ -160,6 +165,10 @@
     <Page Include="Asistentes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ConsultarPatrocinador_2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DetallesAsistente.xaml">
       <Generator>MSBuild:Compile</Generator>

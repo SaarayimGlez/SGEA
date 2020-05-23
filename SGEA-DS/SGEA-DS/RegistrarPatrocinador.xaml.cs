@@ -41,15 +41,13 @@ namespace SGEA_DS
                     var bold = new Bold(new Run("Patrocinador registrado con éxito"));
                     textBlock_mensaje.Inlines.Add(bold);
                 }
-                button_cancelar.Content = "Regresar";
-                button_aceptar.Visibility = Visibility.Hidden;
-                textBox_nombre.IsEnabled = false;
-                textBox_apellidoP.IsEnabled = false;
-                textBox_apellidoM.IsEnabled = false;
-                textBox_empresa.IsEnabled = false;
-                textBox_direccion.IsEnabled = false;
-                textBox_correoE.IsEnabled = false;
-                textBox_numeroTel.IsEnabled = false;
+                textBox_nombre.Text = "";
+                textBox_apellidoP.Text = "";
+                textBox_apellidoM.Text = "";
+                textBox_empresa.Text = "";
+                textBox_direccion.Text = "";
+                textBox_correoE.Text = "";
+                textBox_numeroTel.Text = "";
             }
             else
             {

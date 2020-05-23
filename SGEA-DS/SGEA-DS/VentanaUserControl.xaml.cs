@@ -26,6 +26,29 @@ namespace SGEA_DS
             Switcher.Switch(new CU01_1(evento));
         }
 
+        public VentanaUserControl(int ventanaCU)
+        {
+            InitializeComponent();
+            Switcher.pageSwitcher = this;
+            if (ventanaCU == 38)
+            {
+                this.Title = "Consultar patrocinadores";
+                Switcher.Switch(new CU38());
+
+            }
+            if (ventanaCU == 12)
+            {
+                this.Title = "Consultar";
+                Switcher.Switch(new CU38());
+
+            }
+            else
+            {
+                this.Title = "Modificar magistral";
+                //Switcher.Switch(new CU18());
+            }
+        }
+
         public void Navigate(UserControl nextPage)
         {
             this.Content = nextPage;

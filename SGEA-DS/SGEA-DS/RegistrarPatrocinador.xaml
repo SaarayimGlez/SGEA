@@ -29,7 +29,7 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Por favor llena los datos del patrocinador" HorizontalAlignment="Right" VerticalAlignment="Top" Height="66" Width="762" FontSize="18" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+            <Label Content="Por favor llena los datos del patrocinador" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="34" Width="762" FontSize="18" Grid.ColumnSpan="2"/>
             <TextBox x:Name="textBox_nombre" HorizontalAlignment="Center" Height="58" Margin="10,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Nombre(s)" materialDesign:HintAssist.IsFloating="True" KeyDown="Textbox_Alfabetico_KeyDown"/>
             <TextBlock x:Name="textBlock_mensaje" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="4" TextWrapping="Wrap" VerticalAlignment="Top" Height="45" Width="366" FontSize="14" FontWeight="Normal" Grid.Column="1"/>
             <TextBox x:Name="textBox_apellidoP" HorizontalAlignment="Center" Height="58" Margin="10,0" Grid.Row="1" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="366" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" materialDesign:HintAssist.Hint="Apellido paterno" materialDesign:HintAssist.IsFloating="True" KeyDown="Textbox_Alfabetico_KeyDown" Grid.Column="1"/>
@@ -48,5 +48,8 @@
             <Button x:Name="button_aceptar" Content="Aceptar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Click="Click_Aceptar"/>
             <Button x:Name="button_cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="91" Height="37" Grid.Column="1" Click="Click_Cancelar"/>
         </Grid>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="30" Height="30" Padding="0" Margin="25,18,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF673AB7" Click="Click_Cancelar">
+            <materialDesign:PackIcon Kind="ArrowLeftBoldCircle" Height="30" Width="30" />
+        </Button>
     </Grid>
 </local:VentanaCtrolEvento>

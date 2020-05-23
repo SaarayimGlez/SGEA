@@ -40,15 +40,16 @@ namespace SGEA_DS
 
         private void Click_Registrar(object sender, RoutedEventArgs e)
         {
-            CU06 registroComite = new CU06();
-            registroComite.Show();
+            CU06 registroPatrocinador = new CU06();
+            registroPatrocinador.Show();
             this.Close();
         }
 
         private void Click_Consultar(object sender, RoutedEventArgs e)
         {
-            CU38 consultaPátrocinador = new CU38();
-            consultaPátrocinador.Show();
+            VentanaUserControl consultarPatrocinador =
+                new VentanaUserControl(38);
+            consultarPatrocinador.Show();
             this.Close();
         }
     }
