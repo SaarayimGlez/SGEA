@@ -54,5 +54,28 @@ namespace Logica
             }
             return listaUsuario;
         }
+
+        public int ComprobarUsuario(string usuario, string contrasenia)
+        {
+            int idUsuario = 0;
+            try
+            {
+                var usuarioBD = _context.UsuarioSet
+                    .Where(
+                        usuarioRecuperado => usuarioRecuperado.nombreUsuario == usuario
+                        && usuarioRecuperado.contrasenia == contrasenia
+                    ).First<Usuario>(); ;
+
+                if (usuarioBD != null)
+                {
+                    idUsuario = usuarioBD.Id;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return idUsuario;
+        }
     }
 }

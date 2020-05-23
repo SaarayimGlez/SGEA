@@ -1,0 +1,37 @@
+﻿<Window x:Class="SGEA_DS.MenuEvaluador"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGEA_DS"
+        mc:Ignorable="d"
+        Title="Sistema gestor de eventos académicos" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Por favor selecciona una de las opciones que se aplicarán a una evaluación de un artículo" HorizontalAlignment="Right" VerticalAlignment="Top" Height="34" Width="762" FontSize="18" Margin="0,20,0,0"/>
+        <Grid HorizontalAlignment="Center" Height="383" Margin="0" VerticalAlignment="Center" Width="728">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Button Content="Modificar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Click="Click_ModificarEvaluacion" IsEnabled="False"/>
+            <Button Content="Registrar" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Click="Click_RegistrarEvaluacion" Grid.ColumnSpan="2" IsEnabled="False"/>
+            <Button Content="Enviar" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Grid.Column="1" Click="Click_EnviarEvaluacion" IsEnabled="False"/>
+        </Grid>
+        <Grid Margin="66,0,66,38" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="18" Click="Click_ModificarContrasena" IsEnabled="False"/>
+            <Button Content="Cerrar sesión" HorizontalAlignment="Left" Margin="509,0,0,0" VerticalAlignment="Top" Width="150" FontSize="18" Click="Click_CerrarSesion"/>
+        </Grid>
+    </Grid>
+</Window>

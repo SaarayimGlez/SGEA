@@ -27,19 +27,45 @@ namespace SGEA_DS
 
         private void Click_Entrar(object sender, RoutedEventArgs e)
         {
-            MiembroComite_Logica miembroComite_Logica = new MiembroComite_Logica();
-            Modelo.MiembroComite usuarioActual = miembroComite_Logica.RecuperarMiembroComite(1);
-            if (usuarioActual != null)
+            Usuario_Logica usuario_Logica = new Usuario_Logica();
+            if (!string.IsNullOrWhiteSpace(textBox_usuario.Text) && 
+                !string.IsNullOrWhiteSpace(textBox_contrasena.Password))
             {
-                GestionEvento gestionEvento = new GestionEvento(usuarioActual);
-                gestionEvento.Show();
-                this.Close();
-            }
-            else
-            {
-                MenuOrganizador menuOrganizador = new MenuOrganizador();
-                menuOrganizador.Show();
-                this.Close();
+                int idUsuario = usuario_Logica.ComprobarUsuario(
+                    textBox_usuario.Text, textBox_contrasena.Password);
+                if (idUsuario != 0)
+                {
+                    MiembroComite_Logica miembroComite_Logica = new MiembroComite_Logica();
+                    Modelo.MiembroComite usuarioActual = 
+                        miembroComite_Logica.RecuperarMiembroComite(idUsuario);
+                    if (usuarioActual != null)
+                    {
+                        if (usuarioActual.liderComite)
+                        {
+                            MenuLiderComite menuLiderComite = new MenuLiderComite(usuarioActual);
+                            menuLiderComite.Show();
+                            this.Close();
+                        }
+                        else if(usuarioActual.evaluador)
+                        {
+                            MenuEvaluador menuEvaluador = new MenuEvaluador(usuarioActual);
+                            menuEvaluador.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MenuMiembroComite menuMiembroComite = new MenuMiembroComite(usuarioActual);
+                            menuMiembroComite.Show();
+                            this.Close();
+                        }
+                    }
+                    else
+                    {
+                        MenuOrganizador menuOrganizador = new MenuOrganizador();
+                        menuOrganizador.Show();
+                        this.Close();
+                    }
+                }
             }
         }
 

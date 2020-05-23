@@ -29,17 +29,14 @@ namespace SGEA_DS
                     var bold = new Bold(new Run("Egreso registrado con éxito"));
                     textBlock_mensaje.Inlines.Add(bold);
                 }
-                button_cancelar.Content = "Regresar";
-                button_aceptar.Visibility = Visibility.Hidden;
-                textBox_concepto.IsEnabled = false;
-                textBox_fecha.IsEnabled = false;
-                textBox_monto.IsEnabled = false;
+                textBox_concepto.Text = "";
+                textBox_fecha.Text = "";
+                textBox_monto.Text = "";
                 if (textBox_tipo.IsVisible)
                 {
-                    textBox_tipo.IsEnabled = false;
-                    textBox_costo.IsEnabled = false;
-                    textBox_cantidad.IsEnabled = false;
-                    checkBox_material.IsEnabled = false;
+                    textBox_tipo.Text = "";
+                    textBox_costo.Text = "";
+                    textBox_cantidad.Text = "";
                 }
             }
             else

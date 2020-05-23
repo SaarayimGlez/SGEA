@@ -132,6 +132,9 @@
     <Compile Include="ConsultaDatosPersonales.xaml.cs">
       <DependentUpon>ConsultaDatosPersonales.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GestionAutorArticulo.xaml.cs">
+      <DependentUpon>GestionAutorArticulo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GestionComite.xaml.cs">
       <DependentUpon>GestionComite.xaml</DependentUpon>
     </Compile>
@@ -144,11 +147,23 @@
     <Compile Include="GestionEvento_2.xaml.cs">
       <DependentUpon>GestionEvento_2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MenuEvaluador.xaml.cs">
+      <DependentUpon>MenuEvaluador.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuLiderComite.xaml.cs">
+      <DependentUpon>MenuLiderComite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GestionMiembroComite.xaml.cs">
+      <DependentUpon>GestionMiembroComite.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GestionPatrocinador.xaml.cs">
       <DependentUpon>GestionPatrocinador.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MenuMiembroComite.xaml.cs">
+      <DependentUpon>MenuMiembroComite.xaml</DependentUpon>
     </Compile>
     <Compile Include="MenuOrganizador.xaml.cs">
       <DependentUpon>MenuOrganizador.xaml</DependentUpon>
@@ -194,6 +209,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="GestionAutorArticulo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GestionComite.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -207,6 +226,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GestionEvento_2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MenuEvaluador.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MenuLiderComite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GestionMiembroComite.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,6 +256,10 @@
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MenuMiembroComite.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MenuOrganizador.xaml">
       <SubType>Designer</SubType>

@@ -107,6 +107,7 @@ namespace Logica
                 {
                     listaMiembroComite = new Modelo.MiembroComite()
                     {
+                        Id = miembroComiteBD.Id,
                         idUsuario = miembroComiteBD.idUsuario,
                         ComiteId = miembroComiteBD.ComiteId,
                         evaluador = miembroComiteBD.evaluador,

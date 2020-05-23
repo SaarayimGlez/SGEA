@@ -53,13 +53,6 @@ namespace SGEA_DS
                     var bold = new Bold(new Run("Evento modificado con éxito"));
                     textBlock_mensaje.Inlines.Add(bold);
                 }
-                button_cancelar.Content = "Regresar";
-                button_aceptar.Visibility = Visibility.Hidden;
-                textBox_nombre.IsEnabled = false;
-                textBox_lugar.IsEnabled = false;
-                comboBox_iOrganizadora.IsEnabled = false;
-                datePicker_fInicio.IsEnabled = false;
-                datePicker_fFin.IsEnabled = false;
             }
             else
             {
