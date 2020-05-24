@@ -61,6 +61,8 @@
     <Compile Include="Egreso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Usuario.cs" />
+	<Compile Include="Magistral.cs" />
+	<Compile Include="Adscripcion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
