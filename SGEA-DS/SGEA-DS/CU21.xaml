@@ -11,7 +11,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SGEA_DS"
         mc:Ignorable="d"
-        Title="Generar diplomas y gafete" Height="450" Width="800" WindowStartupLocation="CenterScreen" Topmost="True">
+        Title="Generar diplomas y gafete" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style x:Key="cb_miembroComite" TargetType="ComboBox" BasedOn="{StaticResource MaterialDesignComboBox}">
             <Style.Triggers>

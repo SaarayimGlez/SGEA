@@ -26,8 +26,10 @@ namespace SGEA_DS
 
         private void Click_Descargar(object sender, RoutedEventArgs e)
         {
+            this.Topmost = true;
             Diploma diploma = new Diploma();
             diploma.Show();
+            this.Topmost = false;
         }
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
