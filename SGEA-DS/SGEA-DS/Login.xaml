@@ -12,10 +12,10 @@
         Title="Login" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="SISTEMA GESTOR DE EVENTOS ACADÉMICOS" HorizontalAlignment="Center" Margin="158,10,158,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="22" Width="476"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="100" Margin="467,72,225,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
+        <Image HorizontalAlignment="Center" Height="100" Margin="467,72,225,0" VerticalAlignment="Top" Width="100" Source="Utilidades/logoFEI.png"/>
         <TextBox x:Name="textBox_usuario" Margin="225,191,225,166" TextWrapping="Wrap" Text="" Width="342" FontSize="18" TextOptions.TextHintingMode="Animated" materialDesign:HintAssist.Hint="Usuario" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Center"/>
         <PasswordBox x:Name="textBox_contrasena" Margin="225,281,225,76" Width="342" FontSize="18" TextOptions.TextHintingMode="Animated" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Center"/>
         <Button Content="Entrar" HorizontalAlignment="Left" Margin="483,365,0,0" VerticalAlignment="Top" Width="85" FontSize="18" Height="41" Click="Click_Entrar"/>
-        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Center" Height="100" Margin="225,72,467,0" Stroke="Black" VerticalAlignment="Top" Width="100"/>
+        <Image HorizontalAlignment="Center" Height="100" Margin="225,72,467,0" VerticalAlignment="Top" Width="100" Source="Utilidades/logoUV.jpg"/>
     </Grid>
 </Window>

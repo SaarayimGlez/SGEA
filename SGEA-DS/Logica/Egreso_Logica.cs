@@ -20,7 +20,8 @@ namespace Logica
             bool respuesta = false;
             try
             {
-                _context.EgresoSet.Add(new Egreso() {
+                _context.EgresoSet.Add(new Egreso()
+                {
                     concepto = egreso.concepto,
                     monto = egreso.monto,
                     fecha = egreso.fecha,
@@ -43,7 +44,8 @@ namespace Logica
                 var listaEgresoBD = _context.EgresoSet.ToList();
                 foreach (Egreso egresoBD in listaEgresoBD)
                 {
-                    listaEgreso.Add(new Modelo.Egreso() {
+                    listaEgreso.Add(new Modelo.Egreso()
+                    {
                         Id = egresoBD.Id,
                         concepto = egresoBD.concepto,
                         fecha = egresoBD.fecha,

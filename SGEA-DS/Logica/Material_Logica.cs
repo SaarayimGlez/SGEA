@@ -19,7 +19,8 @@ namespace Logica
             bool respuesta = false;
             try
             {
-                _context.MaterialSet.Add(new Material() {
+                _context.MaterialSet.Add(new Material()
+                {
                     cantidad = material.cantidad,
                     costo = material.costo,
                     tipo = material.tipo,

@@ -317,6 +317,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+	<Page Include="CU21.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Diploma.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gafete.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Compile Include="Actividades.xaml.cs">
       <DependentUpon>Actividades.xaml</DependentUpon>
     </Compile>
@@ -385,6 +397,16 @@
       <DependentUpon>ModificarMagistral_2.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+	 <Compile Include="CU21.xaml.cs">
+      <DependentUpon>CU21.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Diploma.xaml.cs">
+      <DependentUpon>Diploma.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gafete.xaml.cs">
+      <DependentUpon>Gafete.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -450,6 +472,11 @@
       <Project>{9b28c064-09d5-4dfc-a0b7-02bb11fd6e67}</Project>
       <Name>Modelo</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Utilidades\logoFEI.png" />
+    <Resource Include="Utilidades\logoUV.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
