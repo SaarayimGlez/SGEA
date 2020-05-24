@@ -15,10 +15,12 @@ namespace SGEA_DS
     public partial class CU18_1 : CtrolUsrCtrolEvento
     {
         private List<Magistral> listaMagistral;
+        private Modelo.MiembroComite miembroComite;
 
-        public CU18_1()
+        public CU18_1(Modelo.MiembroComite miembroComite)
         {
             InitializeComponent();
+            this.miembroComite = miembroComite;
             LlenarComboBox();
         }
 
@@ -58,13 +60,16 @@ namespace SGEA_DS
                 if (comboBox_magistral.SelectedItem.ToString().Equals(magistral.nombre + " " + 
                     magistral.apellidoPaterno + " " + magistral.apellidoMaterno))
                 {
-                    Switcher.Switch(new CU18_2(magistral));
+                    Switcher.Switch(new CU18_2(magistral, this.miembroComite));
                 }
             }
         }
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
+            GestionMiembroComite gestionMiembroComite =
+                new GestionMiembroComite(this.miembroComite, 3);
+            gestionMiembroComite.Show();
             var window = Window.GetWindow(this);
             window.Close();
         }

@@ -19,6 +19,8 @@ namespace SGEA_DS
     /// </summary>
     public partial class VentanaUserControl : Window
     {
+        private Modelo.MiembroComite miembroComite;
+
         public VentanaUserControl(Modelo.Evento evento)
         {
             InitializeComponent();
@@ -26,26 +28,26 @@ namespace SGEA_DS
             Switcher.Switch(new CU01_1(evento));
         }
 
-        public VentanaUserControl(int ventanaCU)
+        public VentanaUserControl(int ventanaCU, Modelo.MiembroComite miembroComite)
         {
             InitializeComponent();
+            this.miembroComite = miembroComite;
             Switcher.pageSwitcher = this;
             if (ventanaCU == 38)
             {
                 this.Title = "Consultar patrocinadores";
                 Switcher.Switch(new CU38());
-
             }
-            if (ventanaCU == 12)
+            else if (ventanaCU == 12)
             {
-                this.Title = "Consultar";
-                Switcher.Switch(new CU38());
+                //this.Title = "Consultar";
+                //Switcher.Switch(new CU38());
 
             }
             else
             {
                 this.Title = "Modificar magistral";
-                //Switcher.Switch(new CU18());
+                Switcher.Switch(new CU18_1(this.miembroComite));
             }
         }
 

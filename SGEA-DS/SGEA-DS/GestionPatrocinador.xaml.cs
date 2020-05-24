@@ -48,7 +48,7 @@ namespace SGEA_DS
         private void Click_Consultar(object sender, RoutedEventArgs e)
         {
             VentanaUserControl consultarPatrocinador =
-                new VentanaUserControl(38);
+                new VentanaUserControl(38, null);
             consultarPatrocinador.Show();
             this.Close();
         }

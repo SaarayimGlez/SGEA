@@ -16,12 +16,14 @@ namespace SGEA_DS
     public partial class CU18_2 : CtrolUsrCtrolEvento
     {
         private List<TextBox> listaTextBox;
-        private Magistral magistralModificar;
-        private Adscripcion adscripcionModificar;
+        private Modelo.Magistral magistralModificar;
+        private Modelo.Adscripcion adscripcionModificar;
+        private Modelo.MiembroComite miembroComite;
 
-        public CU18_2(Magistral magistralOriginal)
+        public CU18_2(Magistral magistralOriginal, Modelo.MiembroComite miembroComite)
         {
             InitializeComponent();
+            this.miembroComite = miembroComite;
             LlenarCampos(magistralOriginal);
         }
 
@@ -62,12 +64,6 @@ namespace SGEA_DS
                     textBlock_mensaje.Text = String.Empty;
                     var bold = new Bold(new Run("Magistral modificado con éxito"));
                     textBlock_mensaje.Inlines.Add(bold);
-                }
-                button_cancelar.Content = "Regresar";
-                button_aceptar.Visibility = Visibility.Hidden;
-                foreach (TextBox textBox in listaTextBox)
-                {
-                    textBox.IsEnabled = false;
                 }
             }
             else
@@ -156,9 +152,16 @@ namespace SGEA_DS
 
         private void Click_Cancelar(object sender, RoutedEventArgs e)
         {
+            GestionMiembroComite gestionMiembroComite =
+                new GestionMiembroComite(this.miembroComite, 3);
+            gestionMiembroComite.Show();
             var window = Window.GetWindow(this);
             window.Close();
         }
 
+        private void Click_Regresar(object sender, RoutedEventArgs e)
+        {
+            Switcher.Switch(new CU18_1(this.miembroComite));
+        }
     }
 }

@@ -103,7 +103,10 @@ namespace SGEA_DS
 
         private void Click_ModificarMagistral(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            VentanaUserControl consultarPatrocinador =
+                new VentanaUserControl(18, this.miembroComite);
+            consultarPatrocinador.Show();
+            this.Close();
         }
 
         private void Click_RegistrarParticipante(object sender, RoutedEventArgs e)
