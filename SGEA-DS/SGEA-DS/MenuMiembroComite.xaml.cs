@@ -36,7 +36,9 @@ namespace SGEA_DS
 
         private void Click_GenerarDiplomaGafete(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            CU21 generarDiplomaGafete = new CU21(this.miembroComite);
+            generarDiplomaGafete.Show();
+            this.Close();
         }
 
         private void Click_Participantes(object sender, RoutedEventArgs e)

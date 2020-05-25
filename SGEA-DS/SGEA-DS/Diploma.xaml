@@ -36,19 +36,19 @@
                     <Span FontSize="16">Otorga el presente</Span><LineBreak/>
                     <Span FontWeight="SemiBold" Foreground="#FF18529D" FontSize="22">DIPLOMA</Span><LineBreak/>
                     Al C.:
-                    <Span x:Name="span_nombre" FontSize="26" FontWeight="Medium" TextDecorations="Underline">José Antonio Rodall Oseguera</Span><LineBreak/>
+                    <Span FontSize="26" FontWeight="Medium" TextDecorations="Underline"><Run Name="nombre" Text="José Antonio Rodall Oseguera"/></Span><LineBreak/>
                     <TextBlock TextWrapping="WrapWithOverflow" TextAlignment="Justify">
                         &#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Por haber participado en el
-                        <Span x:Name="span_evento" FontWeight="Bold">"Foro Egresados 2016"</Span>
+                        <Span FontWeight="Bold"><Run Name="eventoNombre" Text="Foro Egresados 2016"/></Span>
                         de la 
-                        <Span x:Name="span_instOrganizadora">Licenciatura en Ingenieria de Software</Span>,
+                        <Span><Run Name="instOrganizadora" Text=""/></Span>,
                         con sede en la
-                        <Span x:Name="span_lugar">Facultad de Estadística e Informática</Span>
+                        <Span><Run Name="lugar"/></Span>
                     </TextBlock><LineBreak/>
                     <Span FontSize="11">
                         "LIS DE VERACRUZ: ARTE, CIENCIA, LUZ"<LineBreak/>
                         Xalapa, Ver a 
-                        <Span x:Name="span_fecha">24 de agosto de 2016</Span>
+                        <Span><Run Name="fecha"/></Span>
                     </Span>
                 </TextBlock>
                 </Label>

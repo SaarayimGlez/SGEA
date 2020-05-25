@@ -68,5 +68,63 @@ namespace Logica
             }
             return false;
         }
+
+        public List<List<string>> RecuperarMagistralEvento(int eventoId)
+        {
+            List<List<string>> listaMagistral= new List<List<string>>();
+            try
+            {
+                var actividadesEvento = _context.ActividadSet
+                    .Join(
+                        _context.EventoSet,
+                        actividad => actividad.EventoId,
+                        evento => evento.Id,
+                        (actividad, evento) => new
+                        {
+                            EventoId = evento.Id,
+                            ActividadId = actividad.Id,
+                            MagistralAct = actividad.Magistral
+                        }
+                     )
+                     .Join(
+                        _context.CalendarioSet,
+                        actividad => actividad.ActividadId,
+                        calendario => calendario.ActividadId,
+                        (actividad, calendario) => new
+                        {
+                            Fecha = calendario.fecha,
+                            HoraInicio = calendario.horaInicio,
+                            Actividad = actividad
+                        }
+                     ).Where(
+                        evento => evento.Actividad.EventoId == eventoId
+                     );
+
+                actividadesEvento = actividadesEvento.OrderBy(calendario => calendario.Fecha);
+                actividadesEvento = actividadesEvento.OrderBy(calendario => calendario.HoraInicio);
+
+                foreach (var lista in actividadesEvento)
+                {
+                    if (lista.Actividad.MagistralAct != null)
+                    {
+                        string magistral = "";
+                        magistral = lista.Actividad.MagistralAct.nombre + " "
+                            + lista.Actividad.MagistralAct.apellidoPaterno + " "
+                            + lista.Actividad.MagistralAct.apellidoMaterno;
+
+                        listaMagistral.Add(new List<string>(new string[] {
+                            magistral
+                        }));
+                        listaMagistral[listaMagistral.Count - 1].Add(
+                            lista.Fecha.ToString("MM/dd/yyyy"));
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return listaMagistral;
+        }
     }
 }

@@ -8,61 +8,72 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class Adscripcion_Logica : ConexionBD_Logica
+    public class Participante_Logica : ConexionBD_Logica
     {
 
-        public Adscripcion_Logica() : base()
+        public Participante_Logica() : base()
         {
         }
 
-        public Modelo.Adscripcion RecuperarAdscripcion(int adscripcionId)
+        public List<List<string>> RecuperarParticipanteEvento(int eventoId)
         {
-            Modelo.Adscripcion adscripcionRecuperada = new Modelo.Adscripcion();
+            List<List<string>> listaParticipante = new List<List<string>>();
             try
             {
-                var adscripcionOriginal = _context.AdscripcionSet.SingleOrDefault(
-                    adscripcion => adscripcion.Id == adscripcionId);
-                if (adscripcionOriginal != null)
+                var actividadesEvento = _context.ActividadSet
+                    .Join(
+                        _context.EventoSet,
+                        actividad => actividad.EventoId,
+                        evento => evento.Id,
+                        (actividad, evento) => new
+                        {
+                            EventoId = evento.Id,
+                            ActividadId = actividad.Id,
+                            ParticipanteAct = actividad.Participante
+                        }
+                     )
+                     .Join(
+                        _context.CalendarioSet,
+                        actividad => actividad.ActividadId,
+                        calendario => calendario.ActividadId,
+                        (actividad, calendario) => new
+                        {
+                            Fecha = calendario.fecha,
+                            HoraInicio = calendario.horaInicio,
+                            Actividad = actividad
+                        }
+                     ).Where(
+                        evento => evento.Actividad.EventoId == eventoId
+                     );
+
+                actividadesEvento = actividadesEvento.OrderBy(calendario => calendario.Fecha);
+                actividadesEvento = actividadesEvento.OrderBy(calendario => calendario.HoraInicio);
+
+                foreach (var lista in actividadesEvento)
                 {
-                    adscripcionRecuperada.Id = adscripcionOriginal.Id;
-                    adscripcionRecuperada.nombre = adscripcionOriginal.nombre;
-                    adscripcionRecuperada.ciudad = adscripcionOriginal.ciudad;
-                    adscripcionRecuperada.correoElectronico = adscripcionOriginal.correoElectronico;
-                    adscripcionRecuperada.direccion = adscripcionOriginal.direccion;
-                    adscripcionRecuperada.estado = adscripcionOriginal.estado;
+                    if (lista.Actividad.ParticipanteAct != null)
+                    {
+                        string participanteAct = "";
+                        foreach (Participante participante in lista.Actividad.ParticipanteAct)
+                        {
+                            participanteAct = participante.nombre + " "
+                                    + participante.apellidoPaterno + " "
+                                    + participante.apellidoMaterno;
+
+                            listaParticipante.Add(new List<string>(new string[] {
+                                participanteAct
+                            }));
+                            listaParticipante[listaParticipante.Count - 1].Add(
+                                lista.Fecha.ToString("MM/dd/yyyy"));
+                        }
+                    }
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
             }
-            return adscripcionRecuperada;
-        }
-
-        public bool ModificarAdscripcion(Modelo.Adscripcion adscripcionModificada)
-        {
-            try
-            {
-                var adscripcionOriginal = _context.AdscripcionSet.SingleOrDefault(
-                    adscripcion => adscripcion.Id == adscripcionModificada.Id);
-                if (adscripcionOriginal != null)
-                {
-                    adscripcionOriginal.Id = adscripcionModificada.Id;
-                    adscripcionOriginal.nombre = adscripcionModificada.nombre;
-                    adscripcionOriginal.ciudad = adscripcionModificada.ciudad;
-                    adscripcionOriginal.correoElectronico = adscripcionModificada.correoElectronico;
-                    adscripcionOriginal.direccion = adscripcionModificada.direccion;
-                    adscripcionOriginal.estado = adscripcionModificada.estado;
-                    _context.SaveChanges();
-                    return true;
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return false;
-            }
-            return false;
+            return listaParticipante;
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using Microsoft.WindowsAPICodePack.Shell;
+using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Media;
@@ -11,9 +13,14 @@ namespace SGEA_DS
     /// </summary>
     public partial class Diploma : Window
     {
-        public Diploma()
+        public Diploma(List<string> ponente, Modelo.Evento evento)
         {
             InitializeComponent();
+            nombre.Text = ponente[0];
+            eventoNombre.Text = evento.nombre;
+            instOrganizadora.Text = evento.institucionOrganizadora;
+            lugar.Text = evento.lugar;
+            fecha.Text = ponente[1];
             Loaded += delegate
             {
                 DescargarDiploma();
@@ -22,7 +29,11 @@ namespace SGEA_DS
         
         private void DescargarDiploma()
         {
-            string file = KnownFolders.Downloads.Path + @"\1diploma.png";
+            Random rnd = new Random();
+            int codigo = rnd.Next(52);
+            string folderPath = KnownFolders.Downloads.Path +
+                @"\DiplomasYGafetes\Diploma" + codigo.ToString() + ".png";
+            string file = folderPath;
             BitmapEncoder encoder = new PngBitmapEncoder();
             RenderTargetBitmap pngFinal;
 

@@ -17,9 +17,6 @@ namespace Logica
 
         public List<string> RecuperarAsistenteEvento(int eventoId)
         {
-            Asistente asistente = new Asistente();
-            
-
             List<string> listaAsistente = new List<string>();
             try
             {
@@ -31,30 +28,22 @@ namespace Logica
                         (actividad, evento) => new
                         {
                             EventoId = evento.Id,
-                            ActividadId = actividad.Id,
-                            AsistenteAct = actividad.Magistral,
-                        }
-                     ).Join(
-                        _context.CalendarioSet,
-                        actividad => actividad.ActividadId,
-                        calendario => calendario.ActividadId,
-                        (actividad, calendario) => new
-                        {
-                            Fecha = calendario.fecha,
-                            Actividad = actividad
+                            AsistenteAct = actividad.Asistente,
                         }
                      ).Where(
-                        evento => evento.Actividad.EventoId == eventoId
+                        evento => evento.EventoId == eventoId
                      );
 
                 foreach (var actividad in actividadesEvento)
                 {
-                    if (actividad.Actividad.MagistralAct != null)
+                    if (actividad.AsistenteAct != null)
                     {
-                        listaAsistente.Add(actividad.Actividad.MagistralAct.nombre + " " +
-                            actividad.Actividad.MagistralAct.apellidoPaterno + " " +
-                            actividad.Actividad.MagistralAct.apellidoMaterno + " - " +
-                            actividad.Fecha);
+                        foreach (Asistente asistente in actividad.AsistenteAct)
+                        {
+                            listaAsistente.Add(asistente.nombre + " " +
+                            asistente.apellidoPaterno + " " +
+                            asistente.apellidoMaterno);
+                        }  
                     }
                 }
             }

@@ -72,31 +72,31 @@
                     <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
                 </CheckBox.LayoutTransform>
             </CheckBox>
-            <ComboBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Grid.Row="2" Height="45" Text="Miembros comité" IsReadOnly="False" IsEditable="True" VerticalContentAlignment="Center" Style="{StaticResource cb_miembroComite}"/>
+            <ComboBox x:Name="comboBox_miembroComite" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Grid.Row="2" Height="45" Text="Miembros comité" IsReadOnly="False" IsEditable="True" VerticalContentAlignment="Center" Style="{StaticResource cb_miembroComite}"/>
             <CheckBox x:Name="checkBox_asistente" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="CheckBox_Checked" Grid.Row="3">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
                 </CheckBox.LayoutTransform>
             </CheckBox>
-            <ComboBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Grid.Row="3" Height="45" Text="Asistentes" IsReadOnly="True" IsEditable="True" VerticalContentAlignment="Center" Style="{StaticResource cb_asistente}"/>
+            <ComboBox x:Name="comboBox_asistente" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Grid.Row="3" Height="45" Text="Asistentes" IsReadOnly="True" IsEditable="True" VerticalContentAlignment="Center" Style="{StaticResource cb_asistente}"/>
             <CheckBox x:Name="checkBox_participante" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="CheckBox_Checked" Grid.Row="2" Grid.Column="1">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
                 </CheckBox.LayoutTransform>
             </CheckBox>
-            <ComboBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Grid.Row="2" Grid.Column="1" Height="45" Text="Participante" IsReadOnly="True" IsEditable="True" VerticalContentAlignment="Center" Style="{StaticResource cb_participante}"/>
+            <ComboBox x:Name="comboBox_participante" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Grid.Row="2" Grid.Column="1" Height="45" Text="Participante" IsReadOnly="True" IsEditable="True" VerticalContentAlignment="Center" Style="{StaticResource cb_participante}"/>
             <CheckBox x:Name="checkBox_magistral" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="CheckBox_Checked" Grid.Row="3" Grid.Column="1">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
                 </CheckBox.LayoutTransform>
             </CheckBox>
-            <ComboBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Grid.Row="3" Grid.Column="1" Height="45" Text="Magistrales" IsReadOnly="True" IsEditable="True" VerticalContentAlignment="Center" Style="{StaticResource cb_magistral}"/>
+            <ComboBox x:Name="comboBox_magistral" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Grid.Row="3" Grid.Column="1" Height="45" Text="Magistrales" IsReadOnly="True" IsEditable="True" VerticalContentAlignment="Center" Style="{StaticResource cb_magistral}"/>
             <CheckBox x:Name="checkBox_autor" HorizontalAlignment="Left" VerticalAlignment="Center" Checked="CheckBox_Checked" Grid.Row="4" Grid.Column="1">
                 <CheckBox.LayoutTransform>
                     <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
                 </CheckBox.LayoutTransform>
             </CheckBox>
-            <ComboBox VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Grid.Row="4" Grid.Column="1" Height="45" Text="Autores" IsReadOnly="True" IsEditable="True" VerticalContentAlignment="Center" Style="{StaticResource cb_autor}"/>
+            <ComboBox x:Name="comboBox_autor" VerticalAlignment="Center" HorizontalAlignment="Center" Width="300" Grid.Row="4" Grid.Column="1" Height="45" Text="Autores" IsReadOnly="True" IsEditable="True" VerticalContentAlignment="Center" Style="{StaticResource cb_autor}"/>
         </Grid>
         <Grid HorizontalAlignment="Center" Height="49" Margin="396,371,0,0" VerticalAlignment="Top" Width="386">
             <Grid.ColumnDefinitions>

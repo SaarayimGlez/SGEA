@@ -15,9 +15,9 @@ namespace Logica
         {
         }
 
-        public List<string> RecuperarAutorEvento(int eventoId)
+        public List<List<string>> RecuperarAutorEvento(int eventoId)
         {
-            List<string> listaAutor = new List<string>();
+            List<List<string>> listaAutor = new List<List<string>>();
             try
             {
                 var actividadesEvento = _context.ActividadSet
@@ -56,10 +56,15 @@ namespace Logica
 
                 foreach (var actividad in actividadesEvento)
                 {
-                    listaAutor.Add(actividad.Autor.nombre + " " +
-                            actividad.Autor.apellidoPaterno + " " +
-                            actividad.Autor.apellidoMaterno + " - " +
-                            actividad.Fecha);
+                    string autor = actividad.Autor.nombre + " " +
+                        actividad.Autor.apellidoPaterno + " " +
+                        actividad.Autor.apellidoMaterno;
+
+                    listaAutor.Add(new List<string>(new string[] {
+                                autor
+                            }));
+                    listaAutor[listaAutor.Count - 1].Add(
+                        actividad.Fecha.ToString("MM/dd/yyyy"));
                 }
             }
             catch (Exception e)

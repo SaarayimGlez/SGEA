@@ -1,5 +1,7 @@
 ﻿using Microsoft.WindowsAPICodePack.Shell;
+using System;
 using System.IO;
+using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -10,10 +12,10 @@ namespace SGEA_DS
     public partial class Gafete : Window
     {
 
-        public Gafete(string prueba)
+        public Gafete(string nombre)
         {
             InitializeComponent();
-            textBlock_nombre.Text = prueba;
+            textBlock_nombre.Text = nombre;
             Loaded += delegate
             {
                 DescargarGafete();
@@ -22,7 +24,12 @@ namespace SGEA_DS
 
         private void DescargarGafete()
         {
-            string file = KnownFolders.Downloads.Path + @"\1gafete.png";
+            Random rnd = new Random();
+            int codigo = rnd.Next(52);
+            string folderPath = KnownFolders.Downloads.Path + 
+                @"\DiplomasYGafetes\Gafete" + codigo.ToString() + ".png";
+            DirectoryInfo di = Directory.CreateDirectory(Path.GetDirectoryName(folderPath));
+            string file = folderPath;
             BitmapEncoder encoder = new PngBitmapEncoder();
             RenderTargetBitmap pngFinal;
 

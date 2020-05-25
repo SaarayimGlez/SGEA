@@ -27,6 +27,8 @@ namespace Logica
                         {
                             EventoId = evento.Id,
                             NombreEvento = evento.nombre,
+                            InstitucionOrganizadora = evento.institucionOrganizadora,
+                            Lugar = evento.lugar,
                             ComiteId = comite.Id
                         }
                      ).Where(
@@ -42,7 +44,9 @@ namespace Logica
                         listaEventos.Add(new Modelo.Evento()
                         {
                             Id = eventoBD.EventoId,
-                            nombre = eventoBD.NombreEvento
+                            nombre = eventoBD.NombreEvento,
+                            institucionOrganizadora = eventoBD.InstitucionOrganizadora,
+                            lugar = eventoBD.Lugar
                         });
                     }
                 } else
@@ -52,7 +56,9 @@ namespace Logica
                         listaEventos.Add(new Modelo.Evento()
                         {
                             Id = eventoBD.Id,
-                            nombre = eventoBD.nombre
+                            nombre = eventoBD.nombre,
+                            institucionOrganizadora = eventoBD.institucionOrganizadora,
+                            lugar = eventoBD.lugar
                         });
                     }
                 }

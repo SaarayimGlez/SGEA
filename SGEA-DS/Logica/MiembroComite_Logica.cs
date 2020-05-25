@@ -121,5 +121,32 @@ namespace Logica
             }
             return listaMiembroComite;
         }
+
+        public List<Modelo.MiembroComite> RecuperarMiembroComitePorEvento(int idEvento)
+        {
+            List<Modelo.MiembroComite> listaMiembroC = new List<Modelo.MiembroComite>();
+            try
+            {
+                var listaMiembroComiteBD = _context.MiembroComiteSet
+                    .Where(
+                        miembro => miembro.Comite.EventoId == idEvento
+                    ).ToList();
+
+                foreach (MiembroComite miembroComiteBD in listaMiembroComiteBD)
+                {
+                    listaMiembroC.Add(new Modelo.MiembroComite()
+                    {
+                        nombre = miembroComiteBD.nombre,
+                        apellidoMaterno = miembroComiteBD.apellidoMaterno,
+                        apellidoPaterno = miembroComiteBD.apellidoPaterno
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return listaMiembroC;
+        }
     }
 }
