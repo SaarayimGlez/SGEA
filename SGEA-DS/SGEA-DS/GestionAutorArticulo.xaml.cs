@@ -61,7 +61,10 @@ namespace SGEA_DS
 
         private void Click_ConsultarAutor(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            VentanaUserControl consultarAutor =
+                new VentanaUserControl(41, this.miembroComite);
+            consultarAutor.Show();
+            this.Close();
         }
     }
 }

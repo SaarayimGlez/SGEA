@@ -122,9 +122,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConsultarAutor_2.xaml.cs">
+      <DependentUpon>ConsultarAutor_2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CtrolUsrCtrolEvento.cs" />
     <Compile Include="ConsultarPatrocinador_2.xaml.cs">
       <DependentUpon>ConsultarPatrocinador_2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarAutor.xaml.cs">
+      <DependentUpon>ConsultarAutor.xaml</DependentUpon>
     </Compile>
     <Compile Include="GestionActividades.xaml.cs">
       <DependentUpon>GestionActividades.xaml</DependentUpon>
@@ -173,6 +179,10 @@
     </Compile>
     <Compile Include="Switcher.cs" />
     <Compile Include="VentanaCtrolEvento.cs" />
+    <Page Include="ConsultarAutor_2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Actividades.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -182,6 +192,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ConsultarPatrocinador_2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConsultarAutor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -317,7 +331,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-	<Page Include="CU21.xaml">
+    <Page Include="GenerarDiplomasYGatefes.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -397,8 +411,8 @@
       <DependentUpon>ModificarMagistral_2.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-	 <Compile Include="CU21.xaml.cs">
-      <DependentUpon>CU21.xaml</DependentUpon>
+    <Compile Include="GenerarDiplomasYGatefes.xaml.cs">
+      <DependentUpon>GenerarDiplomasYGatefes.xaml</DependentUpon>
     </Compile>
     <Compile Include="Diploma.xaml.cs">
       <DependentUpon>Diploma.xaml</DependentUpon>

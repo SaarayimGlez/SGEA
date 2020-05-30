@@ -73,5 +73,57 @@ namespace Logica
             }
             return listaAutor;
         }
+
+        public List<List<string>> RecuperarAutor()
+        {
+            List<List<string>> listaAutor = new List<List<string>>();
+            try
+            {
+                var listaAutorBD = _context.AutorSet
+                     .GroupJoin(
+                        _context.RegistroArticuloSet,
+                        autor => autor.Id,
+                        registroArticulo => registroArticulo.AutorId,
+                        (autor, registroArticulo) => new
+                        {
+                            Autor = autor,
+                            RegistroArticulo = registroArticulo
+                        }
+                     )
+                     .SelectMany(
+                        tempRegistroArticulo => tempRegistroArticulo.
+                            RegistroArticulo.DefaultIfEmpty(),
+                        (tempAutor, tempRegistroArticulo) => new
+                        {
+                            Autor = tempAutor.Autor,
+                            RegistroArticulo = tempRegistroArticulo
+                        }
+                     ).ToList();
+
+                foreach (var autorBD in listaAutorBD)
+                {
+                    listaAutor.Add(new List<string>(new string[] {
+                        autorBD.Autor.nombre,
+                        autorBD.Autor.apellidoPaterno,
+                        autorBD.Autor.apellidoMaterno,
+                        autorBD.Autor.correoElectronico
+                    }));
+                    if (autorBD.RegistroArticulo != null)
+                    {
+                        listaAutor[listaAutor.Count - 1].Add(
+                            autorBD.RegistroArticulo.Articulo.@abstract);
+                    }
+                    else
+                    {
+                        listaAutor[listaAutor.Count - 1].Add("(Ningún artículo)");
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return listaAutor;
+        }
     }
 }

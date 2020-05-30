@@ -38,11 +38,10 @@ namespace SGEA_DS
                 this.Title = "Consultar patrocinadores";
                 Switcher.Switch(new CU38());
             }
-            else if (ventanaCU == 12)
+            else if (ventanaCU == 41)
             {
-                //this.Title = "Consultar";
-                //Switcher.Switch(new CU38());
-
+                this.Title = "Consultar autores";
+                Switcher.Switch(new CU41(this.miembroComite));
             }
             else
             {
