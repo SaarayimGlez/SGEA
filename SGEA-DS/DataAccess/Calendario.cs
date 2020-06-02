@@ -7,19 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Calendario
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Calendario
-    {
-        public int Id { get; set; }
-        public System.DateTime fecha { get; set; }
-        public System.TimeSpan horaInicio { get; set; }
-        public System.TimeSpan horaFin { get; set; }
-        public int ActividadId { get; set; }
-    
-        public virtual Actividad Actividad { get; set; }
-    }
+    public int Id { get; set; }
+    public System.DateTime fecha { get; set; }
+    public System.TimeSpan horaInicio { get; set; }
+    public System.TimeSpan horaFin { get; set; }
+    public int ActividadId { get; set; }
+
+    public virtual Actividad Actividad { get; set; }
 }

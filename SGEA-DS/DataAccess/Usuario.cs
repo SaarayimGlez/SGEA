@@ -7,27 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Usuario
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Usuario
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Usuario()
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Usuario()
-        {
-            this.MiembroComite = new HashSet<MiembroComite>();
-            this.Organizador = new HashSet<Organizador>();
-        }
-    
-        public int Id { get; set; }
-        public string nombreUsuario { get; set; }
-        public string contrasenia { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MiembroComite> MiembroComite { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Organizador> Organizador { get; set; }
+        this.MiembroComite = new HashSet<MiembroComite>();
+        this.Organizador = new HashSet<Organizador>();
     }
+
+    public int Id { get; set; }
+    public string nombreUsuario { get; set; }
+    public string contrasenia { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<MiembroComite> MiembroComite { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Organizador> Organizador { get; set; }
 }

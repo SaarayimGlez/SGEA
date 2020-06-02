@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo;
+using FluentAssertions;
 
 namespace Logica.Tests
 {
@@ -52,28 +53,63 @@ namespace Logica.Tests
             List<MiembroComite> listaEsperada = new List<MiembroComite>();
             listaEsperada.Add(new MiembroComite()
             {
-                nombre = "Antonio",
-                apellidoPaterno = "Morales",
-                apellidoMaterno = "Lopez",
-                correoElectronico = "anmolo@uv.mx",
-                nivelExperiencia = "Doctorado",
-                evaluador = false,
-                liderComite = false,
-                ComiteId = 1,
-                idUsuario = 2
+                nombre = "Huleria",
+                apellidoPaterno = "Waltz",
+                apellidoMaterno = "Becerra",
+                correoElectronico = "huwab@uv.mx",
+                nivelExperiencia = "Licenciatura"
             });
-            foreach (var miembro in listaRecibida.Zip(listaEsperada, Tuple.Create))
+            listaEsperada.Add(new MiembroComite()
             {
-                Assert.AreEqual(miembro.Item1.nombre, miembro.Item2.nombre);
-                Assert.AreEqual(miembro.Item1.apellidoPaterno, miembro.Item2.apellidoPaterno);
-                Assert.AreEqual(miembro.Item1.apellidoMaterno, miembro.Item2.apellidoMaterno);
-                Assert.AreEqual(miembro.Item1.correoElectronico, miembro.Item2.correoElectronico);
-                Assert.AreEqual(miembro.Item1.nivelExperiencia, miembro.Item2.nivelExperiencia);
-                Assert.AreEqual(miembro.Item1.idUsuario, miembro.Item2.idUsuario);
-                Assert.AreEqual(miembro.Item1.evaluador, miembro.Item2.evaluador);
-                Assert.AreEqual(miembro.Item1.liderComite, miembro.Item2.liderComite);
-                Assert.AreEqual(miembro.Item1.ComiteId, miembro.Item2.ComiteId);
-            }
+                nombre = "Joaquin",
+                apellidoPaterno = "Torres",
+                apellidoMaterno = "Yatra",
+                correoElectronico = "jotoya@uv.mx",
+                nivelExperiencia = "Licenciatura"
+            });
+
+            listaRecibida.Should().BeEquivalentTo(listaEsperada);
+        }
+
+        [TestMethod()]
+        public void RecuperarMiembroComiteTest()
+        {
+            MiembroComite_Logica miembroComite_Logica = new MiembroComite_Logica();
+            MiembroComite miembroComiteRecibido = 
+                miembroComite_Logica.RecuperarMiembroComite(2);
+            MiembroComite miembroComiteEsperado = new MiembroComite()
+            {
+                Id = 2,
+                idUsuario = 2,
+                ComiteId = 1,
+                evaluador = false,
+                liderComite = false
+            };
+
+            miembroComiteRecibido.Should().BeEquivalentTo(miembroComiteEsperado);
+        }
+
+        [TestMethod()]
+        public void RecuperarMiembroComitePorEventoTest()
+        {
+            MiembroComite_Logica miembroComiteDAO = new MiembroComite_Logica();
+            List<MiembroComite> listaRecibida = 
+                miembroComiteDAO.RecuperarMiembroComitePorEvento(1);
+            List<MiembroComite> listaEsperada = new List<MiembroComite>();
+            listaEsperada.Add(new MiembroComite()
+            {
+                nombre = "Junipero",
+                apellidoPaterno = "Veraz",
+                apellidoMaterno = "Loeira"
+            });
+            listaEsperada.Add(new MiembroComite()
+            {
+                nombre = "Huleria",
+                apellidoPaterno = "Waltz",
+                apellidoMaterno = "Becerra"
+            });
+
+            listaRecibida.Should().BeEquivalentTo(listaEsperada);
         }
     }
 }

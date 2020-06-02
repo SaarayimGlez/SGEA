@@ -7,26 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Ingreso
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Ingreso
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Ingreso()
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Ingreso()
-        {
-            this.PatrocinadorSet = new HashSet<Patrocinador>();
-        }
-    
-        public int Id { get; set; }
-        public string concepto { get; set; }
-        public double monto { get; set; }
-        public System.DateTime fecha { get; set; }
-    
-        public virtual RegistroArticulo RegistroArticulo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Patrocinador> PatrocinadorSet { get; set; }
+        this.PatrocinadorSet = new HashSet<Patrocinador>();
     }
+
+    public int Id { get; set; }
+    public string concepto { get; set; }
+    public double monto { get; set; }
+    public System.DateTime fecha { get; set; }
+
+    public virtual RegistroArticulo RegistroArticulo { get; set; }
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Patrocinador> PatrocinadorSet { get; set; }
 }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo;
+using FluentAssertions;
 
 namespace Logica.Tests
 {
@@ -57,16 +58,7 @@ namespace Logica.Tests
                 numeroTelefono = "8465963"
             });
 
-            foreach (var miembro in listaRecibida.Zip(listaEsperada, Tuple.Create))
-            {
-                Assert.AreEqual(miembro.Item1.nombre, miembro.Item2.nombre);
-                Assert.AreEqual(miembro.Item1.apellidoPaterno, miembro.Item2.apellidoPaterno);
-                Assert.AreEqual(miembro.Item1.apellidoMaterno, miembro.Item2.apellidoMaterno);
-                Assert.AreEqual(miembro.Item1.correoElectronico, miembro.Item2.correoElectronico);
-                Assert.AreEqual(miembro.Item1.empresa, miembro.Item2.empresa);
-                Assert.AreEqual(miembro.Item1.direccion, miembro.Item2.direccion);
-                Assert.AreEqual(miembro.Item1.numeroTelefono, miembro.Item2.numeroTelefono);
-            }
+            listaRecibida.Should().BeEquivalentTo(listaEsperada);
         }
     }
 }

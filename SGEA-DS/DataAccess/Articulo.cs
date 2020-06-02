@@ -7,24 +7,21 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DataAccess
+using System;
+using System.Collections.Generic;
+
+public partial class Articulo
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Articulo
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public Articulo()
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Articulo()
-        {
-            this.Evaluacion = new HashSet<Evaluacion>();
-        }
-    
-        public int Id { get; set; }
-        public string @abstract { get; set; }
-        public byte documento { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Evaluacion> Evaluacion { get; set; }
+        this.Evaluacion = new HashSet<Evaluacion>();
     }
+
+    public int Id { get; set; }
+    public string @abstract { get; set; }
+    public byte documento { get; set; }
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+    public virtual ICollection<Evaluacion> Evaluacion { get; set; }
 }
