@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using DataAccess;
 
 namespace SGEA_DS
 {
@@ -20,7 +9,7 @@ namespace SGEA_DS
     /// </summary>
     public partial class RegistrarEvento : Window
     {
-        private int eventoId;
+        /*private int eventoId;
 
         public RegistrarEvento()
         {
@@ -119,6 +108,6 @@ namespace SGEA_DS
                 centinel = false;
             }
             return centinel;
-        }
+        }*/
     }
 }

@@ -34,14 +34,14 @@ namespace LogicaTests
         [TestMethod()]
         public void ModificarMagistralTest()
         {
-            /*Magistral_Logica magistral_Logica = new Magistral_Logica();
+            Magistral_Logica magistral_Logica = new Magistral_Logica();
             bool recibido = magistral_Logica.ModificarMagistral(new Magistral()
             {
                 nombre = "Herendira",
                 apellidoPaterno = "Joaquines",
                 apellidoMaterno = "Gutierrez"
-            }, /**);
-            Assert.AreEqual(recibido, true);*/
+            });
+            Assert.AreEqual(recibido, true);
         }
 
         [TestMethod()]

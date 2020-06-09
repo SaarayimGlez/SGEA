@@ -15,10 +15,11 @@
         mc:Ignorable="d"
         Title="Actividades" Height="450" Width="800">
     <Grid>
+        <!--
         <ListBox x:Name="LBActividades" HorizontalAlignment="Left" Height="309" Margin="34,34,0,0" VerticalAlignment="Top" Width="716" MouseDoubleClick="MostrarAsistentes"/>
         <Button x:Name="BTAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="135,361,0,0" VerticalAlignment="Top" Width="119" Click="TerminarConsulta" Visibility="Hidden"/>
         <Button x:Name="BTDetalles" Content="Ver detalles" HorizontalAlignment="Left" Margin="322,361,0,0" VerticalAlignment="Top" Width="119" Click="MostrarDetalles" Visibility="Hidden"/>
         <Button x:Name="BTRegresar" Content="Regresar" HorizontalAlignment="Left" Margin="515,361,0,0" VerticalAlignment="Top" Width="119" Click="RegresarVentana" Visibility="Hidden"/>
-
+        -->
     </Grid>
 </Window>

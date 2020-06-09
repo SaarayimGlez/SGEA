@@ -17,7 +17,6 @@ namespace SGEA_DS
     {
         private List<TextBox> listaTextBox;
         private Modelo.Magistral magistralModificar;
-        private Modelo.Adscripcion adscripcionModificar;
         private Modelo.MiembroComite miembroComite;
 
         public CU18_2(Magistral magistralOriginal, Modelo.MiembroComite miembroComite)
@@ -38,17 +37,10 @@ namespace SGEA_DS
             else
             {
                 this.magistralModificar = magistralOriginal;
-                this.adscripcionModificar = 
-                    adscripcion_Logica.RecuperarAdscripcion(magistralModificar.AdscripcionId);
 
                 textbox_nombre.Text = magistralModificar.nombre;
                 textbox_apellidoP.Text = magistralModificar.apellidoPaterno;
                 textbox_apellidoM.Text = magistralModificar.apellidoMaterno;
-                textbox_ciudad.Text = adscripcionModificar.ciudad;
-                textbox_estado.Text = adscripcionModificar.estado;
-                textbox_direccion.Text = adscripcionModificar.direccion;
-                textbox_institucion.Text = adscripcionModificar.nombre;
-                textbox_email.Text = adscripcionModificar.correoElectronico;
 
                 AgregarTextBox();
             }
@@ -99,18 +91,7 @@ namespace SGEA_DS
                 apellidoPaterno = textbox_apellidoP.Text
             };
 
-            Adscripcion adscripcionActualizada = new Adscripcion()
-            {
-                Id = adscripcionModificar.Id,
-                ciudad = textbox_ciudad.Text,
-                estado = textbox_estado.Text,
-                direccion = textbox_direccion.Text,
-                nombre = textbox_institucion.Text, 
-                correoElectronico = textbox_email.Text
-            };
-
-            return magistral_Logica.ModificarMagistral(magistralActualizado, 
-                adscripcionActualizada);
+            return magistral_Logica.ModificarMagistral(magistralActualizado);
         }
 
         private void AgregarTextBox()
@@ -119,16 +100,11 @@ namespace SGEA_DS
             listaTextBox.Add(textbox_nombre);
             listaTextBox.Add(textbox_apellidoP);
             listaTextBox.Add(textbox_apellidoM);
-            listaTextBox.Add(textbox_ciudad);
-            listaTextBox.Add(textbox_estado);
-            listaTextBox.Add(textbox_direccion);
-            listaTextBox.Add(textbox_email);
-            listaTextBox.Add(textbox_institucion);
         }
 
         private bool ValidarDatos()
         {
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
             {
                 if (listaTextBox[i].Text.Any(char.IsDigit) || 
                     listaTextBox[i].Text.Any(char.IsPunctuation))
@@ -142,10 +118,6 @@ namespace SGEA_DS
                 {
                     return false;
                 }
-            }
-            if (!Regex.IsMatch(listaTextBox[6].Text, @"\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"))
-            {
-                return false;
             }
             return true;
         }

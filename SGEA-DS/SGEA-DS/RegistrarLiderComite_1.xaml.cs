@@ -11,7 +11,7 @@ namespace SGEA_DS
     public partial class CU01_1 : UserControl
     {
         private List<RadioButton> listaRbComite;
-        private List<int> listaIdComite;
+        private List<string> listaComite;
         private Modelo.Evento evento;
 
         public CU01_1(Modelo.Evento evento)
@@ -37,16 +37,14 @@ namespace SGEA_DS
             }
             else
             {
-                List<string> listaComite = comiteDAO.RecuperarComitesSinLider(eventoId);
+                this.listaComite = comiteDAO.RecuperarComitesSinLider(eventoId);
                 listaRbComite = new List<RadioButton>();
-                listaIdComite = new List<int>();
 
                 foreach (string comite in listaComite)
                 {
                     String patronSimbolo = @"\s-\s?[+*]?\s?-\s";
                     String[] elementoComite = 
                         System.Text.RegularExpressions.Regex.Split(comite, patronSimbolo);
-                    listaIdComite.Add(Convert.ToInt32(elementoComite[1]));
                     InsertarFila(elementoComite[0]);
                 }
             }
@@ -63,7 +61,7 @@ namespace SGEA_DS
             {
                 if (listaRbComite[i].IsChecked == true)
                 {
-                    Switcher.Switch(new CU01_2(listaIdComite[i], this.evento));
+                    Switcher.Switch(new CU01_2(listaComite[i], this.evento));
                 }
             }
         }

@@ -33,16 +33,16 @@ namespace SGEA_DS
 
         private void Click_NumAsistentes(object sender, RoutedEventArgs e)
         {
-            Eventos eventos = new Eventos(13);
+            /*Eventos eventos = new Eventos(13);
             eventos.Show();
-            this.Close();
+            this.Close();*/
         }
 
         private void Click_Consultar(object sender, RoutedEventArgs e)
         {
-            Eventos eventos = new Eventos(39);
+            /*Eventos eventos = new Eventos(39);
             eventos.Show();
-            this.Close();
+            this.Close();*/
         }
 
         private void Click_GenerarReporteI(object sender, RoutedEventArgs e)

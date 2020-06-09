@@ -15,7 +15,9 @@
         mc:Ignorable="d"
         Title="Patrocinadores" Height="450" Width="800">
     <Grid>
+        <!--
         <ListBox x:Name="LBEventos" HorizontalAlignment="Left" Height="309" Margin="34,34,0,0" VerticalAlignment="Top" Width="716" MouseDoubleClick="MostrarActividaes"/>
         <Label Name="LBMensaje" Margin="34,369,43.6,10" Background="White" Foreground="#DDD30000" FontWeight="Bold"/>
+        -->
     </Grid>
 </Window>

@@ -15,6 +15,7 @@
         mc:Ignorable="d"
         Title="Modificar patrocinador" Height="450" Width="800">
     <Grid>
+        <!--
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="42,47,0,0" VerticalAlignment="Top"/>
         <Label Content="Apellido paterno" HorizontalAlignment="Left" Margin="42,105,0,0" VerticalAlignment="Top"/>
         <Label Content="ApellidoMaterno" HorizontalAlignment="Left" Margin="42,161,0,0" VerticalAlignment="Top"/>
@@ -32,6 +33,6 @@
         <Button Content="Guardar" HorizontalAlignment="Left" Margin="440,317,0,0" VerticalAlignment="Top" Width="93" Height="28" Click="GuardarPatrocinador"/>
         <Button Content="Cancelar" HorizontalAlignment="Left" Margin="616,317,0,0" VerticalAlignment="Top" Width="93" Height="28" Background="#FF7C52C7" Click="CancelarModificacion"/>
         <Label x:Name="LBMensaje" Content="" HorizontalAlignment="Left" Height="91" Margin="42,286,0,0" VerticalAlignment="Top" Width="372" Foreground="#DDD30000" FontWeight="Bold"/>
-
+        -->
     </Grid>
 </Window>

@@ -1,25 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using DataAccess;
 
-namespace SGEA_DS {
+namespace SGEA_DS
+{
     /// <summary>
     /// Lógica de interacción para Eventos.xaml
     /// </summary>
     public partial class Eventos: Window {
-        private int centinel;
+        /*private int centinel;
         public int Centinel { get => centinel; set => centinel = value; }
 
         public Eventos(int centinel) {
@@ -65,6 +56,6 @@ namespace SGEA_DS {
             } catch (Exception) {
                 LBMensaje.Content = "No hay conexión a la base de datos, inténtelo más tarde";
             }
-        }
+        }*/
     }
 }

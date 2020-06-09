@@ -1,9 +1,6 @@
-﻿using DataAccess;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logica
 {
@@ -75,7 +72,8 @@ namespace Logica
             {
                 var comiteRepetido = _context.ComiteSet
                     .Where(
-                        comiteR => comiteR.nombre.Equals(comite.nombre)
+                        comiteR => comiteR.nombre.Equals(comite.nombre) &&
+                        comiteR.EventoId == comite.EventoId
                     ).ToList();
                 if (comiteRepetido.Count == 0)
                 {

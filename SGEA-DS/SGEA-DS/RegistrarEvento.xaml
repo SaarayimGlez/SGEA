@@ -15,6 +15,7 @@
         mc:Ignorable="d"
         Title="RegistrarEvento" Height="450" Width="800">
     <Grid>
+        <!--
         <Label Content="Nombre del evento" HorizontalAlignment="Left" Margin="84,45,0,0" VerticalAlignment="Top"/>
         <Label Content="Fecha de inicio" HorizontalAlignment="Left" Margin="84,98,0,0" VerticalAlignment="Top"/>
         <Label Content="Fecha de clausura" HorizontalAlignment="Left" Margin="84,156,0,0" VerticalAlignment="Top"/>
@@ -33,5 +34,6 @@
         <Button x:Name="button_Aceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="501,356,0,0" VerticalAlignment="Top" Width="90" Click="GuardarEvento"/>
         <Button x:Name="button_Cancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="650,356,0,0" VerticalAlignment="Top" Width="90" Background="#FF7348C0" Click="CancelarEvento"/>
         <Label Name="LBMensage" HorizontalAlignment="Left" Margin="38,339,0,0" VerticalAlignment="Top" Height="49" Width="402" Foreground="#DDDD0000" FontWeight="Bold"/>
+        -->
     </Grid>
 </Window>

@@ -1,24 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using DataAccess;
+﻿using System.Windows;
 
-namespace SGEA_DS {
+namespace SGEA_DS
+{
     /// <summary>
     /// Lógica de interacción para Magistrales.xaml
     /// </summary>
     public partial class Magistrales: Window {
-        private Evento evento;
+        /*private Evento evento;
         private int ACCION_MAGISTRAL = 37;
 
         public Magistrales(Evento evento) {
@@ -46,6 +34,10 @@ namespace SGEA_DS {
             Eventos eventos = new Eventos(ACCION_MAGISTRAL);
             eventos.Show();
             this.Close();
+        }*/
+        public Magistrales()
+        {
+            InitializeComponent();
         }
     }
 }

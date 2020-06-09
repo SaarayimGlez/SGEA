@@ -15,6 +15,7 @@
         mc:Ignorable="d"
         Title="DetallesAsistente" Height="450" Width="800">
     <Grid>
+        <!--
         <Label Content="Nombre" HorizontalAlignment="Left" Margin="60,62,0,0" VerticalAlignment="Top"/>
         <Label Content="Apellido paterno" HorizontalAlignment="Left" Margin="60,125,0,0" VerticalAlignment="Top"/>
         <Label Content="Apellido Materno" HorizontalAlignment="Left" Margin="60,191,0,0" VerticalAlignment="Top"/>
@@ -24,6 +25,6 @@
         <TextBox x:Name="TBMaterno" HorizontalAlignment="Left" Height="23" Margin="241,193,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="474" IsReadOnly="True"/>
         <TextBox x:Name="TBCorreo" HorizontalAlignment="Left" Height="23" Margin="241,264,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="474" IsReadOnly="True"/>
         <Button Content="Aceptar" HorizontalAlignment="Left" Margin="343,340,0,0" VerticalAlignment="Top" Width="90" Click="RegresarVentana"/>
-
+    -->
     </Grid>
 </Window>

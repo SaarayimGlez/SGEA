@@ -1,24 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using DataAccess;
+﻿using System.Windows;
 
-namespace SGEA_DS {
+namespace SGEA_DS
+{
     /// <summary>
     /// Lógica de interacción para DetallesMagistral.xaml
     /// </summary>
     public partial class DetallesMagistral: Window {
-        private Magistral magistral;
+        /*private Magistral magistral;
         private Magistrales magistrales;
 
         public DetallesMagistral(Magistral magistral, Magistrales magistrales) {
@@ -42,6 +30,10 @@ namespace SGEA_DS {
         private void RegresarVentana(object sender,RoutedEventArgs e) {
             Magistrales.Show();
             this.Close();
+        }*/
+        public DetallesMagistral()
+        {
+            InitializeComponent();
         }
     }
 }

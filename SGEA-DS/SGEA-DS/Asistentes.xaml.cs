@@ -1,24 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using DataAccess;
 
-namespace SGEA_DS {
+namespace SGEA_DS
+{
     /// <summary>
     /// Lógica de interacción para Asistentes.xaml
     /// </summary>
     public partial class Asistentes: Window {
-        private Actividad actividad;
+        /*private Actividad actividad;
         private int ACCION_ASISTENTES = 13;
 
         public Actividad Actividad { get => actividad;
@@ -35,11 +24,11 @@ namespace SGEA_DS {
                 LBAsistentes.ItemsSource = asistentes;
             }
         }
-
+        */
         public Asistentes() {
             InitializeComponent();
         }
-
+        /*
         private void TerminarConsulta(object sender,RoutedEventArgs e) {
             MainWindow main = new MainWindow();
             main.Show();
@@ -60,6 +49,6 @@ namespace SGEA_DS {
             Eventos eventos = new Eventos(ACCION_ASISTENTES);
             eventos.Show();
             this.Close();
-        }
+        }*/
     }
 }

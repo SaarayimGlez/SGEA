@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -37,6 +38,9 @@ namespace SGEA_DS
                 }
                 textBox_nombre.Text = "";
                 textBox_descripcion.Text = "";
+                textBox_nombre.IsEnabled = true;
+                textBox_descripcion.IsEnabled = true;
+                toggleButton_CEval.IsChecked = false;
             }
             else
             {
@@ -45,6 +49,23 @@ namespace SGEA_DS
                     "Hay datos inválidos o el comité ya existe, favor de revisar"
                     ) { Foreground = Brushes.Red });
                 textBlock_mensaje.Inlines.Add(bold);
+            }
+        }
+        
+        private void Click_ComiteEvaluacion(object sender, RoutedEventArgs e)
+        {
+            if ((sender as ToggleButton).IsChecked ?? false)
+            {
+                textBox_nombre.Text = "Comité de evaluación";
+                textBox_descripcion.Text = "Este comité está encargado de evaluar los artículos que serán presentados en el evento";
+                textBox_nombre.IsEnabled = false;
+                textBox_descripcion.IsEnabled = false;
+            } else
+            {
+                textBox_nombre.Text = "";
+                textBox_descripcion.Text = "";
+                textBox_nombre.IsEnabled = true;
+                textBox_descripcion.IsEnabled = true;
             }
         }
 

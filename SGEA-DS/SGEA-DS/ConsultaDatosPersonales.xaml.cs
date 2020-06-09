@@ -33,9 +33,9 @@ namespace SGEA_DS
 
         private void Click_ConsultarMagistrales(object sender, RoutedEventArgs e)
         {
-            Eventos eventos = new Eventos(37);
+            /*Eventos eventos = new Eventos(37);
             eventos.Show();
-            this.Close();
+            this.Close();*/
         }
 
         private void Click_ConsultarParticipantes(object sender, RoutedEventArgs e)

@@ -14,7 +14,7 @@ namespace SGEA_DS
 
     public partial class CU01_2 : CtrolUsrCtrolEvento
     {
-        private int comiteId;
+        private string comite;
         private List<Modelo.MiembroComite> listaMCNoLider;
         private bool handle = true;
         private List<TextBox> listaTBSinNum;
@@ -84,6 +84,9 @@ namespace SGEA_DS
 
         private bool GuardarMComite()
         {
+            String patronSimbolo = @"\s-\s?[+*]?\s?-\s";
+            String[] elementoComite =
+                System.Text.RegularExpressions.Regex.Split(comite, patronSimbolo);
             Usuario_Logica usuario_Logica = new Usuario_Logica();
             Modelo.MiembroComite nuevoMLComite = new Modelo.MiembroComite()
             {
@@ -91,7 +94,7 @@ namespace SGEA_DS
                 apellidoPaterno = textBox_apellidoP.Text,
                 apellidoMaterno = textBox_apellidoM.Text,
                 evaluador = false,
-                ComiteId = comiteId
+                ComiteId = Convert.ToInt32(elementoComite[1])
             };
             if (comboBox_miembroC.SelectedIndex <= -1)
             {
@@ -100,7 +103,7 @@ namespace SGEA_DS
                         (string)((ComboBoxItem)comboBox_nivelE.SelectedValue).Content;
                 nuevoMLComite.liderComite = true;
             }
-            if (comiteId == 1)
+            if (String.Equals(elementoComite[0], "Comité de evaluación"))
             {
                 nuevoMLComite.evaluador = true;
             }
@@ -154,9 +157,9 @@ namespace SGEA_DS
             Switcher.Switch(new CU01_1(this.evento));
         }
         
-        public CU01_2(int comiteId, Modelo.Evento evento)
+        public CU01_2(string comite, Modelo.Evento evento)
         {
-            this.comiteId = comiteId;
+            this.comite = comite;
             this.evento = evento;
             InitializeComponent();
             AgregarTextBox();

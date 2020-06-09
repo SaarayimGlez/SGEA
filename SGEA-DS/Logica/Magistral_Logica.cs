@@ -1,10 +1,6 @@
-﻿using DataAccess;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Common;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logica
 {
@@ -40,8 +36,7 @@ namespace Logica
             return listaMagistral;
         }
 
-        public bool ModificarMagistral(Modelo.Magistral magistralModificado,
-            Modelo.Adscripcion adscripcionModificada)
+        public bool ModificarMagistral(Modelo.Magistral magistralModificado)
         {
             Adscripcion_Logica adscripcion_Logica = new Adscripcion_Logica();
             try
@@ -54,11 +49,8 @@ namespace Logica
                     magistralOriginal.nombre = magistralModificado.nombre;
                     magistralOriginal.apellidoPaterno = magistralModificado.apellidoPaterno;
                     magistralOriginal.apellidoMaterno = magistralModificado.apellidoMaterno;
-                    if (adscripcion_Logica.ModificarAdscripcion(adscripcionModificada))
-                    {
-                        _context.SaveChanges();
-                        return true;
-                    }
+                    _context.SaveChanges();
+                    return true;
                 }
             }
             catch (Exception e)
