@@ -7,18 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class RegistroArticulo
+namespace DataAccess
 {
-    public int Id { get; set; }
-    public byte comprobantePago { get; set; }
-    public System.DateTime fecha { get; set; }
-    public System.TimeSpan hora { get; set; }
-    public double cantidadPago { get; set; }
-    public int AutorId { get; set; }
-
-    public virtual Articulo Articulo { get; set; }
-    public virtual Autor Autor { get; set; }
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class RegistroArticulo
+    {
+        public int Id { get; set; }
+        public byte comprobantePago { get; set; }
+        public System.DateTime fecha { get; set; }
+        public System.TimeSpan hora { get; set; }
+        public double cantidadPago { get; set; }
+    
+        public virtual AutorArticulo AutorArticulo { get; set; }
+    }
 }

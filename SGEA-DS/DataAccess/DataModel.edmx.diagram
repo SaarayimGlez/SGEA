@@ -8,11 +8,9 @@
         <EntityTypeShape EntityType="DataModel.Actividad" Width="1.5" PointX="5.25" PointY="21.375" />
         <EntityTypeShape EntityType="DataModel.Articulo" Width="1.5" PointX="7.5" PointY="18.125" />
         <AssociationConnector Association="DataModel.ActividadArticulo" />
-        <EntityTypeShape EntityType="DataModel.RegistroArticulo" Width="1.5" PointX="9.75" PointY="17.625" />
-        <AssociationConnector Association="DataModel.ArticuloRegistroArticulo" />
+        <EntityTypeShape EntityType="DataModel.RegistroArticulo" Width="1.5" PointX="9.75" PointY="18" />
         <EntityTypeShape EntityType="DataModel.Adscripcion" Width="1.5" PointX="5.25" PointY="14.875" />
         <EntityTypeShape EntityType="DataModel.Autor" Width="1.5" PointX="7.5" PointY="14.75" />
-        <AssociationConnector Association="DataModel.AutorRegistroArticulo" />
         <AssociationConnector Association="DataModel.AdscripcionAutor" />
         <EntityTypeShape EntityType="DataModel.Calendario" Width="1.5" PointX="7.5" PointY="20.875" />
         <AssociationConnector Association="DataModel.ActividadCalendario" />
@@ -52,16 +50,18 @@
         <AssociationConnector Association="DataModel.FK_OrganizadorEvento" />
         <AssociationConnector Association="DataModel.FK_MiembroComiteUsuario" />
         <AssociationConnector Association="DataModel.FK_OrganizadorUsuario" />
+        <EntityTypeShape EntityType="DataModel.AutorArticulo" Width="1.5" PointX="11.375" PointY="15.25" />
+        <AssociationConnector Association="DataModel.AutorAutorArticulo" />
+        <AssociationConnector Association="DataModel.ArticuloAutorArticulo" />
+        <AssociationConnector Association="DataModel.RegistroArticuloAutorArticulo" />
       </Diagram>
       <Diagram DiagramId="443b65acaf1942b198e0b46829ab37b4" Name="Diagram2" >
         <EntityTypeShape EntityType="DataModel.Actividad" Width="1.5" PointX="5.25" PointY="21.375" />
         <EntityTypeShape EntityType="DataModel.Articulo" Width="1.5" PointX="7.5" PointY="18.125" />
         <AssociationConnector Association="DataModel.ActividadArticulo" />
         <EntityTypeShape EntityType="DataModel.RegistroArticulo" Width="1.5" PointX="9.75" PointY="17.625" />
-        <AssociationConnector Association="DataModel.ArticuloRegistroArticulo" />
         <EntityTypeShape EntityType="DataModel.Adscripcion" Width="1.5" PointX="5.25" PointY="14.875" />
         <EntityTypeShape EntityType="DataModel.Autor" Width="1.5" PointX="7.5" PointY="14.75" />
-        <AssociationConnector Association="DataModel.AutorRegistroArticulo" />
         <AssociationConnector Association="DataModel.AdscripcionAutor" />
         <EntityTypeShape EntityType="DataModel.Calendario" Width="1.5" PointX="7.5" PointY="20.875" />
         <AssociationConnector Association="DataModel.ActividadCalendario" />

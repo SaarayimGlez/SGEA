@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/04/2020 04:44:50
+-- Date Created: 06/08/2020 23:12:52
 -- Generated from EDMX file: D:\Users\GANADOR\Downloads\8\desSOFT\ELproyecto\SGEA-DS\DataAccess\DataModel.edmx
 -- --------------------------------------------------
 
@@ -89,6 +89,15 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_IngresoPatrocinador]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[PatrocinadorSet] DROP CONSTRAINT [FK_IngresoPatrocinador];
 GO
+IF OBJECT_ID(N'[dbo].[FK_MiembroComiteUsuario]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MiembroComiteSet] DROP CONSTRAINT [FK_MiembroComiteUsuario];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrganizadorEvento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventoSet] DROP CONSTRAINT [FK_OrganizadorEvento];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrganizadorUsuario]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OrganizadorSet] DROP CONSTRAINT [FK_OrganizadorUsuario];
+GO
 IF OBJECT_ID(N'[dbo].[FK_RegistroArticuloIngreso]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[RegistroArticuloSet] DROP CONSTRAINT [FK_RegistroArticuloIngreso];
 GO
@@ -163,6 +172,9 @@ GO
 IF OBJECT_ID(N'[dbo].[TareaSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TareaSet];
 GO
+IF OBJECT_ID(N'[dbo].[UsuarioSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[UsuarioSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -196,9 +208,8 @@ CREATE TABLE [dbo].[RegistroArticuloSet] (
     [fecha] datetime  NOT NULL,
     [hora] time  NOT NULL,
     [cantidadPago] float  NOT NULL,
-    [AutorId] int  NOT NULL,
-    [Articulo_Id] int  NOT NULL,
-    [RegistroArticuloIngreso_RegistroArticulo_Id] int  NOT NULL
+    [RegistroArticuloIngreso_RegistroArticulo_Id] int  NOT NULL,
+    [AutorArticulo_Id] int  NOT NULL
 );
 GO
 
@@ -221,33 +232,6 @@ CREATE TABLE [dbo].[AutorSet] (
     [apellidoMaterno] nvarchar(max)  NULL,
     [correoElectronico] nvarchar(max)  NOT NULL,
     [AdscripcionId] int  NOT NULL
-);
-GO
-
--- Creating table 'EvaluacionSet'
-CREATE TABLE [dbo].[EvaluacionSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [calificacion] int  NOT NULL,
-    [descripcion] nvarchar(max)  NOT NULL,
-    [fecha] datetime  NOT NULL,
-    [ArticuloId] int  NOT NULL,
-    [MiembroComite_Id] int  NOT NULL
-);
-GO
-
--- Creating table 'MiembroComiteSet'
-CREATE TABLE [dbo].[MiembroComiteSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [nombre] nvarchar(max)  NOT NULL,
-    [apellidoPaterno] nvarchar(max)  NOT NULL,
-    [apellidoMaterno] nvarchar(max)  NULL,
-    [correoElectronico] nvarchar(max)  NOT NULL,
-    [nivelExperiencia] nvarchar(max)  NOT NULL,
-    [liderComite] bit  NOT NULL,
-    [ComiteId] int  NOT NULL,
-    [nombreUsuario] nvarchar(max)  NOT NULL,
-    [contrasenia] nvarchar(max)  NOT NULL,
-    [evaluador] bit  NOT NULL
 );
 GO
 
@@ -283,45 +267,12 @@ CREATE TABLE [dbo].[ParticipanteSet] (
 );
 GO
 
--- Creating table 'EgresoSet'
-CREATE TABLE [dbo].[EgresoSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [concepto] nvarchar(max)  NOT NULL,
-    [monto] float  NOT NULL,
-    [fecha] datetime  NOT NULL,
-    [Magistral_Id] int  NULL
-);
-GO
-
--- Creating table 'MaterialSet'
-CREATE TABLE [dbo].[MaterialSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [tipo] nvarchar(max)  NOT NULL,
-    [cantidad] int  NOT NULL,
-    [costo] float  NOT NULL,
-    [ActividadId] int  NOT NULL,
-    [EgresoMaterial_Material_Id] int  NOT NULL
-);
-GO
-
 -- Creating table 'IngresoSet'
 CREATE TABLE [dbo].[IngresoSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [concepto] nvarchar(max)  NOT NULL,
     [monto] float  NOT NULL,
     [fecha] datetime  NOT NULL
-);
-GO
-
--- Creating table 'EventoSet'
-CREATE TABLE [dbo].[EventoSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [nombre] nvarchar(max)  NOT NULL,
-    [fechaInicio] datetime  NOT NULL,
-    [fechaFin] datetime  NOT NULL,
-    [lugar] nvarchar(max)  NOT NULL,
-    [institucionOrganizadora] nvarchar(max)  NOT NULL,
-    [EventoPresupuesto_Evento_Id] int  NOT NULL
 );
 GO
 
@@ -361,14 +312,6 @@ CREATE TABLE [dbo].[TareaSet] (
 );
 GO
 
--- Creating table 'OrganizadorSet'
-CREATE TABLE [dbo].[OrganizadorSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [nombreUsuario] nvarchar(max)  NOT NULL,
-    [contrasenia] nvarchar(max)  NOT NULL
-);
-GO
-
 -- Creating table 'PatrocinadorSet'
 CREATE TABLE [dbo].[PatrocinadorSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
@@ -383,6 +326,93 @@ CREATE TABLE [dbo].[PatrocinadorSet] (
 );
 GO
 
+-- Creating table 'EgresoSet'
+CREATE TABLE [dbo].[EgresoSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [concepto] nvarchar(max)  NOT NULL,
+    [monto] float  NOT NULL,
+    [fecha] datetime  NOT NULL,
+    [Magistral_Id] int  NULL
+);
+GO
+
+-- Creating table 'MaterialSet'
+CREATE TABLE [dbo].[MaterialSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [tipo] nvarchar(max)  NOT NULL,
+    [cantidad] int  NOT NULL,
+    [costo] float  NOT NULL,
+    [ActividadId] int  NULL,
+    [EgresoMaterial_Material_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'EvaluacionSet'
+CREATE TABLE [dbo].[EvaluacionSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [calificacion] int  NOT NULL,
+    [descripcion] nvarchar(max)  NOT NULL,
+    [fecha] datetime  NOT NULL,
+    [ArticuloId] int  NOT NULL,
+    [MiembroComite_Id] int  NOT NULL
+);
+GO
+
+-- Creating table 'EventoSet'
+CREATE TABLE [dbo].[EventoSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [nombre] nvarchar(max)  NOT NULL,
+    [fechaInicio] datetime  NOT NULL,
+    [fechaFin] datetime  NOT NULL,
+    [lugar] nvarchar(max)  NOT NULL,
+    [institucionOrganizadora] nvarchar(max)  NOT NULL,
+    [EventoPresupuesto_Evento_Id] int  NULL,
+    [OrganizadorId] int  NOT NULL
+);
+GO
+
+-- Creating table 'MiembroComiteSet'
+CREATE TABLE [dbo].[MiembroComiteSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [nombre] nvarchar(max)  NOT NULL,
+    [apellidoPaterno] nvarchar(max)  NOT NULL,
+    [apellidoMaterno] nvarchar(max)  NULL,
+    [correoElectronico] nvarchar(max)  NOT NULL,
+    [nivelExperiencia] nvarchar(max)  NOT NULL,
+    [liderComite] bit  NOT NULL,
+    [ComiteId] int  NOT NULL,
+    [evaluador] bit  NOT NULL,
+    [idUsuario] int  NULL
+);
+GO
+
+-- Creating table 'OrganizadorSet'
+CREATE TABLE [dbo].[OrganizadorSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [nombre] nvarchar(max)  NOT NULL,
+    [apellidoPaterno] nvarchar(max)  NOT NULL,
+    [apellidoMaterno] nvarchar(max)  NULL,
+    [correoElectronico] nvarchar(max)  NULL,
+    [idUsuario] int  NULL
+);
+GO
+
+-- Creating table 'UsuarioSet'
+CREATE TABLE [dbo].[UsuarioSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [nombreUsuario] nvarchar(max)  NOT NULL,
+    [contrasenia] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'AutorArticuloSet'
+CREATE TABLE [dbo].[AutorArticuloSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [AutorId] int  NOT NULL,
+    [ArticuloId] int  NOT NULL
+);
+GO
+
 -- Creating table 'ActividadParticipante'
 CREATE TABLE [dbo].[ActividadParticipante] (
     [ActividadParticipante_Participante_Id] int  NOT NULL,
@@ -393,7 +423,7 @@ GO
 -- Creating table 'ActividadAsistente'
 CREATE TABLE [dbo].[ActividadAsistente] (
     [ActividadAsistente_Asistente_Id] int  NOT NULL,
-    [ActividadAsistente_Actividad_Id] int  NOT NULL
+    [Asistente_Id] int  NOT NULL
 );
 GO
 
@@ -431,18 +461,6 @@ ADD CONSTRAINT [PK_AutorSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'EvaluacionSet'
-ALTER TABLE [dbo].[EvaluacionSet]
-ADD CONSTRAINT [PK_EvaluacionSet]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'MiembroComiteSet'
-ALTER TABLE [dbo].[MiembroComiteSet]
-ADD CONSTRAINT [PK_MiembroComiteSet]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'CalendarioSet'
 ALTER TABLE [dbo].[CalendarioSet]
 ADD CONSTRAINT [PK_CalendarioSet]
@@ -461,27 +479,9 @@ ADD CONSTRAINT [PK_ParticipanteSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'EgresoSet'
-ALTER TABLE [dbo].[EgresoSet]
-ADD CONSTRAINT [PK_EgresoSet]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'MaterialSet'
-ALTER TABLE [dbo].[MaterialSet]
-ADD CONSTRAINT [PK_MaterialSet]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'IngresoSet'
 ALTER TABLE [dbo].[IngresoSet]
 ADD CONSTRAINT [PK_IngresoSet]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'EventoSet'
-ALTER TABLE [dbo].[EventoSet]
-ADD CONSTRAINT [PK_EventoSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -509,15 +509,57 @@ ADD CONSTRAINT [PK_TareaSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'PatrocinadorSet'
+ALTER TABLE [dbo].[PatrocinadorSet]
+ADD CONSTRAINT [PK_PatrocinadorSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'EgresoSet'
+ALTER TABLE [dbo].[EgresoSet]
+ADD CONSTRAINT [PK_EgresoSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'MaterialSet'
+ALTER TABLE [dbo].[MaterialSet]
+ADD CONSTRAINT [PK_MaterialSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'EvaluacionSet'
+ALTER TABLE [dbo].[EvaluacionSet]
+ADD CONSTRAINT [PK_EvaluacionSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'EventoSet'
+ALTER TABLE [dbo].[EventoSet]
+ADD CONSTRAINT [PK_EventoSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'MiembroComiteSet'
+ALTER TABLE [dbo].[MiembroComiteSet]
+ADD CONSTRAINT [PK_MiembroComiteSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- Creating primary key on [Id] in table 'OrganizadorSet'
 ALTER TABLE [dbo].[OrganizadorSet]
 ADD CONSTRAINT [PK_OrganizadorSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'PatrocinadorSet'
-ALTER TABLE [dbo].[PatrocinadorSet]
-ADD CONSTRAINT [PK_PatrocinadorSet]
+-- Creating primary key on [Id] in table 'UsuarioSet'
+ALTER TABLE [dbo].[UsuarioSet]
+ADD CONSTRAINT [PK_UsuarioSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'AutorArticuloSet'
+ALTER TABLE [dbo].[AutorArticuloSet]
+ADD CONSTRAINT [PK_AutorArticuloSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -527,10 +569,10 @@ ADD CONSTRAINT [PK_ActividadParticipante]
     PRIMARY KEY CLUSTERED ([ActividadParticipante_Participante_Id], [Participante_Id] ASC);
 GO
 
--- Creating primary key on [ActividadAsistente_Asistente_Id], [ActividadAsistente_Actividad_Id] in table 'ActividadAsistente'
+-- Creating primary key on [ActividadAsistente_Asistente_Id], [Asistente_Id] in table 'ActividadAsistente'
 ALTER TABLE [dbo].[ActividadAsistente]
 ADD CONSTRAINT [PK_ActividadAsistente]
-    PRIMARY KEY CLUSTERED ([ActividadAsistente_Asistente_Id], [ActividadAsistente_Actividad_Id] ASC);
+    PRIMARY KEY CLUSTERED ([ActividadAsistente_Asistente_Id], [Asistente_Id] ASC);
 GO
 
 -- --------------------------------------------------
@@ -550,66 +592,6 @@ GO
 CREATE INDEX [IX_FK_ActividadArticulo]
 ON [dbo].[ArticuloSet]
     ([ActividadArticulo_Articulo_Id]);
-GO
-
--- Creating foreign key on [Articulo_Id] in table 'RegistroArticuloSet'
-ALTER TABLE [dbo].[RegistroArticuloSet]
-ADD CONSTRAINT [FK_ArticuloRegistroArticulo]
-    FOREIGN KEY ([Articulo_Id])
-    REFERENCES [dbo].[ArticuloSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ArticuloRegistroArticulo'
-CREATE INDEX [IX_FK_ArticuloRegistroArticulo]
-ON [dbo].[RegistroArticuloSet]
-    ([Articulo_Id]);
-GO
-
--- Creating foreign key on [AutorId] in table 'RegistroArticuloSet'
-ALTER TABLE [dbo].[RegistroArticuloSet]
-ADD CONSTRAINT [FK_AutorRegistroArticulo]
-    FOREIGN KEY ([AutorId])
-    REFERENCES [dbo].[AutorSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_AutorRegistroArticulo'
-CREATE INDEX [IX_FK_AutorRegistroArticulo]
-ON [dbo].[RegistroArticuloSet]
-    ([AutorId]);
-GO
-
--- Creating foreign key on [ArticuloId] in table 'EvaluacionSet'
-ALTER TABLE [dbo].[EvaluacionSet]
-ADD CONSTRAINT [FK_ArticuloEvaluacion]
-    FOREIGN KEY ([ArticuloId])
-    REFERENCES [dbo].[ArticuloSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ArticuloEvaluacion'
-CREATE INDEX [IX_FK_ArticuloEvaluacion]
-ON [dbo].[EvaluacionSet]
-    ([ArticuloId]);
-GO
-
--- Creating foreign key on [MiembroComite_Id] in table 'EvaluacionSet'
-ALTER TABLE [dbo].[EvaluacionSet]
-ADD CONSTRAINT [FK_EvaluacionMiembroComite]
-    FOREIGN KEY ([MiembroComite_Id])
-    REFERENCES [dbo].[MiembroComiteSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EvaluacionMiembroComite'
-CREATE INDEX [IX_FK_EvaluacionMiembroComite]
-ON [dbo].[EvaluacionSet]
-    ([MiembroComite_Id]);
 GO
 
 -- Creating foreign key on [ActividadId] in table 'CalendarioSet'
@@ -711,51 +693,6 @@ ON [dbo].[ActividadParticipante]
     ([Participante_Id]);
 GO
 
--- Creating foreign key on [Magistral_Id] in table 'EgresoSet'
-ALTER TABLE [dbo].[EgresoSet]
-ADD CONSTRAINT [FK_EgresoMagistral]
-    FOREIGN KEY ([Magistral_Id])
-    REFERENCES [dbo].[MagistralSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EgresoMagistral'
-CREATE INDEX [IX_FK_EgresoMagistral]
-ON [dbo].[EgresoSet]
-    ([Magistral_Id]);
-GO
-
--- Creating foreign key on [EgresoMaterial_Material_Id] in table 'MaterialSet'
-ALTER TABLE [dbo].[MaterialSet]
-ADD CONSTRAINT [FK_EgresoMaterial]
-    FOREIGN KEY ([EgresoMaterial_Material_Id])
-    REFERENCES [dbo].[EgresoSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EgresoMaterial'
-CREATE INDEX [IX_FK_EgresoMaterial]
-ON [dbo].[MaterialSet]
-    ([EgresoMaterial_Material_Id]);
-GO
-
--- Creating foreign key on [ActividadId] in table 'MaterialSet'
-ALTER TABLE [dbo].[MaterialSet]
-ADD CONSTRAINT [FK_ActividadMaterial]
-    FOREIGN KEY ([ActividadId])
-    REFERENCES [dbo].[ActividadSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ActividadMaterial'
-CREATE INDEX [IX_FK_ActividadMaterial]
-ON [dbo].[MaterialSet]
-    ([ActividadId]);
-GO
-
 -- Creating foreign key on [RegistroArticuloIngreso_RegistroArticulo_Id] in table 'RegistroArticuloSet'
 ALTER TABLE [dbo].[RegistroArticuloSet]
 ADD CONSTRAINT [FK_RegistroArticuloIngreso]
@@ -769,51 +706,6 @@ GO
 CREATE INDEX [IX_FK_RegistroArticuloIngreso]
 ON [dbo].[RegistroArticuloSet]
     ([RegistroArticuloIngreso_RegistroArticulo_Id]);
-GO
-
--- Creating foreign key on [EventoId] in table 'ActividadSet'
-ALTER TABLE [dbo].[ActividadSet]
-ADD CONSTRAINT [FK_EventoActividad]
-    FOREIGN KEY ([EventoId])
-    REFERENCES [dbo].[EventoSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EventoActividad'
-CREATE INDEX [IX_FK_EventoActividad]
-ON [dbo].[ActividadSet]
-    ([EventoId]);
-GO
-
--- Creating foreign key on [EventoPresupuesto_Evento_Id] in table 'EventoSet'
-ALTER TABLE [dbo].[EventoSet]
-ADD CONSTRAINT [FK_EventoPresupuesto]
-    FOREIGN KEY ([EventoPresupuesto_Evento_Id])
-    REFERENCES [dbo].[PresupuestoSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EventoPresupuesto'
-CREATE INDEX [IX_FK_EventoPresupuesto]
-ON [dbo].[EventoSet]
-    ([EventoPresupuesto_Evento_Id]);
-GO
-
--- Creating foreign key on [EventoId] in table 'ComiteSet'
-ALTER TABLE [dbo].[ComiteSet]
-ADD CONSTRAINT [FK_EventoComite]
-    FOREIGN KEY ([EventoId])
-    REFERENCES [dbo].[EventoSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EventoComite'
-CREATE INDEX [IX_FK_EventoComite]
-ON [dbo].[ComiteSet]
-    ([EventoId]);
 GO
 
 -- Creating foreign key on [ComiteId] in table 'ActividadSet'
@@ -831,21 +723,6 @@ ON [dbo].[ActividadSet]
     ([ComiteId]);
 GO
 
--- Creating foreign key on [ComiteId] in table 'MiembroComiteSet'
-ALTER TABLE [dbo].[MiembroComiteSet]
-ADD CONSTRAINT [FK_ComiteMiembroComite]
-    FOREIGN KEY ([ComiteId])
-    REFERENCES [dbo].[ComiteSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ComiteMiembroComite'
-CREATE INDEX [IX_FK_ComiteMiembroComite]
-ON [dbo].[MiembroComiteSet]
-    ([ComiteId]);
-GO
-
 -- Creating foreign key on [ActividadAsistente_Asistente_Id] in table 'ActividadAsistente'
 ALTER TABLE [dbo].[ActividadAsistente]
 ADD CONSTRAINT [FK_ActividadAsistente_Actividad]
@@ -855,10 +732,10 @@ ADD CONSTRAINT [FK_ActividadAsistente_Actividad]
     ON DELETE NO ACTION ON UPDATE NO ACTION;
 GO
 
--- Creating foreign key on [ActividadAsistente_Actividad_Id] in table 'ActividadAsistente'
+-- Creating foreign key on [Asistente_Id] in table 'ActividadAsistente'
 ALTER TABLE [dbo].[ActividadAsistente]
 ADD CONSTRAINT [FK_ActividadAsistente_Asistente]
-    FOREIGN KEY ([ActividadAsistente_Actividad_Id])
+    FOREIGN KEY ([Asistente_Id])
     REFERENCES [dbo].[AsistenteSet]
         ([Id])
     ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -867,7 +744,7 @@ GO
 -- Creating non-clustered index for FOREIGN KEY 'FK_ActividadAsistente_Asistente'
 CREATE INDEX [IX_FK_ActividadAsistente_Asistente]
 ON [dbo].[ActividadAsistente]
-    ([ActividadAsistente_Actividad_Id]);
+    ([Asistente_Id]);
 GO
 
 -- Creating foreign key on [ActividadId] in table 'TareaSet'
@@ -898,6 +775,231 @@ GO
 CREATE INDEX [IX_FK_IngresoPatrocinador]
 ON [dbo].[PatrocinadorSet]
     ([IngresoPatrocinador_Patrocinador_Id]);
+GO
+
+-- Creating foreign key on [Magistral_Id] in table 'EgresoSet'
+ALTER TABLE [dbo].[EgresoSet]
+ADD CONSTRAINT [FK_EgresoMagistral]
+    FOREIGN KEY ([Magistral_Id])
+    REFERENCES [dbo].[MagistralSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EgresoMagistral'
+CREATE INDEX [IX_FK_EgresoMagistral]
+ON [dbo].[EgresoSet]
+    ([Magistral_Id]);
+GO
+
+-- Creating foreign key on [ActividadId] in table 'MaterialSet'
+ALTER TABLE [dbo].[MaterialSet]
+ADD CONSTRAINT [FK_ActividadMaterial]
+    FOREIGN KEY ([ActividadId])
+    REFERENCES [dbo].[ActividadSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ActividadMaterial'
+CREATE INDEX [IX_FK_ActividadMaterial]
+ON [dbo].[MaterialSet]
+    ([ActividadId]);
+GO
+
+-- Creating foreign key on [EgresoMaterial_Material_Id] in table 'MaterialSet'
+ALTER TABLE [dbo].[MaterialSet]
+ADD CONSTRAINT [FK_EgresoMaterial]
+    FOREIGN KEY ([EgresoMaterial_Material_Id])
+    REFERENCES [dbo].[EgresoSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EgresoMaterial'
+CREATE INDEX [IX_FK_EgresoMaterial]
+ON [dbo].[MaterialSet]
+    ([EgresoMaterial_Material_Id]);
+GO
+
+-- Creating foreign key on [EventoId] in table 'ActividadSet'
+ALTER TABLE [dbo].[ActividadSet]
+ADD CONSTRAINT [FK_EventoActividad]
+    FOREIGN KEY ([EventoId])
+    REFERENCES [dbo].[EventoSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EventoActividad'
+CREATE INDEX [IX_FK_EventoActividad]
+ON [dbo].[ActividadSet]
+    ([EventoId]);
+GO
+
+-- Creating foreign key on [ArticuloId] in table 'EvaluacionSet'
+ALTER TABLE [dbo].[EvaluacionSet]
+ADD CONSTRAINT [FK_ArticuloEvaluacion]
+    FOREIGN KEY ([ArticuloId])
+    REFERENCES [dbo].[ArticuloSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArticuloEvaluacion'
+CREATE INDEX [IX_FK_ArticuloEvaluacion]
+ON [dbo].[EvaluacionSet]
+    ([ArticuloId]);
+GO
+
+-- Creating foreign key on [ComiteId] in table 'MiembroComiteSet'
+ALTER TABLE [dbo].[MiembroComiteSet]
+ADD CONSTRAINT [FK_ComiteMiembroComite]
+    FOREIGN KEY ([ComiteId])
+    REFERENCES [dbo].[ComiteSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ComiteMiembroComite'
+CREATE INDEX [IX_FK_ComiteMiembroComite]
+ON [dbo].[MiembroComiteSet]
+    ([ComiteId]);
+GO
+
+-- Creating foreign key on [EventoId] in table 'ComiteSet'
+ALTER TABLE [dbo].[ComiteSet]
+ADD CONSTRAINT [FK_EventoComite]
+    FOREIGN KEY ([EventoId])
+    REFERENCES [dbo].[EventoSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EventoComite'
+CREATE INDEX [IX_FK_EventoComite]
+ON [dbo].[ComiteSet]
+    ([EventoId]);
+GO
+
+-- Creating foreign key on [MiembroComite_Id] in table 'EvaluacionSet'
+ALTER TABLE [dbo].[EvaluacionSet]
+ADD CONSTRAINT [FK_EvaluacionMiembroComite]
+    FOREIGN KEY ([MiembroComite_Id])
+    REFERENCES [dbo].[MiembroComiteSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EvaluacionMiembroComite'
+CREATE INDEX [IX_FK_EvaluacionMiembroComite]
+ON [dbo].[EvaluacionSet]
+    ([MiembroComite_Id]);
+GO
+
+-- Creating foreign key on [EventoPresupuesto_Evento_Id] in table 'EventoSet'
+ALTER TABLE [dbo].[EventoSet]
+ADD CONSTRAINT [FK_EventoPresupuesto]
+    FOREIGN KEY ([EventoPresupuesto_Evento_Id])
+    REFERENCES [dbo].[PresupuestoSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EventoPresupuesto'
+CREATE INDEX [IX_FK_EventoPresupuesto]
+ON [dbo].[EventoSet]
+    ([EventoPresupuesto_Evento_Id]);
+GO
+
+-- Creating foreign key on [OrganizadorId] in table 'EventoSet'
+ALTER TABLE [dbo].[EventoSet]
+ADD CONSTRAINT [FK_OrganizadorEvento]
+    FOREIGN KEY ([OrganizadorId])
+    REFERENCES [dbo].[OrganizadorSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_OrganizadorEvento'
+CREATE INDEX [IX_FK_OrganizadorEvento]
+ON [dbo].[EventoSet]
+    ([OrganizadorId]);
+GO
+
+-- Creating foreign key on [idUsuario] in table 'MiembroComiteSet'
+ALTER TABLE [dbo].[MiembroComiteSet]
+ADD CONSTRAINT [FK_MiembroComiteUsuario]
+    FOREIGN KEY ([idUsuario])
+    REFERENCES [dbo].[UsuarioSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_MiembroComiteUsuario'
+CREATE INDEX [IX_FK_MiembroComiteUsuario]
+ON [dbo].[MiembroComiteSet]
+    ([idUsuario]);
+GO
+
+-- Creating foreign key on [idUsuario] in table 'OrganizadorSet'
+ALTER TABLE [dbo].[OrganizadorSet]
+ADD CONSTRAINT [FK_OrganizadorUsuario]
+    FOREIGN KEY ([idUsuario])
+    REFERENCES [dbo].[UsuarioSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_OrganizadorUsuario'
+CREATE INDEX [IX_FK_OrganizadorUsuario]
+ON [dbo].[OrganizadorSet]
+    ([idUsuario]);
+GO
+
+-- Creating foreign key on [AutorId] in table 'AutorArticuloSet'
+ALTER TABLE [dbo].[AutorArticuloSet]
+ADD CONSTRAINT [FK_AutorAutorArticulo]
+    FOREIGN KEY ([AutorId])
+    REFERENCES [dbo].[AutorSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AutorAutorArticulo'
+CREATE INDEX [IX_FK_AutorAutorArticulo]
+ON [dbo].[AutorArticuloSet]
+    ([AutorId]);
+GO
+
+-- Creating foreign key on [ArticuloId] in table 'AutorArticuloSet'
+ALTER TABLE [dbo].[AutorArticuloSet]
+ADD CONSTRAINT [FK_ArticuloAutorArticulo]
+    FOREIGN KEY ([ArticuloId])
+    REFERENCES [dbo].[ArticuloSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ArticuloAutorArticulo'
+CREATE INDEX [IX_FK_ArticuloAutorArticulo]
+ON [dbo].[AutorArticuloSet]
+    ([ArticuloId]);
+GO
+
+-- Creating foreign key on [AutorArticulo_Id] in table 'RegistroArticuloSet'
+ALTER TABLE [dbo].[RegistroArticuloSet]
+ADD CONSTRAINT [FK_RegistroArticuloAutorArticulo]
+    FOREIGN KEY ([AutorArticulo_Id])
+    REFERENCES [dbo].[AutorArticuloSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RegistroArticuloAutorArticulo'
+CREATE INDEX [IX_FK_RegistroArticuloAutorArticulo]
+ON [dbo].[RegistroArticuloSet]
+    ([AutorArticulo_Id]);
 GO
 
 -- --------------------------------------------------

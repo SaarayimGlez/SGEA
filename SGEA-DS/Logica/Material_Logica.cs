@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 
 namespace Logica
 {

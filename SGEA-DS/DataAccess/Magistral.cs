@@ -7,24 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Collections.Generic;
-
-public partial class Magistral
+namespace DataAccess
 {
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Magistral()
+    using System;
+    using System.Collections.Generic;
+    
+    public partial class Magistral
     {
-        this.EgresoSet = new HashSet<Egreso>();
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Magistral()
+        {
+            this.EgresoSet = new HashSet<Egreso>();
+        }
+    
+        public int Id { get; set; }
+        public string nombre { get; set; }
+        public string apellidoPaterno { get; set; }
+        public string apellidoMaterno { get; set; }
+        public int AdscripcionId { get; set; }
+    
+        public virtual Adscripcion Adscripcion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Egreso> EgresoSet { get; set; }
     }
-
-    public int Id { get; set; }
-    public string nombre { get; set; }
-    public string apellidoPaterno { get; set; }
-    public string apellidoMaterno { get; set; }
-    public int AdscripcionId { get; set; }
-
-    public virtual Adscripcion Adscripcion { get; set; }
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-    public virtual ICollection<Egreso> EgresoSet { get; set; }
 }

@@ -68,6 +68,9 @@
     <Compile Include="Autor.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AutorArticulo.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Calendario.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>

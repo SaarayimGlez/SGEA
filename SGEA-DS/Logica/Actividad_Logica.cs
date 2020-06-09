@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -64,9 +65,9 @@ namespace Logica
                     }));
                     if (lista.Actividad.ArticuloAct != null)
                     {
-                        RegistroArticulo_Logica registroArticuloDAO = new RegistroArticulo_Logica();
-                        listaActividad[listaActividad.Count - 1].Add(
-                            registroArticuloDAO.RecuperarAutor(lista.Actividad.ArticuloAct));
+                        var autor = lista.Actividad.ArticuloAct.AutorArticulo.FirstOrDefault().Autor;
+                        listaActividad[listaActividad.Count - 1].Add(autor.nombre +" "
+                            + autor.apellidoPaterno + " " + autor.apellidoMaterno);
                     }
                     if (lista.Actividad.MagistralAct != null)
                     {

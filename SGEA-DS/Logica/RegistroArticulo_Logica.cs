@@ -9,7 +9,7 @@ namespace Logica
         {
         }
 
-        public string RecuperarAutor(Articulo articulo)
+        /*public string RecuperarAutor(Articulo articulo)
         {
             string autor = "";
             try
@@ -47,6 +47,6 @@ namespace Logica
                 Console.WriteLine(e);
             }
             return autor;
-        }
+        }*/
     }
 }

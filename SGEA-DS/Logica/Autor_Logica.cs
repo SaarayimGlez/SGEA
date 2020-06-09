@@ -37,14 +37,14 @@ namespace Logica
                             Actividad = actividad
                         }
                      ).Join(
-                       _context.RegistroArticuloSet,
+                       _context.AutorArticuloSet,
                        actividadActiculo => actividadActiculo.Actividad.ArticuloAct.Id,
-                       registroArticulo => registroArticulo.Articulo.Id,
-                       (actividadActiculo, registroArticulo) => new
+                       autorArticulo => autorArticulo.Articulo.Id,
+                       (actividadActiculo, autorArticulo) => new
                        {
                            EventoId = actividadActiculo.Actividad.EventoId,
                            Fecha = actividadActiculo.Fecha,
-                           Autor = registroArticulo.Autor
+                           Autor = autorArticulo.Autor
                        }
                     ).Where(
                         evento => evento.EventoId == eventoId
@@ -77,22 +77,22 @@ namespace Logica
             {
                 var listaAutorBD = _context.AutorSet
                      .GroupJoin(
-                        _context.RegistroArticuloSet,
+                        _context.AutorArticuloSet,
                         autor => autor.Id,
-                        registroArticulo => registroArticulo.AutorId,
-                        (autor, registroArticulo) => new
+                        autorArticulo => autorArticulo.AutorId,
+                        (autor, autorArticulo) => new
                         {
                             Autor = autor,
-                            RegistroArticulo = registroArticulo
+                            AutorArticulo = autorArticulo
                         }
                      )
                      .SelectMany(
-                        tempRegistroArticulo => tempRegistroArticulo.
-                            RegistroArticulo.DefaultIfEmpty(),
-                        (tempAutor, tempRegistroArticulo) => new
+                        tempAutorArticulo => tempAutorArticulo.
+                            AutorArticulo.DefaultIfEmpty(),
+                        (tempAutor, tempAutorArticulo) => new
                         {
                             Autor = tempAutor.Autor,
-                            RegistroArticulo = tempRegistroArticulo
+                            RegistroArticulo = tempAutorArticulo
                         }
                      ).ToList();
 

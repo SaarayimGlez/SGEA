@@ -7,6 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using DataAccess;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -44,4 +45,5 @@ public partial class DataModelContainer : DbContext
     public virtual DbSet<MiembroComite> MiembroComiteSet { get; set; }
     public virtual DbSet<Organizador> OrganizadorSet { get; set; }
     public virtual DbSet<Usuario> UsuarioSet { get; set; }
+    public virtual DbSet<AutorArticulo> AutorArticuloSet { get; set; }
 }
