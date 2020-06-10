@@ -166,6 +166,9 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="abstract" Type="nvarchar(max)" Nullable="false" />
     <Property Name="documento" Type="tinyint" Nullable="false" />
+    <Property Name="titulo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="keyword" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
     <Property Name="ActividadArticulo_Articulo_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="RegistroArticuloSet">
@@ -908,6 +911,9 @@
           <Property Name="documento" Type="Byte" Nullable="false" />
           <NavigationProperty Name="Evaluacion" Relationship="DataModel.FK_ArticuloEvaluacion" FromRole="Articulo" ToRole="EvaluacionSet" />
           <NavigationProperty Name="AutorArticulo" Relationship="DataModel.ArticuloAutorArticulo" FromRole="Articulo" ToRole="AutorArticulo" />
+          <Property Name="titulo" Type="String" Nullable="false" />
+          <Property Name="keyword" Type="String" Nullable="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="ActividadArticulo">
           <End Type="DataModel.Actividad" Role="Actividad" Multiplicity="1" />
@@ -1453,6 +1459,9 @@
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="abstract" ColumnName="abstract" />
           <ScalarProperty Name="documento" ColumnName="documento" />
+          <ScalarProperty Name="titulo" ColumnName="titulo" />
+          <ScalarProperty Name="keyword" ColumnName="keyword" />
+          <ScalarProperty Name="status" ColumnName="status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
