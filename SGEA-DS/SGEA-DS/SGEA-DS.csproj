@@ -138,8 +138,8 @@
     <Compile Include="ModificarMiembroComite_2.xaml.cs">
       <DependentUpon>ModificarMiembroComite_2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Registrar adscripcion.xaml.cs">
-      <DependentUpon>Registrar adscripcion.xaml</DependentUpon>
+    <Compile Include="RegistrarAdscripcion.xaml.cs">
+      <DependentUpon>RegistrarAdscripcion.xaml</DependentUpon>
     </Compile>
     <Compile Include="GestionActividades.xaml.cs">
       <DependentUpon>GestionActividades.xaml</DependentUpon>
@@ -216,7 +216,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Registrar adscripcion.xaml">
+    <Page Include="RegistrarAdscripcion.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
