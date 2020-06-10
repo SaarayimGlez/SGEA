@@ -59,6 +59,14 @@ namespace SGEA_DS
                     this.Title = "Gestion de participante";
                     button_regresar.Click += Click_RegresarMiembroC;
                     break;
+                case 5:
+                    button_registrar.Content = "Registrar";
+                    button_registrar.Click += Click_RegistrarAdscripcion;
+                    button_modificar.Content = "Modificar";
+                    button_modificar.Click += Click_ModificarAdscripcion;
+                    this.Title = "Gestion de adscripción";
+                    button_regresar.Click += Click_RegresarMiembroC;
+                    break;
             }
         }
 
@@ -115,6 +123,18 @@ namespace SGEA_DS
         }
 
         private void Click_ModificarParticipante(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Click_RegistrarAdscripcion(object sender, RoutedEventArgs e)
+        {
+            CU44 registrarAdscripcion = new CU44(this.miembroComite);
+            registrarAdscripcion.Show();
+            this.Close();
+        }
+
+        private void Click_ModificarAdscripcion(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }

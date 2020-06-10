@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Linq;
 
 namespace Logica
@@ -58,6 +59,29 @@ namespace Logica
                 return false;
             }
             return false;
+        }
+
+        public bool RegistrarAdscripcion(Modelo.Adscripcion adscripcion)
+        {
+            bool respuesta = false;
+            try
+            {
+                _context.AdscripcionSet.Add(new Adscripcion()
+                {
+                    nombre = adscripcion.nombre,
+                    ciudad = adscripcion.ciudad,
+                    correoElectronico = adscripcion.correoElectronico,
+                    direccion = adscripcion.direccion,
+                    estado = adscripcion.estado
+                });
+                _context.SaveChanges();
+                respuesta = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return respuesta;
         }
     }
 }

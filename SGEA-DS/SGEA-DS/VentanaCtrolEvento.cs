@@ -84,5 +84,19 @@ namespace SGEA_DS
         {
             e.Handled = true;
         }
+
+        public void Textbox_AlfInstitucion_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (((e.Key == Key.D8 || e.Key == Key.D9) &&
+                Keyboard.Modifiers == ModifierKeys.Shift) || (e.Key >= Key.A && e.Key <= Key.Z) ||
+                (e.Key == Key.Oem3 || e.Key == Key.Oem1 || e.Key == Key.DeadCharProcessed ||
+                e.Key == Key.OemMinus || e.Key == Key.Subtract))
+            {
+            }
+            else
+            {
+                Textbox_Numerico_KeyDown(sender, e);
+            }
+        }
     }
 }

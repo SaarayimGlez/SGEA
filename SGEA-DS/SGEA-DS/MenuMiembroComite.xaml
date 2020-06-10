@@ -15,13 +15,15 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height=".25*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height=".5*"/>
             </Grid.RowDefinitions>
             <Button Content="Cerrar sesión" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="218" FontSize="18" Height="41" Grid.Row="4" Grid.Column="1" Click="Click_CerrarSesion"/>
-            <Button Content="Gestión asistente" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Column="1" Click="Click_Asistentes"/>
+            <Button Content="Gestión asistente" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Click="Click_Asistentes"/>
             <Button Content="Gestión participante" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Grid.Column="1" Click="Click_Participantes"/>
-            <Button Content="Generar diploma y gafete" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Click="Click_GenerarDiplomaGafete"/>
-            <Button Content="Gestión magistral" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Click="Click_Magistrales"/>
+            <Button Content="Generar diploma y gafete" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.ColumnSpan="2" Click="Click_GenerarDiplomaGafete"/>
+            <Button Content="Gestión magistral" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Grid.Column="1" Click="Click_Magistrales"/>
+            <Button Content="Gestión adscripción" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Click="Click_Adscripciones"/>
             <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="218" FontSize="18" Height="41" Click="Click_ModificarContrasena" IsEnabled="False" Grid.Row="4"/>
         </Grid>
     </Grid>

@@ -65,6 +65,14 @@ namespace SGEA_DS
             this.Close();
         }
 
+        private void Click_Adscripciones(object sender, RoutedEventArgs e)
+        {
+            GestionMiembroComite gestionMiembroComite =
+                new GestionMiembroComite(this.miembroComite, 5);
+            gestionMiembroComite.Show();
+            this.Close();
+        }
+
         private void Click_ModificarContrasena(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
