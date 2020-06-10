@@ -134,9 +134,12 @@ namespace Logica
                 {
                     listaMiembroC.Add(new Modelo.MiembroComite()
                     {
+                        Id = miembroComiteBD.Id,
                         nombre = miembroComiteBD.nombre,
                         apellidoMaterno = miembroComiteBD.apellidoMaterno,
-                        apellidoPaterno = miembroComiteBD.apellidoPaterno
+                        apellidoPaterno = miembroComiteBD.apellidoPaterno,
+                        correoElectronico = miembroComiteBD.correoElectronico,
+                        nivelExperiencia = miembroComiteBD.nivelExperiencia
                     });
                 }
             }
@@ -145,6 +148,33 @@ namespace Logica
                 Console.WriteLine(e);
             }
             return listaMiembroC;
+        }
+
+        public bool ModificarMiembroComite(Modelo.MiembroComite miembroComiteModificado)
+        {
+            try
+            {
+                var miembroComiteOriginal = _context.MiembroComiteSet.SingleOrDefault(
+                    miembroComite => miembroComite.Id == miembroComiteModificado.Id);
+
+                if (miembroComiteOriginal != null)
+                {
+                    miembroComiteOriginal.nombre = miembroComiteModificado.nombre;
+                    miembroComiteOriginal.apellidoPaterno = miembroComiteModificado.apellidoPaterno;
+                    miembroComiteOriginal.apellidoMaterno = miembroComiteModificado.apellidoMaterno;
+                    miembroComiteOriginal.correoElectronico = 
+                        miembroComiteModificado.correoElectronico;
+                    miembroComiteOriginal.nivelExperiencia = miembroComiteModificado.nivelExperiencia;
+                    _context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            return false;
         }
     }
 }

@@ -91,7 +91,10 @@ namespace SGEA_DS
 
         private void Click_ModificarMiembroComite(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            VentanaUserControl modificarMiembroComite =
+                new VentanaUserControl(23, this.miembroComite);
+            modificarMiembroComite.Show();
+            this.Close();
         }
 
         private void Click_RegistrarAsistente(object sender, RoutedEventArgs e)
@@ -129,9 +132,9 @@ namespace SGEA_DS
 
         private void Click_RegistrarAdscripcion(object sender, RoutedEventArgs e)
         {
-            CU44 registrarAdscripcion = new CU44(this.miembroComite);
+            /*CU44 registrarAdscripcion = new CU44(this.miembroComite);
             registrarAdscripcion.Show();
-            this.Close();
+            this.Close();*/
         }
 
         private void Click_ModificarAdscripcion(object sender, RoutedEventArgs e)
