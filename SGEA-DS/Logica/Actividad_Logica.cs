@@ -69,14 +69,14 @@ namespace Logica
                         listaActividad[listaActividad.Count - 1].Add(autor.nombre +" "
                             + autor.apellidoPaterno + " " + autor.apellidoMaterno);
                     }
-                    if (lista.Actividad.MagistralAct != null)
+                    else if (lista.Actividad.MagistralAct != null)
                     {
                         listaActividad[listaActividad.Count - 1].Add(
                             lista.Actividad.MagistralAct.nombre + " " 
                             + lista.Actividad.MagistralAct.apellidoPaterno + " " 
                             + lista.Actividad.MagistralAct.apellidoMaterno);
                     }
-                    if (lista.Actividad.ParticipanteAct != null)
+                    else if (lista.Actividad.ParticipanteAct != null)
                     {
                         string participanteAct = "";
                         foreach (Participante participante in lista.Actividad.ParticipanteAct)
@@ -96,6 +96,11 @@ namespace Logica
                         }
                         listaActividad[listaActividad.Count - 1].Add(participanteAct);
                     }
+                    else
+                    {
+                        listaActividad[listaActividad.Count - 1].Add("");
+                    }
+                    listaActividad[listaActividad.Count - 1].Add(lista.Actividad.ActividadId.ToString());
                 }
             }
             catch (Exception e)
@@ -103,6 +108,30 @@ namespace Logica
                 Console.WriteLine(e);
             }
             return listaActividad;
+        }
+
+        public bool RegistrarActividadAsistente(int actvidadId, Asistente nuevoAsistente)
+        {
+            bool respuesta = false;
+            try
+            {
+                var actividadARelacionar = _context.ActividadSet.SingleOrDefault(
+                    actividad => actividad.Id == actvidadId);
+
+                if (actividadARelacionar != null)
+                {
+                    var asistente = new Asistente() { Id = nuevoAsistente.Id };
+                    _context.AsistenteSet.Attach(asistente);
+                    actividadARelacionar.Asistente.Add(asistente);
+                    _context.SaveChanges();
+                    respuesta = true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return respuesta;
         }
     }
 }
