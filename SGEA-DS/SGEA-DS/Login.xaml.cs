@@ -48,8 +48,8 @@ namespace SGEA_DS
                         }
                         else if(usuarioActual.evaluador)
                         {
-                            MenuEvaluador menuEvaluador = new MenuEvaluador(usuarioActual);
-                            menuEvaluador.Show();
+                            GestionArticulo gestionArticulo = new GestionArticulo(usuarioActual);
+                            gestionArticulo.Show();
                             this.Close();
                         }
                         else

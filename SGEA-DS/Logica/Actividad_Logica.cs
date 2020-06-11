@@ -63,9 +63,9 @@ namespace Logica
                         lista.Actividad.Aula,
                         lista.Actividad.Tipo
                     }));
-                    if (lista.Actividad.ArticuloAct != null)
+                    if (lista.Actividad.ArticuloAct.FirstOrDefault() != null)
                     {
-                        var autor = lista.Actividad.ArticuloAct.AutorArticulo.FirstOrDefault().Autor;
+                        var autor = lista.Actividad.ArticuloAct.FirstOrDefault().AutorArticulo.FirstOrDefault().Autor;
                         listaActividad[listaActividad.Count - 1].Add(autor.nombre +" "
                             + autor.apellidoPaterno + " " + autor.apellidoMaterno);
                     }

@@ -38,7 +38,7 @@ namespace Logica
                         }
                      ).Join(
                        _context.AutorArticuloSet,
-                       actividadActiculo => actividadActiculo.Actividad.ArticuloAct.Id,
+                       actividadActiculo => actividadActiculo.Actividad.ArticuloAct.FirstOrDefault().Id,
                        autorArticulo => autorArticulo.Articulo.Id,
                        (actividadActiculo, autorArticulo) => new
                        {
@@ -88,30 +88,39 @@ namespace Logica
                      )
                      .SelectMany(
                         tempAutorArticulo => tempAutorArticulo.
-                            AutorArticulo.DefaultIfEmpty(),
+                        AutorArticulo.DefaultIfEmpty(),
                         (tempAutor, tempAutorArticulo) => new
                         {
                             Autor = tempAutor.Autor,
-                            RegistroArticulo = tempAutorArticulo
+                            AutorArticulo = tempAutorArticulo
                         }
                      ).ToList();
 
                 foreach (var autorBD in listaAutorBD)
                 {
-                    listaAutor.Add(new List<string>(new string[] {
-                        autorBD.Autor.nombre,
-                        autorBD.Autor.apellidoPaterno,
-                        autorBD.Autor.apellidoMaterno,
-                        autorBD.Autor.correoElectronico
-                    }));
-                    if (autorBD.RegistroArticulo != null)
+                    if (listaAutor.Count > 0 &&
+                            listaAutor.Last()[0] == autorBD.Autor.nombre)
                     {
-                        listaAutor[listaAutor.Count - 1].Add(
-                            autorBD.RegistroArticulo.Articulo.@abstract);
+                        listaAutor.Last()[4] += ", "
+                                    + autorBD.AutorArticulo.Articulo.titulo;
                     }
                     else
                     {
-                        listaAutor[listaAutor.Count - 1].Add("(Ningún artículo)");
+                        listaAutor.Add(new List<string>(new string[] {
+                            autorBD.Autor.nombre,
+                            autorBD.Autor.apellidoPaterno,
+                            autorBD.Autor.apellidoMaterno,
+                            autorBD.Autor.correoElectronico
+                        }));
+                        if (autorBD.AutorArticulo != null)
+                        {
+                            listaAutor[listaAutor.Count - 1].Add(autorBD.AutorArticulo.Articulo.titulo);
+                        }
+                        else
+                        {
+                            listaAutor[listaAutor.Count - 1].Add("(Ningún artículo)");
+                        }
+                        listaAutor[listaAutor.Count - 1].Add(autorBD.Autor.Id.ToString());
                     }
                 }
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,18 +20,19 @@ namespace SGEA_DS
     /// </summary>
     public partial class MenuEvaluador : Window
     {
-        private Modelo.MiembroComite miembroComite;
+        private MiembroComite miembroComite;
+        private List<object> articulo;
 
-        public MenuEvaluador(Modelo.MiembroComite miembroComite)
+        public MenuEvaluador(List<object> articulo)
         {
             InitializeComponent();
-            this.miembroComite = miembroComite;
+            this.articulo = articulo;
         }
 
-        private void Click_CerrarSesion(object sender, RoutedEventArgs e)
+        private void Click_Regresar(object sender, RoutedEventArgs e)
         {
-            Login login = new Login();
-            login.Show();
+            GestionArticulo gestionArticulo = new GestionArticulo((int)this.articulo[6]);
+            gestionArticulo.Show();
             this.Close();
         }
 
@@ -45,11 +47,6 @@ namespace SGEA_DS
         }
 
         private void Click_EnviarEvaluacion(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void Click_ModificarContrasena(object sender, RoutedEventArgs e)
         {
             throw new NotImplementedException();
         }

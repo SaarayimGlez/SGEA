@@ -20,6 +20,7 @@ namespace DataAccess
             this.Participante = new HashSet<Participante>();
             this.MaterialSet = new HashSet<Material>();
             this.Asistente = new HashSet<Asistente>();
+            this.Articulo = new HashSet<Articulo>();
         }
     
         public int Id { get; set; }
@@ -30,7 +31,6 @@ namespace DataAccess
         public int EventoId { get; set; }
         public int ComiteId { get; set; }
     
-        public virtual Articulo Articulo { get; set; }
         public virtual Magistral Magistral { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Participante> Participante { get; set; }
@@ -40,5 +40,7 @@ namespace DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Asistente> Asistente { get; set; }
         public virtual Evento Evento { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Articulo> Articulo { get; set; }
     }
 }

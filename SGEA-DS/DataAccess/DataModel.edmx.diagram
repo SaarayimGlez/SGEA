@@ -6,8 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="f52390f69c9d4af589fa76dd861016cf" Name="Diagram1" ZoomLevel="116" >
         <EntityTypeShape EntityType="DataModel.Actividad" Width="1.5" PointX="5.25" PointY="21.375" />
-        <EntityTypeShape EntityType="DataModel.Articulo" Width="1.5" PointX="7.5" PointY="18.125" />
-        <AssociationConnector Association="DataModel.ActividadArticulo" />
+        <EntityTypeShape EntityType="DataModel.Articulo" Width="1.5" PointX="7.625" PointY="17.75" />
         <EntityTypeShape EntityType="DataModel.RegistroArticulo" Width="1.5" PointX="9.75" PointY="18" />
         <EntityTypeShape EntityType="DataModel.Adscripcion" Width="1.5" PointX="5.25" PointY="14.875" />
         <EntityTypeShape EntityType="DataModel.Autor" Width="1.5" PointX="7.5" PointY="14.75" />
@@ -54,11 +53,11 @@
         <AssociationConnector Association="DataModel.AutorAutorArticulo" />
         <AssociationConnector Association="DataModel.ArticuloAutorArticulo" />
         <AssociationConnector Association="DataModel.RegistroArticuloAutorArticulo" />
+        <AssociationConnector Association="DataModel.ActividadArticulo" />
       </Diagram>
       <Diagram DiagramId="443b65acaf1942b198e0b46829ab37b4" Name="Diagram2" >
         <EntityTypeShape EntityType="DataModel.Actividad" Width="1.5" PointX="5.25" PointY="21.375" />
         <EntityTypeShape EntityType="DataModel.Articulo" Width="1.5" PointX="7.5" PointY="18.125" />
-        <AssociationConnector Association="DataModel.ActividadArticulo" />
         <EntityTypeShape EntityType="DataModel.RegistroArticulo" Width="1.5" PointX="9.75" PointY="17.625" />
         <EntityTypeShape EntityType="DataModel.Adscripcion" Width="1.5" PointX="5.25" PointY="14.875" />
         <EntityTypeShape EntityType="DataModel.Autor" Width="1.5" PointX="7.5" PointY="14.75" />
@@ -80,6 +79,7 @@
         <AssociationConnector Association="DataModel.ActividadAsistente" />
         <EntityTypeShape EntityType="DataModel.Tarea" Width="1.5" PointX="7.5" PointY="35.25" />
         <AssociationConnector Association="DataModel.ActividadTarea" />
+        <AssociationConnector Association="DataModel.ActividadArticulo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

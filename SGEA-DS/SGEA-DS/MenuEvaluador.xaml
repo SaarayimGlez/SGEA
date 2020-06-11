@@ -30,8 +30,7 @@
             <Button Content="Enviar" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Grid.Column="1" Click="Click_EnviarEvaluacion" IsEnabled="False"/>
         </Grid>
         <Grid Margin="66,0,66,38" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="18" Click="Click_ModificarContrasena" IsEnabled="False"/>
-            <Button Content="Cerrar sesión" HorizontalAlignment="Left" Margin="509,0,0,0" VerticalAlignment="Top" Width="150" FontSize="18" Click="Click_CerrarSesion"/>
+            <Button Content="Regresar" HorizontalAlignment="Left" Margin="509,0,0,0" VerticalAlignment="Top" Width="150" FontSize="18" Click="Click_Regresar"/>
         </Grid>
     </Grid>
 </Window>

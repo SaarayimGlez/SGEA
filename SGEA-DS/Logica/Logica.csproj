@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Actividad_Logica.cs" />
     <Compile Include="Adscripcion_Logica.cs" />
+    <Compile Include="Articulo_Logica.cs" />
     <Compile Include="Asistente_Logica.cs" />
     <Compile Include="Autor_Logica.cs" />
     <Compile Include="ConexionBD_Logica.cs" />

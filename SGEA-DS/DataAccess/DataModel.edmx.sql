@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/10/2020 16:08:54
+-- Date Created: 06/11/2020 01:11:14
 -- Generated from EDMX file: D:\Users\GANADOR\Downloads\8\desSOFT\ELproyecto\SGEA-DS\DataAccess\DataModel.edmx
 -- --------------------------------------------------
 
@@ -17,9 +17,6 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_ActividadArticulo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ArticuloSet] DROP CONSTRAINT [FK_ActividadArticulo];
-GO
 IF OBJECT_ID(N'[dbo].[FK_ActividadCalendario]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[CalendarioSet] DROP CONSTRAINT [FK_ActividadCalendario];
 GO
@@ -103,6 +100,9 @@ IF OBJECT_ID(N'[dbo].[FK_ArticuloAutorArticulo]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_RegistroArticuloAutorArticulo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[RegistroArticuloSet] DROP CONSTRAINT [FK_RegistroArticuloAutorArticulo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ActividadArticulo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArticuloSet] DROP CONSTRAINT [FK_ActividadArticulo];
 GO
 
 -- --------------------------------------------------
@@ -202,11 +202,11 @@ GO
 CREATE TABLE [dbo].[ArticuloSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [abstract] nvarchar(max)  NOT NULL,
-    [documento] tinyint  NOT NULL,
+    [documento] nvarchar(max)  NOT NULL,
     [titulo] nvarchar(max)  NOT NULL,
     [keyword] nvarchar(max)  NOT NULL,
     [status] bit  NOT NULL,
-    [ActividadArticulo_Articulo_Id] int  NOT NULL
+    [ActividadId] int  NULL
 );
 GO
 
@@ -587,21 +587,6 @@ GO
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------
-
--- Creating foreign key on [ActividadArticulo_Articulo_Id] in table 'ArticuloSet'
-ALTER TABLE [dbo].[ArticuloSet]
-ADD CONSTRAINT [FK_ActividadArticulo]
-    FOREIGN KEY ([ActividadArticulo_Articulo_Id])
-    REFERENCES [dbo].[ActividadSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ActividadArticulo'
-CREATE INDEX [IX_FK_ActividadArticulo]
-ON [dbo].[ArticuloSet]
-    ([ActividadArticulo_Articulo_Id]);
-GO
 
 -- Creating foreign key on [ActividadId] in table 'CalendarioSet'
 ALTER TABLE [dbo].[CalendarioSet]
@@ -1009,6 +994,21 @@ GO
 CREATE INDEX [IX_FK_RegistroArticuloAutorArticulo]
 ON [dbo].[RegistroArticuloSet]
     ([AutorArticulo_Id]);
+GO
+
+-- Creating foreign key on [ActividadId] in table 'ArticuloSet'
+ALTER TABLE [dbo].[ArticuloSet]
+ADD CONSTRAINT [FK_ActividadArticulo]
+    FOREIGN KEY ([ActividadId])
+    REFERENCES [dbo].[ActividadSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ActividadArticulo'
+CREATE INDEX [IX_FK_ActividadArticulo]
+ON [dbo].[ArticuloSet]
+    ([ActividadId]);
 GO
 
 -- --------------------------------------------------

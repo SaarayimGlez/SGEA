@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Articulo.cs" />
     <Compile Include="Asistente.cs" />
     <Compile Include="Autor.cs" />
     <Compile Include="Comite.cs" />

@@ -1,4 +1,5 @@
-﻿using System.Data.Common;
+﻿using DataAccess;
+using System.Data.Common;
 
 namespace Logica
 {

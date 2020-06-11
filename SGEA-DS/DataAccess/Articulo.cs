@@ -23,14 +23,16 @@ namespace DataAccess
     
         public int Id { get; set; }
         public string @abstract { get; set; }
-        public byte documento { get; set; }
+        public string documento { get; set; }
         public string titulo { get; set; }
         public string keyword { get; set; }
         public bool status { get; set; }
+        public Nullable<int> ActividadId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Evaluacion> Evaluacion { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AutorArticulo> AutorArticulo { get; set; }
+        public virtual Actividad Actividad { get; set; }
     }
 }

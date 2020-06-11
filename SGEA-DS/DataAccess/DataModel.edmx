@@ -30,10 +30,6 @@
     <EntitySet Name="AutorArticuloSet" EntityType="DataModel.Store.AutorArticuloSet" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ActividadParticipante" EntityType="DataModel.Store.ActividadParticipante" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="ActividadAsistente" EntityType="DataModel.Store.ActividadAsistente" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="ActividadArticulo" Association="DataModel.Store.ActividadArticulo">
-      <End Role="Actividad" EntitySet="ActividadSet" />
-      <End Role="Articulo" EntitySet="ArticuloSet" />
-    </AssociationSet>
     <AssociationSet Name="ActividadCalendario" Association="DataModel.Store.ActividadCalendario">
       <End Role="Actividad" EntitySet="ActividadSet" />
       <End Role="Calendario" EntitySet="CalendarioSet" />
@@ -146,6 +142,10 @@
       <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
       <End Role="AutorArticulo" EntitySet="AutorArticuloSet" />
     </AssociationSet>
+    <AssociationSet Name="ActividadArticulo" Association="DataModel.Store.ActividadArticulo">
+      <End Role="Actividad" EntitySet="ActividadSet" />
+      <End Role="Articulo" EntitySet="ArticuloSet" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ActividadSet">
     <Key>
@@ -165,11 +165,11 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="abstract" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="documento" Type="tinyint" Nullable="false" />
+    <Property Name="documento" Type="nvarchar(max)" Nullable="false" />
     <Property Name="titulo" Type="nvarchar(max)" Nullable="false" />
     <Property Name="keyword" Type="nvarchar(max)" Nullable="false" />
     <Property Name="status" Type="bit" Nullable="false" />
-    <Property Name="ActividadArticulo_Articulo_Id" Type="int" Nullable="false" />
+    <Property Name="ActividadId" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="RegistroArticuloSet">
     <Key>
@@ -399,18 +399,6 @@
     <Property Name="ActividadAsistente_Asistente_Id" Type="int" Nullable="false" />
     <Property Name="Asistente_Id" Type="int" Nullable="false" />
   </EntityType>
-  <Association Name="ActividadArticulo">
-    <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="1" />
-    <End Role="Articulo" Type="DataModel.Store.ArticuloSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Actividad">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="Articulo">
-        <PropertyRef Name="ActividadArticulo_Articulo_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="ActividadCalendario">
     <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="1" />
     <End Role="Calendario" Type="DataModel.Store.CalendarioSet" Multiplicity="*" />
@@ -699,6 +687,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="ActividadArticulo">
+    <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="0..1" />
+    <End Role="Articulo" Type="DataModel.Store.ArticuloSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividad">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Articulo">
+        <PropertyRef Name="ActividadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ActividadParticipante_Actividad">
     <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="1" />
     <End Role="ActividadParticipante" Type="DataModel.Store.ActividadParticipante" Multiplicity="*" />
@@ -754,10 +754,6 @@
         <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ActividadSet" EntityType="DataModel.Actividad" />
           <EntitySet Name="ArticuloSet" EntityType="DataModel.Articulo" />
-          <AssociationSet Name="ActividadArticulo" Association="DataModel.ActividadArticulo">
-            <End Role="Actividad" EntitySet="ActividadSet" />
-            <End Role="Articulo" EntitySet="ArticuloSet" />
-          </AssociationSet>
           <EntitySet Name="RegistroArticuloSet" EntityType="DataModel.RegistroArticulo" />
           <EntitySet Name="AdscripcionSet" EntityType="DataModel.Adscripcion" />
           <EntitySet Name="AutorSet" EntityType="DataModel.Autor" />
@@ -882,6 +878,10 @@
             <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
             <End Role="AutorArticulo" EntitySet="AutorArticuloSet" />
           </AssociationSet>
+          <AssociationSet Name="ActividadArticulo" Association="DataModel.ActividadArticulo">
+            <End EntitySet="ActividadSet" Role="Actividad" />
+            <End EntitySet="ArticuloSet" Role="Articulo" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Actividad">
           <Key>
@@ -892,7 +892,6 @@
           <Property Name="costo" Type="Double" Nullable="false" />
           <Property Name="aula" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="tipo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Articulo" Relationship="DataModel.ActividadArticulo" FromRole="Actividad" ToRole="Articulo" />
           <NavigationProperty Name="Magistral" Relationship="DataModel.ActividadMagistral" FromRole="Actividad" ToRole="Magistral" />
           <NavigationProperty Name="Participante" Relationship="DataModel.ActividadParticipante" FromRole="Actividad" ToRole="Participante" />
           <Property Name="EventoId" Type="Int32" Nullable="false" />
@@ -901,6 +900,7 @@
           <NavigationProperty Name="MaterialSet" Relationship="DataModel.FK_ActividadMaterial" FromRole="Actividad" ToRole="MaterialSet" />
           <NavigationProperty Name="Asistente" Relationship="DataModel.ActividadAsistente" FromRole="Actividad" ToRole="Asistente" />
           <NavigationProperty Name="Evento" Relationship="DataModel.FK_EventoActividad" FromRole="Actividad" ToRole="EventoSet" />
+          <NavigationProperty Name="Articulo" Relationship="DataModel.ActividadArticulo" FromRole="Actividad" ToRole="Articulo" />
         </EntityType>
         <EntityType Name="Articulo">
           <Key>
@@ -908,17 +908,15 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="abstract" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="documento" Type="Byte" Nullable="false" />
+          <Property Name="documento" Type="String" Nullable="false" />
           <NavigationProperty Name="Evaluacion" Relationship="DataModel.FK_ArticuloEvaluacion" FromRole="Articulo" ToRole="EvaluacionSet" />
           <NavigationProperty Name="AutorArticulo" Relationship="DataModel.ArticuloAutorArticulo" FromRole="Articulo" ToRole="AutorArticulo" />
           <Property Name="titulo" Type="String" Nullable="false" />
           <Property Name="keyword" Type="String" Nullable="false" />
           <Property Name="status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Actividad" Relationship="DataModel.ActividadArticulo" FromRole="Articulo" ToRole="Actividad" />
+          <Property Name="ActividadId" Nullable="true" Type="Int32" />
         </EntityType>
-        <Association Name="ActividadArticulo">
-          <End Type="DataModel.Actividad" Role="Actividad" Multiplicity="1" />
-          <End Type="DataModel.Articulo" Role="Articulo" Multiplicity="0..1" />
-        </Association>
         <EntityType Name="RegistroArticulo">
           <Key>
             <PropertyRef Name="Id" />
@@ -1434,6 +1432,18 @@
           <End Type="DataModel.RegistroArticulo" Role="RegistroArticulo" Multiplicity="1" />
           <End Type="DataModel.AutorArticulo" Role="AutorArticulo" Multiplicity="1" />
         </Association>
+        <Association Name="ActividadArticulo">
+          <End Type="DataModel.Actividad" Multiplicity="0..1" Role="Actividad" />
+          <End Type="DataModel.Articulo" Multiplicity="*" Role="Articulo" />
+          <ReferentialConstraint>
+            <Principal Role="Actividad">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="ActividadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1462,6 +1472,7 @@
           <ScalarProperty Name="titulo" ColumnName="titulo" />
           <ScalarProperty Name="keyword" ColumnName="keyword" />
           <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="ActividadId" ColumnName="ActividadId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1694,14 +1705,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="ActividadArticulo" TypeName="DataModel.ActividadArticulo" StoreEntitySet="ArticuloSet">
-      <EndProperty Name="Actividad">
-        <ScalarProperty Name="Id" ColumnName="ActividadArticulo_Articulo_Id" />
-      </EndProperty>
-      <EndProperty Name="Articulo">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="ActividadMagistral" TypeName="DataModel.ActividadMagistral" StoreEntitySet="MagistralSet">
       <EndProperty Name="Actividad">
         <ScalarProperty Name="Id" ColumnName="ActividadMagistral_Magistral_Id" />
