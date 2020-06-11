@@ -36,7 +36,9 @@ namespace SGEA_DS
 
         private void Click_RegistrarArticulo(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            CU29 registrarArticulo = new CU29(this.miembroComite);
+            registrarArticulo.Show();
+            this.Close();
         }
 
         private void Click_RegistrarAutor(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -54,6 +55,33 @@ namespace Logica
                 Console.WriteLine(e);
             }
             return listaArticulo;
+        }
+
+        public bool RegistrarArticulo(Modelo.Articulo articulo, List<int> autorId)
+        {
+            bool respuesta = false;
+            try
+            {
+                _context.ArticuloSet.Add(new Articulo()
+                {
+                    titulo = articulo.titulo,
+                    @abstract = articulo.@abstract,
+                    keyword = articulo.keyword,
+                    documento = articulo.documento,
+                    status = articulo.status
+                });
+                _context.SaveChanges();
+
+                var nuevoArticulo = _context.ArticuloSet.ToList().Last<Articulo>();
+
+                Autor_Logica autor_Logica = new Autor_Logica();
+                respuesta = autor_Logica.RegistrarAutorArticulo(autorId, nuevoArticulo);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return respuesta;
         }
     }
 }

@@ -138,13 +138,13 @@
       <End Role="Articulo" EntitySet="ArticuloSet" />
       <End Role="AutorArticulo" EntitySet="AutorArticuloSet" />
     </AssociationSet>
-    <AssociationSet Name="RegistroArticuloAutorArticulo" Association="DataModel.Store.RegistroArticuloAutorArticulo">
-      <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
-      <End Role="AutorArticulo" EntitySet="AutorArticuloSet" />
-    </AssociationSet>
     <AssociationSet Name="ActividadArticulo" Association="DataModel.Store.ActividadArticulo">
       <End Role="Actividad" EntitySet="ActividadSet" />
       <End Role="Articulo" EntitySet="ArticuloSet" />
+    </AssociationSet>
+    <AssociationSet Name="RegistroArticuloAutorArticulo" Association="DataModel.Store.RegistroArticuloAutorArticulo">
+      <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
+      <End Role="AutorArticulo" EntitySet="AutorArticuloSet" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="ActividadSet">
@@ -675,18 +675,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="RegistroArticuloAutorArticulo">
-    <End Role="RegistroArticulo" Type="DataModel.Store.RegistroArticuloSet" Multiplicity="*" />
-    <End Role="AutorArticulo" Type="DataModel.Store.AutorArticuloSet" Multiplicity="1" />
-    <ReferentialConstraint>
-      <Principal Role="AutorArticulo">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="RegistroArticulo">
-        <PropertyRef Name="AutorArticulo_Id" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="ActividadArticulo">
     <End Role="Actividad" Type="DataModel.Store.ActividadSet" Multiplicity="0..1" />
     <End Role="Articulo" Type="DataModel.Store.ArticuloSet" Multiplicity="*" />
@@ -696,6 +684,18 @@
       </Principal>
       <Dependent Role="Articulo">
         <PropertyRef Name="ActividadId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RegistroArticuloAutorArticulo">
+    <End Role="RegistroArticulo" Type="DataModel.Store.RegistroArticuloSet" Multiplicity="*" />
+    <End Role="AutorArticulo" Type="DataModel.Store.AutorArticuloSet" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="AutorArticulo">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="RegistroArticulo">
+        <PropertyRef Name="AutorArticulo_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -874,13 +874,13 @@
             <End Role="Articulo" EntitySet="ArticuloSet" />
             <End Role="AutorArticulo" EntitySet="AutorArticuloSet" />
           </AssociationSet>
-          <AssociationSet Name="RegistroArticuloAutorArticulo" Association="DataModel.RegistroArticuloAutorArticulo">
-            <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
-            <End Role="AutorArticulo" EntitySet="AutorArticuloSet" />
-          </AssociationSet>
           <AssociationSet Name="ActividadArticulo" Association="DataModel.ActividadArticulo">
             <End EntitySet="ActividadSet" Role="Actividad" />
             <End EntitySet="ArticuloSet" Role="Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="RegistroArticuloAutorArticulo" Association="DataModel.RegistroArticuloAutorArticulo">
+            <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
+            <End Role="AutorArticulo" EntitySet="AutorArticuloSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Actividad">
@@ -1428,10 +1428,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="RegistroArticuloAutorArticulo">
-          <End Type="DataModel.RegistroArticulo" Role="RegistroArticulo" Multiplicity="1" />
-          <End Type="DataModel.AutorArticulo" Role="AutorArticulo" Multiplicity="1" />
-        </Association>
         <Association Name="ActividadArticulo">
           <End Type="DataModel.Actividad" Multiplicity="0..1" Role="Actividad" />
           <End Type="DataModel.Articulo" Multiplicity="*" Role="Articulo" />
@@ -1443,6 +1439,10 @@
               <PropertyRef Name="ActividadId" />
             </Dependent>
           </ReferentialConstraint>
+        </Association>
+        <Association Name="RegistroArticuloAutorArticulo">
+          <End Type="DataModel.RegistroArticulo" Role="RegistroArticulo" Multiplicity="0..1" />
+          <End Type="DataModel.AutorArticulo" Role="AutorArticulo" Multiplicity="1" />
         </Association>
       </Schema>
     </edmx:ConceptualModels>

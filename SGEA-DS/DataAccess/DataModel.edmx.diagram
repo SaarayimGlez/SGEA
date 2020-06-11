@@ -52,8 +52,8 @@
         <EntityTypeShape EntityType="DataModel.AutorArticulo" Width="1.5" PointX="11.375" PointY="15.25" />
         <AssociationConnector Association="DataModel.AutorAutorArticulo" />
         <AssociationConnector Association="DataModel.ArticuloAutorArticulo" />
-        <AssociationConnector Association="DataModel.RegistroArticuloAutorArticulo" />
         <AssociationConnector Association="DataModel.ActividadArticulo" />
+        <AssociationConnector Association="DataModel.RegistroArticuloAutorArticulo" />
       </Diagram>
       <Diagram DiagramId="443b65acaf1942b198e0b46829ab37b4" Name="Diagram2" >
         <EntityTypeShape EntityType="DataModel.Actividad" Width="1.5" PointX="5.25" PointY="21.375" />

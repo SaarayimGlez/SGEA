@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/11/2020 01:11:14
+-- Date Created: 06/11/2020 07:05:25
 -- Generated from EDMX file: D:\Users\GANADOR\Downloads\8\desSOFT\ELproyecto\SGEA-DS\DataAccess\DataModel.edmx
 -- --------------------------------------------------
 
@@ -981,21 +981,6 @@ ON [dbo].[AutorArticuloSet]
     ([ArticuloId]);
 GO
 
--- Creating foreign key on [AutorArticulo_Id] in table 'RegistroArticuloSet'
-ALTER TABLE [dbo].[RegistroArticuloSet]
-ADD CONSTRAINT [FK_RegistroArticuloAutorArticulo]
-    FOREIGN KEY ([AutorArticulo_Id])
-    REFERENCES [dbo].[AutorArticuloSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RegistroArticuloAutorArticulo'
-CREATE INDEX [IX_FK_RegistroArticuloAutorArticulo]
-ON [dbo].[RegistroArticuloSet]
-    ([AutorArticulo_Id]);
-GO
-
 -- Creating foreign key on [ActividadId] in table 'ArticuloSet'
 ALTER TABLE [dbo].[ArticuloSet]
 ADD CONSTRAINT [FK_ActividadArticulo]
@@ -1009,6 +994,21 @@ GO
 CREATE INDEX [IX_FK_ActividadArticulo]
 ON [dbo].[ArticuloSet]
     ([ActividadId]);
+GO
+
+-- Creating foreign key on [AutorArticulo_Id] in table 'RegistroArticuloSet'
+ALTER TABLE [dbo].[RegistroArticuloSet]
+ADD CONSTRAINT [FK_RegistroArticuloAutorArticulo]
+    FOREIGN KEY ([AutorArticulo_Id])
+    REFERENCES [dbo].[AutorArticuloSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RegistroArticuloAutorArticulo'
+CREATE INDEX [IX_FK_RegistroArticuloAutorArticulo]
+ON [dbo].[RegistroArticuloSet]
+    ([AutorArticulo_Id]);
 GO
 
 -- --------------------------------------------------

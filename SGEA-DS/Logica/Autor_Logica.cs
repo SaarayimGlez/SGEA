@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DataAccess;
 
 namespace Logica
 {
@@ -94,7 +95,9 @@ namespace Logica
                             Autor = tempAutor.Autor,
                             AutorArticulo = tempAutorArticulo
                         }
-                     ).ToList();
+                     );
+
+                listaAutorBD = listaAutorBD.OrderBy(autor => autor.Autor.nombre);
 
                 foreach (var autorBD in listaAutorBD)
                 {
@@ -129,6 +132,29 @@ namespace Logica
                 Console.WriteLine(e);
             }
             return listaAutor;
+        }
+
+        internal bool RegistrarAutorArticulo(List<int> autorId, Articulo nuevoArticulo)
+        {
+            bool respuesta = false;
+            try
+            {
+                foreach (int id in autorId)
+                {
+                    _context.AutorArticuloSet.Add(new AutorArticulo()
+                    {
+                        AutorId = id,
+                        ArticuloId = nuevoArticulo.Id
+                    });
+                    _context.SaveChanges();
+                }
+                respuesta = true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return respuesta;
         }
     }
 }
