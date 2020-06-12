@@ -19,9 +19,9 @@
             </Grid.RowDefinitions>
             <Button Content="Regresar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" FontSize="18" Height="41" Grid.Row="2" Grid.Column="1" Margin="234,55,0,0" Click="Click_Regresar"/>
             <Button Content="Registrar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" IsEnabled="False" Click="Click_Registrar"/>
-            <Button Content="Consultar" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Column="1" Click="Click_Consultar"/>
+            <Button Content="Consultar" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Column="1" Click="Click_Consultar" IsEnabled="False"/>
             <Button Content="Modificar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" IsEnabled="False" Click="Click_Modificar"/>
-            <Button Content="Consultar número de asistentes" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Grid.Column="1" Click="Click_NumAsistentes"/>
+            <Button Content="Consultar número de asistentes" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Grid.Column="1" Click="Click_NumAsistentes" IsEnabled="False"/>
             <Button Content="Generar reporte de ingresos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" IsEnabled="False" Click="Click_GenerarReporteI"/>
         </Grid>
     </Grid>

@@ -18,7 +18,7 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Button Content="Regresar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" FontSize="18" Height="41" Grid.Row="3" Grid.Column="1" Margin="234,55,0,0" Click="Click_Regresar"/>
-            <Button Content="Consultar magistrales" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Click="Click_ConsultarMagistrales"/>
+            <Button Content="Consultar magistrales" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Click="Click_ConsultarMagistrales" IsEnabled="False"/>
             <Button Content="Consultar participantes" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Column="1" Grid.Row="1" Click="Click_ConsultarParticipantes" IsEnabled="False"/>
         </Grid>
     </Grid>

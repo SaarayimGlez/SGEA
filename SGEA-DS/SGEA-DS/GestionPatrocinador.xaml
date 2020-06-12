@@ -21,7 +21,7 @@
             <Button Content="Regresar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" FontSize="18" Height="41" Grid.Row="3" Grid.Column="1" Margin="234,55,0,0" Click="Click_Regresar"/>
             <Button Content="Consultar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Click="Click_Consultar"/>
             <Button Content="Registrar" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Click="Click_Registrar" Grid.ColumnSpan="2"/>
-            <Button Content="Modificar" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Grid.Column="1" Click="Click_Modificar"/>
+            <Button Content="Modificar" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Grid.Column="1" Click="Click_Modificar" IsEnabled="False"/>
         </Grid>
     </Grid>
 </Window>

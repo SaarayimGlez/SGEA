@@ -77,6 +77,9 @@ namespace SGEA_DS
                 grid_eventos.RowDefinitions.Count, new RowDefinition());
             var btnCrearEvento = new Button();
             btnCrearEvento.Content = "Crear evento";
+            //
+            btnCrearEvento.IsEnabled = false;
+            //
             btnCrearEvento.HorizontalAlignment = System.Windows.HorizontalAlignment.Left;
             btnCrearEvento.Width = 150;
             btnCrearEvento.FontSize = 18;
