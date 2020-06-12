@@ -31,14 +31,31 @@ namespace Logica
                             Abstract = articulo.@abstract,
                             Documento = articulo.documento,
                             Status = articulo.status,
-                            MiembroComiteId = evaluacion.MiembroComite_Id
+                            MiembroComiteId = evaluacion.MiembroComite_Id,
+                            AutorArticulo = articulo.AutorArticulo
                         }
                      ).Where(
                         evaluacion => evaluacion.MiembroComiteId == evaluadorId
                      );
 
+                string autor = "";
+
                 foreach (var articulo in articulosEvaluacion)
                 {
+                    foreach (AutorArticulo autorArticulo in articulo.AutorArticulo)
+                    {
+                        if (autor  == "")
+                        {
+                            autor = autorArticulo.Autor.nombre + " " 
+                                + autorArticulo.Autor.apellidoPaterno + " "
+                                + autorArticulo.Autor.apellidoMaterno;
+                        } else
+                        {
+                            autor += ", " + autorArticulo.Autor.nombre + " "
+                                + autorArticulo.Autor.apellidoPaterno + " "
+                                + autorArticulo.Autor.apellidoMaterno;
+                        }
+                    }
                     listaArticulo.Add(new List<object>(new object[] {
                         articulo.Id,
                         articulo.Titulo,
@@ -46,7 +63,8 @@ namespace Logica
                         articulo.Abstract,
                         articulo.Documento,
                         articulo.Status,
-                        articulo.MiembroComiteId
+                        articulo.MiembroComiteId,
+                        autor
                     }));
                 }
             }
@@ -82,6 +100,28 @@ namespace Logica
                 Console.WriteLine(e);
             }
             return respuesta;
+        }
+
+        public bool ModificarStatusArticulo(int articuloId)
+        {
+            try
+            {
+                var articuloOriginal = _context.ArticuloSet.SingleOrDefault(
+                    articulo => articulo.Id == articuloId);
+
+                if (articuloOriginal != null)
+                {
+                    articuloOriginal.status = true;
+                    _context.SaveChanges();
+                    return true;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                return false;
+            }
+            return false;
         }
     }
 }

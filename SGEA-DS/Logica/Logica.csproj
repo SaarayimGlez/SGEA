@@ -59,6 +59,7 @@
     <Compile Include="Asistente_Logica.cs" />
     <Compile Include="Autor_Logica.cs" />
     <Compile Include="ConexionBD_Logica.cs" />
+    <Compile Include="Evaluacion_Logica.cs" />
     <Compile Include="Evento_Logica.cs" />
     <Compile Include="Participante_Logica.cs" />
     <Compile Include="RegistroArticulo_Logica.cs" />

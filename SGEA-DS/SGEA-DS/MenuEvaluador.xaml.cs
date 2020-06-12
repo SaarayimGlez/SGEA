@@ -20,13 +20,25 @@ namespace SGEA_DS
     /// </summary>
     public partial class MenuEvaluador : Window
     {
-        private MiembroComite miembroComite;
         private List<object> articulo;
 
         public MenuEvaluador(List<object> articulo)
         {
             InitializeComponent();
             this.articulo = articulo;
+        }
+
+        public MenuEvaluador(List<object> articulo, bool articuloAceptado)
+        {
+            InitializeComponent();
+            this.articulo = articulo;
+            textBlock_mensaje.Text = String.Empty;
+            var bold = new Bold(new Run("No se puede registrar una evaluación, " +
+                "el artículo ya fue aceptado")
+            {
+                Foreground = Brushes.Red
+            });
+            textBlock_mensaje.Inlines.Add(bold);
         }
 
         private void Click_Regresar(object sender, RoutedEventArgs e)
@@ -38,7 +50,9 @@ namespace SGEA_DS
 
         private void Click_RegistrarEvaluacion(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            CU33 registrarEvaluacion = new CU33(this.articulo);
+            registrarEvaluacion.Show();
+            this.Close();
         }
 
         private void Click_ModificarEvaluacion(object sender, RoutedEventArgs e)
