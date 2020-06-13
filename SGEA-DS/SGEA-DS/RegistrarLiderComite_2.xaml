@@ -46,7 +46,7 @@
                 <ComboBoxItem Content="Doctorado"/>
             </ComboBox>
             <TextBox x:Name="textBox_usuario" HorizontalAlignment="Center" Height="58" Margin="10,0" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="344" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" TextChanged="TextBox_TextChanged" FontWeight="Bold" materialDesign:HintAssist.Hint="Usuario" materialDesign:HintAssist.IsFloating="True" PreviewKeyDown ="Textbox_Espacio_PreviewKeyDown"/>
-            <TextBox x:Name="textBox_contrasena" HorizontalAlignment="Center" Height="58" Margin="10,0" Grid.Row="4" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="344" FontSize="18" TextOptions.TextHintingMode="Animated" TextAlignment="Left" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="2" Grid.Column="1" FontWeight="Bold" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" PreviewKeyDown ="Textbox_Espacio_PreviewKeyDown"/>
+            <PasswordBox x:Name="passwordBox_contrasena" HorizontalAlignment="Center" Height="58" Margin="10,0" Grid.Row="4" VerticalAlignment="Center" Width="344" FontSize="18" TextOptions.TextHintingMode="Animated" Grid.ColumnSpan="2" Grid.Column="1" FontWeight="Bold" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" PreviewKeyDown ="Textbox_Espacio_PreviewKeyDown"/>
             <TextBlock x:Name="textBlock_mensaje" HorizontalAlignment="Left" Margin="21,3,0,-13" Grid.Row="5" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal"/>
         </Grid>
     </Grid>

@@ -15,7 +15,7 @@ namespace SGEA_DS
     public partial class CU01_2 : CtrolUsrCtrolEvento
     {
         private string comite;
-        private List<Modelo.MiembroComite> listaMCNoLider;
+        private List<List<string>> listaMCNoLider;
         private bool handle = true;
         private List<TextBox> listaTBSinNum;
         private List<TextBox> listaTBSinEspacio;
@@ -38,7 +38,7 @@ namespace SGEA_DS
                     textBlock_mensaje.Inlines.Add(normal);
                     bold = new Bold(new Run("Contraseña: "));
                     textBlock_mensaje.Inlines.Add(bold);
-                    normal = new Run(textBox_contrasena.Text);
+                    normal = new Run(passwordBox_contrasena.Password);
                     textBlock_mensaje.Inlines.Add(normal);
                 }
                 button_aceptar.IsEnabled = false;
@@ -76,7 +76,7 @@ namespace SGEA_DS
             Modelo.Usuario nuevoUsuario = new Modelo.Usuario()
             {
                 nombreUsuario = textBox_usuario.Text,
-                contrasenia = textBox_contrasena.Text
+                contrasenia = passwordBox_contrasena.Password
             };
             Usuario_Logica usuario_Logica = new Usuario_Logica();
             return usuario_Logica.RegistrarUsuario(nuevoUsuario);
@@ -109,10 +109,10 @@ namespace SGEA_DS
             }
             if (comboBox_miembroC.SelectedIndex > -1)
             {
-                foreach (Modelo.MiembroComite miembro in listaMCNoLider)
+                foreach (List<string> miembro in listaMCNoLider)
                 {
                     if (comboBox_miembroC.SelectedItem.ToString().Equals(
-                            miembro.nombre + " " + miembro.apellidoPaterno))
+                            miembro[4] + " " + miembro[1]))
                     {
                         return miembroComiteDAO.ActualizarMCLider(
                             nuevoMLComite,
@@ -149,6 +149,10 @@ namespace SGEA_DS
                     return false;
                 }
             }
+            if (string.IsNullOrWhiteSpace(passwordBox_contrasena.Password))
+            {
+                return false;
+            }
             return true;
         }
 
@@ -175,7 +179,6 @@ namespace SGEA_DS
             listaTBSinNum.Add(textBox_apellidoM);
             listaTBSinEspacio.Add(textBox_correoE);
             listaTBSinEspacio.Add(textBox_usuario);
-            listaTBSinEspacio.Add(textBox_contrasena);
         }
 
         private void LlenarComboBox()
@@ -188,11 +191,11 @@ namespace SGEA_DS
             }
             else
             {
-                listaMCNoLider = miembroComiteDAO.RecuperarMCNoLider();
+                listaMCNoLider = miembroComiteDAO.RecuperarMCNoLider(this.evento.Id);
 
-                foreach (Modelo.MiembroComite miembro in listaMCNoLider)
+                foreach (List<string> miembro in listaMCNoLider)
                 {
-                    comboBox_miembroC.Items.Add(miembro.nombre + " " + miembro.apellidoPaterno);
+                    comboBox_miembroC.Items.Add(miembro[4] + " " + miembro[1]);
                 }
             }
         }
@@ -201,21 +204,26 @@ namespace SGEA_DS
         {
             if (comboBox_miembroC.SelectedIndex > -1)
             {
-                foreach (Modelo.MiembroComite miembro in listaMCNoLider)
+                foreach (List<string> miembro in listaMCNoLider)
                 {
                     if (comboBox_miembroC.SelectedItem.ToString().Equals(
-                        miembro.nombre + " " + miembro.apellidoPaterno))
+                        miembro[4] + " " + miembro[1]))
                     {
-                        textBox_nombre.Text = miembro.nombre;
+                        textBox_nombre.Text = miembro[4];
                         textBox_nombre.IsReadOnly = true;
-                        textBox_apellidoP.Text = miembro.apellidoPaterno;
+                        textBox_apellidoP.Text = miembro[1];
                         textBox_apellidoP.IsReadOnly = true;
-                        textBox_apellidoM.Text = miembro.apellidoMaterno;
+                        textBox_apellidoM.Text = miembro[0];
                         textBox_apellidoM.IsReadOnly = true;
-                        textBox_correoE.Text = miembro.correoElectronico;
+                        textBox_correoE.Text = miembro[2];
                         textBox_correoE.IsReadOnly = true;
-                        comboBox_nivelE.Text = miembro.nivelExperiencia;
+                        comboBox_nivelE.Text = miembro[3];
                         comboBox_nivelE.IsEnabled = false;
+                        textBox_usuario.Text = miembro[5];
+                        textBox_usuario.IsReadOnly = true;
+                        passwordBox_contrasena.Password = miembro[6];
+                        passwordBox_contrasena.Focusable = false;
+                        passwordBox_contrasena.IsHitTestVisible = false;
                     }
                 }
             }

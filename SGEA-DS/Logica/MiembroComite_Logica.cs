@@ -12,26 +12,29 @@ namespace Logica
         {
         }
 
-        public List<Modelo.MiembroComite> RecuperarMCNoLider()
+        public List<List<string>> RecuperarMCNoLider(int eventoId)
         {
-            List<Modelo.MiembroComite> listaMCNoLider = new List<Modelo.MiembroComite>();
+            List<List<string>> listaMCNoLider = new List<List<string>>();
             try
             {
                 var listaMCNoLiderBD = _context.MiembroComiteSet
                     .Where(
-                        miembro => miembro.liderComite == false
+                        miembro => miembro.liderComite == false || 
+                        miembro.Comite.EventoId != eventoId
                     ).ToList();
 
                 foreach (MiembroComite mCNoLiderBD in listaMCNoLiderBD)
                 {
-                    listaMCNoLider.Add(new Modelo.MiembroComite()
+                    listaMCNoLider.Add(new List<string> (new string[]
                     {
-                        apellidoMaterno = mCNoLiderBD.apellidoMaterno,
-                        apellidoPaterno = mCNoLiderBD.apellidoPaterno,
-                        correoElectronico = mCNoLiderBD.correoElectronico,
-                        nivelExperiencia = mCNoLiderBD.nivelExperiencia,
-                        nombre = mCNoLiderBD.nombre
-                    });
+                        mCNoLiderBD.apellidoMaterno,
+                        mCNoLiderBD.apellidoPaterno,
+                        mCNoLiderBD.correoElectronico,
+                        mCNoLiderBD.nivelExperiencia,
+                        mCNoLiderBD.nombre,
+                        mCNoLiderBD.Usuario.nombreUsuario,
+                        mCNoLiderBD.Usuario.contrasenia
+                    }));
                 }
             }
             catch (Exception e)
@@ -81,6 +84,7 @@ namespace Logica
                 miembroLider.liderComite = true;
                 miembroLider.idUsuario = idUsuario;
                 miembroLider.ComiteId = miembroCLider.ComiteId;
+                miembroLider.evaluador = miembroCLider.evaluador;
                 _context.SaveChanges();
                 respuesta = true;
             }
