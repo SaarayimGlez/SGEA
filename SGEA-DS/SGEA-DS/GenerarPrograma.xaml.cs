@@ -37,7 +37,8 @@ namespace SGEA_DS
                 });
                 textBlock_mensaje.Inlines.Add(bold);
                 button_cancelar.Content = "Regresar";
-                button_aceptar.Visibility = Visibility.Hidden;            }
+                button_aceptar.Visibility = Visibility.Hidden;
+            }
             else
             {
                 List<List<string>> listaActividades = 

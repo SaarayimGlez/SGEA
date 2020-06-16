@@ -67,11 +67,6 @@ namespace SGEA_DS
             this.Close();
         }
 
-        private void Click_ModificarEvento(object sender, RoutedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void Click_ConsultaDatosP(object sender, RoutedEventArgs e)
         {
             ConsultaDatosPersonales consultaDatosPersonales = new ConsultaDatosPersonales();

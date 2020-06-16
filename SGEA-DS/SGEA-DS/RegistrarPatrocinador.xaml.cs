@@ -91,11 +91,15 @@ namespace SGEA_DS
                 textBox_apellidoP.Text.Any(char.IsPunctuation) | 
                 textBox_apellidoM.Text.Any(char.IsPunctuation) | 
                 textBox_nombre.Text.Any(char.IsDigit) | 
-                textBox_apellidoP.Text.Any(char.IsDigit) | textBox_apellidoM.Text.Any(char.IsDigit))
+                textBox_apellidoP.Text.Any(char.IsDigit) | 
+                textBox_apellidoM.Text.Any(char.IsDigit) |
+                string.IsNullOrWhiteSpace(textBox_nombre.Text) |
+                string.IsNullOrWhiteSpace(textBox_apellidoP.Text) |
+                string.IsNullOrWhiteSpace(textBox_direccion.Text))
             {
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(textBox_correoE.Text) | 
+            if (string.IsNullOrWhiteSpace(textBox_correoE.Text) |
                 string.IsNullOrWhiteSpace(textBox_numeroTel.Text) | 
                 textBox_numeroTel.Text.Any(char.IsLetter) | 
                 textBox_numeroTel.Text.Any(char.IsPunctuation))

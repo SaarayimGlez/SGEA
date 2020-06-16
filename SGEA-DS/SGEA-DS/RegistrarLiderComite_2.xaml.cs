@@ -73,13 +73,17 @@ namespace SGEA_DS
                 textBlock_mensaje.FontWeight = FontWeights.Bold;
                 return true;
             }
-            Modelo.Usuario nuevoUsuario = new Modelo.Usuario()
+            if (comboBox_miembroC.SelectedIndex <= -1)
             {
-                nombreUsuario = textBox_usuario.Text,
-                contrasenia = passwordBox_contrasena.Password
-            };
-            Usuario_Logica usuario_Logica = new Usuario_Logica();
-            return usuario_Logica.RegistrarUsuario(nuevoUsuario);
+                Modelo.Usuario nuevoUsuario = new Modelo.Usuario()
+                {
+                    nombreUsuario = textBox_usuario.Text,
+                    contrasenia = passwordBox_contrasena.Password
+                };
+                Usuario_Logica usuario_Logica = new Usuario_Logica();
+                return usuario_Logica.RegistrarUsuario(nuevoUsuario);
+            }
+            return true;
         }
 
         private bool GuardarMComite()
@@ -94,15 +98,12 @@ namespace SGEA_DS
                 apellidoPaterno = textBox_apellidoP.Text,
                 apellidoMaterno = textBox_apellidoM.Text,
                 evaluador = false,
-                ComiteId = Convert.ToInt32(elementoComite[1])
+                ComiteId = Convert.ToInt32(elementoComite[1]),
+                correoElectronico = textBox_correoE.Text,
+                nivelExperiencia =
+                    (string)((ComboBoxItem)comboBox_nivelE.SelectedValue).Content,
+                liderComite = true
             };
-            if (comboBox_miembroC.SelectedIndex <= -1)
-            {
-                nuevoMLComite.correoElectronico = textBox_correoE.Text;
-                nuevoMLComite.nivelExperiencia =
-                        (string)((ComboBoxItem)comboBox_nivelE.SelectedValue).Content;
-                nuevoMLComite.liderComite = true;
-            }
             if (String.Equals(elementoComite[0], "Comité de evaluación"))
             {
                 nuevoMLComite.evaluador = true;
@@ -115,8 +116,7 @@ namespace SGEA_DS
                             miembro[4] + " " + miembro[1]))
                     {
                         return miembroComiteDAO.ActualizarMCLider(
-                            nuevoMLComite,
-                            usuario_Logica.RecuperarUsuario().Last().Id);
+                            nuevoMLComite);
                     }
                 }
             }
@@ -131,7 +131,8 @@ namespace SGEA_DS
             {
                 foreach (TextBox textBox in listaTBSinNum)
                 {
-                    if (string.IsNullOrWhiteSpace(textBox.Text) | textBox.Text.Any(char.IsDigit) |
+                    if ( (string.IsNullOrWhiteSpace(textBox.Text) && textBox != textBox_apellidoM) |
+                        textBox.Text.Any(char.IsDigit) |
                         textBox.Text.Any(char.IsPunctuation))
                     {
                         return false;

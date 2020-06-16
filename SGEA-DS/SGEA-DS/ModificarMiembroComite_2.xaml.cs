@@ -113,7 +113,6 @@ namespace SGEA_DS
                 return false;
             }
             if (string.IsNullOrWhiteSpace(textbox_nombre.Text) |
-                string.IsNullOrWhiteSpace(textbox_apellidoM.Text) |
                 string.IsNullOrWhiteSpace(textbox_apellidoP.Text) |
                 string.IsNullOrWhiteSpace(textbox_correoElectronico.Text))
             {

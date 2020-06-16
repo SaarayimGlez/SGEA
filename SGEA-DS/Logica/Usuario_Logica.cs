@@ -59,10 +59,12 @@ namespace Logica
             try
             {
                 var usuarioBD = _context.UsuarioSet
+                
+
                     .Where(
                         usuarioRecuperado => usuarioRecuperado.nombreUsuario == usuario
                         && usuarioRecuperado.contrasenia == contrasenia
-                    ).First<Usuario>(); ;
+                    ).First<Usuario>(); 
 
                 if (usuarioBD != null)
                 {

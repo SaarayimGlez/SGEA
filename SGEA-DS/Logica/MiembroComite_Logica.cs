@@ -70,7 +70,7 @@ namespace Logica
             return respuesta;
         }
 
-        public bool ActualizarMCLider(Modelo.MiembroComite miembroCLider, int idUsuario)
+        public bool ActualizarMCLider(Modelo.MiembroComite miembroCLider)
         {
             bool respuesta = false;
             try
@@ -82,7 +82,6 @@ namespace Logica
                         && miembroNLider.apellidoMaterno == miembroCLider.apellidoMaterno
                     ).First<MiembroComite>();
                 miembroLider.liderComite = true;
-                miembroLider.idUsuario = idUsuario;
                 miembroLider.ComiteId = miembroCLider.ComiteId;
                 miembroLider.evaluador = miembroCLider.evaluador;
                 _context.SaveChanges();

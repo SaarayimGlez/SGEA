@@ -38,46 +38,60 @@ namespace SGEA_DS
         private void llenarComboBox()
         {
             Evento_Logica evento_Logica = new Evento_Logica();
-            this.eventosUsuario = 
+            if (!evento_Logica.ComprobarConexion())
+            {
+                textBlock_mensaje.Text = String.Empty;
+                var bold = new Bold(new Run("Se ha perdido conexión con la base de datos")
+                {
+                    Foreground = Brushes.Red
+                });
+                textBlock_mensaje.Inlines.Add(bold);
+                button_cancelar.Content = "Regresar";
+                button_descargar.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                this.eventosUsuario =
                 evento_Logica.RecuperarEventos(this.miembroComite.ComiteId).First<Modelo.Evento>();
-            MiembroComite_Logica miembroComite_Logica = new MiembroComite_Logica();
-            Asistente_Logica asistente_Logica = new Asistente_Logica();
-            Participante_Logica participante_Logica = new Participante_Logica();
-            Magistral_Logica magistral_Logica = new Magistral_Logica();
-            Autor_Logica autor_Logica = new Autor_Logica();
+                MiembroComite_Logica miembroComite_Logica = new MiembroComite_Logica();
+                Asistente_Logica asistente_Logica = new Asistente_Logica();
+                Participante_Logica participante_Logica = new Participante_Logica();
+                Magistral_Logica magistral_Logica = new Magistral_Logica();
+                Autor_Logica autor_Logica = new Autor_Logica();
 
-            this.listaMiembroC = 
-                miembroComite_Logica.RecuperarMiembroComitePorEvento(eventosUsuario.Id);
-            this.listaAsistente =
-                asistente_Logica.RecuperarAsistenteEvento(eventosUsuario.Id);
-            this.listaParticipante =
-                    participante_Logica.RecuperarParticipanteEvento(eventosUsuario.Id);
-            this.listaMagistral =
-                    magistral_Logica.RecuperarMagistralEvento(eventosUsuario.Id);
-            this.listaAutor =
-                    autor_Logica.RecuperarAutorEvento(eventosUsuario.Id);
+                this.listaMiembroC =
+                    miembroComite_Logica.RecuperarMiembroComitePorEvento(eventosUsuario.Id);
+                this.listaAsistente =
+                    asistente_Logica.RecuperarAsistenteEvento(eventosUsuario.Id);
+                this.listaParticipante =
+                        participante_Logica.RecuperarParticipanteEvento(eventosUsuario.Id);
+                this.listaMagistral =
+                        magistral_Logica.RecuperarMagistralEvento(eventosUsuario.Id);
+                this.listaAutor =
+                        autor_Logica.RecuperarAutorEvento(eventosUsuario.Id);
 
-            foreach (Modelo.MiembroComite miembro in listaMiembroC)
-            {
-                string nombreCompleto = miembro.nombre + " " + miembro.apellidoPaterno +
-                    " " + miembro.apellidoMaterno;
-                comboBox_miembroComite.Items.Add(new CheckBox() { Content = nombreCompleto });
-            }
-            foreach (string asistenteNombre in listaAsistente)
-            {
-                comboBox_asistente.Items.Add(new CheckBox() { Content = asistenteNombre });
-            }
-            foreach (List<string> participante in listaParticipante)
-            {
-                comboBox_participante.Items.Add(new CheckBox() { Content = participante[0] });
-            }
-            foreach (List<string> magistral in listaMagistral)
-            {
-                comboBox_magistral.Items.Add(new CheckBox() { Content = magistral[0] });
-            }
-            foreach (List<string> autor in listaAutor)
-            {
-                comboBox_autor.Items.Add(new CheckBox() { Content = autor[0] });
+                foreach (Modelo.MiembroComite miembro in listaMiembroC)
+                {
+                    string nombreCompleto = miembro.nombre + " " + miembro.apellidoPaterno +
+                        " " + miembro.apellidoMaterno;
+                    comboBox_miembroComite.Items.Add(new CheckBox() { Content = nombreCompleto });
+                }
+                foreach (string asistenteNombre in listaAsistente)
+                {
+                    comboBox_asistente.Items.Add(new CheckBox() { Content = asistenteNombre });
+                }
+                foreach (List<string> participante in listaParticipante)
+                {
+                    comboBox_participante.Items.Add(new CheckBox() { Content = participante[0] });
+                }
+                foreach (List<string> magistral in listaMagistral)
+                {
+                    comboBox_magistral.Items.Add(new CheckBox() { Content = magistral[0] });
+                }
+                foreach (List<string> autor in listaAutor)
+                {
+                    comboBox_autor.Items.Add(new CheckBox() { Content = autor[0] });
+                }
             }
         }
 
@@ -90,6 +104,9 @@ namespace SGEA_DS
             descargarMagistralDiploma();
             descargarAutorDiploma();
             this.Topmost = false;
+            textBlock_mensaje.Text = String.Empty;
+            var bold = new Bold(new Run(@"Archivo(s) descargado(s) en \Descargas\DiplomasYGafetes"));
+            textBlock_mensaje.Inlines.Add(bold);
         }
 
         private void descargarAutorDiploma()

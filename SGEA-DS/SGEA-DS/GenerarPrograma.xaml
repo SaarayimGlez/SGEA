@@ -20,13 +20,14 @@
         <Label Content="Si lo desea, puede descargar el programa en 'Descargas'" FontSize="18" Margin="20,25,10,359"/>
         <Grid HorizontalAlignment="Left" Height="63" Margin="20,357,0,0" VerticalAlignment="Top" Width="762">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="42*"/>
+                <ColumnDefinition Width="339*"/>
+                <ColumnDefinition Width="190*"/>
+                <ColumnDefinition Width="191*"/>
             </Grid.ColumnDefinitions>
-            <TextBlock x:Name="textBlock_mensaje" HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal" Grid.Column="0" Grid.ColumnSpan="1"/>
-            <Button x:Name="button_aceptar" Content="Descargar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="90" Height="37" Click="Click_Aceptar" Grid.Column="1"/>
-            <Button x:Name="button_cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="10,0" VerticalAlignment="Center" Width="90" Height="37" Grid.Column="2" Click="Click_Cancelar"/>
+            <TextBlock x:Name="textBlock_mensaje" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="355" FontSize="14" FontWeight="Normal" Grid.Column="0" Grid.ColumnSpan="2"/>
+            <Button x:Name="button_aceptar" Content="Descargar" HorizontalAlignment="Center" Margin="50,13" VerticalAlignment="Center" Width="90" Height="37" Click="Click_Aceptar" Grid.Column="2"/>
+            <Button x:Name="button_cancelar" Content="Cancelar" HorizontalAlignment="Center" Margin="51,13,50,13" VerticalAlignment="Center" Width="90" Height="37" Grid.Column="3" Click="Click_Cancelar"/>
         </Grid>
         <ScrollViewer HorizontalAlignment="Left" Height="286" Margin="10,66,0,0" VerticalAlignment="Top" Width="772">
             <Canvas x:Name="canvas_Programa" Width="734" VerticalAlignment="Top">

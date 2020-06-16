@@ -62,8 +62,8 @@ namespace SGEA_DS
             {
                 System.IO.Directory.CreateDirectory(directorioDestino);
             }
-
-            System.IO.File.Copy(sourceLocation, dstnLocation, true);
+            
+            textBlock_descargarDocumento.Text = @"Artículo descargado en \Descargas\Articulos";
         }
 
         private void Click_Aceptar(object sender, RoutedEventArgs e)

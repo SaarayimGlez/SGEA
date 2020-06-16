@@ -114,7 +114,8 @@ namespace SGEA_DS
             }
             foreach (TextBox textBox in listaTextBox)
             {
-                if (string.IsNullOrWhiteSpace(textBox.Text))
+                if (string.IsNullOrWhiteSpace(textBox.Text) && 
+                    textBox != textbox_apellidoM)
                 {
                     return false;
                 }
