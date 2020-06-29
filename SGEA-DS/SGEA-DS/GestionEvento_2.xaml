@@ -23,7 +23,7 @@
             <Button Content="Actividades" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Click="Click_Actividades"/>
             <Button Content="Egresos" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Click="Click_Egresos"/>
             <Button Content="Regresar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="130" FontSize="18" Height="41" Grid.Row="4" Grid.Column="1" Margin="235,30,0,0" Click="Click_Regresar"/>
-            <Button Content="Registrar ingreso" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Grid.Column="1" IsEnabled="False"/>
+            <Button Content="Registrar ingreso" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Grid.Column="1" Click="Click_RegistroIngreso"/>
             <Button Content="Generar programa" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Grid.Column="1" Click="Click_GenerarPrograma"/>
             <Button Content="Comités" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="3" Click="Click_Comites"/>
             <Button Content="Consulta datos personales" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="3" Grid.Column="1" Click="Click_ConsultaDatosP"/>

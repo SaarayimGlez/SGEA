@@ -212,6 +212,12 @@
     <Compile Include="MenuOrganizador.xaml.cs">
       <DependentUpon>MenuOrganizador.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarIngreso.xaml.cs">
+      <DependentUpon>RegistrarIngreso.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarMiembroComite.xaml.cs">
+      <DependentUpon>RegistrarMiembroComite.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VentanaUserControl.xaml.cs">
       <DependentUpon>VentanaUserControl.xaml</DependentUpon>
     </Compile>
@@ -358,6 +364,14 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="RegistrarEvento.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RegistrarIngreso.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RegistrarMiembroComite.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

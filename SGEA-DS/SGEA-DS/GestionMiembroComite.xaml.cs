@@ -86,7 +86,10 @@ namespace SGEA_DS
 
         private void Click_AgregarAComite(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            RegistrarMiembroComite registrarMiembroComite = 
+                new RegistrarMiembroComite(this.miembroComite);
+            registrarMiembroComite.Show();
+            this.Close();
         }
 
         private void Click_ModificarMiembroComite(object sender, RoutedEventArgs e)

@@ -61,6 +61,7 @@
     <Compile Include="ConexionBD_Logica.cs" />
     <Compile Include="Evaluacion_Logica.cs" />
     <Compile Include="Evento_Logica.cs" />
+    <Compile Include="Ingreso_Logica.cs" />
     <Compile Include="Participante_Logica.cs" />
     <Compile Include="RegistroArticulo_Logica.cs" />
     <Compile Include="Comite_Logica.cs" />

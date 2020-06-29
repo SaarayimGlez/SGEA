@@ -78,5 +78,12 @@ namespace SGEA_DS
         {
             throw new NotImplementedException();
         }
+
+        private void Click_RegistroIngreso(object sender, RoutedEventArgs e)
+        {
+            RegistrarIngreso registrarIngreso = new RegistrarIngreso(this.evento);
+            registrarIngreso.Show();
+            this.Close();
+        }
     }
 }

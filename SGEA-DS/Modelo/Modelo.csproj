@@ -65,6 +65,7 @@
     <Compile Include="Comite.cs" />
     <Compile Include="Evaluacion.cs" />
     <Compile Include="Evento.cs" />
+    <Compile Include="Ingreso.cs" />
     <Compile Include="MiembroComite.cs" />
     <Compile Include="Organizador.cs" />
     <Compile Include="Participante.cs" />

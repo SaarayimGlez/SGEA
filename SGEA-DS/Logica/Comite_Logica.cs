@@ -93,5 +93,27 @@ namespace Logica
             }
             return respuesta;
         }
+
+        public List<Modelo.Comite> GenerarListaComite()
+        {
+            List<Modelo.Comite> listaComite = new List<Modelo.Comite>();
+            try
+            {
+                var listaC = _context.ComiteSet.ToList();
+                foreach (Comite comite in listaC)
+                {
+                    listaComite.Add(new Modelo.Comite()
+                    {
+                        Id = comite.Id,
+                        nombre = comite.nombre
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+            }
+            return listaComite;
+        }
     }
 }

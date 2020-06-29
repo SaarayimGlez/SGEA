@@ -179,5 +179,25 @@ namespace Logica
             }
             return false;
         }
+
+        //Registra un nuevo miembro de comité en la base de datos
+        public void RegistrarMiembroComite(Modelo.MiembroComite miembroComite)
+        {
+            _context.MiembroComiteSet.Add(new MiembroComite
+            {
+                nombre = miembroComite.nombre,
+                apellidoPaterno = miembroComite.apellidoPaterno,
+                apellidoMaterno = miembroComite.apellidoMaterno,
+                nivelExperiencia = miembroComite.nivelExperiencia,
+                correoElectronico = miembroComite.correoElectronico,
+                liderComite = miembroComite.liderComite,
+                ComiteId = miembroComite.ComiteId,
+                idUsuario = miembroComite.idUsuario,
+                evaluador = miembroComite.evaluador,
+            });
+            _context.SaveChanges();
+
+        }
+
     }
 }
