@@ -22,7 +22,7 @@
             <Button Content="Gestión miembro de comité" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Grid.Column="1" Click="Click_MiembrosComite"/>
             <Button x:Name="button_gestionArticuloAutor" Content="Gestión artículo y autor" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Click="Click_ArticuloAutor"/>
             <Button Content="Programar reunión" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Click="Click_ProgramarReunion" IsEnabled="False"/>
-            <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="218" FontSize="18" Height="41" Click="Click_ModificarContrasena" IsEnabled="False" Grid.Row="4"/>
+            <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="218" FontSize="18" Height="41" Click="Click_ModificarContrasena" Grid.Row="4"/>
         </Grid>
         </Grid>
 </Window>

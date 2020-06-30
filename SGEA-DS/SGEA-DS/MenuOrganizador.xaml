@@ -10,7 +10,7 @@
         <Button Content="Gestión de evento" HorizontalAlignment="Center" Margin="260,42,260,0" VerticalAlignment="Top" Width="272" Height="80" FontSize="18" Click="Click_GestionEvento"/>
         <Button Content="Gestión de patrocinadores" HorizontalAlignment="Center" Margin="260,188,260,0" VerticalAlignment="Top" Width="272" Height="80" FontSize="18" Click="Click_GestionPatrocinadores"/>
         <Grid Margin="66,0,66,38" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="18" Click="Click_ModificarContrasena" IsEnabled="False"/>
+            <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Top" Width="218" FontSize="18" Click="Click_ModificarContrasena"/>
             <Button Content="Cerrar sesión" HorizontalAlignment="Left" Margin="509,0,0,0" VerticalAlignment="Top" Width="150" FontSize="18" Click="Click_CerrarSesion"/>
         </Grid>
     </Grid>

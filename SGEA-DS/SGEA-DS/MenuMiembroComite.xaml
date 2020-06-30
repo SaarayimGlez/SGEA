@@ -24,7 +24,7 @@
             <Button Content="Generar diploma y gafete" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.ColumnSpan="2" Click="Click_GenerarDiplomaGafete"/>
             <Button Content="Gestión magistral" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Grid.Column="1" Click="Click_Magistrales"/>
             <Button Content="Gestión adscripción" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Click="Click_Adscripciones"/>
-            <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="218" FontSize="18" Height="41" Click="Click_ModificarContrasena" IsEnabled="False" Grid.Row="4"/>
+            <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="218" FontSize="18" Height="41" Click="Click_ModificarContrasena" Grid.Row="4"/>
         </Grid>
     </Grid>
 </Window>

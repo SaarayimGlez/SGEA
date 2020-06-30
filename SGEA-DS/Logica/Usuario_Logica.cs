@@ -77,5 +77,16 @@ namespace Logica
             }
             return idUsuario;
         }
+
+        public void CambiarContrasenia(String nombreUsuario, String contrasenia, String nuevaContrasenia)
+        {
+            using (DataModelContainer dataBase = new DataModelContainer())
+            {
+                var usuarioEncontrado = dataBase.UsuarioSet.Where(usuario => usuario.nombreUsuario == nombreUsuario &&
+                usuario.contrasenia == contrasenia).FirstOrDefault();
+                usuarioEncontrado.contrasenia = nuevaContrasenia;
+                dataBase.SaveChanges();
+            }
+        }
     }
 }

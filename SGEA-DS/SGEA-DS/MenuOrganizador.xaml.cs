@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -47,7 +48,10 @@ namespace SGEA_DS
 
         private void Click_ModificarContrasena(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            CambiarContrasenia cambiarContrasenia = 
+                new CambiarContrasenia(new MiembroComite());
+            cambiarContrasenia.Show();
+            this.Close();
         }
     }
 }

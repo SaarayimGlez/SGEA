@@ -88,7 +88,10 @@ namespace SGEA_DS
 
         private void Click_ModificarContrasena(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            CambiarContrasenia cambiarContrasenia =
+                new CambiarContrasenia(this.miembroComite);
+            cambiarContrasenia.Show();
+            this.Close();
         }
     }
 }

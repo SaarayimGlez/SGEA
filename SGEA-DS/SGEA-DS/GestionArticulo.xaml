@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="329*"/>
                 <ColumnDefinition Width="153*"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Center" Width="218" FontSize="18" Click="Click_ModificarContrasena" IsEnabled="False" Margin="0,28"/>
+            <Button Content="Modificar contraseña" HorizontalAlignment="Left" VerticalAlignment="Center" Width="218" FontSize="18" Click="Click_ModificarContrasena" Margin="0,28"/>
             <Button x:Name="button_continuar" Content="Continuar" HorizontalAlignment="Center" VerticalAlignment="Center" Width="150" FontSize="18" Height="50" Click="Click_Continuar" Grid.Column="1" IsEnabled="False"/>
             <Button Content="Cerrar sesión" HorizontalAlignment="Right" VerticalAlignment="Center" Width="150" FontSize="18" Click="Click_CerrarSesion" Grid.Column="2" Margin="0,28"/>
         </Grid>
