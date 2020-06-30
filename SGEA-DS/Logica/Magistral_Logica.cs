@@ -101,9 +101,9 @@ namespace Logica
                     if (lista.Actividad.MagistralAct != null)
                     {
                         string magistral = "";
-                        magistral = lista.Actividad.MagistralAct.nombre + " "
-                            + lista.Actividad.MagistralAct.apellidoPaterno + " "
-                            + lista.Actividad.MagistralAct.apellidoMaterno;
+                        magistral = lista.Actividad.MagistralAct.FirstOrDefault().nombre + " "
+                            + lista.Actividad.MagistralAct.FirstOrDefault().apellidoPaterno + " "
+                            + lista.Actividad.MagistralAct.FirstOrDefault().apellidoMaterno;
 
                         listaMagistral.Add(new List<string>(new string[] {
                             magistral
@@ -119,5 +119,19 @@ namespace Logica
             }
             return listaMagistral;
         }
+
+        //Registra un nuevo magistral en la base de datos.
+        public void RegistrarMagistral(Modelo.Magistral magistral)
+        {
+            _context.MagistralSet.Add(new Magistral()
+            {
+                nombre = magistral.nombre,
+                apellidoPaterno = magistral.apellidoPaterno,
+                apellidoMaterno = magistral.apellidoMaterno,
+                AdscripcionId = magistral.AdscripcionId
+            });
+            _context.SaveChanges();
+        }
+        
     }
 }

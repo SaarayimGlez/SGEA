@@ -115,7 +115,10 @@ namespace SGEA_DS
 
         private void Click_RegistrarMagistral(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            RegistrarMagistral registrarMagistral = 
+                new RegistrarMagistral(this.miembroComite);
+            registrarMagistral.Show();
+            this.Close();
         }
 
         private void Click_ModificarMagistral(object sender, RoutedEventArgs e)

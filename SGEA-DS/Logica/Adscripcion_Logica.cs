@@ -1,5 +1,6 @@
 ﻿using DataAccess;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Logica
@@ -83,5 +84,32 @@ namespace Logica
             }
             return respuesta;
         }
+
+        public List<Modelo.Adscripcion> RecuperarListaAdscripcion()
+        {
+            List<Modelo.Adscripcion> listaAdscripcion = new List<Modelo.Adscripcion>();
+            try
+            {
+                var listaBD = _context.AdscripcionSet.ToList();
+                foreach (Adscripcion adscripcion in listaBD)
+                {
+                    listaAdscripcion.Add(new Modelo.Adscripcion()
+                    {
+                        Id = adscripcion.Id,
+                        nombre = adscripcion.nombre,
+                        ciudad = adscripcion.ciudad,
+                        direccion = adscripcion.direccion,
+                        correoElectronico = adscripcion.correoElectronico,
+                        estado = adscripcion.estado
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+            }
+            return listaAdscripcion;
+        }
+
     }
 }

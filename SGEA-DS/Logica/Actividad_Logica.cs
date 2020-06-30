@@ -65,16 +65,17 @@ namespace Logica
                     }));
                     if (lista.Actividad.ArticuloAct.FirstOrDefault() != null)
                     {
-                        var autor = lista.Actividad.ArticuloAct.FirstOrDefault().AutorArticulo.FirstOrDefault().Autor;
+                        var autor = lista.Actividad.ArticuloAct.FirstOrDefault().
+                            AutorArticulo.FirstOrDefault().Autor;
                         listaActividad[listaActividad.Count - 1].Add(autor.nombre +" "
                             + autor.apellidoPaterno + " " + autor.apellidoMaterno);
                     }
                     else if (lista.Actividad.MagistralAct != null)
                     {
                         listaActividad[listaActividad.Count - 1].Add(
-                            lista.Actividad.MagistralAct.nombre + " " 
-                            + lista.Actividad.MagistralAct.apellidoPaterno + " " 
-                            + lista.Actividad.MagistralAct.apellidoMaterno);
+                            lista.Actividad.MagistralAct.FirstOrDefault().nombre + " " 
+                            + lista.Actividad.MagistralAct.FirstOrDefault().apellidoPaterno + " " 
+                            + lista.Actividad.MagistralAct.FirstOrDefault().apellidoMaterno);
                     }
                     else if (lista.Actividad.ParticipanteAct != null)
                     {

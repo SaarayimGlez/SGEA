@@ -19,5 +19,6 @@ namespace DataAccess
         public string apellidoPaterno { get; set; }
         public string apellidoMaterno { get; set; }
         public string correoElectronico { get; set; }
+        public string PagoFolio { get; set; }
     }
 }

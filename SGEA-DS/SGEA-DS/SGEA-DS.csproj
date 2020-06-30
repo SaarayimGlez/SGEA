@@ -215,6 +215,9 @@
     <Compile Include="RegistrarIngreso.xaml.cs">
       <DependentUpon>RegistrarIngreso.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarMagistral.xaml.cs">
+      <DependentUpon>RegistrarMagistral.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarMiembroComite.xaml.cs">
       <DependentUpon>RegistrarMiembroComite.xaml</DependentUpon>
     </Compile>
@@ -368,6 +371,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="RegistrarIngreso.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RegistrarMagistral.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

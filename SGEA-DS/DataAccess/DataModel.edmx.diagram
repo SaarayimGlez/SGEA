@@ -13,9 +13,6 @@
         <AssociationConnector Association="DataModel.AdscripcionAutor" />
         <EntityTypeShape EntityType="DataModel.Calendario" Width="1.5" PointX="7.5" PointY="20.875" />
         <AssociationConnector Association="DataModel.ActividadCalendario" />
-        <EntityTypeShape EntityType="DataModel.Magistral" Width="1.5" PointX="7.5" PointY="24" />
-        <AssociationConnector Association="DataModel.AdscripcionMagistral" />
-        <AssociationConnector Association="DataModel.ActividadMagistral" />
         <EntityTypeShape EntityType="DataModel.Participante" Width="1.5" PointX="7.5" PointY="27" />
         <AssociationConnector Association="DataModel.AdscripcionParticipante" />
         <AssociationConnector Association="DataModel.ActividadParticipante" />
@@ -31,7 +28,6 @@
         <EntityTypeShape EntityType="DataModel.Patrocinador" Width="1.5" PointX="14.375" PointY="17.125" />
         <AssociationConnector Association="DataModel.FK_IngresoPatrocinador" />
         <EntityTypeShape EntityType="DataModel.Egreso" Width="1.5" PointX="9.75" PointY="25" />
-        <AssociationConnector Association="DataModel.FK_EgresoMagistral" />
         <EntityTypeShape EntityType="DataModel.Material" Width="1.5" PointX="15" PointY="23.125" />
         <AssociationConnector Association="DataModel.FK_ActividadMaterial" />
         <AssociationConnector Association="DataModel.FK_EgresoMaterial" />
@@ -54,6 +50,10 @@
         <AssociationConnector Association="DataModel.ArticuloAutorArticulo" />
         <AssociationConnector Association="DataModel.ActividadArticulo" />
         <AssociationConnector Association="DataModel.RegistroArticuloAutorArticulo" />
+        <EntityTypeShape EntityType="DataModel.Magistral" Width="1.5" PointX="7.5" PointY="23.5" />
+        <AssociationConnector Association="DataModel.FK_ActividadMagistral" />
+        <AssociationConnector Association="DataModel.FK_AdscripcionMagistral" />
+        <AssociationConnector Association="DataModel.FK_EgresoMagistral" />
       </Diagram>
       <Diagram DiagramId="443b65acaf1942b198e0b46829ab37b4" Name="Diagram2" >
         <EntityTypeShape EntityType="DataModel.Actividad" Width="1.5" PointX="5.25" PointY="21.375" />
@@ -64,9 +64,6 @@
         <AssociationConnector Association="DataModel.AdscripcionAutor" />
         <EntityTypeShape EntityType="DataModel.Calendario" Width="1.5" PointX="7.5" PointY="20.875" />
         <AssociationConnector Association="DataModel.ActividadCalendario" />
-        <EntityTypeShape EntityType="DataModel.Magistral" Width="1.5" PointX="7.5" PointY="24" />
-        <AssociationConnector Association="DataModel.AdscripcionMagistral" />
-        <AssociationConnector Association="DataModel.ActividadMagistral" />
         <EntityTypeShape EntityType="DataModel.Participante" Width="1.5" PointX="7.5" PointY="27" />
         <AssociationConnector Association="DataModel.AdscripcionParticipante" />
         <AssociationConnector Association="DataModel.ActividadParticipante" />

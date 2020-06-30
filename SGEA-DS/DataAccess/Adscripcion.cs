@@ -14,11 +14,20 @@ namespace DataAccess
     
     public partial class Adscripcion
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Adscripcion()
+        {
+            this.Magistral = new HashSet<Magistral>();
+        }
+    
         public int Id { get; set; }
         public string ciudad { get; set; }
         public string direccion { get; set; }
         public string correoElectronico { get; set; }
         public string estado { get; set; }
         public string nombre { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Magistral> Magistral { get; set; }
     }
 }

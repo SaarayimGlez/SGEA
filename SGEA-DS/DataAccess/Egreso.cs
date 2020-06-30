@@ -26,8 +26,8 @@ namespace DataAccess
         public System.DateTime fecha { get; set; }
         public Nullable<int> Magistral_Id { get; set; }
     
-        public virtual Magistral MagistralSet { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Material> MaterialSet { get; set; }
+        public virtual Magistral MagistralSet { get; set; }
     }
 }
