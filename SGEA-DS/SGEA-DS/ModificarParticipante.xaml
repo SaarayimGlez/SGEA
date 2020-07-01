@@ -1,0 +1,36 @@
+﻿<Window x:Class="SGEA_DS.ModificarParticipante"
+        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGEA_DS"
+        mc:Ignorable="d"
+        Title="ModificarParticipante" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Participante" HorizontalAlignment="Left" Margin="26,34,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="comboBox_Participante" HorizontalAlignment="Left" Margin="160,34,0,0" VerticalAlignment="Top" Width="444"/>
+        <Button x:Name="button_Siguiente" Content="Siguiente" HorizontalAlignment="Left" Margin="633,34,0,0" VerticalAlignment="Top" Width="103" Click="Button_Siguiente_Click"/>
+        <Label Content="Nombre" HorizontalAlignment="Left" Margin="26,108,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Apellido paterno" HorizontalAlignment="Left" Margin="26,143,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Apellido materno" HorizontalAlignment="Left" Margin="26,178,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Título" HorizontalAlignment="Left" Margin="26,213,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Adscripción" HorizontalAlignment="Left" Margin="26,248,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="textBox_Nombre" HorizontalAlignment="Left" Margin="242,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="494"/>
+        <TextBox x:Name="textBox_ApellidoP" HorizontalAlignment="Left" Margin="242,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="494"/>
+        <TextBox x:Name="textBox_ApellidoM" HorizontalAlignment="Left" Margin="242,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="494"/>
+        <TextBox x:Name="textBox_Titulo" HorizontalAlignment="Left" Margin="242,213,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="494"/>
+        <ComboBox x:Name="comboBox_Adscripcion" HorizontalAlignment="Left" Margin="242,248,0,0" VerticalAlignment="Top" Width="494"/>
+        <Button x:Name="button_Guardar" Content="Guardar" HorizontalAlignment="Left" Margin="509,360,0,0" VerticalAlignment="Top" Width="95" Click="Button_Guardar_Click"/>
+        <Button x:Name="button_Cancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="641,360,0,0" VerticalAlignment="Top" Width="95" Click="Button_Cancelar_Click"/>
+        <Label x:Name="label_Mensaje" Content="" HorizontalAlignment="Left" Margin="39,360,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

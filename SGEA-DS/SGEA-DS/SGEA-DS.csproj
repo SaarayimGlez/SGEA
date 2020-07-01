@@ -149,6 +149,9 @@
     <Compile Include="ConsultarAutor.xaml.cs">
       <DependentUpon>ConsultarAutor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModificarParticipante.xaml.cs">
+      <DependentUpon>ModificarParticipante.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarEvaluacion.xaml.cs">
       <DependentUpon>RegistrarEvaluacion.xaml</DependentUpon>
     </Compile>
@@ -252,6 +255,10 @@
     <Page Include="ConsultarAutor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModificarParticipante.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="RegistrarEvaluacion.xaml">
       <Generator>MSBuild:Compile</Generator>

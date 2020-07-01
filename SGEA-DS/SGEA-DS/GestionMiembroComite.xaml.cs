@@ -136,7 +136,10 @@ namespace SGEA_DS
 
         private void Click_ModificarParticipante(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ModificarParticipante modificarParticipante =
+                new ModificarParticipante(this.miembroComite);
+            modificarParticipante.Show();
+            this.Close();
         }
 
         private void Click_RegistrarAdscripcion(object sender, RoutedEventArgs e)

@@ -72,5 +72,45 @@ namespace Logica
             }
             return listaParticipante;
         }
+
+        public void ModificarParticipante(int id, String nombre, String apellidoP, String apellidoM, String titulo, int idA)
+        {
+            using (DataModelContainer databBase = new DataModelContainer())
+            {
+                var participanteE = databBase.ParticipanteSet.Where(participante => participante.Id == id).FirstOrDefault();
+                participanteE.nombre = nombre;
+                participanteE.apellidoPaterno = apellidoP;
+                participanteE.apellidoMaterno = apellidoM;
+                participanteE.titulo = titulo;
+                participanteE.AdscripcionId = idA;
+                databBase.SaveChanges();
+            }
+        }
+
+        public List<Modelo.Participante> RecuperarParticipante()
+        {
+            List<Modelo.Participante> listaParticipanes = new List<Modelo.Participante>();
+            try
+            {
+                var listaP = _context.ParticipanteSet.ToList();
+                foreach (Participante participante in listaP)
+                {
+                    listaParticipanes.Add(new Modelo.Participante()
+                    {
+                        Id = participante.Id,
+                        nombre = participante.nombre,
+                        apellidoPaterno = participante.apellidoPaterno,
+                        apellidoMaterno = participante.apellidoMaterno,
+                        titulo = participante.titulo,
+                        AdscripcionId = participante.AdscripcionId
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+            }
+            return listaParticipanes;
+        }
     }
 }
