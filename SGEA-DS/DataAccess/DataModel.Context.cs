@@ -27,7 +27,6 @@ namespace DataAccess
     
         public virtual DbSet<Actividad> ActividadSet { get; set; }
         public virtual DbSet<Articulo> ArticuloSet { get; set; }
-        public virtual DbSet<RegistroArticulo> RegistroArticuloSet { get; set; }
         public virtual DbSet<Adscripcion> AdscripcionSet { get; set; }
         public virtual DbSet<Autor> AutorSet { get; set; }
         public virtual DbSet<Calendario> CalendarioSet { get; set; }
@@ -47,5 +46,7 @@ namespace DataAccess
         public virtual DbSet<Usuario> UsuarioSet { get; set; }
         public virtual DbSet<AutorArticulo> AutorArticuloSet { get; set; }
         public virtual DbSet<Magistral> MagistralSet { get; set; }
+        public virtual DbSet<PagoSet> PagoSets { get; set; }
+        public virtual DbSet<RegistroArticulo> RegistroArticuloSet { get; set; }
     }
 }

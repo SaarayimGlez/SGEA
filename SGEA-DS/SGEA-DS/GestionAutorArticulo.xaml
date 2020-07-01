@@ -37,7 +37,7 @@
             <Button Content="Consultar" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="3" Grid.Column="1" Click="Click_ConsultarAutor"/>
             <Button Content="Modificar" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Grid.Column="1" Click="Click_ModificarAutor"  IsEnabled="False"/>
             <Button Content="Registrar" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Grid.Column="1" Click="Click_RegistrarAutor" IsEnabled="False"/>
-            <Button Content="Registrar pago" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="3" Click="Click_RegistrarPago" IsEnabled="False"/>
+            <Button Content="Registrar pago" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="3" Click="Click_RegistrarPago"/>
         </Grid>
     </Grid>
 </Window>

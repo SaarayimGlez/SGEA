@@ -4,10 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f52390f69c9d4af589fa76dd861016cf" Name="Diagram1" ZoomLevel="116" >
+      <Diagram DiagramId="f52390f69c9d4af589fa76dd861016cf" Name="Diagram1" ZoomLevel="100" >
         <EntityTypeShape EntityType="DataModel.Actividad" Width="1.5" PointX="5.25" PointY="21.375" />
         <EntityTypeShape EntityType="DataModel.Articulo" Width="1.5" PointX="7.625" PointY="17.75" />
-        <EntityTypeShape EntityType="DataModel.RegistroArticulo" Width="1.5" PointX="9.75" PointY="18" />
         <EntityTypeShape EntityType="DataModel.Adscripcion" Width="1.5" PointX="5.25" PointY="14.875" />
         <EntityTypeShape EntityType="DataModel.Autor" Width="1.5" PointX="7.5" PointY="14.75" />
         <AssociationConnector Association="DataModel.AdscripcionAutor" />
@@ -17,7 +16,6 @@
         <AssociationConnector Association="DataModel.AdscripcionParticipante" />
         <AssociationConnector Association="DataModel.ActividadParticipante" />
         <EntityTypeShape EntityType="DataModel.Ingreso" Width="1.5" PointX="12" PointY="17.875" />
-        <AssociationConnector Association="DataModel.RegistroArticuloIngreso" />
         <EntityTypeShape EntityType="DataModel.Presupuesto" Width="1.5" PointX="3" PointY="26" />
         <EntityTypeShape EntityType="DataModel.Comite" Width="1.5" PointX="3" PointY="28.625" />
         <AssociationConnector Association="DataModel.ComiteActividad" />
@@ -49,16 +47,19 @@
         <AssociationConnector Association="DataModel.AutorAutorArticulo" />
         <AssociationConnector Association="DataModel.ArticuloAutorArticulo" />
         <AssociationConnector Association="DataModel.ActividadArticulo" />
-        <AssociationConnector Association="DataModel.RegistroArticuloAutorArticulo" />
         <EntityTypeShape EntityType="DataModel.Magistral" Width="1.5" PointX="7.5" PointY="23.5" />
         <AssociationConnector Association="DataModel.FK_ActividadMagistral" />
         <AssociationConnector Association="DataModel.FK_AdscripcionMagistral" />
         <AssociationConnector Association="DataModel.FK_EgresoMagistral" />
-      </Diagram>
+        <EntityTypeShape EntityType="DataModel.PagoSet" Width="1.5" PointX="0.75" PointY="0.875" />
+        <AssociationConnector Association="DataModel.FK_PagoSet_AsistenteSet" />
+        <EntityTypeShape EntityType="DataModel.RegistroArticulo" Width="1.5" PointX="14.25" PointY="13.375" />
+        <AssociationConnector Association="DataModel.FK_RegistroArticuloAutorArticulo" />
+        <AssociationConnector Association="DataModel.FK_RegistroArticuloIngreso" />
+        </Diagram>
       <Diagram DiagramId="443b65acaf1942b198e0b46829ab37b4" Name="Diagram2" >
         <EntityTypeShape EntityType="DataModel.Actividad" Width="1.5" PointX="5.25" PointY="21.375" />
         <EntityTypeShape EntityType="DataModel.Articulo" Width="1.5" PointX="7.5" PointY="18.125" />
-        <EntityTypeShape EntityType="DataModel.RegistroArticulo" Width="1.5" PointX="9.75" PointY="17.625" />
         <EntityTypeShape EntityType="DataModel.Adscripcion" Width="1.5" PointX="5.25" PointY="14.875" />
         <EntityTypeShape EntityType="DataModel.Autor" Width="1.5" PointX="7.5" PointY="14.75" />
         <AssociationConnector Association="DataModel.AdscripcionAutor" />
@@ -68,7 +69,6 @@
         <AssociationConnector Association="DataModel.AdscripcionParticipante" />
         <AssociationConnector Association="DataModel.ActividadParticipante" />
         <EntityTypeShape EntityType="DataModel.Ingreso" Width="1.5" PointX="12" PointY="17.875" />
-        <AssociationConnector Association="DataModel.RegistroArticuloIngreso" />
         <EntityTypeShape EntityType="DataModel.Presupuesto" Width="1.5" PointX="3" PointY="26" />
         <EntityTypeShape EntityType="DataModel.Comite" Width="1.5" PointX="3" PointY="28.625" />
         <AssociationConnector Association="DataModel.ComiteActividad" />

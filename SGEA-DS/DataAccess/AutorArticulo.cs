@@ -14,12 +14,19 @@ namespace DataAccess
     
     public partial class AutorArticulo
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public AutorArticulo()
+        {
+            this.RegistroArticulo = new HashSet<RegistroArticulo>();
+        }
+    
         public int Id { get; set; }
         public int AutorId { get; set; }
         public int ArticuloId { get; set; }
     
         public virtual Autor Autor { get; set; }
         public virtual Articulo Articulo { get; set; }
-        public virtual RegistroArticulo RegistroArticulo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RegistroArticulo> RegistroArticulo { get; set; }
     }
 }

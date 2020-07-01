@@ -227,6 +227,9 @@
     <Compile Include="RegistrarMiembroComite.xaml.cs">
       <DependentUpon>RegistrarMiembroComite.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarPagoArticulo.xaml.cs">
+      <DependentUpon>RegistrarPagoArticulo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VentanaUserControl.xaml.cs">
       <DependentUpon>VentanaUserControl.xaml</DependentUpon>
     </Compile>
@@ -393,6 +396,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="RegistrarMiembroComite.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RegistrarPagoArticulo.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

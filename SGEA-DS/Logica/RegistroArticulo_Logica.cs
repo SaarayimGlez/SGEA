@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Linq;
 
 namespace Logica
@@ -9,44 +10,24 @@ namespace Logica
         {
         }
 
-        /*public string RecuperarAutor(Articulo articulo)
+        public void RegistrarPagoArticulo(Modelo.RegistroArticulo registro)
         {
-            string autor = "";
             try
             {
-                var autorRecuperado = _context.RegistroArticuloSet
-                    .Join(
-                        _context.ArticuloSet,
-                        registroArticulo => registroArticulo.Articulo.Id,
-                        articuloArticulo => articulo.Id,
-                        (registroArticulo, articuloArticulo) => new
-                        {
-                            Autorid = registroArticulo.AutorId
-                        }
-                     )
-                     .Join(
-                        _context.AutorSet,
-                        registroArticulo => registroArticulo.Autorid,
-                        autorArticulo => autorArticulo.Id,
-                        (registroArticulo, autorArticulo) => new
-                        {
-                            NombreAutor = autorArticulo.nombre,
-                            ApellidoPAutor = autorArticulo.apellidoPaterno,
-                            ApellidoMAutor = autorArticulo.apellidoMaterno
-                        }
-                     );
-
-                foreach (var parteNombre in autorRecuperado)
+                _context.RegistroArticuloSet.Add(new RegistroArticulo()
                 {
-                    autor = parteNombre.NombreAutor + " " + 
-                        parteNombre.ApellidoPAutor + " " + parteNombre.ApellidoMAutor;
-                }
+                    comprobantePago = registro.comprobantePago,
+                    fecha = registro.fecha,
+                    hora = TimeSpan.Parse(registro.hora),
+                    cantidadPago = registro.cantidadPago
+                });
+                _context.SaveChanges();
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Console.Write(e);
             }
-            return autor;
-        }*/
+        }
+
     }
 }

@@ -116,6 +116,9 @@
     <Compile Include="Organizador.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="PagoSet.cs">
+      <DependentUpon>DataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Participante.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>

@@ -196,6 +196,14 @@
           <Property Name="correoElectronico" Type="nvarchar(max)" />
           <Property Name="idUsuario" Type="int" />
         </EntityType>
+        <EntityType Name="PagoSet">
+          <Key>
+            <PropertyRef Name="folio" />
+          </Key>
+          <Property Name="folio" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fecha" Type="datetime" Nullable="false" />
+          <Property Name="monto" Type="float" Nullable="false" />
+        </EntityType>
         <EntityType Name="ParticipanteSet">
           <Key>
             <PropertyRef Name="Id" />
@@ -234,12 +242,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="comprobantePago" Type="tinyint" Nullable="false" />
+          <Property Name="comprobantePago" Type="nvarchar(max)" Nullable="false" />
           <Property Name="fecha" Type="datetime" Nullable="false" />
           <Property Name="hora" Type="time" Precision="7" Nullable="false" />
           <Property Name="cantidadPago" Type="float" Nullable="false" />
-          <Property Name="RegistroArticuloIngreso_RegistroArticulo_Id" Type="int" Nullable="false" />
-          <Property Name="AutorArticulo_Id" Type="int" Nullable="false" />
+          <Property Name="RegistroArticuloIngreso_RegistroArticulo_Id" Type="int" />
+          <Property Name="AutorArticulo_Id" Type="int" />
         </EntityType>
         <EntityType Name="TareaSet">
           <Key>
@@ -582,8 +590,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PagoSet_AsistenteSet">
+          <End Role="PagoSet" Type="Self.PagoSet" Multiplicity="0..1" />
+          <End Role="AsistenteSet" Type="Self.AsistenteSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PagoSet">
+              <PropertyRef Name="folio" />
+            </Principal>
+            <Dependent Role="AsistenteSet">
+              <PropertyRef Name="PagoFolio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RegistroArticuloAutorArticulo">
-          <End Role="AutorArticuloSet" Type="Self.AutorArticuloSet" Multiplicity="1" />
+          <End Role="AutorArticuloSet" Type="Self.AutorArticuloSet" Multiplicity="0..1" />
           <End Role="RegistroArticuloSet" Type="Self.RegistroArticuloSet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="AutorArticuloSet">
@@ -595,7 +615,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RegistroArticuloIngreso">
-          <End Role="IngresoSet" Type="Self.IngresoSet" Multiplicity="1" />
+          <End Role="IngresoSet" Type="Self.IngresoSet" Multiplicity="0..1" />
           <End Role="RegistroArticuloSet" Type="Self.RegistroArticuloSet" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="IngresoSet">
@@ -625,6 +645,7 @@
           <EntitySet Name="MaterialSet" EntityType="Self.MaterialSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MiembroComiteSet" EntityType="Self.MiembroComiteSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrganizadorSet" EntityType="Self.OrganizadorSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PagoSet" EntityType="Self.PagoSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ParticipanteSet" EntityType="Self.ParticipanteSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PatrocinadorSet" EntityType="Self.PatrocinadorSet" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PresupuestoSet" EntityType="Self.PresupuestoSet" Schema="dbo" store:Type="Tables" />
@@ -739,6 +760,10 @@
             <End Role="UsuarioSet" EntitySet="UsuarioSet" />
             <End Role="OrganizadorSet" EntitySet="OrganizadorSet" />
           </AssociationSet>
+          <AssociationSet Name="FK_PagoSet_AsistenteSet" Association="Self.FK_PagoSet_AsistenteSet">
+            <End Role="PagoSet" EntitySet="PagoSet" />
+            <End Role="AsistenteSet" EntitySet="AsistenteSet" />
+          </AssociationSet>
           <AssociationSet Name="FK_RegistroArticuloAutorArticulo" Association="Self.FK_RegistroArticuloAutorArticulo">
             <End Role="AutorArticuloSet" EntitySet="AutorArticuloSet" />
             <End Role="RegistroArticuloSet" EntitySet="RegistroArticuloSet" />
@@ -755,7 +780,6 @@
         <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ActividadSet" EntityType="DataModel.Actividad" />
           <EntitySet Name="ArticuloSet" EntityType="DataModel.Articulo" />
-          <EntitySet Name="RegistroArticuloSet" EntityType="DataModel.RegistroArticulo" />
           <EntitySet Name="AdscripcionSet" EntityType="DataModel.Adscripcion" />
           <EntitySet Name="AutorSet" EntityType="DataModel.Autor" />
           <EntitySet Name="CalendarioSet" EntityType="DataModel.Calendario" />
@@ -777,10 +801,6 @@
             <End Role="Participante" EntitySet="ParticipanteSet" />
           </AssociationSet>
           <EntitySet Name="IngresoSet" EntityType="DataModel.Ingreso" />
-          <AssociationSet Name="RegistroArticuloIngreso" Association="DataModel.RegistroArticuloIngreso">
-            <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
-            <End Role="Ingreso" EntitySet="IngresoSet" />
-          </AssociationSet>
           <EntitySet Name="PresupuestoSet" EntityType="DataModel.Presupuesto" />
           <EntitySet Name="ComiteSet" EntityType="DataModel.Comite" />
           <AssociationSet Name="ComiteActividad" Association="DataModel.ComiteActividad">
@@ -866,10 +886,6 @@
             <End EntitySet="ActividadSet" Role="Actividad" />
             <End EntitySet="ArticuloSet" Role="Articulo" />
           </AssociationSet>
-          <AssociationSet Name="RegistroArticuloAutorArticulo" Association="DataModel.RegistroArticuloAutorArticulo">
-            <End Role="RegistroArticulo" EntitySet="RegistroArticuloSet" />
-            <End Role="AutorArticulo" EntitySet="AutorArticuloSet" />
-          </AssociationSet>
           <EntitySet Name="MagistralSet" EntityType="DataModel.Magistral" />
           <AssociationSet Name="FK_ActividadMagistral" Association="DataModel.FK_ActividadMagistral">
             <End Role="Actividad" EntitySet="ActividadSet" />
@@ -883,7 +899,21 @@
             <End Role="MagistralSet" EntitySet="MagistralSet" />
             <End Role="Egreso" EntitySet="EgresoSet" />
           </AssociationSet>
-        </EntityContainer>
+          <EntitySet Name="PagoSets" EntityType="DataModel.PagoSet" />
+          <AssociationSet Name="FK_PagoSet_AsistenteSet" Association="DataModel.FK_PagoSet_AsistenteSet">
+            <End Role="PagoSet" EntitySet="PagoSets" />
+            <End Role="Asistente" EntitySet="AsistenteSet" />
+          </AssociationSet>
+          <EntitySet Name="RegistroArticuloSet" EntityType="DataModel.RegistroArticulo" />
+          <AssociationSet Name="FK_RegistroArticuloAutorArticulo" Association="DataModel.FK_RegistroArticuloAutorArticulo">
+            <End Role="AutorArticulo" EntitySet="AutorArticuloSet" />
+            <End Role="RegistroArticuloSet" EntitySet="RegistroArticuloSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RegistroArticuloIngreso" Association="DataModel.FK_RegistroArticuloIngreso">
+            <End Role="Ingreso" EntitySet="IngresoSet" />
+            <End Role="RegistroArticuloSet" EntitySet="RegistroArticuloSet" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="Actividad">
           <Key>
             <PropertyRef Name="Id" />
@@ -917,17 +947,6 @@
           <Property Name="status" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Actividad" Relationship="DataModel.ActividadArticulo" FromRole="Articulo" ToRole="Actividad" />
           <Property Name="ActividadId" Nullable="true" Type="Int32" />
-        </EntityType>
-        <EntityType Name="RegistroArticulo">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="comprobantePago" Type="Byte" Nullable="false" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="hora" Type="Time" Nullable="false" Precision="7" />
-          <Property Name="cantidadPago" Type="Double" Nullable="false" />
-          <NavigationProperty Name="AutorArticulo" Relationship="DataModel.RegistroArticuloAutorArticulo" FromRole="RegistroArticulo" ToRole="AutorArticulo" />
         </EntityType>
         <EntityType Name="Adscripcion">
           <Key>
@@ -1025,13 +1044,9 @@
           <Property Name="concepto" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="monto" Type="Double" Nullable="false" />
           <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="RegistroArticulo" Relationship="DataModel.RegistroArticuloIngreso" FromRole="Ingreso" ToRole="RegistroArticulo" />
           <NavigationProperty Name="PatrocinadorSet" Relationship="DataModel.FK_IngresoPatrocinador" FromRole="Ingreso" ToRole="PatrocinadorSet" />
+          <NavigationProperty Name="RegistroArticulo" Relationship="DataModel.FK_RegistroArticuloIngreso" FromRole="Ingreso" ToRole="RegistroArticuloSet" />
         </EntityType>
-        <Association Name="RegistroArticuloIngreso">
-          <End Type="DataModel.RegistroArticulo" Role="RegistroArticulo" Multiplicity="0..1" />
-          <End Type="DataModel.Ingreso" Role="Ingreso" Multiplicity="1" />
-        </Association>
         <EntityType Name="Presupuesto">
           <Key>
             <PropertyRef Name="Id" />
@@ -1074,6 +1089,7 @@
           <Property Name="apellidoMaterno" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="correoElectronico" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="PagoFolio" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="PagoSet" Relationship="DataModel.FK_PagoSet_AsistenteSet" FromRole="Asistente" ToRole="PagoSet" />
         </EntityType>
         <Association Name="ActividadAsistente">
           <End Type="DataModel.Actividad" Role="Actividad" Multiplicity="*" />
@@ -1365,7 +1381,7 @@
           <Property Name="AutorId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Articulo" Relationship="DataModel.ArticuloAutorArticulo" FromRole="AutorArticulo" ToRole="Articulo" />
           <Property Name="ArticuloId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="RegistroArticulo" Relationship="DataModel.RegistroArticuloAutorArticulo" FromRole="AutorArticulo" ToRole="RegistroArticulo" />
+          <NavigationProperty Name="RegistroArticulo" Relationship="DataModel.FK_RegistroArticuloAutorArticulo" FromRole="AutorArticulo" ToRole="RegistroArticuloSet" />
         </EntityType>
         <Association Name="AutorAutorArticulo">
           <End Type="DataModel.Autor" Role="Autor" Multiplicity="1" />
@@ -1402,10 +1418,6 @@
               <PropertyRef Name="ActividadId" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="RegistroArticuloAutorArticulo">
-          <End Type="DataModel.RegistroArticulo" Role="RegistroArticulo" Multiplicity="0..1" />
-          <End Type="DataModel.AutorArticulo" Role="AutorArticulo" Multiplicity="1" />
         </Association>
         <EntityType Name="Magistral">
           <Key>
@@ -1457,7 +1469,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="PagoSet">
+          <Key>
+            <PropertyRef Name="folio" />
+          </Key>
+          <Property Name="folio" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="monto" Type="Double" Nullable="false" />
+          <NavigationProperty Name="AsistenteSets" Relationship="DataModel.FK_PagoSet_AsistenteSet" FromRole="PagoSet" ToRole="Asistente" />
+        </EntityType>
+        <Association Name="FK_PagoSet_AsistenteSet">
+          <End Type="DataModel.PagoSet" Role="PagoSet" Multiplicity="0..1" />
+          <End Type="DataModel.Asistente" Role="Asistente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PagoSet">
+              <PropertyRef Name="folio" />
+            </Principal>
+            <Dependent Role="Asistente">
+              <PropertyRef Name="PagoFolio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="RegistroArticulo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="comprobantePago" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="hora" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="cantidadPago" Type="Double" Nullable="false" />
+          <Property Name="RegistroArticuloIngreso_RegistroArticulo_Id" Type="Int32" />
+          <Property Name="AutorArticulo_Id" Type="Int32" />
+          <NavigationProperty Name="AutorArticulo" Relationship="DataModel.FK_RegistroArticuloAutorArticulo" FromRole="RegistroArticuloSet" ToRole="AutorArticulo" />
+          <NavigationProperty Name="Ingreso" Relationship="DataModel.FK_RegistroArticuloIngreso" FromRole="RegistroArticuloSet" ToRole="Ingreso" />
+        </EntityType>
+        <Association Name="FK_RegistroArticuloAutorArticulo">
+          <End Type="DataModel.AutorArticulo" Role="AutorArticulo" Multiplicity="0..1" />
+          <End Type="DataModel.RegistroArticulo" Role="RegistroArticuloSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AutorArticulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroArticuloSet">
+              <PropertyRef Name="AutorArticulo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RegistroArticuloIngreso">
+          <End Type="DataModel.Ingreso" Role="Ingreso" Multiplicity="0..1" />
+          <End Type="DataModel.RegistroArticulo" Role="RegistroArticuloSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingreso">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RegistroArticuloSet">
+              <PropertyRef Name="RegistroArticuloIngreso_RegistroArticulo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1486,17 +1557,6 @@
           <ScalarProperty Name="keyword" ColumnName="keyword" />
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="ActividadId" ColumnName="ActividadId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="RegistroArticuloSet">
-      <EntityTypeMapping TypeName="IsTypeOf(DataModel.RegistroArticulo)">
-        <MappingFragment StoreEntitySet="RegistroArticuloSet">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="comprobantePago" ColumnName="comprobantePago" />
-          <ScalarProperty Name="fecha" ColumnName="fecha" />
-          <ScalarProperty Name="hora" ColumnName="hora" />
-          <ScalarProperty Name="cantidadPago" ColumnName="cantidadPago" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1716,28 +1776,12 @@
         <ScalarProperty Name="Id" ColumnName="Participante_Id" />
       </EndProperty>
     </AssociationSetMapping>
-    <AssociationSetMapping Name="RegistroArticuloIngreso" TypeName="DataModel.RegistroArticuloIngreso" StoreEntitySet="RegistroArticuloSet">
-      <EndProperty Name="Ingreso">
-        <ScalarProperty Name="Id" ColumnName="RegistroArticuloIngreso_RegistroArticulo_Id" />
-      </EndProperty>
-      <EndProperty Name="RegistroArticulo">
-        <ScalarProperty Name="Id" ColumnName="Id" />
-      </EndProperty>
-    </AssociationSetMapping>
     <AssociationSetMapping Name="ActividadAsistente" TypeName="DataModel.ActividadAsistente" StoreEntitySet="ActividadAsistente">
       <EndProperty Name="Actividad">
         <ScalarProperty Name="Id" ColumnName="ActividadAsistente_Asistente_Id" />
       </EndProperty>
       <EndProperty Name="Asistente">
         <ScalarProperty Name="Id" ColumnName="Asistente_Id" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="RegistroArticuloAutorArticulo" TypeName="DataModel.RegistroArticuloAutorArticulo" StoreEntitySet="RegistroArticuloSet">
-      <EndProperty Name="AutorArticulo">
-        <ScalarProperty Name="Id" ColumnName="AutorArticulo_Id" />
-      </EndProperty>
-      <EndProperty Name="RegistroArticulo">
-        <ScalarProperty Name="Id" ColumnName="Id" />
       </EndProperty>
     </AssociationSetMapping>
           <EntitySetMapping Name="MagistralSet">
@@ -1748,6 +1792,28 @@
                 <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
                 <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PagoSets">
+            <EntityTypeMapping TypeName="DataModel.PagoSet">
+              <MappingFragment StoreEntitySet="PagoSet">
+                <ScalarProperty Name="monto" ColumnName="monto" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="folio" ColumnName="folio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroArticuloSet">
+            <EntityTypeMapping TypeName="DataModel.RegistroArticulo">
+              <MappingFragment StoreEntitySet="RegistroArticuloSet">
+                <ScalarProperty Name="AutorArticulo_Id" ColumnName="AutorArticulo_Id" />
+                <ScalarProperty Name="RegistroArticuloIngreso_RegistroArticulo_Id" ColumnName="RegistroArticuloIngreso_RegistroArticulo_Id" />
+                <ScalarProperty Name="cantidadPago" ColumnName="cantidadPago" />
+                <ScalarProperty Name="hora" ColumnName="hora" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="comprobantePago" ColumnName="comprobantePago" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

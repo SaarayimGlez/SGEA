@@ -20,5 +20,7 @@ namespace DataAccess
         public string apellidoMaterno { get; set; }
         public string correoElectronico { get; set; }
         public string PagoFolio { get; set; }
+    
+        public virtual PagoSet PagoSet { get; set; }
     }
 }

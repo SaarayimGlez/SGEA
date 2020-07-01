@@ -18,6 +18,7 @@ namespace DataAccess
         public Ingreso()
         {
             this.PatrocinadorSet = new HashSet<Patrocinador>();
+            this.RegistroArticulo = new HashSet<RegistroArticulo>();
         }
     
         public int Id { get; set; }
@@ -25,8 +26,9 @@ namespace DataAccess
         public double monto { get; set; }
         public System.DateTime fecha { get; set; }
     
-        public virtual RegistroArticulo RegistroArticulo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Patrocinador> PatrocinadorSet { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RegistroArticulo> RegistroArticulo { get; set; }
     }
 }

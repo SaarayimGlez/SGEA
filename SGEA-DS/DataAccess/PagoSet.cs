@@ -12,17 +12,19 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class RegistroArticulo
+    public partial class PagoSet
     {
-        public int Id { get; set; }
-        public string comprobantePago { get; set; }
-        public System.DateTime fecha { get; set; }
-        public System.TimeSpan hora { get; set; }
-        public double cantidadPago { get; set; }
-        public Nullable<int> RegistroArticuloIngreso_RegistroArticulo_Id { get; set; }
-        public Nullable<int> AutorArticulo_Id { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public PagoSet()
+        {
+            this.AsistenteSets = new HashSet<Asistente>();
+        }
     
-        public virtual AutorArticulo AutorArticulo { get; set; }
-        public virtual Ingreso Ingreso { get; set; }
+        public string folio { get; set; }
+        public System.DateTime fecha { get; set; }
+        public double monto { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Asistente> AsistenteSets { get; set; }
     }
 }

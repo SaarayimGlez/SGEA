@@ -58,7 +58,10 @@ namespace SGEA_DS
 
         private void Click_RegistrarPago(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            RegistrarPagoArticulo registrarPagoArticulo =
+                new RegistrarPagoArticulo(this.miembroComite);
+            registrarPagoArticulo.Show();
+            this.Close();
         }
 
         private void Click_ConsultarAutor(object sender, RoutedEventArgs e)
