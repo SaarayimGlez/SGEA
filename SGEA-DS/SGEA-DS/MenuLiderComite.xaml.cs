@@ -46,7 +46,9 @@ namespace SGEA_DS
 
         private void Click_RegistrarTarea(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            RegistrarTarea registrarTarea = new RegistrarTarea(this.miembroComite);
+            registrarTarea.Show();
+            this.Close();
         }
 
         private void Click_ProgramarReunion(object sender, RoutedEventArgs e)

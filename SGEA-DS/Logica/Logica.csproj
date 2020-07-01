@@ -70,6 +70,7 @@
     <Compile Include="Egreso_Logica.cs" />
     <Compile Include="Material_Logica.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tarea_Logica.cs" />
     <Compile Include="Usuario_Logica.cs" />
     <Compile Include="Magistral_Logica.cs" />
   </ItemGroup>

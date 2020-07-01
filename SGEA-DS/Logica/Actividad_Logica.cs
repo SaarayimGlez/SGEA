@@ -134,5 +134,27 @@ namespace Logica
             }
             return respuesta;
         }
+
+        public List<Modelo.Actividad> RecuperarListaActividades()
+        {
+            List<Modelo.Actividad> listaActividades = new List<Modelo.Actividad>();
+            try
+            {
+                var listaBD = _context.ActividadSet.ToList();
+                foreach (Actividad actividad in listaBD)
+                {
+                    listaActividades.Add(new Modelo.Actividad()
+                    {
+                        Id = actividad.Id,
+                        nombre = actividad.nombre
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+            }
+            return listaActividades;
+        }
     }
 }
