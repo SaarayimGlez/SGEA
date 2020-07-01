@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Modelo;
 
 namespace SGEA_DS
 {
@@ -19,14 +20,17 @@ namespace SGEA_DS
     /// </summary>
     public partial class GestionActividades : Window
     {
-        public GestionActividades()
+        private Evento evento;
+
+        public GestionActividades(Modelo.Evento evento)
         {
             InitializeComponent();
+            this.evento = evento;
         }
 
         private void Click_Regresar(object sender, RoutedEventArgs e)
         {
-            GestionEvento_2 gestionEvento_2 = new GestionEvento_2();
+            GestionEvento_2 gestionEvento_2 = new GestionEvento_2(this.evento);
             gestionEvento_2.Show();
             this.Close();
         }
@@ -47,12 +51,18 @@ namespace SGEA_DS
 
         private void Click_GenerarReporteI(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException(); ;
+            GenerarReporteIngresosActividad gestionActividades = 
+                new GenerarReporteIngresosActividad(this.evento);
+            gestionActividades.Show();
+            this.Close();
         }
 
         private void Click_Registrar(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException(); ;
+            RegistrarActividad registrarActividad = 
+                new RegistrarActividad(this.evento);
+            registrarActividad.Show();
+            this.Close();
         }
 
         private void Click_Modificar(object sender, RoutedEventArgs e)

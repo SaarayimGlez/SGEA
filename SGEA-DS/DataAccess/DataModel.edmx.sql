@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 06/11/2020 07:05:25
+-- Date Created: 07/01/2020 08:37:01
 -- Generated from EDMX file: D:\Users\GANADOR\Downloads\8\desSOFT\ELproyecto\SGEA-DS\DataAccess\DataModel.edmx
 -- --------------------------------------------------
 
@@ -17,32 +17,8 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_ActividadCalendario]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[CalendarioSet] DROP CONSTRAINT [FK_ActividadCalendario];
-GO
-IF OBJECT_ID(N'[dbo].[FK_AdscripcionParticipante]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ParticipanteSet] DROP CONSTRAINT [FK_AdscripcionParticipante];
-GO
-IF OBJECT_ID(N'[dbo].[FK_AdscripcionMagistral]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MagistralSet] DROP CONSTRAINT [FK_AdscripcionMagistral];
-GO
-IF OBJECT_ID(N'[dbo].[FK_AdscripcionAutor]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AutorSet] DROP CONSTRAINT [FK_AdscripcionAutor];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ActividadMagistral]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MagistralSet] DROP CONSTRAINT [FK_ActividadMagistral];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ActividadParticipante_Actividad]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ActividadParticipante] DROP CONSTRAINT [FK_ActividadParticipante_Actividad];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ActividadParticipante_Participante]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ActividadParticipante] DROP CONSTRAINT [FK_ActividadParticipante_Participante];
-GO
-IF OBJECT_ID(N'[dbo].[FK_RegistroArticuloIngreso]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[RegistroArticuloSet] DROP CONSTRAINT [FK_RegistroArticuloIngreso];
-GO
-IF OBJECT_ID(N'[dbo].[FK_ComiteActividad]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ActividadSet] DROP CONSTRAINT [FK_ComiteActividad];
+IF OBJECT_ID(N'[dbo].[FK_ActividadArticulo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ArticuloSet] DROP CONSTRAINT [FK_ActividadArticulo];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ActividadAsistente_Actividad]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ActividadAsistente] DROP CONSTRAINT [FK_ActividadAsistente_Actividad];
@@ -50,76 +26,112 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_ActividadAsistente_Asistente]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[ActividadAsistente] DROP CONSTRAINT [FK_ActividadAsistente_Asistente];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ActividadTarea]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[TareaSet] DROP CONSTRAINT [FK_ActividadTarea];
+IF OBJECT_ID(N'[dbo].[FK_ActividadCalendario]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CalendarioSet] DROP CONSTRAINT [FK_ActividadCalendario];
 GO
-IF OBJECT_ID(N'[dbo].[FK_IngresoPatrocinador]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[PatrocinadorSet] DROP CONSTRAINT [FK_IngresoPatrocinador];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EgresoMagistral]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[EgresoSet] DROP CONSTRAINT [FK_EgresoMagistral];
+IF OBJECT_ID(N'[dbo].[FK_ActividadMagistral]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MagistralSet] DROP CONSTRAINT [FK_ActividadMagistral];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ActividadMaterial]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[MaterialSet] DROP CONSTRAINT [FK_ActividadMaterial];
 GO
-IF OBJECT_ID(N'[dbo].[FK_EgresoMaterial]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MaterialSet] DROP CONSTRAINT [FK_EgresoMaterial];
+IF OBJECT_ID(N'[dbo].[FK_ActividadParticipante_Actividad]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ActividadParticipante] DROP CONSTRAINT [FK_ActividadParticipante_Actividad];
 GO
-IF OBJECT_ID(N'[dbo].[FK_EventoActividad]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ActividadSet] DROP CONSTRAINT [FK_EventoActividad];
+IF OBJECT_ID(N'[dbo].[FK_ActividadParticipante_Participante]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ActividadParticipante] DROP CONSTRAINT [FK_ActividadParticipante_Participante];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ArticuloEvaluacion]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[EvaluacionSet] DROP CONSTRAINT [FK_ArticuloEvaluacion];
+IF OBJECT_ID(N'[dbo].[FK_ActividadTarea]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TareaSet] DROP CONSTRAINT [FK_ActividadTarea];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ComiteMiembroComite]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MiembroComiteSet] DROP CONSTRAINT [FK_ComiteMiembroComite];
+IF OBJECT_ID(N'[dbo].[FK_AdscripcionAutor]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AutorSet] DROP CONSTRAINT [FK_AdscripcionAutor];
 GO
-IF OBJECT_ID(N'[dbo].[FK_EventoComite]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ComiteSet] DROP CONSTRAINT [FK_EventoComite];
+IF OBJECT_ID(N'[dbo].[FK_AdscripcionMagistral]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MagistralSet] DROP CONSTRAINT [FK_AdscripcionMagistral];
 GO
-IF OBJECT_ID(N'[dbo].[FK_EvaluacionMiembroComite]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[EvaluacionSet] DROP CONSTRAINT [FK_EvaluacionMiembroComite];
-GO
-IF OBJECT_ID(N'[dbo].[FK_EventoPresupuesto]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[EventoSet] DROP CONSTRAINT [FK_EventoPresupuesto];
-GO
-IF OBJECT_ID(N'[dbo].[FK_OrganizadorEvento]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[EventoSet] DROP CONSTRAINT [FK_OrganizadorEvento];
-GO
-IF OBJECT_ID(N'[dbo].[FK_MiembroComiteUsuario]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[MiembroComiteSet] DROP CONSTRAINT [FK_MiembroComiteUsuario];
-GO
-IF OBJECT_ID(N'[dbo].[FK_OrganizadorUsuario]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[OrganizadorSet] DROP CONSTRAINT [FK_OrganizadorUsuario];
-GO
-IF OBJECT_ID(N'[dbo].[FK_AutorAutorArticulo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[AutorArticuloSet] DROP CONSTRAINT [FK_AutorAutorArticulo];
+IF OBJECT_ID(N'[dbo].[FK_AdscripcionParticipante]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ParticipanteSet] DROP CONSTRAINT [FK_AdscripcionParticipante];
 GO
 IF OBJECT_ID(N'[dbo].[FK_ArticuloAutorArticulo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[AutorArticuloSet] DROP CONSTRAINT [FK_ArticuloAutorArticulo];
 GO
+IF OBJECT_ID(N'[dbo].[FK_ArticuloEvaluacion]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EvaluacionSet] DROP CONSTRAINT [FK_ArticuloEvaluacion];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AutorAutorArticulo]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AutorArticuloSet] DROP CONSTRAINT [FK_AutorAutorArticulo];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ComiteActividad]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ActividadSet] DROP CONSTRAINT [FK_ComiteActividad];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ComiteMiembroComite]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MiembroComiteSet] DROP CONSTRAINT [FK_ComiteMiembroComite];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EgresoMagistral]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EgresoSet] DROP CONSTRAINT [FK_EgresoMagistral];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EgresoMaterial]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MaterialSet] DROP CONSTRAINT [FK_EgresoMaterial];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EvaluacionMiembroComite]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EvaluacionSet] DROP CONSTRAINT [FK_EvaluacionMiembroComite];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventoActividad]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ActividadSet] DROP CONSTRAINT [FK_EventoActividad];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventoComite]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ComiteSet] DROP CONSTRAINT [FK_EventoComite];
+GO
+IF OBJECT_ID(N'[dbo].[FK_EventoPresupuesto]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventoSet] DROP CONSTRAINT [FK_EventoPresupuesto];
+GO
+IF OBJECT_ID(N'[dbo].[FK_IngresoPatrocinador]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PatrocinadorSet] DROP CONSTRAINT [FK_IngresoPatrocinador];
+GO
+IF OBJECT_ID(N'[dbo].[FK_MiembroComiteUsuario]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[MiembroComiteSet] DROP CONSTRAINT [FK_MiembroComiteUsuario];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrganizadorEvento]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[EventoSet] DROP CONSTRAINT [FK_OrganizadorEvento];
+GO
+IF OBJECT_ID(N'[dbo].[FK_OrganizadorUsuario]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[OrganizadorSet] DROP CONSTRAINT [FK_OrganizadorUsuario];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PagoSet_AsistenteSet]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[AsistenteSet] DROP CONSTRAINT [FK_PagoSet_AsistenteSet];
+GO
 IF OBJECT_ID(N'[dbo].[FK_RegistroArticuloAutorArticulo]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[RegistroArticuloSet] DROP CONSTRAINT [FK_RegistroArticuloAutorArticulo];
 GO
-IF OBJECT_ID(N'[dbo].[FK_ActividadArticulo]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[ArticuloSet] DROP CONSTRAINT [FK_ActividadArticulo];
+IF OBJECT_ID(N'[dbo].[FK_RegistroArticuloIngreso]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[RegistroArticuloSet] DROP CONSTRAINT [FK_RegistroArticuloIngreso];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[ActividadAsistente]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ActividadAsistente];
+GO
+IF OBJECT_ID(N'[dbo].[ActividadParticipante]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ActividadParticipante];
+GO
 IF OBJECT_ID(N'[dbo].[ActividadSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ActividadSet];
+GO
+IF OBJECT_ID(N'[dbo].[AdscripcionSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AdscripcionSet];
 GO
 IF OBJECT_ID(N'[dbo].[ArticuloSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ArticuloSet];
 GO
-IF OBJECT_ID(N'[dbo].[RegistroArticuloSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[RegistroArticuloSet];
+IF OBJECT_ID(N'[dbo].[AsistenteSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AsistenteSet];
 GO
-IF OBJECT_ID(N'[dbo].[AdscripcionSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[AdscripcionSet];
+IF OBJECT_ID(N'[dbo].[AutorArticuloSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AutorArticuloSet];
 GO
 IF OBJECT_ID(N'[dbo].[AutorSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AutorSet];
@@ -127,35 +139,11 @@ GO
 IF OBJECT_ID(N'[dbo].[CalendarioSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[CalendarioSet];
 GO
-IF OBJECT_ID(N'[dbo].[MagistralSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[MagistralSet];
-GO
-IF OBJECT_ID(N'[dbo].[ParticipanteSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ParticipanteSet];
-GO
-IF OBJECT_ID(N'[dbo].[IngresoSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[IngresoSet];
-GO
-IF OBJECT_ID(N'[dbo].[PresupuestoSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[PresupuestoSet];
-GO
 IF OBJECT_ID(N'[dbo].[ComiteSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[ComiteSet];
 GO
-IF OBJECT_ID(N'[dbo].[AsistenteSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[AsistenteSet];
-GO
-IF OBJECT_ID(N'[dbo].[TareaSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[TareaSet];
-GO
-IF OBJECT_ID(N'[dbo].[PatrocinadorSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[PatrocinadorSet];
-GO
 IF OBJECT_ID(N'[dbo].[EgresoSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[EgresoSet];
-GO
-IF OBJECT_ID(N'[dbo].[MaterialSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[MaterialSet];
 GO
 IF OBJECT_ID(N'[dbo].[EvaluacionSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[EvaluacionSet];
@@ -163,23 +151,41 @@ GO
 IF OBJECT_ID(N'[dbo].[EventoSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[EventoSet];
 GO
+IF OBJECT_ID(N'[dbo].[IngresoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[IngresoSet];
+GO
+IF OBJECT_ID(N'[dbo].[MagistralSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MagistralSet];
+GO
+IF OBJECT_ID(N'[dbo].[MaterialSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[MaterialSet];
+GO
 IF OBJECT_ID(N'[dbo].[MiembroComiteSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[MiembroComiteSet];
 GO
 IF OBJECT_ID(N'[dbo].[OrganizadorSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[OrganizadorSet];
 GO
+IF OBJECT_ID(N'[dbo].[PagoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PagoSet];
+GO
+IF OBJECT_ID(N'[dbo].[ParticipanteSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ParticipanteSet];
+GO
+IF OBJECT_ID(N'[dbo].[PatrocinadorSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PatrocinadorSet];
+GO
+IF OBJECT_ID(N'[dbo].[PresupuestoSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PresupuestoSet];
+GO
+IF OBJECT_ID(N'[dbo].[RegistroArticuloSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[RegistroArticuloSet];
+GO
+IF OBJECT_ID(N'[dbo].[TareaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TareaSet];
+GO
 IF OBJECT_ID(N'[dbo].[UsuarioSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[UsuarioSet];
-GO
-IF OBJECT_ID(N'[dbo].[AutorArticuloSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[AutorArticuloSet];
-GO
-IF OBJECT_ID(N'[dbo].[ActividadParticipante]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ActividadParticipante];
-GO
-IF OBJECT_ID(N'[dbo].[ActividadAsistente]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[ActividadAsistente];
 GO
 
 -- --------------------------------------------------
@@ -207,18 +213,6 @@ CREATE TABLE [dbo].[ArticuloSet] (
     [keyword] nvarchar(max)  NOT NULL,
     [status] bit  NOT NULL,
     [ActividadId] int  NULL
-);
-GO
-
--- Creating table 'RegistroArticuloSet'
-CREATE TABLE [dbo].[RegistroArticuloSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [comprobantePago] tinyint  NOT NULL,
-    [fecha] datetime  NOT NULL,
-    [hora] time  NOT NULL,
-    [cantidadPago] float  NOT NULL,
-    [RegistroArticuloIngreso_RegistroArticulo_Id] int  NOT NULL,
-    [AutorArticulo_Id] int  NOT NULL
 );
 GO
 
@@ -251,17 +245,6 @@ CREATE TABLE [dbo].[CalendarioSet] (
     [horaInicio] time  NOT NULL,
     [horaFin] time  NOT NULL,
     [ActividadId] int  NOT NULL
-);
-GO
-
--- Creating table 'MagistralSet'
-CREATE TABLE [dbo].[MagistralSet] (
-    [Id] int IDENTITY(1,1) NOT NULL,
-    [nombre] nvarchar(max)  NOT NULL,
-    [apellidoPaterno] nvarchar(max)  NOT NULL,
-    [apellidoMaterno] nvarchar(max)  NULL,
-    [AdscripcionId] int  NOT NULL,
-    [ActividadMagistral_Magistral_Id] int  NOT NULL
 );
 GO
 
@@ -308,7 +291,8 @@ CREATE TABLE [dbo].[AsistenteSet] (
     [nombre] nvarchar(max)  NOT NULL,
     [apellidoPaterno] nvarchar(max)  NOT NULL,
     [apellidoMaterno] nvarchar(max)  NULL,
-    [correoElectronico] nvarchar(max)  NOT NULL
+    [correoElectronico] nvarchar(max)  NOT NULL,
+    [PagoFolio] nvarchar(50)  NULL
 );
 GO
 
@@ -422,6 +406,37 @@ CREATE TABLE [dbo].[AutorArticuloSet] (
 );
 GO
 
+-- Creating table 'MagistralSet'
+CREATE TABLE [dbo].[MagistralSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [nombre] nvarchar(max)  NOT NULL,
+    [apellidoPaterno] nvarchar(max)  NOT NULL,
+    [apellidoMaterno] nvarchar(max)  NULL,
+    [AdscripcionId] int  NOT NULL,
+    [ActividadMagistral_Magistral_Id] int  NULL
+);
+GO
+
+-- Creating table 'PagoSets'
+CREATE TABLE [dbo].[PagoSets] (
+    [folio] nvarchar(50)  NOT NULL,
+    [fecha] datetime  NOT NULL,
+    [monto] float  NOT NULL
+);
+GO
+
+-- Creating table 'RegistroArticuloSet'
+CREATE TABLE [dbo].[RegistroArticuloSet] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [comprobantePago] nvarchar(max)  NOT NULL,
+    [fecha] datetime  NOT NULL,
+    [hora] time  NOT NULL,
+    [cantidadPago] float  NOT NULL,
+    [RegistroArticuloIngreso_RegistroArticulo_Id] int  NULL,
+    [AutorArticulo_Id] int  NULL
+);
+GO
+
 -- Creating table 'ActividadParticipante'
 CREATE TABLE [dbo].[ActividadParticipante] (
     [ActividadParticipante_Participante_Id] int  NOT NULL,
@@ -452,12 +467,6 @@ ADD CONSTRAINT [PK_ArticuloSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
--- Creating primary key on [Id] in table 'RegistroArticuloSet'
-ALTER TABLE [dbo].[RegistroArticuloSet]
-ADD CONSTRAINT [PK_RegistroArticuloSet]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
 -- Creating primary key on [Id] in table 'AdscripcionSet'
 ALTER TABLE [dbo].[AdscripcionSet]
 ADD CONSTRAINT [PK_AdscripcionSet]
@@ -473,12 +482,6 @@ GO
 -- Creating primary key on [Id] in table 'CalendarioSet'
 ALTER TABLE [dbo].[CalendarioSet]
 ADD CONSTRAINT [PK_CalendarioSet]
-    PRIMARY KEY CLUSTERED ([Id] ASC);
-GO
-
--- Creating primary key on [Id] in table 'MagistralSet'
-ALTER TABLE [dbo].[MagistralSet]
-ADD CONSTRAINT [PK_MagistralSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
@@ -572,6 +575,24 @@ ADD CONSTRAINT [PK_AutorArticuloSet]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+-- Creating primary key on [Id] in table 'MagistralSet'
+ALTER TABLE [dbo].[MagistralSet]
+ADD CONSTRAINT [PK_MagistralSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [folio] in table 'PagoSets'
+ALTER TABLE [dbo].[PagoSets]
+ADD CONSTRAINT [PK_PagoSets]
+    PRIMARY KEY CLUSTERED ([folio] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'RegistroArticuloSet'
+ALTER TABLE [dbo].[RegistroArticuloSet]
+ADD CONSTRAINT [PK_RegistroArticuloSet]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- Creating primary key on [ActividadParticipante_Participante_Id], [Participante_Id] in table 'ActividadParticipante'
 ALTER TABLE [dbo].[ActividadParticipante]
 ADD CONSTRAINT [PK_ActividadParticipante]
@@ -618,21 +639,6 @@ ON [dbo].[ParticipanteSet]
     ([AdscripcionId]);
 GO
 
--- Creating foreign key on [AdscripcionId] in table 'MagistralSet'
-ALTER TABLE [dbo].[MagistralSet]
-ADD CONSTRAINT [FK_AdscripcionMagistral]
-    FOREIGN KEY ([AdscripcionId])
-    REFERENCES [dbo].[AdscripcionSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_AdscripcionMagistral'
-CREATE INDEX [IX_FK_AdscripcionMagistral]
-ON [dbo].[MagistralSet]
-    ([AdscripcionId]);
-GO
-
 -- Creating foreign key on [AdscripcionId] in table 'AutorSet'
 ALTER TABLE [dbo].[AutorSet]
 ADD CONSTRAINT [FK_AdscripcionAutor]
@@ -646,21 +652,6 @@ GO
 CREATE INDEX [IX_FK_AdscripcionAutor]
 ON [dbo].[AutorSet]
     ([AdscripcionId]);
-GO
-
--- Creating foreign key on [ActividadMagistral_Magistral_Id] in table 'MagistralSet'
-ALTER TABLE [dbo].[MagistralSet]
-ADD CONSTRAINT [FK_ActividadMagistral]
-    FOREIGN KEY ([ActividadMagistral_Magistral_Id])
-    REFERENCES [dbo].[ActividadSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_ActividadMagistral'
-CREATE INDEX [IX_FK_ActividadMagistral]
-ON [dbo].[MagistralSet]
-    ([ActividadMagistral_Magistral_Id]);
 GO
 
 -- Creating foreign key on [ActividadParticipante_Participante_Id] in table 'ActividadParticipante'
@@ -685,21 +676,6 @@ GO
 CREATE INDEX [IX_FK_ActividadParticipante_Participante]
 ON [dbo].[ActividadParticipante]
     ([Participante_Id]);
-GO
-
--- Creating foreign key on [RegistroArticuloIngreso_RegistroArticulo_Id] in table 'RegistroArticuloSet'
-ALTER TABLE [dbo].[RegistroArticuloSet]
-ADD CONSTRAINT [FK_RegistroArticuloIngreso]
-    FOREIGN KEY ([RegistroArticuloIngreso_RegistroArticulo_Id])
-    REFERENCES [dbo].[IngresoSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_RegistroArticuloIngreso'
-CREATE INDEX [IX_FK_RegistroArticuloIngreso]
-ON [dbo].[RegistroArticuloSet]
-    ([RegistroArticuloIngreso_RegistroArticulo_Id]);
 GO
 
 -- Creating foreign key on [ComiteId] in table 'ActividadSet'
@@ -769,21 +745,6 @@ GO
 CREATE INDEX [IX_FK_IngresoPatrocinador]
 ON [dbo].[PatrocinadorSet]
     ([IngresoPatrocinador_Patrocinador_Id]);
-GO
-
--- Creating foreign key on [Magistral_Id] in table 'EgresoSet'
-ALTER TABLE [dbo].[EgresoSet]
-ADD CONSTRAINT [FK_EgresoMagistral]
-    FOREIGN KEY ([Magistral_Id])
-    REFERENCES [dbo].[MagistralSet]
-        ([Id])
-    ON DELETE NO ACTION ON UPDATE NO ACTION;
-GO
-
--- Creating non-clustered index for FOREIGN KEY 'FK_EgresoMagistral'
-CREATE INDEX [IX_FK_EgresoMagistral]
-ON [dbo].[EgresoSet]
-    ([Magistral_Id]);
 GO
 
 -- Creating foreign key on [ActividadId] in table 'MaterialSet'
@@ -996,6 +957,66 @@ ON [dbo].[ArticuloSet]
     ([ActividadId]);
 GO
 
+-- Creating foreign key on [ActividadMagistral_Magistral_Id] in table 'MagistralSet'
+ALTER TABLE [dbo].[MagistralSet]
+ADD CONSTRAINT [FK_ActividadMagistral]
+    FOREIGN KEY ([ActividadMagistral_Magistral_Id])
+    REFERENCES [dbo].[ActividadSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ActividadMagistral'
+CREATE INDEX [IX_FK_ActividadMagistral]
+ON [dbo].[MagistralSet]
+    ([ActividadMagistral_Magistral_Id]);
+GO
+
+-- Creating foreign key on [AdscripcionId] in table 'MagistralSet'
+ALTER TABLE [dbo].[MagistralSet]
+ADD CONSTRAINT [FK_AdscripcionMagistral]
+    FOREIGN KEY ([AdscripcionId])
+    REFERENCES [dbo].[AdscripcionSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_AdscripcionMagistral'
+CREATE INDEX [IX_FK_AdscripcionMagistral]
+ON [dbo].[MagistralSet]
+    ([AdscripcionId]);
+GO
+
+-- Creating foreign key on [Magistral_Id] in table 'EgresoSet'
+ALTER TABLE [dbo].[EgresoSet]
+ADD CONSTRAINT [FK_EgresoMagistral]
+    FOREIGN KEY ([Magistral_Id])
+    REFERENCES [dbo].[MagistralSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_EgresoMagistral'
+CREATE INDEX [IX_FK_EgresoMagistral]
+ON [dbo].[EgresoSet]
+    ([Magistral_Id]);
+GO
+
+-- Creating foreign key on [PagoFolio] in table 'AsistenteSet'
+ALTER TABLE [dbo].[AsistenteSet]
+ADD CONSTRAINT [FK_PagoSet_AsistenteSet]
+    FOREIGN KEY ([PagoFolio])
+    REFERENCES [dbo].[PagoSets]
+        ([folio])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PagoSet_AsistenteSet'
+CREATE INDEX [IX_FK_PagoSet_AsistenteSet]
+ON [dbo].[AsistenteSet]
+    ([PagoFolio]);
+GO
+
 -- Creating foreign key on [AutorArticulo_Id] in table 'RegistroArticuloSet'
 ALTER TABLE [dbo].[RegistroArticuloSet]
 ADD CONSTRAINT [FK_RegistroArticuloAutorArticulo]
@@ -1009,6 +1030,21 @@ GO
 CREATE INDEX [IX_FK_RegistroArticuloAutorArticulo]
 ON [dbo].[RegistroArticuloSet]
     ([AutorArticulo_Id]);
+GO
+
+-- Creating foreign key on [RegistroArticuloIngreso_RegistroArticulo_Id] in table 'RegistroArticuloSet'
+ALTER TABLE [dbo].[RegistroArticuloSet]
+ADD CONSTRAINT [FK_RegistroArticuloIngreso]
+    FOREIGN KEY ([RegistroArticuloIngreso_RegistroArticulo_Id])
+    REFERENCES [dbo].[IngresoSet]
+        ([Id])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_RegistroArticuloIngreso'
+CREATE INDEX [IX_FK_RegistroArticuloIngreso]
+ON [dbo].[RegistroArticuloSet]
+    ([RegistroArticuloIngreso_RegistroArticulo_Id]);
 GO
 
 -- --------------------------------------------------

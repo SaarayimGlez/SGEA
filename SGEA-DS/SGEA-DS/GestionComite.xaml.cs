@@ -51,7 +51,10 @@ namespace SGEA_DS
 
         private void Click_Consultar(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ConsultarComite consultarComite =
+                new ConsultarComite(this.evento);
+            consultarComite.Show();
+            this.Close();
         }
     }
 }

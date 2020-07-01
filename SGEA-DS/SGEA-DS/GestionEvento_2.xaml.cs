@@ -41,7 +41,7 @@ namespace SGEA_DS
 
         private void Click_Actividades(object sender, RoutedEventArgs e)
         {
-            GestionActividades gestionActividades = new GestionActividades();
+            GestionActividades gestionActividades = new GestionActividades(this.evento);
             gestionActividades.Show();
             this.Close();
         }
@@ -69,7 +69,8 @@ namespace SGEA_DS
 
         private void Click_ConsultaDatosP(object sender, RoutedEventArgs e)
         {
-            ConsultaDatosPersonales consultaDatosPersonales = new ConsultaDatosPersonales();
+            ConsultaDatosPersonales consultaDatosPersonales = 
+                new ConsultaDatosPersonales(this.evento);
             consultaDatosPersonales.Show();
             this.Close();
         }

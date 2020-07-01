@@ -63,6 +63,7 @@
     <Compile Include="Articulo.cs" />
     <Compile Include="Asistente.cs" />
     <Compile Include="Autor.cs" />
+    <Compile Include="Calendario.cs" />
     <Compile Include="Comite.cs" />
     <Compile Include="Evaluacion.cs" />
     <Compile Include="Evento.cs" />

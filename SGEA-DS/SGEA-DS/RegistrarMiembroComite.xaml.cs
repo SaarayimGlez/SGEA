@@ -68,7 +68,7 @@ namespace SGEA_DS {
             Usuario_Logica usuario = new Usuario_Logica();
             Usuario nuevoUsuario = new Usuario();
             nuevoUsuario.nombreUsuario = textBox_Usuario.Text;
-            nuevoUsuario.contrasenia = textBox_Usuario.Text;
+            nuevoUsuario.contrasenia = textBox_Contrasenia.Text;
             usuario.RegistrarUsuario(nuevoUsuario);
         }
 

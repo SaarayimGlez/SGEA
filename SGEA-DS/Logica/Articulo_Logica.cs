@@ -123,5 +123,28 @@ namespace Logica
             }
             return false;
         }
+
+        public List<Modelo.Articulo> RecuperarArticulo()
+        {
+            List<Modelo.Articulo> listaArticulo = new List<Modelo.Articulo>();
+            try
+            {
+                var listaA = _context.ArticuloSet.ToList();
+                foreach (Articulo articulo in listaA)
+                {
+                    listaArticulo.Add(new Modelo.Articulo()
+                    {
+                        Id = articulo.Id,
+                        titulo = articulo.titulo,
+                        keyword = articulo.keyword,
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+            }
+            return listaArticulo;
+        }
     }
 }

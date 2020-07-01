@@ -199,5 +199,65 @@ namespace Logica
 
         }
 
+        public List<Modelo.MiembroComite> RecuperarMiembroComiteEvaluador()
+        {
+            List<Modelo.MiembroComite> listaMiembroC = new List<Modelo.MiembroComite>();
+            try
+            {
+                var listaMiembroComiteBD = _context.MiembroComiteSet
+                    .Where(
+                        miembro => miembro.evaluador == true
+                    ).ToList();
+
+                foreach (MiembroComite miembroComiteBD in listaMiembroComiteBD)
+                {
+                    listaMiembroC.Add(new Modelo.MiembroComite()
+                    {
+                        Id = miembroComiteBD.Id,
+                        nombre = miembroComiteBD.nombre,
+                        apellidoMaterno = miembroComiteBD.apellidoMaterno,
+                        apellidoPaterno = miembroComiteBD.apellidoPaterno,
+                        correoElectronico = miembroComiteBD.correoElectronico,
+                        nivelExperiencia = miembroComiteBD.nivelExperiencia
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return listaMiembroC;
+        }
+
+        public List<Modelo.MiembroComite> RecuperarMiembroComitePorComite(int idComite)
+        {
+            List<Modelo.MiembroComite> listaMiembroC = new List<Modelo.MiembroComite>();
+            try
+            {
+                var listaMiembroComiteBD = _context.MiembroComiteSet
+                    .Where(
+                        miembro => miembro.ComiteId == idComite
+                    ).ToList();
+
+                foreach (MiembroComite miembroComiteBD in listaMiembroComiteBD)
+                {
+                    listaMiembroC.Add(new Modelo.MiembroComite()
+                    {
+                        Id = miembroComiteBD.Id,
+                        nombre = miembroComiteBD.nombre,
+                        apellidoMaterno = miembroComiteBD.apellidoMaterno,
+                        apellidoPaterno = miembroComiteBD.apellidoPaterno,
+                        correoElectronico = miembroComiteBD.correoElectronico,
+                        nivelExperiencia = miembroComiteBD.nivelExperiencia
+                    });
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return listaMiembroC;
+        }
+
     }
 }

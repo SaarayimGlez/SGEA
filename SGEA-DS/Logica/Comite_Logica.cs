@@ -115,5 +115,27 @@ namespace Logica
             }
             return listaComite;
         }
+
+        public Modelo.Comite RecuperarComite(int idComite)
+        {
+            Modelo.Comite comiteRecuperado = new Modelo.Comite();
+            try
+            {
+                var comiteOriginal = _context.ComiteSet.SingleOrDefault(comite => comite.Id == idComite);
+                if (comiteOriginal != null)
+                {
+                    comiteRecuperado.Id = comiteOriginal.Id;
+                    comiteRecuperado.nombre = comiteOriginal.nombre;
+                    comiteRecuperado.descripcion = comiteOriginal.descripcion;
+                    comiteRecuperado.EventoId = comiteOriginal.EventoId;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+            }
+            return comiteRecuperado;
+        }
+
     }
 }

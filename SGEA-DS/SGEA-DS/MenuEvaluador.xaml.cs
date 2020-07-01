@@ -57,12 +57,17 @@ namespace SGEA_DS
 
         private void Click_ModificarEvaluacion(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ModificarEvaluacion modificarEvaluacion = 
+                new ModificarEvaluacion(this.articulo);
+            modificarEvaluacion.Show();
+            this.Close();
         }
 
         private void Click_EnviarEvaluacion(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            EnviarEvaluacion enviarEvaluacion = new EnviarEvaluacion(this.articulo);
+            enviarEvaluacion.Show();
+            this.Close();
         }
     }
 }

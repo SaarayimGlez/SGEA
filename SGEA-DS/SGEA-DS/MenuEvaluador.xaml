@@ -25,9 +25,9 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Button Content="Modificar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Click="Click_ModificarEvaluacion" IsEnabled="False"/>
+            <Button Content="Modificar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Click="Click_ModificarEvaluacion"/>
             <Button Content="Registrar" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="1" Click="Click_RegistrarEvaluacion" Grid.ColumnSpan="2"/>
-            <Button Content="Enviar" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Grid.Column="1" Click="Click_EnviarEvaluacion" IsEnabled="False"/>
+            <Button Content="Enviar" HorizontalAlignment="Right" VerticalAlignment="Top" Width="300" FontSize="18" Height="61" Grid.Row="2" Grid.Column="1" Click="Click_EnviarEvaluacion"/>
             <TextBlock x:Name="textBlock_mensaje" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="354" FontSize="14" FontWeight="Normal" Grid.Row="3"/>
         </Grid>
         <Grid Margin="66,0,66,38" HorizontalAlignment="Center" VerticalAlignment="Bottom">

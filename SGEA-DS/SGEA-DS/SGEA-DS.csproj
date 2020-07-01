@@ -18,7 +18,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>D:\Users\GANADOR\Desktop\despliegue\</PublishUrl>
+    <PublishUrl>G:\despliegue\1\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,7 +28,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -136,11 +136,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AsignarArticulo.xaml.cs">
+      <DependentUpon>AsignarArticulo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AsignarArticulo_2.xaml.cs">
+      <DependentUpon>AsignarArticulo_2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CambiarContrasenia.xaml.cs">
       <DependentUpon>CambiarContrasenia.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConsultarAutor_2.xaml.cs">
       <DependentUpon>ConsultarAutor_2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarComite.xaml.cs">
+      <DependentUpon>ConsultarComite.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarComite_2.xaml.cs">
+      <DependentUpon>ConsultarComite_2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarParticipante.xaml.cs">
+      <DependentUpon>ConsultarParticipante.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarParticipante_2.xaml.cs">
+      <DependentUpon>ConsultarParticipante_2.xaml</DependentUpon>
     </Compile>
     <Compile Include="CtrolUsrCtrolEvento.cs" />
     <Compile Include="ConsultarPatrocinador_2.xaml.cs">
@@ -149,8 +167,32 @@
     <Compile Include="ConsultarAutor.xaml.cs">
       <DependentUpon>ConsultarAutor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="EnviarEvaluacion.xaml.cs">
+      <DependentUpon>EnviarEvaluacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EnviarEvaluacion_2.xaml.cs">
+      <DependentUpon>EnviarEvaluacion_2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarReporteIngresosActividad.xaml.cs">
+      <DependentUpon>GenerarReporteIngresosActividad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GenerarReporteIngresosActividad_2.xaml.cs">
+      <DependentUpon>GenerarReporteIngresosActividad_2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarEvaluacion.xaml.cs">
+      <DependentUpon>ModificarEvaluacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModificarEvaluacion_2.xaml.cs">
+      <DependentUpon>ModificarEvaluacion_2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModificarParticipante.xaml.cs">
       <DependentUpon>ModificarParticipante.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarActividad.xaml.cs">
+      <DependentUpon>RegistrarActividad.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarActividad_2.xaml.cs">
+      <DependentUpon>RegistrarActividad_2.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistrarEvaluacion.xaml.cs">
       <DependentUpon>RegistrarEvaluacion.xaml</DependentUpon>
@@ -238,6 +280,14 @@
     </Compile>
     <Compile Include="Switcher.cs" />
     <Compile Include="VentanaCtrolEvento.cs" />
+    <Page Include="AsignarArticulo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AsignarArticulo_2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CambiarContrasenia.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -254,6 +304,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ConsultarComite.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ConsultarComite_2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ConsultarParticipante.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ConsultarParticipante_2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ConsultarPatrocinador_2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -262,7 +328,39 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EnviarEvaluacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="EnviarEvaluacion_2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GenerarReporteIngresosActividad.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GenerarReporteIngresosActividad_2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModificarEvaluacion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModificarEvaluacion_2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ModificarParticipante.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RegistrarActividad.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="RegistrarActividad_2.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

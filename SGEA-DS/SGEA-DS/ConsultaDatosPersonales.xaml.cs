@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Modelo;
 
 namespace SGEA_DS
 {
@@ -19,14 +20,17 @@ namespace SGEA_DS
     /// </summary>
     public partial class ConsultaDatosPersonales : Window
     {
-        public ConsultaDatosPersonales()
+        private Evento evento;
+
+        public ConsultaDatosPersonales(Modelo.Evento evento)
         {
             InitializeComponent();
+            this.evento = evento;
         }
 
         private void Click_Regresar(object sender, RoutedEventArgs e)
         {
-            GestionEvento_2 gestionEvento_2 = new GestionEvento_2();
+            GestionEvento_2 gestionEvento_2 = new GestionEvento_2(this.evento);
             gestionEvento_2.Show();
             this.Close();
         }
@@ -40,7 +44,11 @@ namespace SGEA_DS
 
         private void Click_ConsultarParticipantes(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException(); ;
+            ConsultarParticipante consultarParticipante = 
+                new ConsultarParticipante(this.evento);
+            consultarParticipante.Show();
+            this.Close();
+
         }
     }
 }

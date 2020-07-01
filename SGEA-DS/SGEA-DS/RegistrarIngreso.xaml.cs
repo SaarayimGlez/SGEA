@@ -22,12 +22,31 @@ namespace SGEA_DS {
     public partial class RegistrarIngreso : Window {
 
         private Evento evento;
+        private List<Articulo> listaArticulos;
+
+        private void LlenarCombobox()
+        {
+            Articulo_Logica articulo_Logica = new Articulo_Logica();
+            if (!articulo_Logica.ComprobarConexion())
+            {
+                label_Mensaje.Content = "Se ha perdido la conexión con la base de datos";
+            }
+            else
+            {
+                this.listaArticulos = articulo_Logica.RecuperarArticulo();
+                foreach (Articulo articulo in listaArticulos)
+                {
+                    comboBox_Articulo.Items.Add(articulo.titulo);
+                }
+            }
+        }
 
         public RegistrarIngreso(Evento evento)
         {
             InitializeComponent();
             this.evento = evento;
             OcultarCampos();
+            LlenarCombobox();
         }
         //oculta los campos de "otro" y "articulo"
         public void OcultarCampos()
@@ -77,9 +96,29 @@ namespace SGEA_DS {
                         ingreso.RegistrarIngreso(nuevoIngreso);
                         label_Mensaje.Content = "Se ha registrado el ingreso con éxito";
                     }
+                    else
+                    {
+                        if (comboBox_Articulo.Text != "")
+                        {
+                            DateTime thisDay = DateTime.Today; //gurada la fecha en la que se está haciendo el registro
+                            Ingreso nuevoIngreo = new Ingreso()
+                            {
+                                concepto = "Registro articulo: " + listaArticulos[comboBox_Articulo.SelectedIndex].titulo,
+                                fecha = thisDay,
+                                monto = float.Parse(textBox_CantidadIngreso.Text, NumberFormatInfo.InvariantInfo)
+                            };
+                            ingreso.RegistrarIngreso(nuevoIngreo);
+                            label_Mensaje.Content = "Se ha registrado el ingreso con éxito";
+                        }
+                        else
+                        {
+                            label_Mensaje.Content = "Seleccione un artículo o especifíque un concepto";
+                        }
+                    }
                 }
             }
         }
+        
 
         private void Cancelar(object sender, RoutedEventArgs e)
         {

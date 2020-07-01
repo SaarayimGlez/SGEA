@@ -48,7 +48,10 @@ namespace SGEA_DS
 
         private void Click_AsignarArticulo(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            AsignarArticulo asignarArticulo =
+                new AsignarArticulo(this.miembroComite);
+            asignarArticulo.Show();
+            this.Close();
         }
 
         private void Click_ModificarAutor(object sender, RoutedEventArgs e)

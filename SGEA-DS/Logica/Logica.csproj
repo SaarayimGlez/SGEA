@@ -58,6 +58,7 @@
     <Compile Include="Articulo_Logica.cs" />
     <Compile Include="Asistente_Logica.cs" />
     <Compile Include="Autor_Logica.cs" />
+    <Compile Include="Calendario_Logica.cs" />
     <Compile Include="ConexionBD_Logica.cs" />
     <Compile Include="Evaluacion_Logica.cs" />
     <Compile Include="Evento_Logica.cs" />

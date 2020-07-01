@@ -1,0 +1,25 @@
+﻿<Window x:Class="SGEA_DS.AsignarArticulo_2"
+        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SGEA_DS"
+        mc:Ignorable="d"
+        Title="AsignarArticulo_2" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Label Content="Evaluadores" HorizontalAlignment="Left" Margin="322,32,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Button Content="Asignar" HorizontalAlignment="Left" Margin="394,359,0,0" VerticalAlignment="Top" Width="145" FontSize="18" Click="Button_Click"/>
+        <Button Content="Cancelar" HorizontalAlignment="Left" Margin="570,359,0,0" VerticalAlignment="Top" Width="145" FontSize="18" Click="Button_Click_1"/>
+        <ComboBox x:Name="combobox_Evaluador" HorizontalAlignment="Left" Margin="40,85,0,0" VerticalAlignment="Top" Width="712"/>
+        <Label x:Name="label_Mensaje" Content="" HorizontalAlignment="Left" Margin="40,359,0,0" VerticalAlignment="Top" Width="326"/>
+
+    </Grid>
+</Window>

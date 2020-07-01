@@ -72,10 +72,10 @@ namespace Logica
                     }
                     else if (lista.Actividad.MagistralAct != null)
                     {
-                        listaActividad[listaActividad.Count - 1].Add(
+                        /*listaActividad[listaActividad.Count - 1].Add(
                             lista.Actividad.MagistralAct.FirstOrDefault().nombre + " " 
                             + lista.Actividad.MagistralAct.FirstOrDefault().apellidoPaterno + " " 
-                            + lista.Actividad.MagistralAct.FirstOrDefault().apellidoMaterno);
+                            + lista.Actividad.MagistralAct.FirstOrDefault().apellidoMaterno);*/
                     }
                     else if (lista.Actividad.ParticipanteAct != null)
                     {
@@ -156,5 +156,50 @@ namespace Logica
             }
             return listaActividades;
         }
+
+        public Modelo.Actividad RecuperarActividad(String nombre)
+        {
+            Modelo.Actividad actividadRecuperada = new Modelo.Actividad();
+            try
+            {
+                var actividadOriginal = _context.ActividadSet.SingleOrDefault(
+                    actividad => actividad.nombre == nombre);
+                if (actividadOriginal != null)
+                {
+                    actividadRecuperada.Id = actividadOriginal.Id;
+                    actividadRecuperada.nombre = actividadOriginal.nombre;
+                    actividadRecuperada.tipo = actividadOriginal.tipo;
+                    actividadRecuperada.aula = actividadOriginal.aula;
+                    actividadRecuperada.costo = actividadOriginal.costo;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            return actividadRecuperada;
+        }
+
+        public void RegistrarActividad(Modelo.Actividad actividad)
+        {
+            try
+            {
+                _context.ActividadSet.Add(new Actividad()
+                {
+                    nombre = actividad.nombre,
+                    costo = actividad.costo,
+                    aula = actividad.aula,
+                    tipo = actividad.tipo,
+                    EventoId = actividad.eventoId,
+                    ComiteId = 8
+                });
+                _context.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                Console.Write(e);
+            }
+        }
+
     }
 }
